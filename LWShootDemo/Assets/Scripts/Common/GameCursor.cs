@@ -3,7 +3,7 @@
  * @email [ tktetb@163.com ]
  * @create date  2023年3月9日
  * @modify date 2023年3月9日
- * @desc [游戏指针]
+ * @desc [游戏内光标]
  */
 
 #pragma warning disable 0649
@@ -13,7 +13,7 @@ using UnityEngine;
 namespace LWShootDemo.Common
 {
     /// <summary>
-    /// 游戏指针
+    /// 游戏内光标
     /// </summary>
     public class GameCursor : MonoBehaviour
     {
