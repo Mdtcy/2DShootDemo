@@ -58,3 +58,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+LWShootDemo/Library/
+LWShootDemo/Logs/
+LWShootDemo/Temp/
