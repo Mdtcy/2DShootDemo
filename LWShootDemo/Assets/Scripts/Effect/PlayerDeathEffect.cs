@@ -7,8 +7,11 @@
  */
 
 #pragma warning disable 0649
+using System;
 using DG.Tweening;
+using LWShootDemo.Managers;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace LWShootDemo.Effect
 {
@@ -18,6 +21,11 @@ namespace LWShootDemo.Effect
 
         [SerializeField]
         private float duration = 1;
+
+        [SerializeField]
+        private Button btnRestart;
+
+
 
         #endregion
 
@@ -44,6 +52,11 @@ namespace LWShootDemo.Effect
         #endregion
 
         #region PRIVATE METHODS
+
+        private void Awake()
+        {
+            btnRestart.onClick.AddListener(GameManager.Instance.RestartGame);
+        }
 
         #endregion
 
