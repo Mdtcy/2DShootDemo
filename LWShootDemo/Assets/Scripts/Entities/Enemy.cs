@@ -105,6 +105,7 @@ namespace LWShootDemo.Entities
 
         public void Kill()
         {
+            GameManager.Instance.TimeStopManager.StopTime(0.02f);
             Destroy(gameObject);
         }
     }

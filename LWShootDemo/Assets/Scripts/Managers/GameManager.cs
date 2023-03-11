@@ -37,10 +37,10 @@ namespace LWShootDemo.Managers
 
         // * local
 
-        // Managers
         public GlobalEventManager GlobalEventManager;
         public SoundManager       SoundManager;
         public CameraController   CameraController;
+        public TimeStopManager    TimeStopManager;
 
         #endregion
 
