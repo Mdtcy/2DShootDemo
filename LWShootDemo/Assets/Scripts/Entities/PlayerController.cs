@@ -128,6 +128,7 @@ namespace LWShootDemo.Entities
                 GameManager.Instance.CameraController.Shake((transform.position - firePointPos).normalized, 0.5f,
                                                             0.05f);
                 fireParticle.Play();
+                flashParticle.Play();
                 soundManager.PlaySfx(SoundType.Fire);
                 globalEventManager.OnShoot();
                 lastShotTime = Time.time;
@@ -137,6 +138,8 @@ namespace LWShootDemo.Entities
         [SerializeField]
         private ParticleSystem fireParticle;
 
+        [SerializeField]
+        private ParticleSystem flashParticle;
         #endregion
 
         #region STATIC METHODS
