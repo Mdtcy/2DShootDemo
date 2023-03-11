@@ -23,6 +23,12 @@ namespace LWShootDemo.Managers
 
         #region PUBLIC METHODS
 
+        public void OnShoot()
+        {
+            // Camera.main.GetComponent<CameraController>()
+            //       .Shake((transform.position - ammoEmitter.position).normalized, 5f, 0.05f);
+        }
+
         #endregion
 
         #region PROTECTED METHODS

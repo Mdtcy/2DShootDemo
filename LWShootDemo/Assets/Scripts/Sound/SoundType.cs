@@ -6,6 +6,8 @@
  * @desc [音乐类型]
  */
 
+using Sirenix.OdinInspector;
+
 #pragma warning disable 0649
 
 namespace LWShootDemo.Sound
@@ -15,7 +17,10 @@ namespace LWShootDemo.Sound
     /// </summary>
     public enum SoundType
     {
-        Fire
+        [LabelText("开火声")]
+        Fire,
+        [LabelText("战斗背景音乐")]
+        BattleMusic,
     }
 }
 #pragma warning restore 0649

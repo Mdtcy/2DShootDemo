@@ -7,6 +7,8 @@
  */
 
 #pragma warning disable 0649
+using LWShootDemo.Common;
+using LWShootDemo.Sound;
 using UnityEngine;
 
 namespace LWShootDemo.Managers
@@ -18,11 +20,27 @@ namespace LWShootDemo.Managers
     {
         #region FIELDS
 
-        /// <summary>
-        /// 主相机
-        /// </summary>
+        // 主相机
         [SerializeField]
         private Camera mainCamera;
+
+        // 角色预制体
+        [SerializeField]
+        private Transform pfbPlayer;
+
+        // 角色生成点
+        [SerializeField]
+        private Transform playerSpawnPoint;
+
+        [SerializeField]
+        private Transform player;
+
+        // * local
+
+        // Managers
+        public GlobalEventManager GlobalEventManager;
+        public SoundManager       SoundManager;
+        public CameraController   CameraController;
 
         #endregion
 
@@ -38,6 +56,12 @@ namespace LWShootDemo.Managers
         /// 主相机
         /// </summary>
         public Camera MainCamera => mainCamera;
+
+        /// <summary>
+        /// 角色
+        /// </summary>
+        public Transform Player => player;
+
 
         #endregion
 
@@ -61,6 +85,14 @@ namespace LWShootDemo.Managers
             }
 
             Instance = this;
+        }
+
+        private void Start()
+        {
+            // todo
+            SoundManager.PlayMusic(SoundType.BattleMusic);
+            // 生成角色
+            // player = Instantiate(pfbPlayer, playerSpawnPoint.position, Quaternion.identity);
         }
 
         #endregion
