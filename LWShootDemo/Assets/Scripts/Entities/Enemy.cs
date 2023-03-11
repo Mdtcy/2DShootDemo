@@ -8,6 +8,7 @@
 
 #pragma warning disable 0649
 using System;
+using System.Collections;
 using LWShootDemo.Managers;
 using LWShootDemo.Sound;
 using UnityEngine;
@@ -26,6 +27,19 @@ namespace LWShootDemo.Entities
 
         [SerializeField]
         private Rigidbody2D rb2D;
+
+        [SerializeField]
+        private Material matNormal;
+
+        [SerializeField]
+        private Material matHurt;
+
+        [SerializeField]
+        private SpriteRenderer spModel;
+
+        private bool flashing;
+
+
 
         // * local
         private Transform    player;
@@ -103,9 +117,40 @@ namespace LWShootDemo.Entities
 
         #endregion
 
-        public void Kill()
+        private Coroutine flashCoroutine;
+
+        public void TakeDamage(int damage)
         {
             GameManager.Instance.TimeStopManager.StopTime(0.02f);
+
+            if (flashCoroutine!=null)
+            {
+                StopCoroutine(flashCoroutine);
+            }
+
+            flashCoroutine = StartCoroutine(IFlash(0.05f));
+
+            curHp -= damage;
+            if (curHp <= 0)
+            {
+                Kill();
+            }
+        }
+
+
+        private IEnumerator IFlash(float duration)
+        {
+            flashing         = true;
+            spModel.material = matHurt;
+
+            yield return new WaitForSecondsRealtime(duration);
+            spModel.material = matNormal;
+            flashing        = false;
+
+        }
+
+        public void Kill()
+        {
             Destroy(gameObject);
         }
     }

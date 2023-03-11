@@ -131,9 +131,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312700c7a5e3438e9abdcfc3fdd7de09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 1
+  maxHp: 3
   moveSpeed: 3
   rb2D: {fileID: 1617456840222586615}
+  matNormal: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  matHurt: {fileID: 2100000, guid: ef0509fe873865a4b9046efbd1b60fd3, type: 2}
+  spModel: {fileID: 1617456840124990902}
 --- !u!50 &1617456840222586615
 Rigidbody2D:
   serializedVersion: 4

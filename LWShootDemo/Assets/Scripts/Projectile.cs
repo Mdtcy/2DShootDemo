@@ -69,7 +69,7 @@ namespace LWShootDemo
                 // GameObject asd = Instantiate(explosionHolder, transform.position, Quaternion.identity);
                 // soundManager.RandomizeSfx(hitSfx);
                 Destroy(gameObject);
-                collision.GetComponent<Enemy>().Kill();
+                collision.GetComponent<Enemy>().TakeDamage(1);
             }
 
             if (collision.CompareTag("Obstacles"))
