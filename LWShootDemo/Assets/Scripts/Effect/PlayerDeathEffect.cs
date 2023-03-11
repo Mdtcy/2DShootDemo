@@ -3,25 +3,21 @@
  * @email [ tktetb@163.com ]
  * @create date  2023年3月11日
  * @modify date 2023年3月11日
- * @desc [爆炸效果]
+ * @desc [任务组UI]
  */
 
 #pragma warning disable 0649
-using LWShootDemo.Managers;
-using LWShootDemo.Sound;
+using DG.Tweening;
 using UnityEngine;
 
 namespace LWShootDemo.Effect
 {
-    /// <summary>
-    /// 爆炸效果
-    /// </summary>
-    public class ExplosionEffect : Effect
+    public class PlayerDeathEffect : Effect
     {
         #region FIELDS
 
         [SerializeField]
-        private float lifeTime;
+        private float duration = 1;
 
         #endregion
 
@@ -33,11 +29,12 @@ namespace LWShootDemo.Effect
 
         public override void Play()
         {
-            var dir = new Vector2(Random.Range(-10, 10), Random.Range(-10, 10)).normalized;
-            GameManager.Instance.CameraController.Shake(dir, 4f,
-                                                        0.05f);
-            GameManager.Instance.SoundManager.PlaySfx(SoundType.Explosion);
-            Destroy(gameObject, lifeTime);
+            var sequence    = DOTween.Sequence();
+            var scaleTween  = transform.DOScale(50, duration).SetEase(Ease.InOutSine);
+            var rotateTween = transform.DORotate(new Vector3(0, 0, 360), duration, RotateMode.FastBeyond360);
+            sequence.Insert(0, scaleTween);
+            sequence.Insert(0, rotateTween);
+            sequence.Play();
         }
 
         #endregion
@@ -53,6 +50,7 @@ namespace LWShootDemo.Effect
         #region STATIC METHODS
 
         #endregion
+
     }
 }
 #pragma warning restore 0649

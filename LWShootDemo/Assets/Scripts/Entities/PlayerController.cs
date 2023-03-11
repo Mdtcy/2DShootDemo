@@ -7,6 +7,7 @@
  */
 
 #pragma warning disable 0649
+using DG.Tweening;
 using LWShootDemo.Effect;
 using LWShootDemo.Managers;
 using LWShootDemo.Sound;
@@ -179,8 +180,9 @@ namespace LWShootDemo.Entities
             var explosion = Instantiate(pfbExplosion, transform.position, Quaternion.identity)
                .GetComponent<ExplosionEffect>();
             explosion.Play();
-            var deathPlayer = Instantiate(pfbDeathPlayer, transform.position, Quaternion.identity);
-            deathPlayer.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-10,10),Random.Range(-10,10)).normalized * 10,ForceMode2D.Impulse);
+            var playerDeathEffect = Instantiate(pfbDeathPlayer, transform.position, Quaternion.identity)
+               .GetComponent<Effect.Effect>();
+            playerDeathEffect.Play();
             timeStopManager.StopTime(0.3f, 3f);
             Destroy(gameObject);
         }
