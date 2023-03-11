@@ -127,12 +127,15 @@ namespace LWShootDemo.Entities
                 lastShotTime = Time.time;
                 GameManager.Instance.CameraController.Shake((transform.position - firePointPos).normalized, 0.5f,
                                                             0.05f);
+                fireParticle.Play();
                 soundManager.PlaySfx(SoundType.Fire);
                 globalEventManager.OnShoot();
                 lastShotTime = Time.time;
             }
         }
 
+        [SerializeField]
+        private ParticleSystem fireParticle;
 
         #endregion
 
