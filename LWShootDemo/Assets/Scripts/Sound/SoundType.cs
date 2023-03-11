@@ -21,6 +21,10 @@ namespace LWShootDemo.Sound
         Fire,
         [LabelText("战斗背景音乐")]
         BattleMusic,
+        [LabelText("击中声")]
+        Hit,
+        [LabelText("爆炸声")]
+        Explosion
     }
 }
 #pragma warning restore 0649

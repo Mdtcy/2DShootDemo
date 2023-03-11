@@ -65,11 +65,10 @@ namespace LWShootDemo
         {
             if (collision.CompareTag("Enemy"))
             {
-                // collision.GetComponentInParent<IDamageable>().TakeDamage(1);
-                // GameObject asd = Instantiate(explosionHolder, transform.position, Quaternion.identity);
-                // soundManager.RandomizeSfx(hitSfx);
+                var dir = (collision.transform.position - transform.position).normalized;
                 Destroy(gameObject);
-                collision.GetComponent<Enemy>().TakeDamage(1);
+                var damageInfo = new DamageInfo(1, dir);
+                collision.GetComponent<Enemy>().TakeDamage(damageInfo);
             }
 
             if (collision.CompareTag("Obstacles"))

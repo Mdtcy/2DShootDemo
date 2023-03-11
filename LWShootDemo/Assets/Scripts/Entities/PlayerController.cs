@@ -9,6 +9,7 @@
 #pragma warning disable 0649
 using LWShootDemo.Managers;
 using LWShootDemo.Sound;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

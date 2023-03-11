@@ -135,8 +135,10 @@ MonoBehaviour:
   moveSpeed: 3
   rb2D: {fileID: 1617456840222586615}
   matNormal: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  matHurt: {fileID: 2100000, guid: ef0509fe873865a4b9046efbd1b60fd3, type: 2}
+  matFlash: {fileID: 2100000, guid: ef0509fe873865a4b9046efbd1b60fd3, type: 2}
   spModel: {fileID: 1617456840124990902}
+  force: 100
+  pfbExplosion: {fileID: 5617681994857743442, guid: 4fa8b9ab3cc20f84e88cb824a7d1e2cc, type: 3}
 --- !u!50 &1617456840222586615
 Rigidbody2D:
   serializedVersion: 4
@@ -150,7 +152,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}

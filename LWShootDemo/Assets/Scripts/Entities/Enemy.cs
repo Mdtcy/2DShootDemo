@@ -7,11 +7,14 @@
  */
 
 #pragma warning disable 0649
-using System;
 using System.Collections;
+using LWShootDemo.Effect;
 using LWShootDemo.Managers;
 using LWShootDemo.Sound;
+using Sirenix.OdinInspector;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace LWShootDemo.Entities
 {
@@ -31,20 +34,21 @@ namespace LWShootDemo.Entities
         [SerializeField]
         private Material matNormal;
 
+        [FormerlySerializedAs("matHurt")]
         [SerializeField]
-        private Material matHurt;
+        private Material matFlash;
 
         [SerializeField]
         private SpriteRenderer spModel;
 
         private bool flashing;
 
-
-
         // * local
-        private Transform    player;
-        private SoundManager soundManager;
-        private int          curHp;
+        private Transform       player;
+        private SoundManager    soundManager;
+        private int             curHp;
+        private Coroutine       flashCoroutine;
+        private TimeStopManager timeStopManager;
 
         #endregion
 
@@ -64,9 +68,11 @@ namespace LWShootDemo.Entities
 
         private void Start()
         {
-            player       = GameManager.Instance.Player;
-            soundManager = GameManager.Instance.SoundManager;
-            curHp        = maxHp;
+            player          = GameManager.Instance.Player;
+            soundManager    = GameManager.Instance.SoundManager;
+            timeStopManager = GameManager.Instance.TimeStopManager;
+            curHp           = maxHp;
+            canMove         = true;
         }
 
         private void FixedUpdate()
@@ -98,8 +104,11 @@ namespace LWShootDemo.Entities
 
         private void ChaseTarget()
         {
-            var direction = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
-            rb2D.MovePosition(direction);
+            if (canMove)
+            {
+                var direction = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+                rb2D.MovePosition(direction);
+            }
         }
 
 
@@ -111,48 +120,85 @@ namespace LWShootDemo.Entities
             }
         }
 
-        #endregion
-
-        #region STATIC METHODS
-
-        #endregion
-
-        private Coroutine flashCoroutine;
-
-        public void TakeDamage(int damage)
+        // 闪光
+        private IEnumerator IFlash(float duration)
         {
-            GameManager.Instance.TimeStopManager.StopTime(0.02f);
+            flashing         = true;
+            spModel.material = matFlash;
 
-            if (flashCoroutine!=null)
+            yield return new WaitForSecondsRealtime(duration);
+            spModel.material = matNormal;
+            flashing         = false;
+
+        }
+
+        public void TakeDamage(DamageInfo damageInfo)
+        {
+            ApplyKnowBack(0.2f, damageInfo.Direction);
+            soundManager.PlaySfx(SoundType.Hit);
+            timeStopManager.StopTime(0.02f);
+
+            if (flashCoroutine != null)
             {
                 StopCoroutine(flashCoroutine);
             }
 
             flashCoroutine = StartCoroutine(IFlash(0.05f));
 
-            curHp -= damage;
+            curHp -= damageInfo.Damage;
+
             if (curHp <= 0)
             {
                 Kill();
             }
         }
 
+        [ShowInInspector]
+        [ReadOnly]
+        private bool canMove = true;
 
-        private IEnumerator IFlash(float duration)
+        [SerializeField]
+        private float force = 1;
+
+        private Coroutine knockBackHandle;
+
+        public void ApplyKnowBack(float duraction, Vector2 direction)
         {
-            flashing         = true;
-            spModel.material = matHurt;
+            if (knockBackHandle != null)
+            {
+                StopCoroutine(knockBackHandle);
+            }
 
-            yield return new WaitForSecondsRealtime(duration);
-            spModel.material = matNormal;
-            flashing        = false;
-
+            knockBackHandle = StartCoroutine(IApplyKnowBack(duraction, direction));
         }
 
-        public void Kill()
+        private IEnumerator IApplyKnowBack(float duraction, Vector2 direction)
         {
+            canMove = false;
+            rb2D.AddForce(direction * force);
+            yield return new WaitForSeconds(duraction);
+            rb2D.velocity = Vector2.zero;
+            canMove       = true;
+        }
+
+        [SerializeField]
+        private Transform pfbExplosion;
+
+
+        // 击杀
+        private void Kill()
+        {
+            var explosion = Instantiate(pfbExplosion, transform.position, quaternion.identity)
+               .GetComponent<ExplosionEffect>();
+            explosion.Play();
             Destroy(gameObject);
         }
+
+        #endregion
+
+        #region STATIC METHODS
+
+        #endregion
     }
 }
 #pragma warning restore 0649
