@@ -26,7 +26,7 @@ namespace LWShootDemo
 
         #region PUBLIC METHODS
 
-        public void StopTime(float delay)
+        public void StopTime(float timeScale, float delay)
         {
             if (stoping)
             {
@@ -37,7 +37,7 @@ namespace LWShootDemo
 
             StopCoroutine(StartTimeAgain(delay));
             StartCoroutine(StartTimeAgain(delay));
-            Time.timeScale = 0.0f;
+            Time.timeScale = timeScale;
         }
 
         private IEnumerator StartTimeAgain(float delay)

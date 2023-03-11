@@ -7,6 +7,7 @@
  */
 
 #pragma warning disable 0649
+using LWShootDemo.Effect;
 using LWShootDemo.Managers;
 using LWShootDemo.Sound;
 using Sirenix.OdinInspector;
@@ -47,6 +48,7 @@ namespace LWShootDemo.Entities
         // local
         private GlobalEventManager globalEventManager;
         private SoundManager       soundManager;
+        private TimeStopManager    timeStopManager;
         private Camera             mainCamera;
         private bool               canShoot = true;
 
@@ -69,16 +71,27 @@ namespace LWShootDemo.Entities
         private void Start()
         {
             globalEventManager = GameManager.Instance.GlobalEventManager;
-            soundManager = GameManager.Instance.SoundManager;
+            soundManager       = GameManager.Instance.SoundManager;
+            timeStopManager    = GameManager.Instance.TimeStopManager;
             mainCamera         = GameManager.Instance.MainCamera;
         }
 
         private void Update()
         {
+            if (isDead)
+            {
+                return;
+            }
+
             GetInput();
         }
         private void FixedUpdate()
         {
+            if (isDead)
+            {
+                return;
+            }
+
             Aim();
             TryToShoot();
             Move();
@@ -141,14 +154,34 @@ namespace LWShootDemo.Entities
 
         [SerializeField]
         private ParticleSystem flashParticle;
+
+        [SerializeField]
+        private Transform pfbExplosion;
+
+
         #endregion
 
         #region STATIC METHODS
 
         #endregion
 
+        private bool isDead = false;
+
+        public bool IsDead => isDead;
+
+        [SerializeField]
+        private Transform pfbDeathPlayer;
+
+
         public void Kill()
         {
+            isDead = true;
+            var explosion = Instantiate(pfbExplosion, transform.position, Quaternion.identity)
+               .GetComponent<ExplosionEffect>();
+            explosion.Play();
+            var deathPlayer = Instantiate(pfbDeathPlayer, transform.position, Quaternion.identity);
+            deathPlayer.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-10,10),Random.Range(-10,10)).normalized * 10,ForceMode2D.Impulse);
+            timeStopManager.StopTime(0.3f, 3f);
             Destroy(gameObject);
         }
     }

@@ -136,7 +136,7 @@ namespace LWShootDemo.Entities
         {
             ApplyKnowBack(0.2f, damageInfo.Direction);
             soundManager.PlaySfx(SoundType.Hit);
-            timeStopManager.StopTime(0.02f);
+            timeStopManager.StopTime(0f, 0.02f);
 
             if (flashCoroutine != null)
             {
