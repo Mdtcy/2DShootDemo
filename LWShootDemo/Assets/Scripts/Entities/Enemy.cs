@@ -129,7 +129,7 @@ namespace LWShootDemo.Entities
         private void ChaseTarget()
         {
             var direction = player.position - transform.position;
-            entity.TryMove(direction, moveSpeed);
+            entity.TryMove(direction, moveSpeed  );
         }
 
 

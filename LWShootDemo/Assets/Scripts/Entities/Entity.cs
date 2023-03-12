@@ -3,13 +3,12 @@
  * @email [ tktetb@163.com ]
  * @create date  2023年3月12日
  * @modify date 2023年3月12日
- * @desc [任务组UI]
+ * @desc []
  */
 
 #pragma warning disable 0649
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -27,6 +26,11 @@ namespace LWShootDemo.Entities
         [SerializeField]
         private Rigidbody2D rb2D;
 
+        [ShowInInspector]
+        [ReadOnly]
+        private bool canMove = true;
+
+        private Coroutine knockBackHandle;
 
         public Action ActOnDeath;
 
@@ -74,44 +78,6 @@ namespace LWShootDemo.Entities
             }
         }
 
-        [ShowInInspector]
-        [ReadOnly]
-        private bool canMove = true;
-
-
-        private Coroutine knockBackHandle;
-
-        public void ApplyKnowBack(float duraction, Vector2 force)
-        {
-            if (knockBackHandle != null)
-            {
-                StopCoroutine(knockBackHandle);
-            }
-
-            knockBackHandle = StartCoroutine(IApplyKnowBack(duraction, force));
-        }
-
-        private IEnumerator IApplyKnowBack(float duraction, Vector2 force)
-        {
-            canMove = false;
-            Debug.Log($"force:{force}");
-            rb2D.AddForce(force);
-
-            yield return new WaitForSeconds(duraction);
-            rb2D.velocity = Vector2.zero;
-            canMove       = true;
-        }
-
-        // 击杀
-        private void Kill()
-        {
-            ActOnDeath?.Invoke();
-            // var explosion = Instantiate(pfbExplosion, transform.position, quaternion.identity)
-            //    .GetComponent<ExplosionEffect>();
-            // explosion.Play();
-            Destroy(gameObject);
-        }
-
         #endregion
 
         #region PROTECTED METHODS
@@ -125,10 +91,38 @@ namespace LWShootDemo.Entities
             curHp = maxHp;
         }
 
+        private IEnumerator IApplyKnowBack(float duraction, Vector2 force)
+        {
+            canMove = false;
+            Debug.Log($"force:{force}");
+            rb2D.AddForce(force);
+
+            yield return new WaitForSeconds(duraction);
+            rb2D.velocity = Vector2.zero;
+            canMove       = true;
+        }
+
+        public void ApplyKnowBack(float duraction, Vector2 force)
+        {
+            if (knockBackHandle != null)
+            {
+                StopCoroutine(knockBackHandle);
+            }
+
+            knockBackHandle = StartCoroutine(IApplyKnowBack(duraction, force));
+        }
+
+
+        // 击杀
+        private void Kill()
+        {
+            ActOnDeath?.Invoke();
+            Destroy(gameObject);
+        }
+
         #endregion
 
         #region STATIC METHODS
-
         #endregion
     }
 }
