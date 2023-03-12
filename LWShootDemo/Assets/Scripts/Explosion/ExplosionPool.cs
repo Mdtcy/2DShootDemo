@@ -3,7 +3,7 @@
  * @email [ tktetb@163.com ]
  * @create date  2023年3月12日
  * @modify date 2023年3月12日
- * @desc [任务组UI]
+ * @desc [爆炸对象池]
  */
 
 #pragma warning disable 0649
@@ -12,6 +12,9 @@ using UnityEngine.Pool;
 
 namespace LWShootDemo.Explosions
 {
+    /// <summary>
+    /// 爆炸对象池
+    /// </summary>
     public class ExplosionPool : MonoBehaviour
     {
         #region FIELDS
@@ -89,7 +92,7 @@ namespace LWShootDemo.Explosions
 
         private Explosion CreatePooledItem()
         {
-            var explosion     = Instantiate(pfbExplosion);
+            var explosion = Instantiate(pfbExplosion);
 
             return explosion;
         }

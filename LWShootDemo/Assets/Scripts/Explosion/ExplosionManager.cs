@@ -3,7 +3,7 @@
  * @email [ tktetb@163.com ]
  * @create date  2023年3月12日
  * @modify date 2023年3月12日
- * @desc [任务组UI]
+ * @desc [爆炸管理器 负责爆炸的生成和回收]
  */
 
 #pragma warning disable 0649
@@ -12,13 +12,18 @@ using UnityEngine;
 
 namespace LWShootDemo.Explosions
 {
+    /// <summary>
+    /// 爆炸管理器 负责爆炸的生成和回收
+    /// </summary>
     public class ExplosionManager : MonoBehaviour
     {
         #region FIELDS
 
+        // 对象池
         [SerializeField]
         private ExplosionPool explosionPool;
 
+        // 爆炸持续时间
         [SerializeField]
         private float lifeTime;
 
@@ -33,6 +38,10 @@ namespace LWShootDemo.Explosions
 
         #region PUBLIC METHODS
 
+        /// <summary>
+        /// 生成一个爆炸
+        /// </summary>
+        /// <param name="position"></param>
         public void CreateExplosion(Vector3 position)
         {
             var explosion = explosionPool.Get();
@@ -51,6 +60,7 @@ namespace LWShootDemo.Explosions
 
         #region PRIVATE METHODS
 
+        // 将超时的爆炸回收
         private void Update()
         {
             for (int index = explosions.Count - 1; index >= 0; index--)
