@@ -23,9 +23,6 @@ namespace LWShootDemo.Weapons
         [SerializeField]
         private Transform firePoint;
 
-        [SerializeField]
-        private GameObject pfbProjectile;
-
         // 粒子特效 闪光 弹壳
         [SerializeField]
         private ParticleSystem fireParticle;
@@ -37,10 +34,11 @@ namespace LWShootDemo.Weapons
         private float fireKnockBackForce = 1;
 
         // * local
-        private Entity           owener;
-        private SoundManager     soundManager;
-        private CameraController cameraController;
-        private Tween            scaleTween;
+        private Entity            owener;
+        private SoundManager      soundManager;
+        private CameraController  cameraController;
+        private Tween             scaleTween;
+        private ProjectileManager projectileManager;
 
         #endregion
 
@@ -53,6 +51,7 @@ namespace LWShootDemo.Weapons
         public override void Init(Entity entity)
         {
             owener = entity;
+            projectileManager = GameManager.Instance.ProjectileManager;
         }
 
         /// <summary>
@@ -65,9 +64,7 @@ namespace LWShootDemo.Weapons
             var firePointPos = firePoint.position;
 
             // 生成子弹
-            Projectile projectile = Instantiate(pfbProjectile, firePointPos, firePoint.localRotation)
-               .GetComponent<Projectile>();
-            projectile.Setup(firePoint.rotation);
+            projectileManager.CreateProjectile(firePointPos, firePoint.rotation);
 
             // 对持有者产生后坐力
             owener.ApplyKnowBack(0.2f, -transform.up * fireKnockBackForce);

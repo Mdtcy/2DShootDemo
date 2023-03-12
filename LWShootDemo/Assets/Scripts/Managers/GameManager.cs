@@ -11,6 +11,7 @@ using LWShootDemo.Common;
 using LWShootDemo.Difficulty;
 using LWShootDemo.Popups;
 using LWShootDemo.Sound;
+using LWShootDemo.Weapons;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -49,6 +50,7 @@ namespace LWShootDemo.Managers
         public PopupManager       PopupManager;
         public ExplosionGenerator ExplosionGenerator;
         public DifficultyManager  DifficultyManager;
+        public ProjectileManager  ProjectileManager;
 
         #endregion
 
@@ -69,6 +71,7 @@ namespace LWShootDemo.Managers
         /// 角色
         /// </summary>
         public Transform Player => player;
+
 
         #endregion
 

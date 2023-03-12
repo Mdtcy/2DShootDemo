@@ -10,7 +10,7 @@
 using LWShootDemo.Entities;
 using UnityEngine;
 
-namespace LWShootDemo
+namespace LWShootDemo.Weapons
 {
     public class Projectile : MonoBehaviour
     {
@@ -27,19 +27,25 @@ namespace LWShootDemo
         [SerializeField]
         private Rigidbody2D rb2D;
 
+        private float spawnTime;
+        private bool  isDead;
+
         #endregion
 
         #region PROPERTIES
+
+        public float SpawnTime => spawnTime;
+
+        public bool IsDead => isDead;
 
         #endregion
 
         #region PUBLIC METHODS
 
-        public void Setup(Quaternion direction)
+        public void Init(float spawnTime)
         {
-            transform.rotation = direction;
-            // this.direction = direction;
-            Destroy(gameObject, 5);
+            this.spawnTime = spawnTime;
+            isDead         = false;
         }
 
         #endregion
@@ -50,15 +56,8 @@ namespace LWShootDemo
 
         #region PRIVATE METHODS
 
-        void FixedUpdate()
+        public void Move()
         {
-            Move();
-        }
-
-        void Move()
-        {
-            // move
-            // Vector3 dir = transform.TransformDirection(direction);
             rb2D.velocity = transform.up * speed;
             // rb2D.MovePosition(tempPos);
         }
@@ -66,6 +65,11 @@ namespace LWShootDemo
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (isDead)
+            {
+                return;
+            }
+
             var entity = collision.GetComponent<Entity>();
 
             if (entity == null)
@@ -76,7 +80,7 @@ namespace LWShootDemo
             if (entity.Side != Side.Player)
             {
                 var dir = (collision.transform.position - transform.position).normalized;
-                Destroy(gameObject);
+                isDead = true;
                 var damageInfo = new DamageInfo(1, dir, Random.value < critChance);
                 collision.GetComponent<Entity>().TakeDamage(damageInfo);
             }
