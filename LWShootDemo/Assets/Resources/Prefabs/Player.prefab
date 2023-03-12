@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 96621359}
   - component: {fileID: 96621361}
   - component: {fileID: 96621360}
+  - component: {fileID: 1879013212442782255}
   m_Layer: 0
   m_Name: Shell
   m_TagString: Untagged
@@ -4897,6 +4898,17 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!210 &1879013212442782255
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96621358}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &654893527
 GameObject:
   m_ObjectHideFlags: 0
@@ -9751,6 +9763,7 @@ GameObject:
   - component: {fileID: 1811229577}
   - component: {fileID: 1811229579}
   - component: {fileID: 1811229578}
+  - component: {fileID: 8206221863633552417}
   m_Layer: 0
   m_Name: MuzzleFlsh
   m_TagString: Untagged
@@ -14610,6 +14623,17 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!210 &8206221863633552417
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811229576}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
 --- !u!1 &2905730704180917978
 GameObject:
   m_ObjectHideFlags: 0
@@ -14753,6 +14777,7 @@ MonoBehaviour:
   fireParticle: {fileID: 96621361}
   flashParticle: {fileID: 1811229579}
   pfbExplosion: {fileID: 5617681994857743442, guid: 4fa8b9ab3cc20f84e88cb824a7d1e2cc, type: 3}
+  pfbDeathPlayer: {fileID: 0}
 --- !u!50 &2905730704677159484
 Rigidbody2D:
   serializedVersion: 4
