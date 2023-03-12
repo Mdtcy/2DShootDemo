@@ -11,38 +11,39 @@ using LWShootDemo.Managers;
 using LWShootDemo.Sound;
 using UnityEngine;
 
-namespace LWShootDemo.Effect
+namespace LWShootDemo.Explosions
 {
     /// <summary>
     /// 爆炸效果
     /// </summary>
-    public class ExplosionEffect : Effect
+    public class Explosion : MonoBehaviour
     {
         #region FIELDS
 
         [SerializeField]
-        private float lifeTime;
-
-        [SerializeField]
         private Vector2 shakeIntensity;
+
+        private float spawnTime;
 
         #endregion
 
         #region PROPERTIES
 
+        public float SpawnTime => spawnTime;
+
         #endregion
 
         #region PUBLIC METHODS
 
-        public override void Play()
+        public void Play()
         {
+            spawnTime = Time.time;
             var player = GameManager.Instance.Player;
             // 爆炸带来的震动根据玩家和爆炸点的方向来决定
             var dir    = (transform.position - player.position).normalized;
             GameManager.Instance.CameraController.Shake(dir, Random.Range(shakeIntensity.x, shakeIntensity.y),
                                                         0.05f);
             GameManager.Instance.SoundManager.PlaySfx(SoundType.Explosion);
-            Destroy(gameObject, lifeTime);
         }
 
         #endregion

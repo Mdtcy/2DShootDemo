@@ -7,6 +7,8 @@
  */
 
 #pragma warning disable 0649
+using LWShootDemo.Effect;
+using LWShootDemo.Explosions;
 using LWShootDemo.Managers;
 using LWShootDemo.Weapons;
 using UnityEngine;
@@ -36,7 +38,7 @@ namespace LWShootDemo.Entities
 
         // * local
         private GlobalEventManager globalEventManager;
-        private ExplosionGenerator explosionGenerator;
+        private ExplosionManager explosionManager;
         private Camera             mainCamera;
         private bool               canShoot = true;
         private bool               isDead;
@@ -65,7 +67,7 @@ namespace LWShootDemo.Entities
         {
             globalEventManager = GameManager.Instance.GlobalEventManager;
             mainCamera         = GameManager.Instance.MainCamera;
-            explosionGenerator = GameManager.Instance.ExplosionGenerator;
+            explosionManager = GameManager.Instance.explosionManager;
 
             entity.ActOnDeath += OnDeath;
             weapon.Init(entity);
@@ -146,10 +148,10 @@ namespace LWShootDemo.Entities
         private void OnDeath()
         {
             isDead = true;
-            explosionGenerator.CreateExplosion(transform.position);
+            explosionManager.CreateExplosion(transform.position);
 
             var playerDeathEffect = Instantiate(pfbDeathPlayer, transform.position, Quaternion.identity)
-               .GetComponent<Effect.Effect>();
+               .GetComponent<PlayerDeathEffect>();
             playerDeathEffect.Play();
 
             Destroy(gameObject);

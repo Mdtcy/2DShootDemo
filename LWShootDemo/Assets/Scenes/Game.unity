@@ -244,6 +244,54 @@ MonoBehaviour:
     keyData: 01000000
     valueData:
     - {fileID: 2706770823697863420, guid: 8fcee1318bc6eaf41ba6fa39a24fea73, type: 3}
+--- !u!1 &128656448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 128656449}
+  - component: {fileID: 128656450}
+  m_Layer: 0
+  m_Name: ExplosionPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &128656449
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128656448}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 526955010}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &128656450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128656448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd437eac0bba496b897bfc9bdd0599a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectionChecks: 1
+  maxPoolSize: 30
+  defaultCapacity: 100
+  pfbExplosion: {fileID: 3697119890374960320, guid: 4fa8b9ab3cc20f84e88cb824a7d1e2cc, type: 3}
 --- !u!1 &239978444
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,8 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0dc324735d4502a3df5b498bdd4666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pfbProjectile: {fileID: 1430046345506342793, guid: 154db214c14325443aecc4b4db5c9792, type: 3}
-  projectileLifeTime: 3
+  projectileLifeTime: 2
   projectilePool: {fileID: 1305542067}
 --- !u!4 &239978446
 Transform:
@@ -625,7 +672,7 @@ GameObject:
   - component: {fileID: 526955010}
   - component: {fileID: 526955009}
   m_Layer: 0
-  m_Name: ExplostionGenerator
+  m_Name: ExplosionManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -643,7 +690,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3503db34955b4fa2a15f3f4ad5d719d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pfbExplosion: {fileID: 5617681994857743442, guid: 4fa8b9ab3cc20f84e88cb824a7d1e2cc, type: 3}
+  explosionPool: {fileID: 128656450}
+  lifeTime: 1
 --- !u!4 &526955010
 Transform:
   m_ObjectHideFlags: 0
@@ -655,7 +703,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 128656449}
   m_Father: {fileID: 2080032622}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1560,6 +1609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectionChecks: 1
   maxPoolSize: 150
+  defaultCapacity: 100
   pfbProjectile: {fileID: 8189882890158811589, guid: 154db214c14325443aecc4b4db5c9792, type: 3}
 --- !u!1001 &1319466407
 PrefabInstance:
@@ -1940,7 +1990,7 @@ MonoBehaviour:
   CameraController: {fileID: 551153567}
   TimeStopManager: {fileID: 494802436}
   PopupManager: {fileID: 65543106}
-  ExplosionGenerator: {fileID: 526955009}
+  explosionManager: {fileID: 526955009}
   DifficultyManager: {fileID: 1463329275}
   ProjectileManager: {fileID: 239978445}
 --- !u!4 &2080032622

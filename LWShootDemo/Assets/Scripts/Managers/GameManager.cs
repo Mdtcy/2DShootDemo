@@ -9,6 +9,7 @@
 #pragma warning disable 0649
 using LWShootDemo.Common;
 using LWShootDemo.Difficulty;
+using LWShootDemo.Explosions;
 using LWShootDemo.Popups;
 using LWShootDemo.Sound;
 using LWShootDemo.Weapons;
@@ -48,7 +49,8 @@ namespace LWShootDemo.Managers
         public CameraController   CameraController;
         public TimeStopManager    TimeStopManager;
         public PopupManager       PopupManager;
-        public ExplosionGenerator ExplosionGenerator;
+        [FormerlySerializedAs("ExplosionGenerator")]
+        public ExplosionManager explosionManager;
         public DifficultyManager  DifficultyManager;
         public ProjectileManager  ProjectileManager;
 

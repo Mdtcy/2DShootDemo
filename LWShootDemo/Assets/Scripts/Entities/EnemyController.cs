@@ -8,11 +8,11 @@
 
 #pragma warning disable 0649
 using System.Collections;
+using LWShootDemo.Explosions;
 using LWShootDemo.Managers;
 using LWShootDemo.Popups;
 using LWShootDemo.Sound;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace LWShootDemo.Entities
 {
@@ -46,7 +46,7 @@ namespace LWShootDemo.Entities
         private SoundManager       soundManager;
         private Coroutine          flashCoroutine;
         private TimeStopManager    timeStopManager;
-        private ExplosionGenerator explosionGenerator;
+        private ExplosionManager explosionManager;
         private PopupManager       popupManager;
 
         #endregion
@@ -70,7 +70,7 @@ namespace LWShootDemo.Entities
             player             = GameManager.Instance.Player;
             soundManager       = GameManager.Instance.SoundManager;
             timeStopManager    = GameManager.Instance.TimeStopManager;
-            explosionGenerator = GameManager.Instance.ExplosionGenerator;
+            explosionManager = GameManager.Instance.explosionManager;
             popupManager       = GameManager.Instance.PopupManager;
 
             entity.ActOnHurt  += OnHurt;
@@ -80,7 +80,7 @@ namespace LWShootDemo.Entities
 
         private void OnDeath()
         {
-            explosionGenerator.CreateExplosion(transform.position);
+            explosionManager.CreateExplosion(transform.position);
         }
 
         private void OnHurt(DamageInfo damageInfo)

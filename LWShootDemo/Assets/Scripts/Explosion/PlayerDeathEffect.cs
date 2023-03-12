@@ -7,7 +7,6 @@
  */
 
 #pragma warning disable 0649
-using System;
 using DG.Tweening;
 using LWShootDemo.Managers;
 using UnityEngine;
@@ -15,7 +14,7 @@ using UnityEngine.UI;
 
 namespace LWShootDemo.Effect
 {
-    public class PlayerDeathEffect : Effect
+    public class PlayerDeathEffect : MonoBehaviour
     {
         #region FIELDS
 
@@ -25,8 +24,6 @@ namespace LWShootDemo.Effect
         [SerializeField]
         private Button btnRestart;
 
-
-
         #endregion
 
         #region PROPERTIES
@@ -35,7 +32,7 @@ namespace LWShootDemo.Effect
 
         #region PUBLIC METHODS
 
-        public override void Play()
+        public void Play()
         {
             var sequence    = DOTween.Sequence();
             var scaleTween  = transform.DOScale(50, duration).SetEase(Ease.InOutSine);
