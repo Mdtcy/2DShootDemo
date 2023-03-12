@@ -68,7 +68,7 @@ namespace LWShootDemo
                 var dir = (collision.transform.position - transform.position).normalized;
                 Destroy(gameObject);
                 var damageInfo = new DamageInfo(1, dir);
-                collision.GetComponent<Enemy>().TakeDamage(damageInfo);
+                collision.GetComponent<Entity>().TakeDamage(damageInfo);
             }
 
             if (collision.CompareTag("Obstacles"))

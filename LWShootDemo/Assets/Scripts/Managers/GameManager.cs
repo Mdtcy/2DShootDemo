@@ -12,6 +12,7 @@ using LWShootDemo.Sound;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace LWShootDemo.Managers
 {
@@ -43,6 +44,9 @@ namespace LWShootDemo.Managers
         public SoundManager       SoundManager;
         public CameraController   CameraController;
         public TimeStopManager    TimeStopManager;
+        [FormerlySerializedAs("explostionGenerator")]
+        [FormerlySerializedAs("ExplosionManager")]
+        public ExplosionGenerator   explosionGenerator;
 
         #endregion
 
@@ -63,7 +67,6 @@ namespace LWShootDemo.Managers
         /// 角色
         /// </summary>
         public Transform Player => player;
-
 
         #endregion
 
@@ -102,6 +105,7 @@ namespace LWShootDemo.Managers
         {
             SceneManager.LoadScene("Game");
         }
+
 
         #endregion
 

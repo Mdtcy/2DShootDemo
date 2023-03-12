@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 1617456840222586616}
   - component: {fileID: 1617456840222586615}
   - component: {fileID: 1617456840222586614}
+  - component: {fileID: 76883030600441076}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -132,12 +133,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 3
-  moveSpeed: 3
-  rb2D: {fileID: 1617456840222586615}
+  entity: {fileID: 76883030600441076}
   matNormal: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   matFlash: {fileID: 2100000, guid: ef0509fe873865a4b9046efbd1b60fd3, type: 2}
+  knockBackForce: 100
   spModel: {fileID: 1617456840124990902}
-  force: 100
   pfbExplosion: {fileID: 5617681994857743442, guid: 4fa8b9ab3cc20f84e88cb824a7d1e2cc, type: 3}
 --- !u!50 &1617456840222586615
 Rigidbody2D:
@@ -176,3 +176,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &76883030600441076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617456840222586613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a9291cbbde4c9d9c2921fee4428a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 3
+  rb2D: {fileID: 1617456840222586615}
+  moveSpeed: 3

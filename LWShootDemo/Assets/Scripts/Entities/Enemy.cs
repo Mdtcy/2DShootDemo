@@ -11,13 +11,13 @@ using System.Collections;
 using LWShootDemo.Effect;
 using LWShootDemo.Managers;
 using LWShootDemo.Sound;
-using Sirenix.OdinInspector;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace LWShootDemo.Entities
 {
+    [RequireComponent(typeof(Entity))]
     public class Enemy : MonoBehaviour
     {
         #region FIELDS
@@ -26,10 +26,7 @@ namespace LWShootDemo.Entities
         private int maxHp;
 
         [SerializeField]
-        private float moveSpeed;
-
-        [SerializeField]
-        private Rigidbody2D rb2D;
+        private Entity entity;
 
         [SerializeField]
         private Material matNormal;
@@ -37,6 +34,9 @@ namespace LWShootDemo.Entities
         [FormerlySerializedAs("matHurt")]
         [SerializeField]
         private Material matFlash;
+
+        [SerializeField]
+        private float knockBackForce = 1;
 
         [SerializeField]
         private SpriteRenderer spModel;
@@ -49,6 +49,7 @@ namespace LWShootDemo.Entities
         private int             curHp;
         private Coroutine       flashCoroutine;
         private TimeStopManager timeStopManager;
+        private ExplosionGenerator explosionGenerator;
 
         #endregion
 
@@ -71,8 +72,32 @@ namespace LWShootDemo.Entities
             player          = GameManager.Instance.Player;
             soundManager    = GameManager.Instance.SoundManager;
             timeStopManager = GameManager.Instance.TimeStopManager;
+            explosionGenerator = GameManager.Instance.explosionGenerator;
+
             curHp           = maxHp;
-            canMove         = true;
+
+            entity.ActOnHurt  += OnHurt;
+            entity.ActOnDeath += OnDeath;
+        }
+
+
+        private void OnDeath()
+        {
+           GameManager.Instance.explosionGenerator.CreateExplosion(transform.position);
+        }
+
+        private void OnHurt(DamageInfo damageInfo)
+        {
+            entity.ApplyKnowBack(0.2f, damageInfo.Direction * knockBackForce);
+            soundManager.PlaySfx(SoundType.Hit);
+            timeStopManager.StopTime(0f, 0.02f);
+
+            if (flashCoroutine != null)
+            {
+                StopCoroutine(flashCoroutine);
+            }
+
+            flashCoroutine = StartCoroutine(IFlash(0.05f));
         }
 
         private void FixedUpdate()
@@ -97,18 +122,13 @@ namespace LWShootDemo.Entities
                 lookAngle = 360 - lookAngle;
             }
 
-            Quaternion quat = Quaternion.identity;
-            quat.eulerAngles   = new Vector3(0, 0, lookAngle);
-            transform.rotation = quat;
+            entity.TryRotate(lookAngle);
         }
 
         private void ChaseTarget()
         {
-            if (canMove)
-            {
-                var direction = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
-                rb2D.MovePosition(direction);
-            }
+            var direction = player.position - transform.position;
+            entity.TryMove(direction);
         }
 
 
@@ -116,7 +136,7 @@ namespace LWShootDemo.Entities
         {
             if (other.collider.CompareTag("Player"))
             {
-                other.collider.GetComponent<PlayerController>().Kill();
+                // other.collider.GetComponent<PlayerController>().Kill();
             }
         }
 
@@ -130,68 +150,6 @@ namespace LWShootDemo.Entities
             spModel.material = matNormal;
             flashing         = false;
 
-        }
-
-        public void TakeDamage(DamageInfo damageInfo)
-        {
-            ApplyKnowBack(0.2f, damageInfo.Direction);
-            soundManager.PlaySfx(SoundType.Hit);
-            timeStopManager.StopTime(0f, 0.02f);
-
-            if (flashCoroutine != null)
-            {
-                StopCoroutine(flashCoroutine);
-            }
-
-            flashCoroutine = StartCoroutine(IFlash(0.05f));
-
-            curHp -= damageInfo.Damage;
-
-            if (curHp <= 0)
-            {
-                Kill();
-            }
-        }
-
-        [ShowInInspector]
-        [ReadOnly]
-        private bool canMove = true;
-
-        [SerializeField]
-        private float force = 1;
-
-        private Coroutine knockBackHandle;
-
-        public void ApplyKnowBack(float duraction, Vector2 direction)
-        {
-            if (knockBackHandle != null)
-            {
-                StopCoroutine(knockBackHandle);
-            }
-
-            knockBackHandle = StartCoroutine(IApplyKnowBack(duraction, direction));
-        }
-
-        private IEnumerator IApplyKnowBack(float duraction, Vector2 direction)
-        {
-            canMove = false;
-            rb2D.AddForce(direction * force);
-            yield return new WaitForSeconds(duraction);
-            rb2D.velocity = Vector2.zero;
-            canMove       = true;
-        }
-
-        [SerializeField]
-        private Transform pfbExplosion;
-
-
-        // 击杀
-        private void Kill()
-        {
-            var explosion = Instantiate(pfbExplosion, transform.position, quaternion.identity)
-               .GetComponent<ExplosionEffect>();
-            explosion.Play();
-            Destroy(gameObject);
         }
 
         #endregion
