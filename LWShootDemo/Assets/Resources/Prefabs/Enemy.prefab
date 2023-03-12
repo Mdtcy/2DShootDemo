@@ -138,7 +138,7 @@ MonoBehaviour:
   matFlash: {fileID: 2100000, guid: ef0509fe873865a4b9046efbd1b60fd3, type: 2}
   knockBackForce: 100
   spModel: {fileID: 1617456840124990902}
-  pfbExplosion: {fileID: 5617681994857743442, guid: 4fa8b9ab3cc20f84e88cb824a7d1e2cc, type: 3}
+  moveSpeed: 3
 --- !u!50 &1617456840222586615
 Rigidbody2D:
   serializedVersion: 4
@@ -190,4 +190,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 3
   rb2D: {fileID: 1617456840222586615}
-  moveSpeed: 3

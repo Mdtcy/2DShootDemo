@@ -27,10 +27,6 @@ namespace LWShootDemo.Entities
         [SerializeField]
         private Rigidbody2D rb2D;
 
-        [SerializeField]
-        private float moveSpeed;
-
-        private float curSpeed;
 
         public Action ActOnDeath;
 
@@ -57,7 +53,7 @@ namespace LWShootDemo.Entities
         /// 尝试移动
         /// </summary>
         /// <param name="direction"></param>
-        public void TryMove(Vector3 direction)
+        public void TryMove(Vector3 direction, float moveSpeed)
         {
             if (!canMove)
             {

@@ -14730,6 +14730,7 @@ GameObject:
   - component: {fileID: 2905730704677159482}
   - component: {fileID: 2905730704677159484}
   - component: {fileID: 2905730704677159483}
+  - component: {fileID: 8375140719153726568}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -14769,6 +14770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2013bde5945544a48ea89878ccaff9fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entity: {fileID: 8375140719153726568}
   rb2D: {fileID: 2905730704677159484}
   moveSpeed: 3
   fireRate: 0.05
@@ -14776,8 +14778,7 @@ MonoBehaviour:
   pfbProjectile: {fileID: 8184216371984781616, guid: 154db214c14325443aecc4b4db5c9792, type: 3}
   fireParticle: {fileID: 96621361}
   flashParticle: {fileID: 1811229579}
-  pfbExplosion: {fileID: 5617681994857743442, guid: 4fa8b9ab3cc20f84e88cb824a7d1e2cc, type: 3}
-  pfbDeathPlayer: {fileID: 0}
+  pfbDeathPlayer: {fileID: 7978365253224814744, guid: 5396e98fa34719e4699e1c47cd518a4f, type: 3}
 --- !u!50 &2905730704677159484
 Rigidbody2D:
   serializedVersion: 4
@@ -14815,3 +14816,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
+--- !u!114 &8375140719153726568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2905730704677159480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a9291cbbde4c9d9c2921fee4428a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 1
+  rb2D: {fileID: 2905730704677159484}

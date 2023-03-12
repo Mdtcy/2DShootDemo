@@ -8,10 +8,8 @@
 
 #pragma warning disable 0649
 using System.Collections;
-using LWShootDemo.Effect;
 using LWShootDemo.Managers;
 using LWShootDemo.Sound;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -40,6 +38,9 @@ namespace LWShootDemo.Entities
 
         [SerializeField]
         private SpriteRenderer spModel;
+
+        [SerializeField]
+        private float moveSpeed;
 
         private bool flashing;
 
@@ -128,7 +129,7 @@ namespace LWShootDemo.Entities
         private void ChaseTarget()
         {
             var direction = player.position - transform.position;
-            entity.TryMove(direction);
+            entity.TryMove(direction, moveSpeed);
         }
 
 

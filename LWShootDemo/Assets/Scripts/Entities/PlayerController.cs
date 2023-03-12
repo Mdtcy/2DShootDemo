@@ -7,7 +7,6 @@
  */
 
 #pragma warning disable 0649
-using LWShootDemo.Effect;
 using LWShootDemo.Managers;
 using LWShootDemo.Sound;
 using UnityEngine;
@@ -23,12 +22,13 @@ namespace LWShootDemo.Entities
         #region FIELDS
 
         [SerializeField]
+        private Entity entity;
+
+        [SerializeField]
         private Rigidbody2D rb2D;
 
         [SerializeField]
         private float moveSpeed;
-
-        private float curSpeed;
 
         // 攻击间隔
         [SerializeField]
@@ -48,6 +48,7 @@ namespace LWShootDemo.Entities
         private GlobalEventManager globalEventManager;
         private SoundManager       soundManager;
         private TimeStopManager    timeStopManager;
+        private ExplosionGenerator explosionGenerator;
         private Camera             mainCamera;
         private bool               canShoot = true;
 
@@ -73,6 +74,9 @@ namespace LWShootDemo.Entities
             soundManager       = GameManager.Instance.SoundManager;
             timeStopManager    = GameManager.Instance.TimeStopManager;
             mainCamera         = GameManager.Instance.MainCamera;
+            explosionGenerator = GameManager.Instance.explosionGenerator;
+
+            entity.ActOnDeath += OnDeath;
         }
 
         private void Update()
@@ -91,34 +95,36 @@ namespace LWShootDemo.Entities
                 return;
             }
 
-            Aim();
+            RotateToMouse();
             TryToShoot();
             Move();
         }
 
-        public float GetMouseAngle { get; private set; }
 
         private Vector3 mouse;
         private float  lastShotTime;
 
-        private void Aim()
+        private void RotateToMouse()
         {
             mouse   = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             mouse.z = mainCamera.nearClipPlane;
             Vector2 mouseVector = (mouse - transform.position).normalized;
             float   gunAngle    = Mathf.Atan2(mouseVector.y, mouseVector.x) * Mathf.Rad2Deg - 90f;
-            GetMouseAngle      = gunAngle;
 
-            transform.rotation = Quaternion.AngleAxis(GetMouseAngle, Vector3.forward);
+            entity.TryRotate(gunAngle);
+
+            // transform.rotation = Quaternion.AngleAxis(GetMouseAngle, Vector3.forward);
         }
 
         private void Move()
         {
             // 按住开火键的时候移动速度减半
-            curSpeed = firing ? moveSpeed / 3 : moveSpeed;
+            float curSpeed = firing ? moveSpeed / 3 : moveSpeed;
 
-            var move = this.movement.normalized * curSpeed * Time.fixedDeltaTime;
-            rb2D.MovePosition((Vector2)transform.position + move);
+            entity.TryMove(movement.normalized, curSpeed);
+
+            // var move = this.movement.normalized * curSpeed * Time.fixedDeltaTime;
+            // rb2D.MovePosition((Vector2)transform.position + move);
         }
 
         private void GetInput()
@@ -154,8 +160,6 @@ namespace LWShootDemo.Entities
         [SerializeField]
         private ParticleSystem flashParticle;
 
-        [SerializeField]
-        private Transform pfbExplosion;
 
 
         #endregion
@@ -171,19 +175,18 @@ namespace LWShootDemo.Entities
         [SerializeField]
         private Transform pfbDeathPlayer;
 
-
-        public void Kill()
+        private void OnDeath()
         {
             isDead = true;
-            var explosion = Instantiate(pfbExplosion, transform.position, Quaternion.identity)
-               .GetComponent<ExplosionEffect>();
-            explosion.Play();
+            explosionGenerator.CreateExplosion(transform.position);
+
             var playerDeathEffect = Instantiate(pfbDeathPlayer, transform.position, Quaternion.identity)
                .GetComponent<Effect.Effect>();
             playerDeathEffect.Play();
-            timeStopManager.StopTime(0.3f, 3f);
+
             Destroy(gameObject);
         }
+
     }
 }
 #pragma warning restore 0649
