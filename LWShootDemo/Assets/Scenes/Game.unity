@@ -1359,8 +1359,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicAudioSource: {fileID: 552582683}
   sfxAudioSource: {fileID: 481483240}
-  soundMap:
-    keyData: 
   soundManagerConfig: {fileID: 11400000, guid: 1caa30eac9589d44799f26b27f040220, type: 2}
 --- !u!1 &1231478068
 GameObject:
@@ -1475,6 +1473,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1811229577, guid: 6fdd0ef4b11797b47bd8ce4498f8ff39, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.172
+      objectReference: {fileID: 0}
     - target: {fileID: 2905730704677159480, guid: 6fdd0ef4b11797b47bd8ce4498f8ff39, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1522,10 +1524,6 @@ PrefabInstance:
     - target: {fileID: 2905730704677159481, guid: 6fdd0ef4b11797b47bd8ce4498f8ff39, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375140719153726568, guid: 6fdd0ef4b11797b47bd8ce4498f8ff39, type: 3}
-      propertyPath: maxHp
-      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fdd0ef4b11797b47bd8ce4498f8ff39, type: 3}

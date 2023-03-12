@@ -8,9 +8,8 @@
 
 #pragma warning disable 0649
 using LWShootDemo.Managers;
-using LWShootDemo.Sound;
+using LWShootDemo.Weapons;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace LWShootDemo.Entities
 {
@@ -25,36 +24,30 @@ namespace LWShootDemo.Entities
         private Entity entity;
 
         [SerializeField]
-        private Rigidbody2D rb2D;
-
-        [SerializeField]
         private float moveSpeed;
 
         // 攻击间隔
         [SerializeField]
         private float fireRate;
 
-        private Vector2 movement;
-        private bool    firing;
-
         [SerializeField]
-        private Transform firePoint;
-
-        [SerializeField]
-        private GameObject pfbProjectile;
+        private Transform pfbDeathPlayer;
 
 
-        // local
+        // * local
         private GlobalEventManager globalEventManager;
-        private SoundManager       soundManager;
-        private TimeStopManager    timeStopManager;
         private ExplosionGenerator explosionGenerator;
         private Camera             mainCamera;
         private bool               canShoot = true;
+        private bool               isDead;
+        private Vector2            movement;
+        private bool               firing;
 
         #endregion
 
         #region PROPERTIES
+
+        public bool IsDead => isDead;
 
         #endregion
 
@@ -71,12 +64,11 @@ namespace LWShootDemo.Entities
         private void Start()
         {
             globalEventManager = GameManager.Instance.GlobalEventManager;
-            soundManager       = GameManager.Instance.SoundManager;
-            timeStopManager    = GameManager.Instance.TimeStopManager;
             mainCamera         = GameManager.Instance.MainCamera;
             explosionGenerator = GameManager.Instance.ExplosionGenerator;
 
             entity.ActOnDeath += OnDeath;
+            weapon.Init(entity);
         }
 
         private void Update()
@@ -131,51 +123,25 @@ namespace LWShootDemo.Entities
         }
 
         [SerializeField]
-        private float fireKnockBackForce = 1;
-
+        private Weapon weapon;
 
         private void TryToShoot()
         {
             canShoot = lastShotTime + fireRate < Time.time;
             if (firing && canShoot)
             {
-                entity.ApplyKnowBack(0.2f, -transform.up * fireKnockBackForce);
-                firePoint.localEulerAngles = new Vector3(0f, 0f, Random.Range(-10f, 10f));
-                var firePointPos = firePoint.position;
-                Projectile projectile = Instantiate(this.pfbProjectile, firePointPos, firePoint.localRotation)
-                   .GetComponent<Projectile>();
-                projectile.Setup(firePoint.rotation);
+                weapon.Use();
                 lastShotTime = Time.time;
-                GameManager.Instance.CameraController.Shake((transform.position - firePointPos).normalized, 0.5f,
-                                                            0.05f);
-                fireParticle.Play();
-                flashParticle.Play();
-                soundManager.PlaySfx(SoundType.Fire);
                 globalEventManager.OnShoot();
                 lastShotTime = Time.time;
             }
         }
-
-        [SerializeField]
-        private ParticleSystem fireParticle;
-
-        [SerializeField]
-        private ParticleSystem flashParticle;
-
-
 
         #endregion
 
         #region STATIC METHODS
 
         #endregion
-
-        private bool isDead = false;
-
-        public bool IsDead => isDead;
-
-        [SerializeField]
-        private Transform pfbDeathPlayer;
 
         private void OnDeath()
         {
