@@ -9,6 +9,7 @@
 #pragma warning disable 0649
 using System.Collections;
 using LWShootDemo.Managers;
+using LWShootDemo.Popups;
 using LWShootDemo.Sound;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -45,12 +46,13 @@ namespace LWShootDemo.Entities
         private bool flashing;
 
         // * local
-        private Transform       player;
-        private SoundManager    soundManager;
-        private int             curHp;
-        private Coroutine       flashCoroutine;
-        private TimeStopManager timeStopManager;
+        private Transform          player;
+        private SoundManager       soundManager;
+        private int                curHp;
+        private Coroutine          flashCoroutine;
+        private TimeStopManager    timeStopManager;
         private ExplosionGenerator explosionGenerator;
+        private PopupManager       popupManager;
 
         #endregion
 
@@ -70,12 +72,13 @@ namespace LWShootDemo.Entities
 
         private void Start()
         {
-            player          = GameManager.Instance.Player;
-            soundManager    = GameManager.Instance.SoundManager;
-            timeStopManager = GameManager.Instance.TimeStopManager;
+            player             = GameManager.Instance.Player;
+            soundManager       = GameManager.Instance.SoundManager;
+            timeStopManager    = GameManager.Instance.TimeStopManager;
             explosionGenerator = GameManager.Instance.explosionGenerator;
+            popupManager       = GameManager.Instance.PopupManager;
 
-            curHp           = maxHp;
+            curHp              = maxHp;
 
             entity.ActOnHurt  += OnHurt;
             entity.ActOnDeath += OnDeath;
@@ -84,12 +87,15 @@ namespace LWShootDemo.Entities
 
         private void OnDeath()
         {
-           GameManager.Instance.explosionGenerator.CreateExplosion(transform.position);
+            explosionGenerator.CreateExplosion(transform.position);
         }
 
         private void OnHurt(DamageInfo damageInfo)
         {
             entity.ApplyKnowBack(0.2f, damageInfo.Direction * knockBackForce);
+
+
+            popupManager.Create(transform.position, damageInfo.IsCrit? PopupType.CriticalDamage : PopupType.NormalDamage);
             soundManager.PlaySfx(SoundType.Hit);
             timeStopManager.StopTime(0f, 0.02f);
 
@@ -129,7 +135,7 @@ namespace LWShootDemo.Entities
         private void ChaseTarget()
         {
             var direction = player.position - transform.position;
-            entity.TryMove(direction, moveSpeed  );
+            entity.TryMove(direction, moveSpeed);
         }
 
 

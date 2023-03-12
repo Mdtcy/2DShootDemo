@@ -22,6 +22,9 @@ namespace LWShootDemo
         private float speed = 10f;
 
         [SerializeField]
+        private float critChance = 0.2f;
+
+        [SerializeField]
         private Rigidbody2D rb2D;
 
         #endregion
@@ -67,7 +70,7 @@ namespace LWShootDemo
             {
                 var dir = (collision.transform.position - transform.position).normalized;
                 Destroy(gameObject);
-                var damageInfo = new DamageInfo(1, dir);
+                var damageInfo = new DamageInfo(1, dir, Random.value < critChance);
                 collision.GetComponent<Entity>().TakeDamage(damageInfo);
             }
 

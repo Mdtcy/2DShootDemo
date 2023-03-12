@@ -118,13 +118,10 @@ namespace LWShootDemo.Entities
 
         private void Move()
         {
-            // 按住开火键的时候移动速度减半
-            float curSpeed = firing ? moveSpeed / 3 : moveSpeed;
+            // // 按住开火键的时候移动速度减半  有后坐力之后不需要这个了
+            // float curSpeed = firing ? moveSpeed / 3 : moveSpeed;
 
-            entity.TryMove(movement.normalized, curSpeed);
-
-            // var move = this.movement.normalized * curSpeed * Time.fixedDeltaTime;
-            // rb2D.MovePosition((Vector2)transform.position + move);
+            entity.TryMove(movement.normalized, moveSpeed);
         }
 
         private void GetInput()

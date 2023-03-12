@@ -17,10 +17,13 @@ namespace LWShootDemo
 
         public Vector2 Direction;
 
-        public DamageInfo(int damage, Vector2 direction)
+        public bool IsCrit;
+
+        public DamageInfo(int damage, Vector2 direction, bool isCrit)
         {
-            this.Damage = damage;
-            this.Direction = direction;
+            Damage    = damage;
+            Direction = direction;
+            IsCrit    = isCrit;
         }
     }
 }
