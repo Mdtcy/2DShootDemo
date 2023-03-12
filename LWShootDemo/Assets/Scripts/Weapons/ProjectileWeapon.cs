@@ -3,7 +3,7 @@
  * @email [ tktetb@163.com ]
  * @create date  2023年3月10日
  * @modify date 2023年3月10日
- * @desc []
+ * @desc [发射子弹的武器]
  */
 
 #pragma warning disable 0649
@@ -16,10 +16,14 @@ using UnityEngine;
 
 namespace LWShootDemo.Weapons
 {
+    /// <summary>
+    /// 发射子弹的武器
+    /// </summary>
     public class ProjectileWeapon : Weapon
     {
         #region FIELDS
 
+        // 发射点
         [SerializeField]
         private Transform firePoint;
 
@@ -27,9 +31,11 @@ namespace LWShootDemo.Weapons
         [SerializeField]
         private ParticleSystem fireParticle;
 
+        // 图片模型
         [SerializeField]
         private Transform model;
 
+        // 开火的作用力
         [SerializeField]
         private float fireKnockBackForce = 1;
 
@@ -54,9 +60,6 @@ namespace LWShootDemo.Weapons
             projectileManager = GameManager.Instance.ProjectileManager;
         }
 
-        /// <summary>
-        /// 使用
-        /// </summary>
         public override void Use()
         {
             // 随机旋转一下枪口，可以让子弹看起来更随机

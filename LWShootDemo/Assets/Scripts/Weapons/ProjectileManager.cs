@@ -7,7 +7,6 @@
  */
 
 #pragma warning disable 0649
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,13 +19,11 @@ namespace LWShootDemo.Weapons
     {
         #region FIELDS
 
-        // 子弹预制体
-        [SerializeField]
-        private Projectile pfbProjectile;
-
+        // 子弹持续时间
         [SerializeField]
         private float projectileLifeTime = 5f;
 
+        // 子弹池
         [SerializeField]
         private ProjectilePool projectilePool;
 
@@ -41,6 +38,11 @@ namespace LWShootDemo.Weapons
 
         #region PUBLIC METHODS
 
+        /// <summary>
+        /// 生成子弹
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="rotation"></param>
         public void CreateProjectile(Vector3 position, Quaternion rotation)
         {
             var projectile = projectilePool.Get();
@@ -54,6 +56,15 @@ namespace LWShootDemo.Weapons
             projectiles.Add(projectile);
         }
 
+        #endregion
+
+        #region PROTECTED METHODS
+
+        #endregion
+
+        #region PRIVATE METHODS
+
+        // 将超时的子弹和死亡的子弹回收，其余子弹移动
         private void FixedUpdate()
         {
             for (int index = projectiles.Count - 1; index >= 0; index--)
@@ -71,14 +82,6 @@ namespace LWShootDemo.Weapons
                 }
             }
         }
-
-        #endregion
-
-        #region PROTECTED METHODS
-
-        #endregion
-
-        #region PRIVATE METHODS
 
         #endregion
 

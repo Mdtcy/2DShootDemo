@@ -12,12 +12,21 @@ using UnityEngine.Pool;
 
 namespace LWShootDemo.Weapons
 {
+    /// <summary>
+    /// 子弹对象池
+    /// </summary>
     public class ProjectilePool : MonoBehaviour
     {
         #region FIELDS
 
-        public bool collectionChecks = true;
-        public int  maxPoolSize      = 10;
+        [SerializeField]
+        private bool collectionChecks = true;
+
+        [SerializeField]
+        private int  maxPoolSize      = 10;
+
+        [SerializeField]
+        private int defaultCapacity = 100;
 
         // 子弹预制体
         [SerializeField]
@@ -29,19 +38,29 @@ namespace LWShootDemo.Weapons
 
         #region PROPERTIES
 
-        private IObjectPool<Projectile> Pool =>
-            pool ??= new ObjectPool<Projectile>(CreatePooledItem, OnTakeFromPool, OnReturnedToPool,
-                                                OnDestroyPoolObject, collectionChecks, 100, maxPoolSize);
+        /// <summary>
+        /// 对象池
+        /// </summary>
+        private IObjectPool<Projectile> Pool => pool ??= new ObjectPool<Projectile>(CreatePooledItem, OnTakeFromPool, OnReturnedToPool,
+                                                OnDestroyPoolObject, collectionChecks, defaultCapacity, maxPoolSize);
 
         #endregion
 
         #region PUBLIC METHODS
 
+        /// <summary>
+        /// 获取子弹
+        /// </summary>
+        /// <returns></returns>
         public Projectile Get()
         {
             return Pool.Get();
         }
 
+        /// <summary>
+        /// 释放子弹到池中
+        /// </summary>
+        /// <param name="projectile"></param>
         public void Release(Projectile projectile)
         {
             Pool.Release(projectile);
