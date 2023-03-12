@@ -4929,6 +4929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 1
+  shakeIntensity: {x: 0, y: 0}
 --- !u!1 &4129751898061712380
 GameObject:
   m_ObjectHideFlags: 0
@@ -9859,3 +9860,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 1
+  shakeIntensity: {x: 3, y: 5}

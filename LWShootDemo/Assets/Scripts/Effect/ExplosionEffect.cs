@@ -23,6 +23,9 @@ namespace LWShootDemo.Effect
         [SerializeField]
         private float lifeTime;
 
+        [SerializeField]
+        private Vector2 shakeIntensity;
+
         #endregion
 
         #region PROPERTIES
@@ -33,8 +36,10 @@ namespace LWShootDemo.Effect
 
         public override void Play()
         {
-            var dir = new Vector2(Random.Range(-10, 10), Random.Range(-10, 10)).normalized;
-            GameManager.Instance.CameraController.Shake(dir, 4f,
+            var player = GameManager.Instance.Player;
+            // 爆炸带来的震动根据玩家和爆炸点的方向来决定
+            var dir    = (transform.position - player.position).normalized;
+            GameManager.Instance.CameraController.Shake(dir, Random.Range(shakeIntensity.x, shakeIntensity.y),
                                                         0.05f);
             GameManager.Instance.SoundManager.PlaySfx(SoundType.Explosion);
             Destroy(gameObject, lifeTime);
