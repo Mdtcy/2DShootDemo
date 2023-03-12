@@ -3,21 +3,25 @@
  * @email [ tktetb@163.com ]
  * @create date  2023年3月11日
  * @modify date 2023年3月11日
- * @desc [声音字典]
+ * @desc [声音配置]
  */
 
 #pragma warning disable 0649
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace LWShootDemo.Sound
 {
     /// <summary>
-    /// 声音字典
+    /// 声音配置
     /// </summary>
     [Serializable]
-    public class SoundDictionary : UnitySerializedDictionary<SoundType, AudioClip>
+    public class SoundConfig
     {
+        public SoundType Type;
+
+        public List<AudioClip> AudioClips;
     }
 }
 #pragma warning restore 0649

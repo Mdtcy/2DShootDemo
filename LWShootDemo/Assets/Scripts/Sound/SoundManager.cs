@@ -7,6 +7,8 @@
  */
 
 #pragma warning disable 0649
+using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace LWShootDemo.Sound
@@ -25,7 +27,11 @@ namespace LWShootDemo.Sound
         private AudioSource sfxAudioSource;
 
         [SerializeField]
-        private SoundDictionary soundMap = new SoundDictionary();
+        [InlineEditor(InlineEditorModes.FullEditor)]
+        private SoundManagerConfig soundManagerConfig;
+
+        // local
+        private Dictionary<SoundType, List<AudioClip>> soundMap;
 
         #endregion
 
@@ -33,6 +39,7 @@ namespace LWShootDemo.Sound
         #endregion
 
         #region PUBLIC METHODS
+
 
         /// <summary>
         /// 播放音效
@@ -62,6 +69,16 @@ namespace LWShootDemo.Sound
 
         #region PRIVATE METHODS
 
+        private void Start()
+        {
+            soundMap = new Dictionary<SoundType, List<AudioClip>>();
+
+            foreach (var soundConfig in soundManagerConfig.SoundConfigs)
+            {
+                soundMap.Add(soundConfig.Type, soundConfig.AudioClips);
+            }
+        }
+
         /// <summary>
         /// 根据声音类型获取声音
         /// </summary>
@@ -69,13 +86,7 @@ namespace LWShootDemo.Sound
         /// <returns></returns>
         private AudioClip GetAudioClip(SoundType soundType)
         {
-            if (soundMap.ContainsKey(soundType))
-            {
-                return soundMap[soundType];
-            }
-
-            Debug.LogError($"[SoundManager] 没有配置声音类型: [{soundType}");
-            return null;
+            return soundMap[soundType][Random.Range(0, soundMap[soundType].Count)];
         }
 
         #endregion
