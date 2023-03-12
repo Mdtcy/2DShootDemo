@@ -66,19 +66,19 @@ namespace LWShootDemo
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.CompareTag("Enemy"))
+            var entity = collision.GetComponent<Entity>();
+
+            if (entity == null)
+            {
+                return;
+            }
+
+            if (entity.Side != Side.Player)
             {
                 var dir = (collision.transform.position - transform.position).normalized;
                 Destroy(gameObject);
                 var damageInfo = new DamageInfo(1, dir, Random.value < critChance);
                 collision.GetComponent<Entity>().TakeDamage(damageInfo);
-            }
-
-            if (collision.CompareTag("Obstacles"))
-            {
-                // GameObject asd = Instantiate(explosionHolder, transform.position, Quaternion.identity);
-                // soundManager.RandomizeSfx(hitSfx);
-                Destroy(gameObject);
             }
         }
 

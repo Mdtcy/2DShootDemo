@@ -14776,6 +14776,7 @@ MonoBehaviour:
   fireRate: 0.05
   firePoint: {fileID: 1400293972}
   pfbProjectile: {fileID: 8184216371984781616, guid: 154db214c14325443aecc4b4db5c9792, type: 3}
+  fireKnockBackForce: 2
   fireParticle: {fileID: 96621361}
   flashParticle: {fileID: 1811229579}
   pfbDeathPlayer: {fileID: 7978365253224814744, guid: 5396e98fa34719e4699e1c47cd518a4f, type: 3}
@@ -14828,5 +14829,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a9291cbbde4c9d9c2921fee4428a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  side: 0
   maxHp: 1
   rb2D: {fileID: 2905730704677159484}

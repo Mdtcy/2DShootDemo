@@ -19,8 +19,13 @@ namespace LWShootDemo.Entities
         #region FIELDS
 
         [SerializeField]
+        private Side side;
+
+        [SerializeField]
         private int maxHp;
 
+        [ShowInInspector]
+        [ReadOnly]
         private int curHp;
 
         [SerializeField]
@@ -39,6 +44,8 @@ namespace LWShootDemo.Entities
         #endregion
 
         #region PROPERTIES
+
+        public Side Side => side;
 
         #endregion
 
@@ -101,7 +108,6 @@ namespace LWShootDemo.Entities
         private IEnumerator IApplyKnowBack(float duraction, Vector2 force)
         {
             canMove = false;
-            Debug.Log($"force:{force}");
             rb2D.AddForce(force);
 
             yield return new WaitForSeconds(duraction);

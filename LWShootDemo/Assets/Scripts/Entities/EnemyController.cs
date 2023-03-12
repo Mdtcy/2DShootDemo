@@ -17,7 +17,7 @@ using UnityEngine.Serialization;
 namespace LWShootDemo.Entities
 {
     [RequireComponent(typeof(Entity))]
-    public class Enemy : MonoBehaviour
+    public class EnemyController : MonoBehaviour
     {
         #region FIELDS
 
@@ -48,7 +48,6 @@ namespace LWShootDemo.Entities
         // * local
         private Transform          player;
         private SoundManager       soundManager;
-        private int                curHp;
         private Coroutine          flashCoroutine;
         private TimeStopManager    timeStopManager;
         private ExplosionGenerator explosionGenerator;
@@ -77,8 +76,6 @@ namespace LWShootDemo.Entities
             timeStopManager    = GameManager.Instance.TimeStopManager;
             explosionGenerator = GameManager.Instance.explosionGenerator;
             popupManager       = GameManager.Instance.PopupManager;
-
-            curHp              = maxHp;
 
             entity.ActOnHurt  += OnHurt;
             entity.ActOnDeath += OnDeath;
@@ -141,9 +138,11 @@ namespace LWShootDemo.Entities
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.collider.CompareTag("Player"))
+            var entity = other.collider.GetComponent<Entity>();
+            if (entity!=null && entity.Side == Side.Player)
             {
-                // other.collider.GetComponent<PlayerController>().Kill();
+                var damageInfo = new DamageInfo(1, entity.transform.position - transform.position, false);
+                entity.TakeDamage(damageInfo);
             }
         }
 
