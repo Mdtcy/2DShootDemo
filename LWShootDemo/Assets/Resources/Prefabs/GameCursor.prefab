@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1441562773747122478}
   - component: {fileID: 1441562773747122479}
+  - component: {fileID: 8528454589488179706}
   m_Layer: 0
   m_Name: GameCursor
   m_TagString: Untagged
@@ -45,6 +46,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17647ae0dd5642b897d03418b38dd8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!210 &8528454589488179706
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441562773747122477}
+  m_Enabled: 1
+  m_SortingLayerID: -1923740223
+  m_SortingLayer: 2
+  m_SortingOrder: 10
 --- !u!1 &1441562773823598321
 GameObject:
   m_ObjectHideFlags: 0

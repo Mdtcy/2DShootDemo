@@ -29,9 +29,6 @@ namespace LWShootDemo.Weapons
         private ParticleSystem fireParticle;
 
         [SerializeField]
-        private ParticleSystem flashParticle;
-
-        [SerializeField]
         private float fireKnockBackForce = 1;
 
         // local
@@ -61,7 +58,6 @@ namespace LWShootDemo.Weapons
             projectile.Setup(firePoint.rotation);
             owener.ApplyKnowBack(0.2f, -transform.up * fireKnockBackForce);
             fireParticle.Play();
-            flashParticle.Play();
             soundManager.PlaySfx(SoundType.Fire);
             cameraController.Shake((transform.position - firePointPos).normalized, 0.5f,
                                                         0.05f);
