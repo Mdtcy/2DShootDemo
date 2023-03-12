@@ -70,7 +70,14 @@ namespace LWShootDemo.Entities
         public void TakeDamage(DamageInfo damageInfo)
         {
             ActOnHurt?.Invoke(damageInfo);
-            curHp -= damageInfo.Damage;
+
+            int realDamage = damageInfo.Damage;
+            if (damageInfo.IsCrit)
+            {
+                realDamage *= 2;
+            }
+
+            curHp -= realDamage;
 
             if (curHp <= 0)
             {
