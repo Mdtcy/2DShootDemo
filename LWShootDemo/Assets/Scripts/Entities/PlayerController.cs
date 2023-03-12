@@ -37,7 +37,6 @@ namespace LWShootDemo.Entities
 
 
         // * local
-        private GlobalEventManager globalEventManager;
         private ExplosionManager explosionManager;
         private Camera             mainCamera;
         private bool               canShoot = true;
@@ -65,7 +64,6 @@ namespace LWShootDemo.Entities
 
         private void Start()
         {
-            globalEventManager = GameManager.Instance.GlobalEventManager;
             mainCamera         = GameManager.Instance.MainCamera;
             explosionManager = GameManager.Instance.explosionManager;
 
@@ -134,7 +132,6 @@ namespace LWShootDemo.Entities
             {
                 weapon.Use();
                 lastShotTime = Time.time;
-                globalEventManager.OnShoot();
                 lastShotTime = Time.time;
             }
         }

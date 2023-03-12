@@ -16,7 +16,6 @@ using LWShootDemo.Weapons;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 namespace LWShootDemo.Managers
 {
@@ -31,26 +30,15 @@ namespace LWShootDemo.Managers
         [SerializeField]
         private Camera mainCamera;
 
-        // 角色预制体
-        [SerializeField]
-        private Transform pfbPlayer;
-
-        // 角色生成点
-        [SerializeField]
-        private Transform playerSpawnPoint;
-
         [SerializeField]
         private Transform player;
 
         // * local
-
-        public GlobalEventManager GlobalEventManager;
         public SoundManager       SoundManager;
         public CameraController   CameraController;
         public TimeStopManager    TimeStopManager;
         public PopupManager       PopupManager;
-        [FormerlySerializedAs("ExplosionGenerator")]
-        public ExplosionManager explosionManager;
+        public ExplosionManager   explosionManager;
         public DifficultyManager  DifficultyManager;
         public ProjectileManager  ProjectileManager;
 
@@ -101,10 +89,7 @@ namespace LWShootDemo.Managers
 
         private void Start()
         {
-            // todo
             SoundManager.PlayMusic(SoundType.BattleMusic);
-            // 生成角色
-            // player = Instantiate(pfbPlayer, playerSpawnPoint.position, Quaternion.identity);
         }
 
         [Button]
