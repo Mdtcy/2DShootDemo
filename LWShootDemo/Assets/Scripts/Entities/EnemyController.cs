@@ -22,15 +22,11 @@ namespace LWShootDemo.Entities
         #region FIELDS
 
         [SerializeField]
-        private int maxHp;
-
-        [SerializeField]
         private Entity entity;
 
         [SerializeField]
         private Material matNormal;
 
-        [FormerlySerializedAs("matHurt")]
         [SerializeField]
         private Material matFlash;
 

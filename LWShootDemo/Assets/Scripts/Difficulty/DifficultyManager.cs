@@ -8,6 +8,7 @@
 
 #pragma warning disable 0649
 using System;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 
@@ -27,6 +28,7 @@ namespace LWShootDemo.Difficulty
         private TextMeshProUGUI txtDifficulty;
 
         [SerializeField]
+        [InlineEditor(InlineEditorModes.FullEditor)]
         private DifficultyConfig config;
 
         // local
@@ -44,11 +46,10 @@ namespace LWShootDemo.Difficulty
         /// 获取当前难度
         /// </summary>
         /// <returns></returns>
-        public DifficultyConfig.Difficulty GetDifficulty()
+        public DifficultyConfig.Difficulty GetCurrentDifficulty()
         {
-            TimeSpan timeSpan = TimeSpan.FromSeconds(time);
-
-            return config.GetDifficulty((int)timeSpan.TotalMinutes);
+            Debug.Log($"time = {time}");
+            return config.GetDifficulty((int)time);
         }
 
         #endregion
@@ -64,7 +65,7 @@ namespace LWShootDemo.Difficulty
             time += Time.deltaTime;
             TimeSpan timeSpan = TimeSpan.FromSeconds(time);
             txtTime.text       = $"{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}";
-            txtDifficulty.text = GetDifficulty().Type.ToString();
+            txtDifficulty.text = GetCurrentDifficulty().Type.ToString();
         }
 
         #endregion

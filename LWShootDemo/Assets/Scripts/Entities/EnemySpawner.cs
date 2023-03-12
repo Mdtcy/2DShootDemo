@@ -7,7 +7,10 @@
  */
 
 #pragma warning disable 0649
+using LWShootDemo.Difficulty;
+using LWShootDemo.Entities.Enemy;
 using LWShootDemo.Managers;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -21,20 +24,19 @@ namespace LWShootDemo.Entities
         #region FIELDS
 
         [SerializeField]
-        private Transform pfbEnemy;
-
-        [SerializeField]
-        private float spawnInterval = 1f;
-
-        [SerializeField]
         private Vector2 spawnArea;
 
         [SerializeField]
         private bool debugMode;
 
+        [SerializeField]
+        [InlineEditor(InlineEditorModes.FullEditor)]
+        private EnemySpawnConfig enemySpawnConfig;
+
         // local
-        private float     spawnTimer;
-        private Transform player;
+        private float             spawnTimer;
+        private Transform         player;
+        private DifficultyManager difficultyManager;
 
         #endregion
 
@@ -54,7 +56,8 @@ namespace LWShootDemo.Entities
 
         private void Start()
         {
-            player = GameManager.Instance.Player;
+            player            = GameManager.Instance.Player;
+            difficultyManager = GameManager.Instance.DifficultyManager;
         }
 
         private void Update()
@@ -66,8 +69,12 @@ namespace LWShootDemo.Entities
 
             if (spawnTimer < 0)
             {
-                SpawnEnemy();
-                spawnTimer = spawnInterval;
+                var difficulty = difficultyManager.GetCurrentDifficulty();
+
+                SpawnEnemy(difficulty.SpawnEnemyPoint);
+
+                // 重置计时器
+                spawnTimer = Random.Range(difficulty.EnemySpawnInterval.x, difficulty.EnemySpawnInterval.y);
             }
             else
             {
@@ -75,14 +82,21 @@ namespace LWShootDemo.Entities
             }
         }
 
-        private void SpawnEnemy()
+        // 根据生成点数生成敌人 生成点数花完就不能再生成了，可以生成超过生成点数的敌人
+        private void SpawnEnemy(int spawnPoint)
         {
-            Instantiate(pfbEnemy, GetRandomSpawnPosition(), Quaternion.identity);
+            while (spawnPoint > 0)
+            {
+                var enemyConfig = enemySpawnConfig.GetRandomEnemyConfig();
+                spawnPoint -= enemyConfig.SpawnPoint;
+                Instantiate(enemyConfig.PfbEnemy, GetRandomSpawnPosition(), Quaternion.identity);
+            }
         }
 
+        // 在玩家周围的生成区域随机生成一个位置，保证在围绕玩家的一个矩形上生成敌人
         private Vector3 GetRandomSpawnPosition()
         {
-            Vector3 pos      = Vector3.zero;
+            Vector3 pos = Vector3.zero;
 
             if(Random.value < 0.5f)
             {

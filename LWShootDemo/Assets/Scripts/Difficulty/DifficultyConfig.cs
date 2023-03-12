@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace LWShootDemo.Difficulty
 {
@@ -19,12 +20,13 @@ namespace LWShootDemo.Difficulty
             /// <summary>
             /// 进入该等级的时间
             /// </summary>
-            public Vector2 Minutes;
+            public Vector2 Seconds;
 
             /// <summary>
             /// 生成敌人的点数
             /// </summary>
-            public int EnemyPoint;
+            [FormerlySerializedAs("EnemyPoint")]
+            public int SpawnEnemyPoint;
 
             /// <summary>
             /// 生成敌人的间隔
@@ -40,13 +42,13 @@ namespace LWShootDemo.Difficulty
         /// <summary>
         /// 根据时间获取难度
         /// </summary>
-        /// <param name="minutes"></param>
+        /// <param name="seconds"></param>
         /// <returns></returns>
-        public Difficulty GetDifficulty(int minutes)
+        public Difficulty GetDifficulty(int seconds)
         {
             foreach (var difficulty in Difficulties)
             {
-                if (minutes >= difficulty.Minutes.x && minutes <= difficulty.Minutes.y)
+                if (seconds >= difficulty.Seconds.x && seconds < difficulty.Seconds.y)
                 {
                     return difficulty;
                 }

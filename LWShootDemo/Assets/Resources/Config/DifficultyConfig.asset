@@ -14,38 +14,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Difficulties:
   - Type: 0
-    Minutes: {x: 0, y: 1}
-    EnemyPoint: 10
-    EnemySpawnInterval: {x: 0.5, y: 1}
+    Seconds: {x: 0, y: 15}
+    SpawnEnemyPoint: 10
+    EnemySpawnInterval: {x: 2, y: 3}
   - Type: 1
-    Minutes: {x: 1, y: 2}
-    EnemyPoint: 15
-    EnemySpawnInterval: {x: 0.4, y: 0.7}
+    Seconds: {x: 15, y: 30}
+    SpawnEnemyPoint: 15
+    EnemySpawnInterval: {x: 1.5, y: 1.8}
   - Type: 2
-    Minutes: {x: 2, y: 3}
-    EnemyPoint: 20
-    EnemySpawnInterval: {x: 0.4, y: 0.6}
+    Seconds: {x: 30, y: 45}
+    SpawnEnemyPoint: 20
+    EnemySpawnInterval: {x: 1.5, y: 1.8}
   - Type: 3
-    Minutes: {x: 3, y: 4}
-    EnemyPoint: 25
-    EnemySpawnInterval: {x: 0.4, y: 0.5}
+    Seconds: {x: 45, y: 60}
+    SpawnEnemyPoint: 25
+    EnemySpawnInterval: {x: 1.5, y: 1.8}
   - Type: 4
-    Minutes: {x: 4, y: 5}
-    EnemyPoint: 30
-    EnemySpawnInterval: {x: 0.4, y: 0.45}
+    Seconds: {x: 60, y: 80}
+    SpawnEnemyPoint: 30
+    EnemySpawnInterval: {x: 1.5, y: 1.8}
   - Type: 5
-    Minutes: {x: 5, y: 6}
-    EnemyPoint: 35
-    EnemySpawnInterval: {x: 0.3, y: 0.45}
+    Seconds: {x: 80, y: 110}
+    SpawnEnemyPoint: 35
+    EnemySpawnInterval: {x: 1.5, y: 0.45}
   - Type: 6
-    Minutes: {x: 6, y: 7}
-    EnemyPoint: 40
-    EnemySpawnInterval: {x: 0.3, y: 0.45}
+    Seconds: {x: 110, y: 150}
+    SpawnEnemyPoint: 40
+    EnemySpawnInterval: {x: 1.5, y: 1.8}
   - Type: 7
-    Minutes: {x: 7, y: 8}
-    EnemyPoint: 45
-    EnemySpawnInterval: {x: 0.3, y: 0.45}
+    Seconds: {x: 150, y: 200}
+    SpawnEnemyPoint: 45
+    EnemySpawnInterval: {x: 1.5, y: 1.8}
   - Type: 8
-    Minutes: {x: 8, y: 9999}
-    EnemyPoint: 100
-    EnemySpawnInterval: {x: 0.2, y: 0.45}
+    Seconds: {x: 200, y: 9999999}
+    SpawnEnemyPoint: 100
+    EnemySpawnInterval: {x: 1.5, y: 1.8}
