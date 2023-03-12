@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdfd0f12a6f46f6be3e3c55a3117163, type: 3}
+  m_Name: DifficultyConfig
+  m_EditorClassIdentifier: 
+  Difficulties:
+  - Type: 0
+    Minutes: {x: 0, y: 1}
+    EnemyPoint: 10
+    EnemySpawnInterval: {x: 0.5, y: 1}
+  - Type: 1
+    Minutes: {x: 1, y: 2}
+    EnemyPoint: 15
+    EnemySpawnInterval: {x: 0.4, y: 0.7}
+  - Type: 2
+    Minutes: {x: 2, y: 3}
+    EnemyPoint: 20
+    EnemySpawnInterval: {x: 0.4, y: 0.6}
+  - Type: 3
+    Minutes: {x: 3, y: 4}
+    EnemyPoint: 25
+    EnemySpawnInterval: {x: 0.4, y: 0.5}
+  - Type: 4
+    Minutes: {x: 4, y: 5}
+    EnemyPoint: 30
+    EnemySpawnInterval: {x: 0.4, y: 0.45}
+  - Type: 5
+    Minutes: {x: 5, y: 6}
+    EnemyPoint: 35
+    EnemySpawnInterval: {x: 0.3, y: 0.45}
+  - Type: 6
+    Minutes: {x: 6, y: 7}
+    EnemyPoint: 40
+    EnemySpawnInterval: {x: 0.3, y: 0.45}
+  - Type: 7
+    Minutes: {x: 7, y: 8}
+    EnemyPoint: 45
+    EnemySpawnInterval: {x: 0.3, y: 0.45}
+  - Type: 8
+    Minutes: {x: 8, y: 9999}
+    EnemyPoint: 100
+    EnemySpawnInterval: {x: 0.2, y: 0.45}

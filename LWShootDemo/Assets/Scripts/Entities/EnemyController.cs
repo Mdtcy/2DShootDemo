@@ -74,7 +74,7 @@ namespace LWShootDemo.Entities
             player             = GameManager.Instance.Player;
             soundManager       = GameManager.Instance.SoundManager;
             timeStopManager    = GameManager.Instance.TimeStopManager;
-            explosionGenerator = GameManager.Instance.explosionGenerator;
+            explosionGenerator = GameManager.Instance.ExplosionGenerator;
             popupManager       = GameManager.Instance.PopupManager;
 
             entity.ActOnHurt  += OnHurt;

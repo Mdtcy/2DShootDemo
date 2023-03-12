@@ -8,6 +8,7 @@
 
 #pragma warning disable 0649
 using LWShootDemo.Common;
+using LWShootDemo.Difficulty;
 using LWShootDemo.Popups;
 using LWShootDemo.Sound;
 using Sirenix.OdinInspector;
@@ -46,7 +47,8 @@ namespace LWShootDemo.Managers
         public CameraController   CameraController;
         public TimeStopManager    TimeStopManager;
         public PopupManager       PopupManager;
-        public ExplosionGenerator explosionGenerator;
+        public ExplosionGenerator ExplosionGenerator;
+        public DifficultyManager  DifficultyManager;
 
         #endregion
 
