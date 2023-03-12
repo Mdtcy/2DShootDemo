@@ -48,7 +48,6 @@ namespace LWShootDemo.Difficulty
         /// <returns></returns>
         public DifficultyConfig.Difficulty GetCurrentDifficulty()
         {
-            Debug.Log($"time = {time}");
             return config.GetDifficulty((int)time);
         }
 
