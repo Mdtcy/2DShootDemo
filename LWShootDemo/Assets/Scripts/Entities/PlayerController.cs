@@ -133,11 +133,16 @@ namespace LWShootDemo.Entities
             firing     = Input.GetMouseButton(0);
         }
 
+        [SerializeField]
+        private float fireKnockBackForce = 1;
+
+
         private void TryToShoot()
         {
             canShoot = lastShotTime + fireRate < Time.time;
             if (firing && canShoot)
             {
+                entity.ApplyKnowBack(0.2f, -transform.up * fireKnockBackForce);
                 firePoint.localEulerAngles = new Vector3(0f, 0f, Random.Range(-10f, 10f));
                 var firePointPos = firePoint.position;
                 Projectile projectile = Instantiate(this.pfbProjectile, firePointPos, firePoint.localRotation)
