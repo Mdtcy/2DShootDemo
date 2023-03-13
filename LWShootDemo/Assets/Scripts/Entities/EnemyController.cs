@@ -9,16 +9,19 @@
 #pragma warning disable 0649
 using System.Collections;
 using Events;
+using LWShootDemo.Entities.Enemy;
 using LWShootDemo.Explosions;
 using LWShootDemo.Managers;
+using LWShootDemo.Pool;
 using LWShootDemo.Popups;
 using LWShootDemo.Sound;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace LWShootDemo.Entities
 {
     [RequireComponent(typeof(Entity))]
-    public class EnemyController : MonoBehaviour
+    public class EnemyController : PoolObject
     {
         #region FIELDS
 
@@ -50,13 +53,38 @@ namespace LWShootDemo.Entities
         private ExplosionManager explosionManager;
         private PopupManager       popupManager;
 
+        private SimpleUnitySpawnPool pool;
+
+        private bool isDead;
+
         #endregion
 
         #region PROPERTIES
 
+        public bool IsDead => isDead;
+
+        public SimpleUnitySpawnPool Pool => pool;
+
         #endregion
 
         #region PUBLIC METHODS
+
+        public void EnemyUpdate()
+        {
+            if (player == null)
+            {
+                return;
+            }
+
+            LookAtTarget();
+            ChaseTarget();
+        }
+
+        // todo 待优化 有时间再改
+        public void Setup(SimpleUnitySpawnPool enemyConfigEnemyPool)
+        {
+            pool = enemyConfigEnemyPool;
+        }
 
         #endregion
 
@@ -68,23 +96,37 @@ namespace LWShootDemo.Entities
 
         private void Start()
         {
-            player             = GameManager.Instance.Player;
-            soundManager       = GameManager.Instance.SoundManager;
-            timeStopManager    = GameManager.Instance.TimeStopManager;
+            player           = GameManager.Instance.Player;
+            soundManager     = GameManager.Instance.SoundManager;
+            timeStopManager  = GameManager.Instance.TimeStopManager;
             explosionManager = GameManager.Instance.explosionManager;
-            popupManager       = GameManager.Instance.PopupManager;
+            popupManager     = GameManager.Instance.PopupManager;
+        }
 
+        public override void OnSpawn()
+        {
+            base.OnSpawn();
+
+            isDead = false;
+
+            entity.Init();
             entity.ActOnHurt  += OnHurt;
             entity.ActOnDeath += OnDeath;
         }
 
+        public override void OnDespawn()
+        {
+            base.OnDespawn();
+            spModel.material = matNormal;
+            entity.Reset();
+        }
 
         private void OnDeath()
         {
+            isDead = true;
             explosionManager.CreateExplosion(transform.position);
 
             EnemyDeathEvent.Trigger();
-            Destroy(gameObject);
         }
 
         private void OnHurt(DamageInfo damageInfo)
@@ -102,17 +144,6 @@ namespace LWShootDemo.Entities
             }
 
             flashCoroutine = StartCoroutine(IFlash(0.05f));
-        }
-
-        private void FixedUpdate()
-        {
-            if (player == null)
-            {
-                return;
-            }
-
-            LookAtTarget();
-            ChaseTarget();
         }
 
         private void LookAtTarget()
@@ -134,7 +165,6 @@ namespace LWShootDemo.Entities
             var direction = player.position - transform.position;
             entity.TryMove(direction, moveSpeed);
         }
-
 
         private void OnCollisionEnter2D(Collision2D other)
         {

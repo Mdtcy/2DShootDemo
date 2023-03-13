@@ -9,6 +9,7 @@
 #pragma warning disable 0649
 using System;
 using System.Collections.Generic;
+using LWShootDemo.Pool;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -20,7 +21,7 @@ namespace LWShootDemo.Entities.Enemy
         [Serializable]
         public class EnemyConfig
         {
-            public Transform PfbEnemy;
+            public SimpleUnitySpawnPool EnemyPool;
 
             public int SpawnPoint;
         }

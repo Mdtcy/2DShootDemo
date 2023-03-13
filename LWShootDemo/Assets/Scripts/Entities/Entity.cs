@@ -100,9 +100,16 @@ namespace LWShootDemo.Entities
 
         #region PRIVATE METHODS
 
-        private void Start()
+        public void Init()
         {
-            curHp = maxHp;
+            canMove = true;
+            curHp   = maxHp;
+        }
+
+        public void Reset()
+        {
+            ActOnDeath = null;
+            ActOnHurt  = null;
         }
 
         private IEnumerator IApplyKnowBack(float duraction, Vector2 force)

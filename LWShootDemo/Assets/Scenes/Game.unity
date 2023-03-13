@@ -525,54 +525,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119628582}
   m_CullTransparentMesh: 1
---- !u!1 &128656448
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 128656449}
-  - component: {fileID: 128656450}
-  m_Layer: 0
-  m_Name: ExplosionPool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &128656449
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128656448}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 526955010}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &128656450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128656448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd437eac0bba496b897bfc9bdd0599a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collectionChecks: 1
-  maxPoolSize: 30
-  defaultCapacity: 100
-  pfbExplosion: {fileID: 3697119890374960320, guid: 4fa8b9ab3cc20f84e88cb824a7d1e2cc, type: 3}
 --- !u!1 &163956747
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,6 +656,54 @@ Transform:
   m_Father: {fileID: 2080032622}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &264718293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 264718294}
+  - component: {fileID: 264718295}
+  m_Layer: 0
+  m_Name: EnemySpawnPool2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &264718294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264718293}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 640014195}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &264718295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264718293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385681a7c2344dfdbea149aeb6399a3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectionChecks: 1
+  maxPoolSize: 50
+  defaultCapacity: 100
+  prefab: {fileID: 1617456840222586616, guid: a005383eb34bafe4b9f03a2cddb39d4d, type: 3}
 --- !u!1 &288747907
 GameObject:
   m_ObjectHideFlags: 0
@@ -1288,7 +1288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3503db34955b4fa2a15f3f4ad5d719d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionPool: {fileID: 128656450}
+  explosionPool: {fileID: 1540072353}
   lifeTime: 1
 --- !u!4 &526955010
 Transform:
@@ -1302,7 +1302,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 128656449}
+  - {fileID: 1540072354}
   m_Father: {fileID: 2080032622}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1751,7 +1751,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 857044873}
+  - {fileID: 264718294}
+  - {fileID: 1519665000}
   m_Father: {fileID: 2080032622}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1769,7 +1772,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnArea: {x: 15, y: 10}
   debugMode: 0
-  enemySpawnConfig: {fileID: 11400000, guid: ad363d0623c84134dbebc3d48cc6357c, type: 2}
+  EnemySpawnSettings:
+  - EnemyPool: {fileID: 857044874}
+    SpawnPoint: 2
+  - EnemyPool: {fileID: 264718295}
+    SpawnPoint: 5
+  - EnemyPool: {fileID: 1519665001}
+    SpawnPoint: 8
 --- !u!1 &812549970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1941,6 +1950,54 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4657999609170965365, guid: 8fcee1318bc6eaf41ba6fa39a24fea73, type: 3}
   m_PrefabInstance: {fileID: 6203782681819462553}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &857044872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 857044873}
+  - component: {fileID: 857044874}
+  m_Layer: 0
+  m_Name: EnemySpawnPool1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &857044873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857044872}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 640014195}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &857044874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857044872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385681a7c2344dfdbea149aeb6399a3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectionChecks: 1
+  maxPoolSize: 50
+  defaultCapacity: 100
+  prefab: {fileID: 1617456840222586616, guid: 20c6ba8e317adb540945a684262ed46b, type: 3}
 --- !u!1 &873829055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2673,13 +2730,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1305542065}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50e757c0292845a99f1b021c7817014c, type: 3}
+  m_Script: {fileID: 11500000, guid: 385681a7c2344dfdbea149aeb6399a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   collectionChecks: 1
-  maxPoolSize: 150
+  maxPoolSize: 50
   defaultCapacity: 100
-  pfbProjectile: {fileID: 8189882890158811589, guid: 154db214c14325443aecc4b4db5c9792, type: 3}
+  prefab: {fileID: 1430046345506342793, guid: 154db214c14325443aecc4b4db5c9792, type: 3}
 --- !u!1001 &1319466407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2795,6 +2852,102 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   txtDifficulty: {fileID: 812549972}
   config: {fileID: 11400000, guid: 09eb6318834c7de4283d938b73acdc49, type: 2}
+--- !u!1 &1519664999
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1519665000}
+  - component: {fileID: 1519665001}
+  m_Layer: 0
+  m_Name: EnemySpawnPool3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1519665000
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519664999}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 640014195}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1519665001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519664999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385681a7c2344dfdbea149aeb6399a3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectionChecks: 1
+  maxPoolSize: 50
+  defaultCapacity: 100
+  prefab: {fileID: 1617456840222586616, guid: 289d08f98aadc3c4f9ef7f72ae86d814, type: 3}
+--- !u!1 &1540072352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1540072354}
+  - component: {fileID: 1540072353}
+  m_Layer: 0
+  m_Name: ExplosionPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1540072353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540072352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385681a7c2344dfdbea149aeb6399a3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectionChecks: 1
+  maxPoolSize: 50
+  defaultCapacity: 100
+  prefab: {fileID: 3697119890374960320, guid: 4fa8b9ab3cc20f84e88cb824a7d1e2cc, type: 3}
+--- !u!4 &1540072354
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540072352}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 526955010}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1572710434
 GameObject:
   m_ObjectHideFlags: 0

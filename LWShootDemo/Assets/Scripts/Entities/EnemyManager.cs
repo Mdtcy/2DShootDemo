@@ -3,13 +3,16 @@
  * @email [ tktetb@163.com ]
  * @create date  2023年3月11日
  * @modify date 2023年3月11日
- * @desc [敌人生成器]
+ * @desc [敌人管理器 负责敌人的生成和管理]
  */
 
 #pragma warning disable 0649
+using System;
+using System.Collections.Generic;
 using LWShootDemo.Difficulty;
 using LWShootDemo.Entities.Enemy;
 using LWShootDemo.Managers;
+using LWShootDemo.Pool;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -17,10 +20,18 @@ using Random = UnityEngine.Random;
 namespace LWShootDemo.Entities
 {
     /// <summary>
-    /// 敌人生成器
+    /// 敌人管理器 负责敌人的生成和管理
     /// </summary>
-    public class EnemySpawner : MonoBehaviour
+    public class EnemyManager : MonoBehaviour
     {
+        [Serializable]
+        public class EnemySpawnSetting
+        {
+            public SimpleUnitySpawnPool EnemyPool;
+
+            public int SpawnPoint;
+        }
+
         #region FIELDS
 
         [SerializeField]
@@ -30,13 +41,14 @@ namespace LWShootDemo.Entities
         private bool debugMode;
 
         [SerializeField]
-        [InlineEditor(InlineEditorModes.FullEditor)]
-        private EnemySpawnConfig enemySpawnConfig;
+        private List<EnemySpawnSetting> EnemySpawnSettings;
 
         // local
         private float             spawnTimer;
         private Transform         player;
         private DifficultyManager difficultyManager;
+
+        private List<EnemyController> enemys = new List<EnemyController>();
 
         #endregion
 
@@ -82,14 +94,38 @@ namespace LWShootDemo.Entities
             }
         }
 
-        // 根据生成点数生成敌人 生成点数花完就不能再生成了，可以生成超过生成点数的敌人
+        private void FixedUpdate()
+        {
+            for (int index = enemys.Count - 1; index >= 0; index--)
+            {
+                var enemy = enemys[index];
+
+                if (enemy.IsDead)
+                {
+                    enemys.Remove(enemy);
+                    enemy.Pool.Release(enemy);
+                }
+                else
+                {
+                    enemy.EnemyUpdate();
+                }
+            }
+        }
+
+        // 根据生成点数生成敌人 每一波有一个生成点数 每个难度对应一个生成点数，每次生成一个敌人消耗生成点数，生成点数花完就不能再生成了，可以生成超过生成点数的敌人
         private void SpawnEnemy(int spawnPoint)
         {
             while (spawnPoint > 0)
             {
-                var enemyConfig = enemySpawnConfig.GetRandomEnemyConfig();
+                var enemyConfig = EnemySpawnSettings[Random.Range(0, EnemySpawnSettings.Count)];
                 spawnPoint -= enemyConfig.SpawnPoint;
-                Instantiate(enemyConfig.PfbEnemy, GetRandomSpawnPosition(), Quaternion.identity);
+
+                var enemy = enemyConfig.EnemyPool.Get();
+                enemy.transform.position = GetRandomSpawnPosition();
+
+                var enemyController = enemy.GetComponent<EnemyController>();
+                enemyController.Setup(enemyConfig.EnemyPool);
+                enemys.Add(enemyController);
             }
         }
 

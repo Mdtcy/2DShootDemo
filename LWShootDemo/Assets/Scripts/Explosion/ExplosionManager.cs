@@ -7,7 +7,10 @@
  */
 
 #pragma warning disable 0649
+using System;
 using System.Collections.Generic;
+using LWShootDemo.Entities.Enemy;
+using LWShootDemo.Pool;
 using UnityEngine;
 
 namespace LWShootDemo.Explosions
@@ -21,7 +24,7 @@ namespace LWShootDemo.Explosions
 
         // 对象池
         [SerializeField]
-        private ExplosionPool explosionPool;
+        private SimpleUnitySpawnPool explosionPool;
 
         // 爆炸持续时间
         [SerializeField]
@@ -44,7 +47,7 @@ namespace LWShootDemo.Explosions
         /// <param name="position"></param>
         public void CreateExplosion(Vector3 position)
         {
-            var explosion = explosionPool.Get();
+            var explosion = explosionPool.Get().GetComponent<Explosion>();
             explosion.transform.position = position;
             explosion.Play();
 

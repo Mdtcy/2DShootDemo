@@ -8,6 +8,7 @@
 
 #pragma warning disable 0649
 using LWShootDemo.Managers;
+using LWShootDemo.Pool;
 using LWShootDemo.Sound;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ namespace LWShootDemo.Explosions
     /// <summary>
     /// 爆炸效果
     /// </summary>
-    public class Explosion : MonoBehaviour
+    public class Explosion : PoolObject
     {
         #region FIELDS
 
@@ -39,6 +40,12 @@ namespace LWShootDemo.Explosions
         {
             spawnTime = Time.time;
             var player = GameManager.Instance.Player;
+
+            if (player == null)
+            {
+                return;
+            }
+
             // 爆炸带来的震动根据玩家和爆炸点的方向来决定
             var dir    = (transform.position - player.position).normalized;
             GameManager.Instance.CameraController.Shake(dir, Random.Range(shakeIntensity.x, shakeIntensity.y),

@@ -8,6 +8,7 @@
 
 #pragma warning disable 0649
 using LWShootDemo.Entities;
+using LWShootDemo.Pool;
 using UnityEngine;
 
 namespace LWShootDemo.Weapons
@@ -15,7 +16,7 @@ namespace LWShootDemo.Weapons
     /// <summary>
     /// 子弹
     /// </summary>
-    public class Projectile : MonoBehaviour
+    public class Projectile : PoolObject
     {
         #region FIELDS
 

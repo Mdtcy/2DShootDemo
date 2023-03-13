@@ -7,7 +7,10 @@
  */
 
 #pragma warning disable 0649
+using System;
 using System.Collections.Generic;
+using LWShootDemo.Entities.Enemy;
+using LWShootDemo.Pool;
 using UnityEngine;
 
 namespace LWShootDemo.Weapons
@@ -25,7 +28,7 @@ namespace LWShootDemo.Weapons
 
         // 子弹池
         [SerializeField]
-        private ProjectilePool projectilePool;
+        private SimpleUnitySpawnPool projectilePool;
 
         // local
         private List<Projectile> projectiles = new List<Projectile>();
@@ -45,7 +48,7 @@ namespace LWShootDemo.Weapons
         /// <param name="rotation"></param>
         public void CreateProjectile(Vector3 position, Quaternion rotation)
         {
-            var projectile = projectilePool.Get();
+            var projectile          = projectilePool.Get().GetComponent<Projectile>();
             var projectileTransform = projectile.transform;
             projectileTransform.position = position;
             projectileTransform.rotation = rotation;
