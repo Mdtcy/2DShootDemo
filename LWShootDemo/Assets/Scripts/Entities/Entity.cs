@@ -130,7 +130,6 @@ namespace LWShootDemo.Entities
         private void Kill()
         {
             ActOnDeath?.Invoke();
-            Destroy(gameObject);
         }
 
         #endregion

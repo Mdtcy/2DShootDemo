@@ -8,6 +8,7 @@
 
 #pragma warning disable 0649
 using System;
+using LWShootDemo.Managers;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -22,17 +23,11 @@ namespace LWShootDemo.Difficulty
         #region FIELDS
 
         [SerializeField]
-        private TextMeshProUGUI txtTime;
-
-        [SerializeField]
         private TextMeshProUGUI txtDifficulty;
 
         [SerializeField]
         [InlineEditor(InlineEditorModes.FullEditor)]
         private DifficultyConfig config;
-
-        // local
-        private float time;
 
         #endregion
 
@@ -48,7 +43,7 @@ namespace LWShootDemo.Difficulty
         /// <returns></returns>
         public DifficultyConfig.Difficulty GetCurrentDifficulty()
         {
-            return config.GetDifficulty((int)time);
+            return config.GetDifficulty((int)GameManager.Instance.GameTime);
         }
 
         #endregion
@@ -59,11 +54,8 @@ namespace LWShootDemo.Difficulty
 
         #region PRIVATE METHODS
 
-        void Update()
+        private void Update()
         {
-            time += Time.deltaTime;
-            TimeSpan timeSpan = TimeSpan.FromSeconds(time);
-            txtTime.text       = $"{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}";
             txtDifficulty.text = GetCurrentDifficulty().Type.ToString();
         }
 

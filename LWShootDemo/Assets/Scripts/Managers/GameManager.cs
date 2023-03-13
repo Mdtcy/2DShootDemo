@@ -7,13 +7,18 @@
  */
 
 #pragma warning disable 0649
+using System;
+using System.Collections;
+using Events;
 using LWShootDemo.Common;
 using LWShootDemo.Difficulty;
 using LWShootDemo.Explosions;
 using LWShootDemo.Popups;
 using LWShootDemo.Sound;
+using LWShootDemo.UI;
 using LWShootDemo.Weapons;
 using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -33,6 +38,12 @@ namespace LWShootDemo.Managers
         [SerializeField]
         private Transform player;
 
+        [SerializeField]
+        private TextMeshProUGUI txtTime;
+
+        [SerializeField]
+        private UIGameOver uiGameOver;
+
         // * local
         public SoundManager       SoundManager;
         public CameraController   CameraController;
@@ -41,6 +52,10 @@ namespace LWShootDemo.Managers
         public ExplosionManager   explosionManager;
         public DifficultyManager  DifficultyManager;
         public ProjectileManager  ProjectileManager;
+
+        private float gameTime;
+        private bool  isGameOver;
+        private int   killCount;
 
         #endregion
 
@@ -62,6 +77,8 @@ namespace LWShootDemo.Managers
         /// </summary>
         public Transform Player => player;
 
+        public float GameTime  => gameTime;
+        public int   KillCount => killCount;
 
         #endregion
 
@@ -90,6 +107,43 @@ namespace LWShootDemo.Managers
         private void Start()
         {
             SoundManager.PlayMusic(SoundType.BattleMusic);
+            PlayDeathEvent.Register(OnPlayerDeath);
+            EnemyDeathEvent.Register(OnEnemyDeath);
+        }
+
+        private void OnEnemyDeath()
+        {
+            killCount++;
+        }
+
+        private void OnDestroy()
+        {
+            PlayDeathEvent.Unregister(OnPlayerDeath);
+            EnemyDeathEvent.Unregister(OnEnemyDeath);
+        }
+
+        private void Update()
+        {
+            if (isGameOver)
+            {
+                return;
+            }
+
+            gameTime += Time.deltaTime;
+            TimeSpan timeSpan = TimeSpan.FromSeconds(gameTime);
+            txtTime.text = $"{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}";
+        }
+
+        private void OnPlayerDeath()
+        {
+            StartCoroutine(ShowGameOverDelay());
+            isGameOver = true;
+        }
+
+        private IEnumerator ShowGameOverDelay()
+        {
+            yield return new WaitForSeconds(1f);
+            uiGameOver.Show();
         }
 
         [Button]
@@ -98,6 +152,10 @@ namespace LWShootDemo.Managers
             SceneManager.LoadScene("Game");
         }
 
+        public void BackToMenu()
+        {
+            SceneManager.LoadScene("Menu");
+        }
 
         #endregion
 

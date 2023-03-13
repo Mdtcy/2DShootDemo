@@ -7,9 +7,11 @@
  */
 
 #pragma warning disable 0649
+using Events;
 using LWShootDemo.Effect;
 using LWShootDemo.Explosions;
 using LWShootDemo.Managers;
+using LWShootDemo.Sound;
 using LWShootDemo.Weapons;
 using UnityEngine;
 
@@ -33,16 +35,24 @@ namespace LWShootDemo.Entities
         private float fireRate;
 
         [SerializeField]
-        private Transform pfbDeathPlayer;
+        private Transform pfbCorpse;
 
+
+
+        [SerializeField]
+        private ParticleSystem deathEffect;
 
         // * local
-        private ExplosionManager explosionManager;
-        private Camera             mainCamera;
-        private bool               canShoot = true;
-        private bool               isDead;
-        private Vector2            movement;
-        private bool               firing;
+        private SoundManager     soundManager;
+        private TimeStopManager  timeStopManager;
+
+        private Camera  mainCamera;
+        private bool    canShoot = true;
+        private bool    isDead;
+        private Vector2 movement;
+        private bool    firing;
+        private Vector3 mouse;
+        private float   lastShotTime;
 
         #endregion
 
@@ -65,7 +75,8 @@ namespace LWShootDemo.Entities
         private void Start()
         {
             mainCamera         = GameManager.Instance.MainCamera;
-            explosionManager = GameManager.Instance.explosionManager;
+            soundManager     = GameManager.Instance.SoundManager;
+            timeStopManager  = GameManager.Instance.TimeStopManager;
 
             entity.ActOnDeath += OnDeath;
             weapon.Init(entity);
@@ -92,10 +103,6 @@ namespace LWShootDemo.Entities
             Move();
         }
 
-
-        private Vector3 mouse;
-        private float  lastShotTime;
-
         private void RotateToMouse()
         {
             mouse   = mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -104,8 +111,6 @@ namespace LWShootDemo.Entities
             float   gunAngle    = Mathf.Atan2(mouseVector.y, mouseVector.x) * Mathf.Rad2Deg - 90f;
 
             entity.TryRotate(gunAngle);
-
-            // transform.rotation = Quaternion.AngleAxis(GetMouseAngle, Vector3.forward);
         }
 
         private void Move()
@@ -145,11 +150,23 @@ namespace LWShootDemo.Entities
         private void OnDeath()
         {
             isDead = true;
-            explosionManager.CreateExplosion(transform.position);
+            // explosionManager.CreateExplosion(transform.position);
+            // GameManager.Instance.CameraController.Shake(new Vector2(Random.Range(-10, 10), Random.Range(-10, 10)), 2, 0.6f);
+            // deathEffect.Play();
 
-            var playerDeathEffect = Instantiate(pfbDeathPlayer, transform.position, Quaternion.identity)
-               .GetComponent<PlayerDeathEffect>();
-            playerDeathEffect.Play();
+            // 播放音效
+            soundManager.PlaySfx(SoundType.Hit);
+
+            // 减缓时间
+            timeStopManager.StopTime(0.2f,1f);
+
+            // 粒子特效
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
+
+            // 尸体
+            Instantiate(pfbCorpse, transform.position, transform.rotation);
+
+            PlayDeathEvent.Trigger();
 
             Destroy(gameObject);
         }

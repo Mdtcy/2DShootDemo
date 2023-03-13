@@ -8,6 +8,7 @@
 
 #pragma warning disable 0649
 using System.Collections;
+using Events;
 using LWShootDemo.Explosions;
 using LWShootDemo.Managers;
 using LWShootDemo.Popups;
@@ -81,6 +82,9 @@ namespace LWShootDemo.Entities
         private void OnDeath()
         {
             explosionManager.CreateExplosion(transform.position);
+
+            EnemyDeathEvent.Trigger();
+            Destroy(gameObject);
         }
 
         private void OnHurt(DamageInfo damageInfo)
