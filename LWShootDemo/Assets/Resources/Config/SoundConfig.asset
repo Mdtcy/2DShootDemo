@@ -18,7 +18,14 @@ MonoBehaviour:
     - {fileID: 8300000, guid: d3ecd47a3e724b14989e977b2aa2201c, type: 3}
   - Type: 1
     AudioClips:
-    - {fileID: 8300000, guid: 7035413d1ac5d424aacad200224f5713, type: 3}
+    - {fileID: 8300000, guid: 8e52acceb1764934987e7201bf1ec740, type: 3}
+    - {fileID: 8300000, guid: 8e52acceb1764934987e7201bf1ec740, type: 3}
+    - {fileID: 8300000, guid: 10321876490746c41ba64e749e1dc304, type: 3}
+    - {fileID: 8300000, guid: a73a05857d7e5db48b04918deff2dacb, type: 3}
+    - {fileID: 8300000, guid: 351de9e1ef73e824f9fe9c6e5f7cf29f, type: 3}
+    - {fileID: 8300000, guid: 8fabbb57b33c60e49b56db3e23fa71ac, type: 3}
+    - {fileID: 8300000, guid: 49fddea5d2a720b458ae178dfcbb9b48, type: 3}
+    - {fileID: 8300000, guid: 233ff59a325628548b74febd7be99bca, type: 3}
   - Type: 2
     AudioClips:
     - {fileID: 8300000, guid: 23a0597d818de264e8095b6161e7b826, type: 3}
