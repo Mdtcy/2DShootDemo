@@ -1,30 +1,34 @@
 /**
  * @author BoLuo
  * @email [ tktetb@163.com ]
- * @create date  2023年3月12日
- * @modify date 2023年3月12日
- * @desc [菜单UI]
+ * @create date  2023年3月14日
+ * @modify date 2023年3月14日
+ * @desc [按钮点击音效]
  */
 
 #pragma warning disable 0649
-using System;
 using LWShootDemo.Managers;
 using LWShootDemo.Sound;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace LWShootDemo.UI
 {
     /// <summary>
-    /// 菜单UI
+    /// 按钮点击音效
     /// </summary>
-    public class UIGameMenu : MonoBehaviour
+    public class ButtonSfx : MonoBehaviour
     {
         #region FIELDS
 
         [SerializeField]
-        private Button btnStartGame;
+        private Button btn;
+
+        [SerializeField]
+        private SoundType soundType;
+
+        // local
+        private SoundManager soundManager;
 
         #endregion
 
@@ -42,14 +46,19 @@ namespace LWShootDemo.UI
 
         #region PRIVATE METHODS
 
-        private void Awake()
+        private void Start()
         {
-            btnStartGame.onClick.AddListener(EnterGame);
+            soundManager = GameManager.Instance.SoundManager;
         }
 
-        private void EnterGame()
+        private void Awake()
         {
-            SceneManager.LoadScene("Game");
+            btn.onClick.AddListener(OnClick);
+        }
+
+        private void OnClick()
+        {
+            soundManager.PlaySfx(soundType);
         }
 
         #endregion

@@ -24,7 +24,11 @@ namespace LWShootDemo.Sound
         [LabelText("击中声")]
         Hit,
         [LabelText("爆炸声")]
-        Explosion
+        Explosion,
+        [LabelText("按钮点击声")]
+        ButtonClick,
+        [LabelText("菜单背景音乐")]
+        MenuMusic
     }
 }
 #pragma warning restore 0649

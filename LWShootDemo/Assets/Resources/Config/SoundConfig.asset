@@ -25,3 +25,6 @@ MonoBehaviour:
   - Type: 3
     AudioClips:
     - {fileID: 8300000, guid: a03beaf2a62381944aef215ceaf48ca2, type: 3}
+  - Type: 4
+    AudioClips:
+    - {fileID: 8300000, guid: 2852459aaf3b5904d88c4158b24f2b3f, type: 3}
