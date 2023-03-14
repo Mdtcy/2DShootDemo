@@ -58,7 +58,8 @@ namespace LWShootDemo.Sound
         public void PlayMusic(SoundType soundType)
         {
             var audioClip = GetAudioClip(soundType);
-            musicAudioSource.PlayOneShot(audioClip);
+            musicAudioSource.clip = audioClip;
+            musicAudioSource.Play();
         }
 
         #endregion

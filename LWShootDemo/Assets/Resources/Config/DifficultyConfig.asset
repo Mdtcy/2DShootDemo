@@ -45,16 +45,16 @@ MonoBehaviour:
     EnemySpawnInterval: {x: 1, y: 1.4}
   - Type: 6
     Seconds: {x: 110, y: 150}
-    EnemySpeedNum: 1.5
+    EnemySpeedNum: 1.8
     SpawnEnemyPoint: 50
     EnemySpawnInterval: {x: 0.8, y: 1}
   - Type: 7
     Seconds: {x: 150, y: 200}
-    EnemySpeedNum: 1.6
+    EnemySpeedNum: 2
     SpawnEnemyPoint: 70
     EnemySpawnInterval: {x: 0.5, y: 1}
   - Type: 8
     Seconds: {x: 200, y: 9999999}
-    EnemySpeedNum: 1.7
+    EnemySpeedNum: 2.2
     SpawnEnemyPoint: 100
     EnemySpawnInterval: {x: 0.4, y: 0.44}
