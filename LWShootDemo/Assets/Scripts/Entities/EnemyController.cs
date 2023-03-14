@@ -3,23 +3,25 @@
  * @email [ tktetb@163.com ]
  * @create date  2023年3月11日
  * @modify date 2023年3月11日
- * @desc [任务组UI]
+ * @desc [敌人控制器]
  */
 
 #pragma warning disable 0649
 using System.Collections;
 using Events;
-using LWShootDemo.Entities.Enemy;
 using LWShootDemo.Explosions;
 using LWShootDemo.Managers;
 using LWShootDemo.Pool;
 using LWShootDemo.Popups;
 using LWShootDemo.Sound;
-using Sirenix.OdinInspector;
 using UnityEngine;
+using Utilities;
 
 namespace LWShootDemo.Entities
 {
+    /// <summary>
+    /// 敌人控制器
+    /// </summary>
     [RequireComponent(typeof(Entity))]
     public class EnemyController : PoolObject
     {
@@ -52,6 +54,7 @@ namespace LWShootDemo.Entities
         private TimeStopManager    timeStopManager;
         private ExplosionManager explosionManager;
         private PopupManager       popupManager;
+        private SimpleUnitySpawnPool deathEffectPool;
 
         private SimpleUnitySpawnPool pool;
 
@@ -101,6 +104,7 @@ namespace LWShootDemo.Entities
             timeStopManager  = GameManager.Instance.TimeStopManager;
             explosionManager = GameManager.Instance.explosionManager;
             popupManager     = GameManager.Instance.PopupManager;
+            deathEffectPool  = GameManager.Instance.EnemyDeathEffectPool;
         }
 
         public override void OnSpawn()
@@ -125,8 +129,18 @@ namespace LWShootDemo.Entities
         {
             isDead = true;
             explosionManager.CreateExplosion(transform.position);
-
+            CreateDeathEffect();
             EnemyDeathEvent.Trigger();
+        }
+
+        private void CreateDeathEffect()
+        {
+            var deathEffect = deathEffectPool.Get();
+            var deathEffectTransform = deathEffect.transform;
+            deathEffectTransform.position   = transform.position;
+            deathEffectTransform.rotation   = Quaternion.identity;
+            deathEffectTransform.localScale = transform.localScale;
+            deathEffect.GetComponent<EnemyDeathEffect>().Init();
         }
 
         private void OnHurt(DamageInfo damageInfo)

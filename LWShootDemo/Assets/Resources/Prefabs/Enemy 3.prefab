@@ -138,6 +138,7 @@ MonoBehaviour:
   knockBackForce: 100
   spModel: {fileID: 1617456840124990902}
   moveSpeed: 2
+  deathEffect: {fileID: 6453547444083992817, guid: 5b702c29a3357e94caea888fc0c73e34, type: 3}
 --- !u!50 &1617456840222586615
 Rigidbody2D:
   serializedVersion: 4

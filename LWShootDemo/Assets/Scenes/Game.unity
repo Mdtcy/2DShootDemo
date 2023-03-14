@@ -2691,6 +2691,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1860731818}
   m_CullTransparentMesh: 1
+--- !u!4 &1972305120 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 809789500414147589, guid: 0138815c4ff2e674faefaa102a9a126d, type: 3}
+  m_PrefabInstance: {fileID: 809789501587880811}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1981265105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1981265106}
+  - component: {fileID: 1981265107}
+  m_Layer: 0
+  m_Name: DeathEffectPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1981265106
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981265105}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1972305120}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1981265107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981265105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385681a7c2344dfdbea149aeb6399a3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectionChecks: 1
+  maxPoolSize: 30
+  defaultCapacity: 100
+  prefab: {fileID: 1363150822992344476, guid: 5b702c29a3357e94caea888fc0c73e34, type: 3}
 --- !u!1 &2006827831
 GameObject:
   m_ObjectHideFlags: 0
@@ -3006,9 +3059,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 403377304}
     - target: {fileID: 809789500414147590, guid: 0138815c4ff2e674faefaa102a9a126d, type: 3}
+      propertyPath: DeathEffectPool
+      value: 
+      objectReference: {fileID: 1981265107}
+    - target: {fileID: 809789500414147590, guid: 0138815c4ff2e674faefaa102a9a126d, type: 3}
       propertyPath: CameraController
       value: 
       objectReference: {fileID: 551153567}
+    - target: {fileID: 809789500414147590, guid: 0138815c4ff2e674faefaa102a9a126d, type: 3}
+      propertyPath: EnemyDeathEffectPool
+      value: 
+      objectReference: {fileID: 1981265107}
     - target: {fileID: 809789500414147591, guid: 0138815c4ff2e674faefaa102a9a126d, type: 3}
       propertyPath: m_Name
       value: GameManager

@@ -13,6 +13,7 @@ using Events;
 using LWShootDemo.Common;
 using LWShootDemo.Difficulty;
 using LWShootDemo.Explosions;
+using LWShootDemo.Pool;
 using LWShootDemo.Popups;
 using LWShootDemo.Sound;
 using LWShootDemo.UI;
@@ -21,6 +22,7 @@ using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace LWShootDemo.Managers
 {
@@ -44,7 +46,10 @@ namespace LWShootDemo.Managers
         [SerializeField]
         private UIGameOver uiGameOver;
 
-        // * local
+        // todo 暂时放这
+        [SerializeField]
+        public SimpleUnitySpawnPool EnemyDeathEffectPool;
+
         public SoundManager       SoundManager;
         public CameraController   CameraController;
         public TimeStopManager    TimeStopManager;
