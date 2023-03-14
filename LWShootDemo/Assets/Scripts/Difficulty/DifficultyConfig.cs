@@ -23,6 +23,11 @@ namespace LWShootDemo.Difficulty
             public Vector2 Seconds;
 
             /// <summary>
+            /// 敌人速度乘数
+            /// </summary>
+            public float EnemySpeedNum;
+
+            /// <summary>
             /// 生成敌人的点数
             /// </summary>
             [FormerlySerializedAs("EnemyPoint")]

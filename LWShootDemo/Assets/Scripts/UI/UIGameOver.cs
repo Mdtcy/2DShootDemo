@@ -46,7 +46,7 @@ namespace LWShootDemo.UI
             transform.DOScale(Vector3.one, 0.22f).SetEase(Ease.OutBack);
 
             txtSurvivalTime.text = $"共击杀敌人: {GameManager.Instance.KillCount}个";
-            txtKillCount.text    = $"存活时间: {GameManager.Instance.GameTime} 秒";
+            txtKillCount.text    = $"存活时间: {GameManager.Instance.GameTime:F2} 秒";
         }
 
         #endregion

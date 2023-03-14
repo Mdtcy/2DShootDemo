@@ -15,37 +15,46 @@ MonoBehaviour:
   Difficulties:
   - Type: 0
     Seconds: {x: 0, y: 15}
+    EnemySpeedNum: 1
     SpawnEnemyPoint: 10
     EnemySpawnInterval: {x: 2, y: 3}
   - Type: 1
     Seconds: {x: 15, y: 30}
+    EnemySpeedNum: 1.1
     SpawnEnemyPoint: 15
     EnemySpawnInterval: {x: 1.5, y: 1.8}
   - Type: 2
     Seconds: {x: 30, y: 45}
+    EnemySpeedNum: 1.2
     SpawnEnemyPoint: 20
     EnemySpawnInterval: {x: 1.5, y: 1.8}
   - Type: 3
     Seconds: {x: 45, y: 60}
+    EnemySpeedNum: 1.3
     SpawnEnemyPoint: 25
     EnemySpawnInterval: {x: 1.5, y: 1.8}
   - Type: 4
     Seconds: {x: 60, y: 80}
+    EnemySpeedNum: 1.4
     SpawnEnemyPoint: 30
     EnemySpawnInterval: {x: 1.5, y: 1.8}
   - Type: 5
     Seconds: {x: 80, y: 110}
+    EnemySpeedNum: 1.5
     SpawnEnemyPoint: 35
-    EnemySpawnInterval: {x: 1.5, y: 0.45}
+    EnemySpawnInterval: {x: 1, y: 1.4}
   - Type: 6
     Seconds: {x: 110, y: 150}
-    SpawnEnemyPoint: 40
-    EnemySpawnInterval: {x: 1.5, y: 1.8}
+    EnemySpeedNum: 1.5
+    SpawnEnemyPoint: 50
+    EnemySpawnInterval: {x: 0.8, y: 1}
   - Type: 7
     Seconds: {x: 150, y: 200}
-    SpawnEnemyPoint: 45
-    EnemySpawnInterval: {x: 1.5, y: 1.8}
+    EnemySpeedNum: 1.6
+    SpawnEnemyPoint: 70
+    EnemySpawnInterval: {x: 0.5, y: 1}
   - Type: 8
     Seconds: {x: 200, y: 9999999}
+    EnemySpeedNum: 1.7
     SpawnEnemyPoint: 100
-    EnemySpawnInterval: {x: 1.5, y: 1.8}
+    EnemySpawnInterval: {x: 0.4, y: 0.44}

@@ -8,11 +8,10 @@
 
 #pragma warning disable 0649
 using Events;
-using LWShootDemo.Effect;
-using LWShootDemo.Explosions;
 using LWShootDemo.Managers;
 using LWShootDemo.Sound;
 using LWShootDemo.Weapons;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace LWShootDemo.Entities
@@ -37,10 +36,14 @@ namespace LWShootDemo.Entities
         [SerializeField]
         private Transform pfbCorpse;
 
-
-
         [SerializeField]
         private ParticleSystem deathEffect;
+
+        [SerializeField]
+        private Weapon initWeapon;
+
+        [SerializeField]
+        private Weapon upgradeWeapon;
 
         // * local
         private SoundManager     soundManager;
@@ -53,6 +56,7 @@ namespace LWShootDemo.Entities
         private bool    firing;
         private Vector3 mouse;
         private float   lastShotTime;
+        private Weapon  curWeapon;
 
         #endregion
 
@@ -63,6 +67,18 @@ namespace LWShootDemo.Entities
         #endregion
 
         #region PUBLIC METHODS
+
+        /// <summary>
+        /// 升级武器 todo 临时 待优化
+        /// </summary>
+        [Button]
+        public void ChangeWeapon()
+        {
+            initWeapon.gameObject.SetActive(false);
+            upgradeWeapon.gameObject.SetActive(true);
+            curWeapon = upgradeWeapon;
+            curWeapon.Init(entity);
+        }
 
         #endregion
 
@@ -80,7 +96,11 @@ namespace LWShootDemo.Entities
 
             entity.Init();
             entity.ActOnDeath += OnDeath;
-            weapon.Init(entity);
+
+            // 初始化武器
+            curWeapon         =  initWeapon;
+            initWeapon.gameObject.SetActive(true);
+            curWeapon.Init(entity);
         }
 
         private void Update()
@@ -128,15 +148,12 @@ namespace LWShootDemo.Entities
             firing     = Input.GetMouseButton(0);
         }
 
-        [SerializeField]
-        private Weapon weapon;
-
         private void TryToShoot()
         {
             canShoot = lastShotTime + fireRate < Time.time;
             if (firing && canShoot)
             {
-                weapon.Use();
+                curWeapon.Use();
                 lastShotTime = Time.time;
                 lastShotTime = Time.time;
             }

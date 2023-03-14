@@ -7,6 +7,7 @@
  */
 
 #pragma warning disable 0649
+using System;
 using DG.Tweening;
 using Events;
 using Sirenix.OdinInspector;
@@ -52,6 +53,11 @@ namespace LWShootDemo.UI
         {
             EnemyDeathEvent.Register(OnEnemyDeath);
             txtCount.text = "0";
+        }
+
+        private void OnDestroy()
+        {
+            EnemyDeathEvent.Unregister(OnEnemyDeath);
         }
 
         [Button]

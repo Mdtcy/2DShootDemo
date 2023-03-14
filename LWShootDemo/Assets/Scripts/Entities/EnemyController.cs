@@ -9,6 +9,7 @@
 #pragma warning disable 0649
 using System.Collections;
 using Events;
+using LWShootDemo.Difficulty;
 using LWShootDemo.Explosions;
 using LWShootDemo.Managers;
 using LWShootDemo.Pool;
@@ -48,13 +49,14 @@ namespace LWShootDemo.Entities
         private bool flashing;
 
         // * local
-        private Transform          player;
-        private SoundManager       soundManager;
-        private Coroutine          flashCoroutine;
-        private TimeStopManager    timeStopManager;
-        private ExplosionManager explosionManager;
-        private PopupManager       popupManager;
+        private Transform            player;
+        private SoundManager         soundManager;
+        private Coroutine            flashCoroutine;
+        private TimeStopManager      timeStopManager;
+        private ExplosionManager     explosionManager;
+        private PopupManager         popupManager;
         private SimpleUnitySpawnPool deathEffectPool;
+        private DifficultyManager    difficultyManager;
 
         private SimpleUnitySpawnPool pool;
 
@@ -105,6 +107,7 @@ namespace LWShootDemo.Entities
             explosionManager = GameManager.Instance.explosionManager;
             popupManager     = GameManager.Instance.PopupManager;
             deathEffectPool  = GameManager.Instance.EnemyDeathEffectPool;
+            difficultyManager = GameManager.Instance.DifficultyManager;
         }
 
         public override void OnSpawn()
@@ -177,7 +180,7 @@ namespace LWShootDemo.Entities
         private void ChaseTarget()
         {
             var direction = player.position - transform.position;
-            entity.TryMove(direction, moveSpeed);
+            entity.TryMove(direction, moveSpeed * difficultyManager.GetCurrentDifficulty().EnemySpeedNum);
         }
 
         private void OnCollisionEnter2D(Collision2D other)
