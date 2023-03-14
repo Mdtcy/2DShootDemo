@@ -7,6 +7,7 @@
  */
 
 #pragma warning disable 0649
+using System;
 using System.Collections;
 using Events;
 using LWShootDemo.Difficulty;
@@ -108,6 +109,15 @@ namespace LWShootDemo.Entities
             popupManager     = GameManager.Instance.PopupManager;
             deathEffectPool  = GameManager.Instance.EnemyDeathEffectPool;
             difficultyManager = GameManager.Instance.DifficultyManager;
+
+            entity.ActOnHurt  += OnHurt;
+            entity.ActOnDeath += OnDeath;
+        }
+
+        private void OnDestroy()
+        {
+            entity.ActOnHurt  -= OnHurt;
+            entity.ActOnDeath -= OnDeath;
         }
 
         public override void OnSpawn()
@@ -117,8 +127,6 @@ namespace LWShootDemo.Entities
             isDead = false;
 
             entity.Init();
-            entity.ActOnHurt  += OnHurt;
-            entity.ActOnDeath += OnDeath;
         }
 
         public override void OnDespawn()
@@ -133,6 +141,7 @@ namespace LWShootDemo.Entities
             isDead = true;
             explosionManager.CreateExplosion(transform.position);
             CreateDeathEffect();
+            Debug.Log(gameObject.name);
             EnemyDeathEvent.Trigger();
         }
 

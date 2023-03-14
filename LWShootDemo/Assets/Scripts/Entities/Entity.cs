@@ -108,8 +108,8 @@ namespace LWShootDemo.Entities
 
         public void Reset()
         {
-            ActOnDeath = null;
-            ActOnHurt  = null;
+            // ActOnDeath = null;
+            // ActOnHurt  = null;
         }
 
         private IEnumerator IApplyKnowBack(float duraction, Vector2 force)
