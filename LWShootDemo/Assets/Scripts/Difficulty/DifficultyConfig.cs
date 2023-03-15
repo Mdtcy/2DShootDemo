@@ -30,7 +30,6 @@ namespace LWShootDemo.Difficulty
             /// <summary>
             /// 生成敌人的点数
             /// </summary>
-            [FormerlySerializedAs("EnemyPoint")]
             public int SpawnEnemyPoint;
 
             /// <summary>

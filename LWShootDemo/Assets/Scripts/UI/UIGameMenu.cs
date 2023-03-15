@@ -7,9 +7,6 @@
  */
 
 #pragma warning disable 0649
-using System;
-using LWShootDemo.Managers;
-using LWShootDemo.Sound;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;

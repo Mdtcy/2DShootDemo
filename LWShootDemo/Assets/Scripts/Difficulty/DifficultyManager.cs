@@ -7,8 +7,6 @@
  */
 
 #pragma warning disable 0649
-using System;
-using LWShootDemo.Managers;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -22,6 +20,7 @@ namespace LWShootDemo.Difficulty
     {
         #region FIELDS
 
+        // 显示当前难度
         [SerializeField]
         private TextMeshProUGUI txtDifficulty;
 

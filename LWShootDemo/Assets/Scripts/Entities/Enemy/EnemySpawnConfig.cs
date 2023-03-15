@@ -3,7 +3,7 @@
  * @email [ tktetb@163.com ]
  * @create date  2023年3月12日
  * @modify date 2023年3月12日
- * @desc [任务组UI]
+ * @desc [敌人生成配置]
  */
 
 #pragma warning disable 0649
@@ -15,6 +15,9 @@ using Random = UnityEngine.Random;
 
 namespace LWShootDemo.Entities.Enemy
 {
+    /// <summary>
+    /// 敌人生成配置
+    /// </summary>
     [CreateAssetMenu(fileName = "EnemySpawnConfig", menuName = "EnemySpawnConfig", order = 0)]
     public class EnemySpawnConfig : ScriptableObject
     {
@@ -28,6 +31,10 @@ namespace LWShootDemo.Entities.Enemy
 
         public List<EnemyConfig> EnemyConfigs;
 
+        /// <summary>
+        /// 获取随机敌人配置
+        /// </summary>
+        /// <returns></returns>
         public EnemyConfig GetRandomEnemyConfig()
         {
             return EnemyConfigs[Random.Range(0, EnemyConfigs.Count)];

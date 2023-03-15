@@ -10,14 +10,11 @@
 using System;
 using System.Collections.Generic;
 using LWShootDemo.Difficulty;
-using LWShootDemo.Entities.Enemy;
-using LWShootDemo.Managers;
 using LWShootDemo.Pool;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace LWShootDemo.Entities
+namespace LWShootDemo.Entities.Enemy
 {
     /// <summary>
     /// 敌人管理器 负责敌人的生成和管理

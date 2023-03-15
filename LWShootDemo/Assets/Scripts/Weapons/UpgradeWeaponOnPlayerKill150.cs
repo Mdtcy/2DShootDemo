@@ -7,11 +7,9 @@
  */
 
 #pragma warning disable 0649
-using System;
 using DG.Tweening;
 using Events;
 using LWShootDemo.Entities;
-using LWShootDemo.Managers;
 using UnityEngine;
 using UnityEngine.UI;
 

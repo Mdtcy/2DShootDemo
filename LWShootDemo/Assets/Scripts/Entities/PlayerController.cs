@@ -8,7 +8,6 @@
 
 #pragma warning disable 0649
 using Events;
-using LWShootDemo.Managers;
 using LWShootDemo.Sound;
 using LWShootDemo.Weapons;
 using Sirenix.OdinInspector;
@@ -23,9 +22,11 @@ namespace LWShootDemo.Entities
     {
         #region FIELDS
 
+        // 实体
         [SerializeField]
         private Entity entity;
 
+        // 移动速度
         [SerializeField]
         private float moveSpeed;
 
@@ -33,15 +34,19 @@ namespace LWShootDemo.Entities
         [SerializeField]
         private float fireRate;
 
+        // 死亡后的尸体
         [SerializeField]
         private Transform pfbCorpse;
 
+        // 死亡后的特效
         [SerializeField]
         private ParticleSystem deathEffect;
 
+        // 初始武器
         [SerializeField]
         private Weapon initWeapon;
 
+        // 升级后的武器
         [SerializeField]
         private Weapon upgradeWeapon;
 
@@ -51,7 +56,6 @@ namespace LWShootDemo.Entities
 
         private Camera  mainCamera;
         private bool    canShoot = true;
-        private bool    isDead;
         private Vector2 movement;
         private bool    firing;
         private Vector3 mouse;
@@ -62,14 +66,12 @@ namespace LWShootDemo.Entities
 
         #region PROPERTIES
 
-        public bool IsDead => isDead;
-
         #endregion
 
         #region PUBLIC METHODS
 
         /// <summary>
-        /// 升级武器 todo 临时 待优化
+        /// 升级武器 todo 临时 展现三枪用 待优化
         /// </summary>
         [Button]
         public void ChangeWeapon()
@@ -98,14 +100,14 @@ namespace LWShootDemo.Entities
             entity.ActOnDeath += OnDeath;
 
             // 初始化武器
-            curWeapon         =  initWeapon;
+            curWeapon = initWeapon;
             initWeapon.gameObject.SetActive(true);
             curWeapon.Init(entity);
         }
 
         private void Update()
         {
-            if (isDead)
+            if (entity.IsDead)
             {
                 return;
             }
@@ -114,7 +116,7 @@ namespace LWShootDemo.Entities
         }
         private void FixedUpdate()
         {
-            if (isDead)
+            if (entity.IsDead)
             {
                 return;
             }
@@ -124,6 +126,7 @@ namespace LWShootDemo.Entities
             Move();
         }
 
+        // 旋转到鼠标位置
         private void RotateToMouse()
         {
             mouse   = mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -134,6 +137,7 @@ namespace LWShootDemo.Entities
             entity.TryRotate(gunAngle);
         }
 
+        // 移动
         private void Move()
         {
             // // 按住开火键的时候移动速度减半  有后坐力之后不需要这个了
@@ -142,12 +146,14 @@ namespace LWShootDemo.Entities
             entity.TryMove(movement.normalized, moveSpeed);
         }
 
+        // 获取输入
         private void GetInput()
         {
             movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             firing     = Input.GetMouseButton(0);
         }
 
+        // 尝试开火
         private void TryToShoot()
         {
             canShoot = lastShotTime + fireRate < Time.time;
@@ -167,7 +173,6 @@ namespace LWShootDemo.Entities
 
         private void OnDeath()
         {
-            isDead = true;
             // explosionManager.CreateExplosion(transform.position);
             // GameManager.Instance.CameraController.Shake(new Vector2(Random.Range(-10, 10), Random.Range(-10, 10)), 2, 0.6f);
             // deathEffect.Play();

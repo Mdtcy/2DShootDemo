@@ -7,7 +7,7 @@
  */
 
 #pragma warning disable 0649
-using LWShootDemo.Managers;
+using LWShootDemo;
 using LWShootDemo.Pool;
 using UnityEngine;
 

@@ -24,7 +24,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
-namespace LWShootDemo.Managers
+namespace LWShootDemo
 {
     /// <summary>
     /// 游戏管理器

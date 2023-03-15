@@ -18,12 +18,15 @@ namespace LWShootDemo.Entities
     {
         #region FIELDS
 
+        // 实体的阵营
         [SerializeField]
         private Side side;
 
+        // 最大血量
         [SerializeField]
         private int maxHp;
 
+        // 当前血量
         [ShowInInspector]
         [ReadOnly]
         private int curHp;
@@ -31,21 +34,40 @@ namespace LWShootDemo.Entities
         [SerializeField]
         private Rigidbody2D rb2D;
 
+        // 是否可以移动
         [ShowInInspector]
         [ReadOnly]
         private bool canMove = true;
 
+        // 击退协程
         private Coroutine knockBackHandle;
 
+        // 是否死亡
+        private bool isDead;
+
+        /// <summary>
+        /// 死亡事件
+        /// </summary>
         public Action ActOnDeath;
 
+        /// <summary>
+        /// 受伤事件
+        /// </summary>
         public Action<DamageInfo> ActOnHurt;
 
         #endregion
 
         #region PROPERTIES
 
-        public Side Side => side;
+        /// <summary>
+        /// 是否死亡
+        /// </summary>
+        public bool IsDead => isDead;
+
+        /// <summary>
+        /// 实体阵营
+        /// </summary>
+        public Side Side   => side;
 
         #endregion
 
@@ -74,6 +96,10 @@ namespace LWShootDemo.Entities
             rb2D.MovePosition(position: direction.normalized * moveSpeed * Time.deltaTime + transform.position);
         }
 
+        /// <summary>
+        /// 造成伤害
+        /// </summary>
+        /// <param name="damageInfo"></param>
         public void TakeDamage(DamageInfo damageInfo)
         {
             ActOnHurt?.Invoke(damageInfo);
@@ -88,8 +114,40 @@ namespace LWShootDemo.Entities
 
             if (curHp <= 0)
             {
-                Kill();
+                Death();
             }
+        }
+
+        /// <summary>
+        /// 应用击退
+        /// </summary>
+        /// <param name="duraction"></param>
+        /// <param name="force"></param>
+        public void ApplyKnowBack(float duraction, Vector2 force)
+        {
+            if (knockBackHandle != null)
+            {
+                StopCoroutine(knockBackHandle);
+            }
+
+            knockBackHandle = StartCoroutine(IApplyKnowBack(duraction, force));
+        }
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        public void Init()
+        {
+            canMove = true;
+            curHp   = maxHp;
+        }
+
+        /// <summary>
+        /// 重置
+        /// </summary>
+        public void Reset()
+        {
+            isDead = false;
         }
 
         #endregion
@@ -99,18 +157,6 @@ namespace LWShootDemo.Entities
         #endregion
 
         #region PRIVATE METHODS
-
-        public void Init()
-        {
-            canMove = true;
-            curHp   = maxHp;
-        }
-
-        public void Reset()
-        {
-            // ActOnDeath = null;
-            // ActOnHurt  = null;
-        }
 
         private IEnumerator IApplyKnowBack(float duraction, Vector2 force)
         {
@@ -122,20 +168,11 @@ namespace LWShootDemo.Entities
             canMove       = true;
         }
 
-        public void ApplyKnowBack(float duraction, Vector2 force)
+
+        // 死亡
+        private void Death()
         {
-            if (knockBackHandle != null)
-            {
-                StopCoroutine(knockBackHandle);
-            }
-
-            knockBackHandle = StartCoroutine(IApplyKnowBack(duraction, force));
-        }
-
-
-        // 击杀
-        private void Kill()
-        {
+            isDead = true;
             ActOnDeath?.Invoke();
         }
 

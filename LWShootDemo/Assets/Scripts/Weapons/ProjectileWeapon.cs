@@ -10,7 +10,6 @@
 using DG.Tweening;
 using LWShootDemo.Common;
 using LWShootDemo.Entities;
-using LWShootDemo.Managers;
 using LWShootDemo.Sound;
 using UnityEngine;
 

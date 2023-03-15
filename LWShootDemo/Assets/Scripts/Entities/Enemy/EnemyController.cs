@@ -7,19 +7,17 @@
  */
 
 #pragma warning disable 0649
-using System;
 using System.Collections;
 using Events;
 using LWShootDemo.Difficulty;
 using LWShootDemo.Explosions;
-using LWShootDemo.Managers;
 using LWShootDemo.Pool;
 using LWShootDemo.Popups;
 using LWShootDemo.Sound;
 using UnityEngine;
 using Utilities;
 
-namespace LWShootDemo.Entities
+namespace LWShootDemo.Entities.Enemy
 {
     /// <summary>
     /// 敌人控制器
@@ -32,21 +30,26 @@ namespace LWShootDemo.Entities
         [SerializeField]
         private Entity entity;
 
+        // 正常时候的材质
         [SerializeField]
         private Material matNormal;
 
+        // 闪烁时候的材质
         [SerializeField]
         private Material matFlash;
 
+        // 被击退时的力大小
         [SerializeField]
         private float knockBackForce = 1;
 
         [SerializeField]
         private SpriteRenderer spModel;
 
+        // 移动速度
         [SerializeField]
         private float moveSpeed;
 
+        // 是否正在闪烁
         private bool flashing;
 
         // * local
@@ -61,15 +64,12 @@ namespace LWShootDemo.Entities
 
         private SimpleUnitySpawnPool pool;
 
-        private bool isDead;
-
         #endregion
 
         #region PROPERTIES
 
-        public bool IsDead => isDead;
-
-        public SimpleUnitySpawnPool Pool => pool;
+        public SimpleUnitySpawnPool Pool   => pool;
+        public bool                 IsDead => entity.IsDead;
 
         #endregion
 
@@ -124,8 +124,6 @@ namespace LWShootDemo.Entities
         {
             base.OnSpawn();
 
-            isDead = false;
-
             entity.Init();
         }
 
@@ -136,15 +134,16 @@ namespace LWShootDemo.Entities
             entity.Reset();
         }
 
+        // 死亡
         private void OnDeath()
         {
-            isDead = true;
             explosionManager.CreateExplosion(transform.position);
             CreateDeathEffect();
             Debug.Log(gameObject.name);
             EnemyDeathEvent.Trigger();
         }
 
+        // 死亡效果
         private void CreateDeathEffect()
         {
             var deathEffect = deathEffectPool.Get();
@@ -155,23 +154,30 @@ namespace LWShootDemo.Entities
             deathEffect.GetComponent<EnemyDeathEffect>().Init();
         }
 
+        // 受击
         private void OnHurt(DamageInfo damageInfo)
         {
+            // 被击退
             entity.ApplyKnowBack(0.2f, damageInfo.Direction * knockBackForce);
 
-
+            // 暴击时弹出暴击字样
             popupManager.Create(transform.position, damageInfo.IsCrit? PopupType.CriticalDamage : PopupType.NormalDamage);
+
+            // 音效
             soundManager.PlaySfx(SoundType.Hit);
+
+            // 时间停止
             timeStopManager.StopTime(0f, 0.02f);
 
+            // 闪烁
             if (flashCoroutine != null)
             {
                 StopCoroutine(flashCoroutine);
             }
-
             flashCoroutine = StartCoroutine(IFlash(0.05f));
         }
 
+        // 看向Player
         private void LookAtTarget()
         {
             Transform target         = player.transform;
@@ -186,6 +192,7 @@ namespace LWShootDemo.Entities
             entity.TryRotate(lookAngle);
         }
 
+        // 追踪Player
         private void ChaseTarget()
         {
             var direction = player.position - transform.position;
@@ -194,6 +201,7 @@ namespace LWShootDemo.Entities
 
         private void OnCollisionEnter2D(Collision2D other)
         {
+            // 撞到Player造成一点伤害
             var entity = other.collider.GetComponent<Entity>();
             if (entity!=null && entity.Side == Side.Player)
             {
@@ -211,7 +219,6 @@ namespace LWShootDemo.Entities
             yield return new WaitForSecondsRealtime(duration);
             spModel.material = matNormal;
             flashing         = false;
-
         }
 
         #endregion
