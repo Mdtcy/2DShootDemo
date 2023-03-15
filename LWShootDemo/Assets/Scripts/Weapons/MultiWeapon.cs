@@ -3,7 +3,7 @@
  * @email [ tktetb@163.com ]
  * @create date  2023年3月14日
  * @modify date 2023年3月14日
- * @desc [任务组UI]
+ * @desc [多武器]
  */
 
 #pragma warning disable 0649
@@ -13,6 +13,9 @@ using UnityEngine;
 
 namespace LWShootDemo.Weapons
 {
+    /// <summary>
+    /// 多武器
+    /// </summary>
     public class MultiWeapon : Weapon
     {
 

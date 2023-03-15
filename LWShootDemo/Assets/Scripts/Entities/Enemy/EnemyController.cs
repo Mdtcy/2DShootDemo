@@ -10,11 +10,11 @@
 using System.Collections;
 using Events;
 using LWShootDemo.Difficulty;
+using LWShootDemo.Enemy;
 using LWShootDemo.Explosions;
 using LWShootDemo.Pool;
 using LWShootDemo.Sound;
 using UnityEngine;
-using Utilities;
 
 namespace LWShootDemo.Entities.Enemy
 {
@@ -47,9 +47,6 @@ namespace LWShootDemo.Entities.Enemy
         // 移动速度
         [SerializeField]
         private float moveSpeed;
-
-        // 是否正在闪烁
-        private bool flashing;
 
         // * local
         private Transform            player;
@@ -211,12 +208,10 @@ namespace LWShootDemo.Entities.Enemy
         // 闪光
         private IEnumerator IFlash(float duration)
         {
-            flashing         = true;
             spModel.material = matFlash;
 
             yield return new WaitForSecondsRealtime(duration);
             spModel.material = matNormal;
-            flashing         = false;
         }
 
         #endregion

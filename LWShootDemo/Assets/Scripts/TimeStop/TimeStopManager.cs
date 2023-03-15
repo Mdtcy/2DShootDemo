@@ -3,19 +3,23 @@
  * @email [ tktetb@163.com ]
  * @create date  2023年3月11日
  * @modify date 2023年3月11日
- * @desc [任务组UI]
+ * @desc [时停管理器]
  */
 
 #pragma warning disable 0649
 using System.Collections;
 using UnityEngine;
 
-namespace LWShootDemo
+namespace LWShootDemo.TimeStop
 {
+    /// <summary>
+    /// 时停管理器
+    /// </summary>
     public class TimeStopManager : MonoBehaviour
     {
         #region FIELDS
 
+        // 是否正在时停
         private bool stoping;
 
         #endregion
@@ -26,6 +30,11 @@ namespace LWShootDemo
 
         #region PUBLIC METHODS
 
+        /// <summary>
+        /// 更改TimeScale一段时间
+        /// </summary>
+        /// <param name="timeScale"></param>
+        /// <param name="delay"></param>
         public void StopTime(float timeScale, float delay)
         {
             if (stoping)

@@ -16,7 +16,6 @@ namespace LWShootDemo.Common
 	/// </summary>
 	public class CameraController : MonoBehaviour
 	{
-
 		#region FIELDS
 
 		[SerializeField]

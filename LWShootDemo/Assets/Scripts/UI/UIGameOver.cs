@@ -3,7 +3,7 @@
  * @email [ tktetb@163.com ]
  * @create date  2023年3月13日
  * @modify date 2023年3月13日
- * @desc []
+ * @desc [游戏结束UI]
  */
 
 #pragma warning disable 0649
@@ -14,6 +14,9 @@ using UnityEngine.UI;
 
 namespace LWShootDemo.UI
 {
+    /// <summary>
+    /// 游戏结束UI
+    /// </summary>
     public class UIGameOver : MonoBehaviour
     {
         #region FIELDS

@@ -3,16 +3,18 @@
  * @email [ tktetb@163.com ]
  * @create date  2023年3月14日
  * @modify date 2023年3月14日
- * @desc []
+ * @desc [敌人死亡特效]
  */
 
 #pragma warning disable 0649
-using LWShootDemo;
 using LWShootDemo.Pool;
 using UnityEngine;
 
-namespace Utilities
+namespace LWShootDemo.Enemy
 {
+    /// <summary>
+    /// 敌人死亡特效
+    /// </summary>
     public class EnemyDeathEffect : PoolObject
     {
         #region FIELDS

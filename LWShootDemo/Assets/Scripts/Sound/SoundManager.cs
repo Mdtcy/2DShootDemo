@@ -20,9 +20,11 @@ namespace LWShootDemo.Sound
     {
         #region FIELDS
 
+        // 用于播放音乐 loop
         [SerializeField]
         private AudioSource musicAudioSource;
 
+        // 用于播放音效
         [SerializeField]
         private AudioSource sfxAudioSource;
 

@@ -10,6 +10,7 @@
 using DG.Tweening;
 using Events;
 using LWShootDemo.Entities;
+using LWShootDemo.TimeStop;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -65,6 +66,7 @@ namespace LWShootDemo.Weapons
 
         private void OnEnemyDeath()
         {
+            // 缩放特效
             killCount++;
             sliderKillCount.value = killCount;
             sequence.Kill();

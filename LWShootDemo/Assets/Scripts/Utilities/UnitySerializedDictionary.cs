@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 用于序列化的字典
+/// </summary>
+/// <typeparam name="TKey"></typeparam>
+/// <typeparam name="TValue"></typeparam>
 public abstract class UnitySerializedDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
 {
     [SerializeField, HideInInspector]
