@@ -14,7 +14,6 @@ using LWShootDemo.Common;
 using LWShootDemo.Difficulty;
 using LWShootDemo.Explosions;
 using LWShootDemo.Pool;
-using LWShootDemo.Popups;
 using LWShootDemo.Sound;
 using LWShootDemo.UI;
 using LWShootDemo.Weapons;
@@ -22,7 +21,6 @@ using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 namespace LWShootDemo
 {
@@ -53,7 +51,6 @@ namespace LWShootDemo
         public SoundManager       SoundManager;
         public CameraController   CameraController;
         public TimeStopManager    TimeStopManager;
-        public PopupManager       PopupManager;
         public ExplosionManager   explosionManager;
         public DifficultyManager  DifficultyManager;
         public ProjectileManager  ProjectileManager;

@@ -12,7 +12,6 @@ using Events;
 using LWShootDemo.Difficulty;
 using LWShootDemo.Explosions;
 using LWShootDemo.Pool;
-using LWShootDemo.Popups;
 using LWShootDemo.Sound;
 using UnityEngine;
 using Utilities;
@@ -58,7 +57,6 @@ namespace LWShootDemo.Entities.Enemy
         private Coroutine            flashCoroutine;
         private TimeStopManager      timeStopManager;
         private ExplosionManager     explosionManager;
-        private PopupManager         popupManager;
         private SimpleUnitySpawnPool deathEffectPool;
         private DifficultyManager    difficultyManager;
 
@@ -106,7 +104,6 @@ namespace LWShootDemo.Entities.Enemy
             soundManager     = GameManager.Instance.SoundManager;
             timeStopManager  = GameManager.Instance.TimeStopManager;
             explosionManager = GameManager.Instance.explosionManager;
-            popupManager     = GameManager.Instance.PopupManager;
             deathEffectPool  = GameManager.Instance.EnemyDeathEffectPool;
             difficultyManager = GameManager.Instance.DifficultyManager;
 
@@ -160,8 +157,9 @@ namespace LWShootDemo.Entities.Enemy
             // 被击退
             entity.ApplyKnowBack(0.2f, damageInfo.Direction * knockBackForce);
 
-            // 暴击时弹出暴击字样
-            popupManager.Create(transform.position, damageInfo.IsCrit? PopupType.CriticalDamage : PopupType.NormalDamage);
+            // todo 效果不明显 删除 替换为其他效果
+            // // 暴击时弹出暴击字样
+            // popupManager.Create(transform.position, damageInfo.IsCrit? PopupType.CriticalDamage : PopupType.NormalDamage);
 
             // 音效
             soundManager.PlaySfx(SoundType.Hit);
