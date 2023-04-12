@@ -15,6 +15,7 @@ using LWShootDemo.Difficulty;
 using LWShootDemo.Explosions;
 using LWShootDemo.Pool;
 using LWShootDemo.Sound;
+using LWShootDemo.TimeStop;
 using LWShootDemo.UI;
 using LWShootDemo.Weapons;
 using Sirenix.OdinInspector;

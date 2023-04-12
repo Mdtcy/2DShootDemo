@@ -9,6 +9,7 @@
 #pragma warning disable 0649
 using Events;
 using LWShootDemo.Sound;
+using LWShootDemo.TimeStop;
 using LWShootDemo.Weapons;
 using Sirenix.OdinInspector;
 using UnityEngine;

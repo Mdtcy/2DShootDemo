@@ -14,6 +14,7 @@ using LWShootDemo.Enemy;
 using LWShootDemo.Explosions;
 using LWShootDemo.Pool;
 using LWShootDemo.Sound;
+using LWShootDemo.TimeStop;
 using UnityEngine;
 
 namespace LWShootDemo.Entities.Enemy
