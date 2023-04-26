@@ -1,6 +1,4 @@
-﻿using NPBehave_Core;
-
-namespace NPBehave
+﻿namespace NPBehave
 {
     public class Random : Decorator
     {
@@ -13,7 +11,7 @@ namespace NPBehave
 
         protected override void DoStart()
         {
-            if (Mathf.Random() <= this.probability)
+            if (UnityEngine.Random.value <= this.probability)
             {
                 Decoratee.Start();
             }
@@ -23,9 +21,9 @@ namespace NPBehave
             }
         }
 
-        override protected void DoCancel()
+        override protected void DoStop()
         {
-            Decoratee.CancelWithoutReturnResult();
+            Decoratee.Stop();
         }
 
         protected override void DoChildStopped(Node child, bool result)

@@ -1,13 +1,15 @@
-﻿using System.Diagnostics;
+﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.Assertions;
 
 namespace NPBehave
 {
-    public abstract class ObservingDecorator: Decorator
+    public abstract class ObservingDecorator : Decorator
     {
         protected Stops stopsOnChange;
         private bool isObserving;
 
-        public ObservingDecorator(string name, Stops stopsOnChange, Node decoratee): base(name, decoratee)
+        public ObservingDecorator(string name, Stops stopsOnChange, Node decoratee) : base(name, decoratee)
         {
             this.stopsOnChange = stopsOnChange;
             this.isObserving = false;
@@ -34,14 +36,14 @@ namespace NPBehave
             }
         }
 
-        override protected void DoCancel()
+        override protected void DoStop()
         {
-            Decoratee.CancelWithoutReturnResult();
+            Decoratee.Stop();
         }
 
         protected override void DoChildStopped(Node child, bool result)
         {
-            Debug.Assert(this.CurrentState != State.INACTIVE);
+            Assert.AreNotEqual(this.CurrentState, State.INACTIVE);
             if (stopsOnChange == Stops.NONE || stopsOnChange == Stops.SELF)
             {
                 if (isObserving)
@@ -50,7 +52,6 @@ namespace NPBehave
                     StopObserving();
                 }
             }
-
             Stopped(result);
         }
 
@@ -70,13 +71,12 @@ namespace NPBehave
                 if (stopsOnChange == Stops.SELF || stopsOnChange == Stops.BOTH || stopsOnChange == Stops.IMMEDIATE_RESTART)
                 {
                     // Debug.Log( this.key + " stopped self ");
-                    this.CancelWithoutReturnResult();
+                    this.Stop();
                 }
             }
             else if (!IsActive && IsConditionMet())
             {
-                if (stopsOnChange == Stops.LOWER_PRIORITY || stopsOnChange == Stops.BOTH || stopsOnChange == Stops.IMMEDIATE_RESTART ||
-                    stopsOnChange == Stops.LOWER_PRIORITY_IMMEDIATE_RESTART)
+                if (stopsOnChange == Stops.LOWER_PRIORITY || stopsOnChange == Stops.BOTH || stopsOnChange == Stops.IMMEDIATE_RESTART || stopsOnChange == Stops.LOWER_PRIORITY_IMMEDIATE_RESTART)
                 {
                     // Debug.Log( this.key + " stopped other ");
                     Container parentNode = this.ParentNode;
@@ -86,13 +86,11 @@ namespace NPBehave
                         childNode = parentNode;
                         parentNode = parentNode.ParentNode;
                     }
-
-                    Debug.Assert(parentNode != null, $"NTBtrStops is only valid when attached to a parent composite  PATH: {GetPath()}");
-                    Debug.Assert(childNode != null);
+                    Assert.IsNotNull(parentNode, "NTBtrStops is only valid when attached to a parent composite");
+                    Assert.IsNotNull(childNode);
                     if (parentNode is Parallel)
                     {
-                        Debug.Assert(stopsOnChange == Stops.IMMEDIATE_RESTART,
-                            $"On Parallel Nodes all children have the same priority, thus Stops.LOWER_PRIORITY or Stops.BOTH are unsupported in this context!  PATH: {GetPath()}");
+                        Assert.IsTrue(stopsOnChange == Stops.IMMEDIATE_RESTART, "On Parallel Nodes all children have the same priority, thus Stops.LOWER_PRIORITY or Stops.BOTH are unsupported in this context!");
                     }
 
                     if (stopsOnChange == Stops.IMMEDIATE_RESTART || stopsOnChange == Stops.LOWER_PRIORITY_IMMEDIATE_RESTART)
@@ -104,8 +102,7 @@ namespace NPBehave
                         }
                     }
 
-                    ((Composite) parentNode).StopLowerPriorityChildrenForChild(childNode,
-                        stopsOnChange == Stops.IMMEDIATE_RESTART || stopsOnChange == Stops.LOWER_PRIORITY_IMMEDIATE_RESTART);
+                    ((Composite)parentNode).StopLowerPriorityChildrenForChild(childNode, stopsOnChange == Stops.IMMEDIATE_RESTART || stopsOnChange == Stops.LOWER_PRIORITY_IMMEDIATE_RESTART);
                 }
             }
         }
@@ -115,5 +112,6 @@ namespace NPBehave
         protected abstract void StopObserving();
 
         protected abstract bool IsConditionMet();
+
     }
 }

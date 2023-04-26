@@ -1,5 +1,6 @@
-﻿
-using System.Diagnostics;
+﻿using UnityEngine;
+using UnityEngine.Assertions;
+using System.Collections;
 
 namespace NPBehave
 {
@@ -16,7 +17,7 @@ namespace NPBehave
         {
             foreach (Node child in Children)
             {
-                Debug.Assert(child.CurrentState==State.INACTIVE);
+                Assert.AreEqual(child.CurrentState, State.INACTIVE);
             }
 
             currentIndex = -1;
@@ -24,9 +25,9 @@ namespace NPBehave
             ProcessChildren();
         }
 
-        protected override void DoCancel()
+        protected override void DoStop()
         {
-            Children[currentIndex].CancelWithoutReturnResult();
+            Children[currentIndex].Stop();
         }
 
         protected override void DoChildStopped(Node child, bool result)
@@ -84,7 +85,7 @@ namespace NPBehave
                     {
                         currentIndex = Children.Length;
                     }
-                    currentChild.CancelWithoutReturnResult();
+                    currentChild.Stop();
                     break;
                 }
             }

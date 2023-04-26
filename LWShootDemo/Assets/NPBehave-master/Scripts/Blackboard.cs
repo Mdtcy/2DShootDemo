@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Numerics;
-using ET;
-using Vector3 = UnityEngine.Vector3;
+﻿using UnityEngine;
+using System.Collections.Generic;
 
 namespace NPBehave
 {
@@ -13,121 +11,102 @@ namespace NPBehave
             REMOVE,
             CHANGE
         }
-
         private struct Notification
         {
-            public string Key;
-            public Type Type;
-            public ANP_BBValue Value;
-
-            public Notification(string key, Type type, ANP_BBValue value)
+            public string key;
+            public Type type;
+            public object value;
+            public Notification(string key, Type type, object value)
             {
-                this.Key = key;
-                this.Type = type;
-                this.Value = value;
+                this.key = key;
+                this.type = type;
+                this.value = value;
             }
         }
 
-        private Clock m_Clock;
-        private Dictionary<string, ANP_BBValue> m_Data = new Dictionary<string, ANP_BBValue>();
+        private Clock clock;
+        private Dictionary<string, object> data = new Dictionary<string, object>();
+        private Dictionary<string, List<System.Action<Type, object>>> observers = new Dictionary<string, List<System.Action<Type, object>>>();
+        private bool isNotifiyng = false;
+        private Dictionary<string, List<System.Action<Type, object>>> addObservers = new Dictionary<string, List<System.Action<Type, object>>>();
+        private Dictionary<string, List<System.Action<Type, object>>> removeObservers = new Dictionary<string, List<System.Action<Type, object>>>();
+        private List<Notification> notifications = new List<Notification>();
+        private List<Notification> notificationsDispatch = new List<Notification>();
+        private Blackboard parentBlackboard;
+        private HashSet<Blackboard> children = new HashSet<Blackboard>();
 
-        private Dictionary<string, List<System.Action<Type, ANP_BBValue>>> m_Observers =
-            new Dictionary<string, List<System.Action<Type, ANP_BBValue>>>();
-
-        private bool m_IsNotifiyng = false;
-
-        private Dictionary<string, List<System.Action<Type, ANP_BBValue>>> m_AddObservers =
-            new Dictionary<string, List<System.Action<Type, ANP_BBValue>>>();
-
-        private Dictionary<string, List<System.Action<Type, ANP_BBValue>>> m_RemoveObservers =
-            new Dictionary<string, List<System.Action<Type, ANP_BBValue>>>();
-
-        private List<Notification> m_Notifications = new List<Notification>();
-        private List<Notification> m_NotificationsDispatch = new List<Notification>();
-        private Blackboard m_ParentBlackboard;
-        private HashSet<Blackboard> m_Children = new HashSet<Blackboard>();
-
-        private System.Action NotifiyObserversActionCache;
-        private long TimerId;
-
-        public Blackboard(Blackboard mParent, Clock mClock)
+        public Blackboard(Blackboard parent, Clock clock)
         {
-            this.m_Clock = mClock;
-            this.m_ParentBlackboard = mParent;
-            NotifiyObserversActionCache = NotifiyObservers;
+            this.clock = clock;
+            this.parentBlackboard = parent;
         }
-
-        public Blackboard(Clock mClock)
+        public Blackboard(Clock clock)
         {
-            this.m_ParentBlackboard = null;
-            this.m_Clock = mClock;
-            NotifiyObserversActionCache = NotifiyObservers;
+            this.parentBlackboard = null;
+            this.clock = clock;
         }
 
         public void Enable()
         {
-            if (this.m_ParentBlackboard != null)
+            if (this.parentBlackboard != null)
             {
-                this.m_ParentBlackboard.m_Children.Add(this);
+                this.parentBlackboard.children.Add(this);
             }
-        }
-
-        /// <summary>
-        /// 获取所有键值对,注意，请不要通过这个API获取的data进行黑板数据的修改，否则不会正常触发相关黑板监控行为
-        /// </summary>
-        /// <returns></returns>
-        public Dictionary<string, ANP_BBValue> GetDatas()
-        {
-            return this.m_Data;
         }
 
         public void Disable()
         {
-            if (this.m_ParentBlackboard != null)
+            if (this.parentBlackboard != null)
             {
-                this.m_ParentBlackboard.m_Children.Remove(this);
+                this.parentBlackboard.children.Remove(this);
             }
-
-            if (this.m_Clock != null)
+            if (this.clock != null)
             {
-                this.m_Clock.RemoveTimer(TimerId);
+                this.clock.RemoveTimer(this.NotifiyObservers);
             }
         }
 
-        /// <summary>
-        /// 设置黑板值，
-        /// 注意此处的T需要是被已注册的黑板类型包裹的，例如这里的T为int，那么必须存在一个例如NP_BBValue_Int
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="addIfNotExit">如果不存在这个键值的话，就添加一个</param>
-        public void Set<T>(string key, T value, bool isLocalPlayer = true, bool addIfNotExit = false)
+        public object this[string key]
         {
-            if (this.m_ParentBlackboard != null && this.m_ParentBlackboard.Isset(key))
+            get
             {
-                this.m_ParentBlackboard.Set(key, value);
+                return Get(key);
+            }
+            set
+            {
+                Set(key, value);
+            }
+        }
+
+        public void Set(string key)
+        {
+            if (!Isset(key))
+            {
+                Set(key, null);
+            }
+        }
+
+        public void Set(string key, object value)
+        {
+            if (this.parentBlackboard != null && this.parentBlackboard.Isset(key))
+            {
+                this.parentBlackboard.Set(key, value);
             }
             else
             {
-                if (!this.m_Data.ContainsKey(key))
+                if (!this.data.ContainsKey(key))
                 {
-                    if (!addIfNotExit) return;
-                    ANP_BBValue newBBValue = NP_BBValueHelper.AutoCreateNPBBValueFromTValue(value);
-                    this.m_Data.Add(key, newBBValue);
-                    this.m_Notifications.Add(new Notification(key, Type.ADD, newBBValue));
-                    this.m_Clock.AddTimer((uint)(isLocalPlayer ? 1 : 0), NotifiyObserversActionCache);
+                    this.data[key] = value;
+                    this.notifications.Add(new Notification(key, Type.ADD, value));
+                    this.clock.AddTimer(0f, 0, NotifiyObservers);
                 }
                 else
                 {
-                    NP_BBValueBase<T> targetBBValue = this.m_Data[key] as NP_BBValueBase<T>;
-                    if ((targetBBValue == null && value != null) ||
-                        (targetBBValue != null &&
-                         (targetBBValue.GetValue() == null || !targetBBValue.GetValue().Equals(value))))
+                    if ((this.data[key] == null && value != null) || (this.data[key] != null && !this.data[key].Equals(value)))
                     {
-                        targetBBValue.SetValueFrom(value);
-                        this.m_Notifications.Add(new Notification(key, Type.CHANGE, targetBBValue));
-                        TimerId = this.m_Clock.AddTimer((uint)(isLocalPlayer ? 1 : 0), NotifiyObserversActionCache);
+                        this.data[key] = value;
+                        this.notifications.Add(new Notification(key, Type.CHANGE, value));
+                        this.clock.AddTimer(0f, 0, NotifiyObservers);
                     }
                 }
             }
@@ -135,43 +114,62 @@ namespace NPBehave
 
         public void Unset(string key)
         {
-            if (this.m_Data.ContainsKey(key))
+            if (this.data.ContainsKey(key))
             {
-                this.m_Data.Remove(key);
-                this.m_Notifications.Add(new Notification(key, Type.REMOVE, null));
-                TimerId = this.m_Clock.AddTimer(1, NotifiyObserversActionCache);
+                this.data.Remove(key);
+                this.notifications.Add(new Notification(key, Type.REMOVE, null));
+                this.clock.AddTimer(0f, 0, NotifiyObservers);
             }
+        }
+
+        [System.Obsolete("Use Get<T> instead")]
+        public bool GetBool(string key)
+        {
+            return Get<bool>(key);
+        }
+
+        [System.Obsolete("Use Get<T> instead - WARNING: return value for non-existant key will be 0.0f instead of float.NaN")]
+        public float GetFloat(string key)
+        {
+            object result = Get(key);
+            if (result == null)
+            {
+                return float.NaN;
+            }
+            return (float)Get(key);
+        }
+
+        [System.Obsolete("Use Get<T> instead")]
+        public Vector3 GetVector3(string key)
+        {
+            return Get<Vector3>(key);
+        }
+
+        [System.Obsolete("Use Get<T> instead")]
+        public int GetInt(string key)
+        {
+            return Get<int>(key);
         }
 
         public T Get<T>(string key)
         {
-            ANP_BBValue result = Get(key);
+            object result = Get(key);
             if (result == null)
             {
-                return default;
+                return default(T);
             }
-
-            NP_BBValueBase<T> finalResult = result as NP_BBValueBase<T>;
-            if (finalResult == null)
-            {
-                Log.Error($"黑板获取值转型失败，Key：{key}，Type：{typeof(NP_BBValueBase<T>)}");
-                return default;
-            }
-            else
-            {
-                return finalResult.GetValue();
-            }
+            return (T)result;
         }
 
-        public ANP_BBValue Get(string key)
+        public object Get(string key)
         {
-            if (this.m_Data.ContainsKey(key))
+            if (this.data.ContainsKey(key))
             {
-                return this.m_Data[key];
+                return data[key];
             }
-            else if (this.m_ParentBlackboard != null)
+            else if (this.parentBlackboard != null)
             {
-                return this.m_ParentBlackboard.Get(key);
+                return this.parentBlackboard.Get(key);
             }
             else
             {
@@ -181,14 +179,13 @@ namespace NPBehave
 
         public bool Isset(string key)
         {
-            return this.m_Data.ContainsKey(key) ||
-                   (this.m_ParentBlackboard != null && this.m_ParentBlackboard.Isset(key));
+            return this.data.ContainsKey(key) || (this.parentBlackboard != null && this.parentBlackboard.Isset(key));
         }
 
-        public void AddObserver(string key, System.Action<Type, ANP_BBValue> observer)
+        public void AddObserver(string key, System.Action<Type, object> observer)
         {
-            List<System.Action<Type, ANP_BBValue>> observers = GetObserverList(this.m_Observers, key);
-            if (!this.m_IsNotifiyng)
+            List<System.Action<Type, object>> observers = GetObserverList(this.observers, key);
+            if (!isNotifiyng)
             {
                 if (!observers.Contains(observer))
                 {
@@ -199,14 +196,14 @@ namespace NPBehave
             {
                 if (!observers.Contains(observer))
                 {
-                    List<System.Action<Type, ANP_BBValue>> addObservers = GetObserverList(this.m_AddObservers, key);
+                    List<System.Action<Type, object>> addObservers = GetObserverList(this.addObservers, key);
                     if (!addObservers.Contains(observer))
                     {
                         addObservers.Add(observer);
                     }
                 }
 
-                List<System.Action<Type, ANP_BBValue>> removeObservers = GetObserverList(this.m_RemoveObservers, key);
+                List<System.Action<Type, object>> removeObservers = GetObserverList(this.removeObservers, key);
                 if (removeObservers.Contains(observer))
                 {
                     removeObservers.Remove(observer);
@@ -214,10 +211,10 @@ namespace NPBehave
             }
         }
 
-        public void RemoveObserver(string key, System.Action<Type, ANP_BBValue> observer)
+        public void RemoveObserver(string key, System.Action<Type, object> observer)
         {
-            List<System.Action<Type, ANP_BBValue>> observers = GetObserverList(this.m_Observers, key);
-            if (!this.m_IsNotifiyng)
+            List<System.Action<Type, object>> observers = GetObserverList(this.observers, key);
+            if (!isNotifiyng)
             {
                 if (observers.Contains(observer))
                 {
@@ -226,7 +223,7 @@ namespace NPBehave
             }
             else
             {
-                List<System.Action<Type, ANP_BBValue>> removeObservers = GetObserverList(this.m_RemoveObservers, key);
+                List<System.Action<Type, object>> removeObservers = GetObserverList(this.removeObservers, key);
                 if (!removeObservers.Contains(observer))
                 {
                     if (observers.Contains(observer))
@@ -235,7 +232,7 @@ namespace NPBehave
                     }
                 }
 
-                List<System.Action<Type, ANP_BBValue>> addObservers = GetObserverList(this.m_AddObservers, key);
+                List<System.Action<Type, object>> addObservers = GetObserverList(this.addObservers, key);
                 if (addObservers.Contains(observer))
                 {
                     addObservers.Remove(observer);
@@ -243,78 +240,105 @@ namespace NPBehave
             }
         }
 
+
+#if UNITY_EDITOR
+        public List<string> Keys
+        {
+            get
+            {
+                if (this.parentBlackboard != null)
+                {
+                    List<string> keys = this.parentBlackboard.Keys;
+                    keys.AddRange(data.Keys);
+                    return keys;
+                }
+                else
+                {
+                    return new List<string>(data.Keys);
+                }
+            }
+        }
+
+        public int NumObservers
+        {
+            get
+            {
+                int count = 0;
+                foreach (string key in observers.Keys)
+                {
+                    count += observers[key].Count;
+                }
+                return count;
+            }
+        }
+#endif
+
+
         private void NotifiyObservers()
         {
-            if (this.m_Notifications.Count == 0)
+            if (notifications.Count == 0)
             {
                 return;
             }
 
-            this.m_NotificationsDispatch.Clear();
-            this.m_NotificationsDispatch.AddRange(this.m_Notifications);
-            foreach (Blackboard child in this.m_Children)
+            notificationsDispatch.Clear();
+            notificationsDispatch.AddRange(notifications);
+            foreach (Blackboard child in children)
             {
-                child.m_Notifications.AddRange(this.m_Notifications);
-                child.m_Clock.AddTimer(1, child.NotifiyObservers);
+                child.notifications.AddRange(notifications);
+                child.clock.AddTimer(0f, 0, child.NotifiyObservers);
             }
+            notifications.Clear();
 
-            this.m_Notifications.Clear();
-
-            this.m_IsNotifiyng = true;
-            foreach (Notification notification in this.m_NotificationsDispatch)
+            isNotifiyng = true;
+            foreach (Notification notification in notificationsDispatch)
             {
-                if (!this.m_Observers.ContainsKey(notification.Key))
+                if (!this.observers.ContainsKey(notification.key))
                 {
                     //                Debug.Log("1 do not notify for key:" + notification.key + " value: " + notification.value);
                     continue;
                 }
 
-                List<System.Action<Type, ANP_BBValue>> observers = GetObserverList(this.m_Observers, notification.Key);
-                foreach (System.Action<Type, ANP_BBValue> observer in observers)
+                List<System.Action<Type, object>> observers = GetObserverList(this.observers, notification.key);
+                foreach (System.Action<Type, object> observer in observers)
                 {
-                    if (this.m_RemoveObservers.ContainsKey(notification.Key) &&
-                        this.m_RemoveObservers[notification.Key].Contains(observer))
+                    if (this.removeObservers.ContainsKey(notification.key) && this.removeObservers[notification.key].Contains(observer))
                     {
                         continue;
                     }
-
-                    observer(notification.Type, notification.Value);
+                    observer(notification.type, notification.value);
                 }
             }
 
-            foreach (string key in this.m_AddObservers.Keys)
+            foreach (string key in this.addObservers.Keys)
             {
-                GetObserverList(this.m_Observers, key).AddRange(this.m_AddObservers[key]);
+                GetObserverList(this.observers, key).AddRange(this.addObservers[key]);
             }
-
-            foreach (string key in this.m_RemoveObservers.Keys)
+            foreach (string key in this.removeObservers.Keys)
             {
-                foreach (System.Action<Type, ANP_BBValue> action in this.m_RemoveObservers[key])
+                foreach (System.Action<Type, object> action in removeObservers[key])
                 {
-                    GetObserverList(this.m_Observers, key).Remove(action);
+                    GetObserverList(this.observers, key).Remove(action);
                 }
             }
+            this.addObservers.Clear();
+            this.removeObservers.Clear();
 
-            this.m_AddObservers.Clear();
-            this.m_RemoveObservers.Clear();
-
-            this.m_IsNotifiyng = false;
+            isNotifiyng = false;
         }
 
-        private List<System.Action<Type, ANP_BBValue>> GetObserverList(
-            Dictionary<string, List<System.Action<Type, ANP_BBValue>>> target, string key)
+        private List<System.Action<Type, object>> GetObserverList(Dictionary<string, List<System.Action<Type, object>>> target, string key)
         {
-            List<System.Action<Type, ANP_BBValue>> observers;
+            List<System.Action<Type, object>> observers;
             if (target.ContainsKey(key))
             {
                 observers = target[key];
             }
             else
             {
-                observers = new List<System.Action<Type, ANP_BBValue>>();
+                observers = new List<System.Action<Type, object>>();
                 target[key] = observers;
             }
-
             return observers;
         }
     }

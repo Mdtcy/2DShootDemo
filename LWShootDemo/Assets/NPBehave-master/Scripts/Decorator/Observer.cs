@@ -1,3 +1,5 @@
+using System;
+
 namespace NPBehave
 {
     public class Observer : Decorator
@@ -17,9 +19,9 @@ namespace NPBehave
             Decoratee.Start();
         }
 
-        override protected void DoCancel()
+        override protected void DoStop()
         {
-            Decoratee.CancelWithoutReturnResult();
+            Decoratee.Stop();
         }
 
         protected override void DoChildStopped(Node child, bool result)

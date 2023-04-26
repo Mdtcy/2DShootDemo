@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using UnityEngine.Assertions;
 
 namespace NPBehave
 {
@@ -11,7 +11,7 @@ namespace NPBehave
             STOP_REQUESTED,
         }
 
-        public State currentState = State.INACTIVE;
+        protected State currentState = State.INACTIVE;
 
         public State CurrentState
         {
@@ -20,47 +20,71 @@ namespace NPBehave
 
         public Root RootNode;
 
-        public Container parentNode;
-
+        private Container parentNode;
         public Container ParentNode
         {
-            get { return parentNode; }
+            get
+            {
+                return parentNode;
+            }
         }
 
-        public string label;
+        private string label;
 
         public string Label
         {
-            get { return label; }
-            set { label = value; }
+            get
+            {
+                return label;
+            }
+            set
+            {
+                label = value;
+            }
         }
 
-        public string name;
+        private string name;
 
         public string Name
         {
-            get { return name; }
+            get
+            {
+                return name;
+            }
         }
 
         public virtual Blackboard Blackboard
         {
-            get { return RootNode.Blackboard; }
+            get
+            {
+                return RootNode.Blackboard;
+            }
         }
 
         public virtual Clock Clock
         {
-            get { return RootNode.Clock; }
+            get
+            {
+                return RootNode.Clock;
+            }
         }
 
         public bool IsStopRequested
         {
-            get { return this.currentState == State.STOP_REQUESTED; }
+            get
+            {
+                return this.currentState == State.STOP_REQUESTED;
+            }
         }
 
         public bool IsActive
         {
-            get { return this.currentState == State.ACTIVE; }
+            get
+            {
+                return this.currentState == State.ACTIVE;
+            }
         }
+
 
         public Node(string name)
         {
@@ -77,43 +101,68 @@ namespace NPBehave
             this.parentNode = parent;
         }
 
+#if UNITY_EDITOR
+        public float DebugLastStopRequestAt = 0.0f;
+        public float DebugLastStoppedAt = 0.0f;
+        public int DebugNumStartCalls = 0;
+        public int DebugNumStopCalls = 0;
+        public int DebugNumStoppedCalls = 0;
+        public bool DebugLastResult = false;
+#endif
+
         public void Start()
         {
             // Assert.AreEqual(this.currentState, State.INACTIVE, "can only start inactive nodes, tried to start: " + this.Name + "! PATH: " + GetPath());
-            Debug.Assert(this.currentState == State.INACTIVE, $"can only start inactive nodes  PATH: {GetPath()}");
+            Assert.AreEqual(this.currentState, State.INACTIVE, "can only start inactive nodes");
+
+#if UNITY_EDITOR
+            RootNode.TotalNumStartCalls++;
+            this.DebugNumStartCalls++;
+#endif
             this.currentState = State.ACTIVE;
             DoStart();
         }
 
         /// <summary>
-        /// 取消当前节点的执行，但并不返回状态结果
+        /// TODO: Rename to "Cancel" in next API-Incompatible version
         /// </summary>
-        public void CancelWithoutReturnResult()
+        public void Stop()
         {
-            //Assert.AreEqual(this.currentState, State.ACTIVE, "can only stop active nodes, tried to stop " + this.Name + "! PATH: " + GetPath());
-            Debug.Assert(this.currentState == State.ACTIVE, $"can only stop active nodes, tried to stop  PATH: {GetPath()}");
+            // Assert.AreEqual(this.currentState, State.ACTIVE, "can only stop active nodes, tried to stop " + this.Name + "! PATH: " + GetPath());
+            Assert.AreEqual(this.currentState, State.ACTIVE, "can only stop active nodes, tried to stop");
             this.currentState = State.STOP_REQUESTED;
-            DoCancel();
+#if UNITY_EDITOR
+            RootNode.TotalNumStopCalls++;
+            this.DebugLastStopRequestAt = UnityEngine.Time.time;
+            this.DebugNumStopCalls++;
+#endif
+            DoStop();
         }
 
         protected virtual void DoStart()
         {
+
         }
 
-        protected virtual void DoCancel()
+        protected virtual void DoStop()
         {
+
         }
 
-        /// <summary>
-        /// 节点被终止，内含状态，成功或失败
-        /// </summary>
-        /// <param name="success"></param>
+
+        /// THIS ABSOLUTLY HAS TO BE THE LAST CALL IN YOUR FUNCTION, NEVER MODIFY
+        /// ANY STATE AFTER CALLING Stopped !!!!
         protected virtual void Stopped(bool success)
         {
             // Assert.AreNotEqual(this.currentState, State.INACTIVE, "The Node " + this + " called 'Stopped' while in state INACTIVE, something is wrong! PATH: " + GetPath());
-            Debug.Assert(this.currentState != State.INACTIVE,
-                $"Called 'Stopped' while in state INACTIVE, something is wrong!  PATH: {GetPath()}");
+            Assert.AreNotEqual(this.currentState, State.INACTIVE, "Called 'Stopped' while in state INACTIVE, something is wrong!");
             this.currentState = State.INACTIVE;
+#if UNITY_EDITOR
+            RootNode.TotalNumStoppedCalls++;
+            this.DebugNumStoppedCalls++;
+            this.DebugLastStoppedAt = UnityEngine.Time.time;
+            DebugLastResult = success;
+#endif
             if (this.ParentNode != null)
             {
                 this.ParentNode.ChildStopped(this, success);
@@ -149,7 +198,7 @@ namespace NPBehave
 
         override public string ToString()
         {
-            return !string.IsNullOrEmpty(Label) ? (this.Name + "{" + Label + "}") : this.Name;
+            return !string.IsNullOrEmpty(Label) ? (this.Name + "{"+Label+"}") : this.Name;
         }
 
         protected string GetPath()

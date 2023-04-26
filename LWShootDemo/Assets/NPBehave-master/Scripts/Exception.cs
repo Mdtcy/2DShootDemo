@@ -1,4 +1,6 @@
-﻿namespace NPBehave
+﻿using System;
+
+namespace NPBehave
 {
     public class Exception : System.Exception
     {

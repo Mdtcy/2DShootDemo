@@ -1,36 +1,50 @@
-﻿using System.Diagnostics;
+﻿using UnityEngine.Assertions;
 
 namespace NPBehave
 {
     public class Root : Decorator
     {
-        public Node mainNode;
+        private Node mainNode;
 
-        private System.Action m_MainNodeStartActionCache;
+        //private Node inProgressNode;
 
-        private long TimerId;
-
-        public Blackboard blackboard;
-
+        private Blackboard blackboard;
         public override Blackboard Blackboard
         {
-            get { return blackboard; }
+            get
+            {
+                return blackboard;
+            }
         }
 
 
-        public Clock clock;
-
+        private Clock clock;
         public override Clock Clock
         {
-            get { return clock; }
+            get
+            {
+                return clock;
+            }
         }
 
-        public Root(Node mainNode, Clock clock) : base("Root", mainNode)
+#if UNITY_EDITOR
+        public int TotalNumStartCalls = 0;
+        public int TotalNumStopCalls = 0;
+        public int TotalNumStoppedCalls = 0;
+#endif
+
+        public Root(Node mainNode) : base("Root", mainNode)
         {
             this.mainNode = mainNode;
-            m_MainNodeStartActionCache = this.mainNode.Start;
-            this.clock = clock;
+            this.clock = UnityContext.GetClock();
             this.blackboard = new Blackboard(this.clock);
+            this.SetRoot(this);
+        }
+        public Root(Blackboard blackboard, Node mainNode) : base("Root", mainNode)
+        {
+            this.blackboard = blackboard;
+            this.mainNode = mainNode;
+            this.clock = UnityContext.GetClock();
             this.SetRoot(this);
         }
 
@@ -38,14 +52,13 @@ namespace NPBehave
         {
             this.blackboard = blackboard;
             this.mainNode = mainNode;
-            m_MainNodeStartActionCache = this.mainNode.Start;
             this.clock = clock;
             this.SetRoot(this);
         }
 
         public override void SetRoot(Root rootNode)
         {
-            Debug.Assert(this == rootNode);
+            Assert.AreEqual(this, rootNode);
             base.SetRoot(rootNode);
             this.mainNode.SetRoot(rootNode);
         }
@@ -53,27 +66,29 @@ namespace NPBehave
 
         override protected void DoStart()
         {
+            this.blackboard.Enable();
             this.mainNode.Start();
         }
 
-        override protected void DoCancel()
+        override protected void DoStop()
         {
             if (this.mainNode.IsActive)
             {
-                this.mainNode.CancelWithoutReturnResult();
+                this.mainNode.Stop();
             }
             else
             {
-                this.clock.RemoveTimer(this.TimerId);
+                this.clock.RemoveTimer(this.mainNode.Start);
             }
         }
+
 
         override protected void DoChildStopped(Node node, bool success)
         {
             if (!IsStopRequested)
             {
                 // wait one tick, to prevent endless recursions
-                this.TimerId = this.clock.AddTimer(1,this.m_MainNodeStartActionCache);
+                this.clock.AddTimer(0, 0, this.mainNode.Start);
             }
             else
             {

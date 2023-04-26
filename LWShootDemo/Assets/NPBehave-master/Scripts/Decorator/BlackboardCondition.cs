@@ -1,12 +1,11 @@
-﻿using ET;
-using Log = NPBehave_Core.Log;
+﻿using UnityEngine;
 
 namespace NPBehave
 {
-    public class BlackboardCondition: ObservingDecorator
+    public class BlackboardCondition : ObservingDecorator
     {
         private string key;
-        private ANP_BBValue value;
+        private object value;
         private Operator op;
 
         public string Key
@@ -17,15 +16,11 @@ namespace NPBehave
             }
         }
 
-        public ANP_BBValue Value
+        public object Value
         {
             get
             {
                 return value;
-            }
-            set
-            {
-                this.value = value;
             }
         }
 
@@ -37,22 +32,21 @@ namespace NPBehave
             }
         }
 
-        public BlackboardCondition(string key, Operator op, ANP_BBValue value, Stops stopsOnChange, Node decoratee): base("BlackboardCondition",
-            stopsOnChange, decoratee)
+        public BlackboardCondition(string key, Operator op, object value, Stops stopsOnChange, Node decoratee) : base("BlackboardCondition", stopsOnChange, decoratee)
         {
             this.op = op;
             this.key = key;
             this.value = value;
             this.stopsOnChange = stopsOnChange;
         }
-
-        public BlackboardCondition(string key, Operator op, Stops stopsOnChange, Node decoratee): base("BlackboardCondition", stopsOnChange,
-            decoratee)
+        
+        public BlackboardCondition(string key, Operator op, Stops stopsOnChange, Node decoratee) : base("BlackboardCondition", stopsOnChange, decoratee)
         {
             this.op = op;
             this.key = key;
             this.stopsOnChange = stopsOnChange;
         }
+
 
         override protected void StartObserving()
         {
@@ -64,7 +58,7 @@ namespace NPBehave
             this.RootNode.Blackboard.RemoveObserver(key, onValueChanged);
         }
 
-        private void onValueChanged(Blackboard.Type type, ANP_BBValue newValue)
+        private void onValueChanged(Blackboard.Type type, object newValue)
         {
             Evaluate();
         }
@@ -81,9 +75,76 @@ namespace NPBehave
                 return op == Operator.IS_NOT_SET;
             }
 
-            ANP_BBValue bbValue = this.RootNode.Blackboard.Get(key);
+            object o = this.RootNode.Blackboard.Get(key);
 
-            return NP_BBValueHelper.Compare(this.value, bbValue, op);
+            switch (this.op)
+            {
+                case Operator.IS_SET: return true;
+                case Operator.IS_EQUAL: return object.Equals(o, value);
+                case Operator.IS_NOT_EQUAL: return !object.Equals(o, value);
+
+                case Operator.IS_GREATER_OR_EQUAL:
+                    if (o is float)
+                    {
+                        return (float)o >= (float)this.value;
+                    }
+                    else if (o is int)
+                    {
+                        return (int)o >= (int)this.value;
+                    }
+                    else
+                    {
+                        Debug.LogError("Type not compareable: " + o.GetType());
+                        return false;
+                    }
+
+                case Operator.IS_GREATER:
+                    if (o is float)
+                    {
+                        return (float)o > (float)this.value;
+                    }
+                    else if (o is int)
+                    {
+                        return (int)o > (int)this.value;
+                    }
+                    else
+                    {
+                        Debug.LogError("Type not compareable: " + o.GetType());
+                        return false;
+                    }
+
+                case Operator.IS_SMALLER_OR_EQUAL:
+                    if (o is float)
+                    {
+                        return (float)o <= (float)this.value;
+                    }
+                    else if (o is int)
+                    {
+                        return (int)o <= (int)this.value;
+                    }
+                    else
+                    {
+                        Debug.LogError("Type not compareable: " + o.GetType());
+                        return false;
+                    }
+
+                case Operator.IS_SMALLER:
+                    if (o is float)
+                    {
+                        return (float)o < (float)this.value;
+                    }
+                    else if (o is int)
+                    {
+                        return (int)o < (int)this.value;
+                    }
+                    else
+                    {
+                        Debug.LogError("Type not compareable: " + o.GetType());
+                        return false;
+                    }
+
+                default: return false;
+            }
         }
 
         override public string ToString()
