@@ -3,8 +3,14 @@
 
     public abstract class Decorator : Container
     {
-        protected Node Decoratee;
+        public Node Decoratee;
 
+        public void SetDecoratorData(Node decoratee)
+        {
+            this.Decoratee = decoratee;
+            this.Decoratee.SetParent(this);
+        }
+        
         public Decorator(string name, Node decoratee) : base(name)
         {
             this.Decoratee = decoratee;
@@ -16,17 +22,6 @@
             base.SetRoot(rootNode);
             Decoratee.SetRoot(rootNode);
         }
-
-
-#if UNITY_EDITOR
-        public override Node[] DebugChildren
-        {
-            get
-            {
-                return new Node[] { Decoratee };
-            }
-        }
-#endif
 
         public override void ParentCompositeStopped(Composite composite)
         {

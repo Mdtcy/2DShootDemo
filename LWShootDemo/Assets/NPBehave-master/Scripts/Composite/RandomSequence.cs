@@ -1,13 +1,10 @@
-﻿using UnityEngine;
-using UnityEngine.Assertions;
-using System.Collections;
+﻿using System.Diagnostics;
 
 namespace NPBehave
 {
-    public class RandomSequence : Composite
+    public class RandomSequence: Composite
     {
         static System.Random rng = new System.Random();
-
 
 #if UNITY_EDITOR
         static public void DebugSetSeed( int seed )
@@ -19,7 +16,7 @@ namespace NPBehave
         private int currentIndex = -1;
         private int[] randomizedOrder;
 
-        public RandomSequence(params Node[] children) : base("Random Sequence", children)
+        public RandomSequence(params Node[] children): base("Random Sequence", children)
         {
             randomizedOrder = new int[children.Length];
             for (int i = 0; i < Children.Length; i++)
@@ -32,7 +29,7 @@ namespace NPBehave
         {
             foreach (Node child in Children)
             {
-                Assert.AreEqual(child.CurrentState, State.INACTIVE);
+                Debug.Assert(child.CurrentState == State.INACTIVE);
             }
 
             currentIndex = -1;
@@ -50,11 +47,10 @@ namespace NPBehave
             ProcessChildren();
         }
 
-        protected override void DoStop()
+        protected override void DoCancel()
         {
-            Children[randomizedOrder[currentIndex]].Stop();
+            Children[currentIndex].CancelWithoutReturnResult();
         }
-
 
         protected override void DoChildStopped(Node child, bool result)
         {
@@ -111,7 +107,8 @@ namespace NPBehave
                     {
                         currentIndex = Children.Length;
                     }
-                    currentChild.Stop();
+
+                    currentChild.CancelWithoutReturnResult();
                     break;
                 }
             }

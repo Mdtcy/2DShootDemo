@@ -1,15 +1,16 @@
-﻿using UnityEngine.Assertions;
+﻿
+using System.Diagnostics;
 
 namespace NPBehave
 {
-    public abstract class Composite : Container
+    public abstract class Composite: Container
     {
         protected Node[] Children;
 
-        public Composite(string name, Node[] children) : base(name)
+        public Composite(string name, Node[] children): base(name)
         {
             this.Children = children;
-            Assert.IsTrue(children.Length > 0, "Composite nodes (Selector, Sequence, Parallel) need at least one child!");
+            Debug.Assert(children.Length > 0, $"Composite nodes (Selector, Sequence, Parallel) need at least one child!  PATH: {GetPath()}");
 
             foreach (Node node in Children)
             {
@@ -27,36 +28,13 @@ namespace NPBehave
             }
         }
 
-
-#if UNITY_EDITOR
-        public override Node[] DebugChildren
-        {
-            get
-            {
-                return this.Children;
-            }
-        }
-
-        public Node DebugGetActiveChild()
-        {
-            foreach( Node node in DebugChildren )
-            {
-                if(node.CurrentState == Node.State.ACTIVE )
-                {
-                    return node;
-                }
-            }
-
-            return null;
-        }
-#endif
-
         protected override void Stopped(bool success)
         {
             foreach (Node child in Children)
             {
                 child.ParentCompositeStopped(this);
             }
+
             base.Stopped(success);
         }
 
