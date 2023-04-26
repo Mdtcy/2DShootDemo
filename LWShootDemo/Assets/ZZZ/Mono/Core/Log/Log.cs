@@ -25,7 +25,7 @@ namespace ET
 
         public static bool CheckLogLevel(int level)
         {
-            return GlobalDefine.LogLevel <= level;
+            return GlobalDefine.Options.LogLevel <= level;
         }
         
         public static void Trace(string msg)
@@ -135,7 +135,7 @@ namespace ET
         
         public static void Console(string message)
         {
-            if (GlobalDefine.Console == 1)
+            if (GlobalDefine.Options.Console == 1)
             {
                 System.Console.WriteLine(message);
             }
@@ -145,7 +145,7 @@ namespace ET
         public static void Console(string message, params object[] args)
         {
             string s = string.Format(message, args);
-            if (GlobalDefine.Console == 1)
+            if (GlobalDefine.Options.Console == 1)
             {
                 System.Console.WriteLine(s);
             }
