@@ -7167,6 +7167,11 @@ PrefabInstance:
       propertyPath: txtDifficulty
       value: 
       objectReference: {fileID: 812549972}
+    - target: {fileID: 809789501149391897, guid: 0138815c4ff2e674faefaa102a9a126d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0138815c4ff2e674faefaa102a9a126d, type: 3}
 --- !u!1001 &1441562773572730208
@@ -7924,6 +7929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animancerComponent: {fileID: 8375140718191325649}
   rb2d: {fileID: 2905730703844915099}
+  animator: {fileID: 2905730705411752830}
 --- !u!114 &8375140718191325649
 MonoBehaviour:
   m_ObjectHideFlags: 0

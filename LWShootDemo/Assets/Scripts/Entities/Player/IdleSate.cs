@@ -15,14 +15,14 @@ namespace LWShootDemo.Entities.Player
         public override void OnEnter()
         {
             base.OnEnter();
-            animancerComponent.TryPlay("idle");
+            animancerComponent.TryPlay("idle", 0, FadeMode.FromStart);
         }
 
         public override void OnLogic()
         {
             base.OnLogic();
-            if (Input.GetAxis("Horizontal") != 0 ||
-                Input.GetAxis("Vertical") != 0)
+            if (Input.GetButton("Horizontal") ||
+                Input.GetButton("Vertical") )
             {
                 fsm.RequestStateChange(PlayerFsm.PlayerState.Run);
             }

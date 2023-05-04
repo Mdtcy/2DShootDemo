@@ -19,6 +19,7 @@ namespace LWShootDemo.Entities.Player
         [SerializeField] private Rigidbody2D rb2d;
         
         
+        
         private StateMachine<PlayerState> stateMachine;
 
         public void Start()

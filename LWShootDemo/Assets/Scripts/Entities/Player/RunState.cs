@@ -20,14 +20,20 @@ namespace LWShootDemo.Entities.Player
         public override void OnEnter()
         {
             base.OnEnter();
-            animancerComponent.TryPlay("run");
+            animancerComponent.TryPlay("run", 0);
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
         }
 
         public override void OnLogic()
         {
             base.OnLogic();
-            if (Input.GetAxis("Horizontal") != 0 ||
-                Input.GetAxis("Vertical") != 0)
+            // if(Input.GetButton("Horizontal"))
+            if (Input.GetButton("Horizontal") ||
+                Input.GetButton("Vertical") )
             {
                 Vector3 playerInput = new Vector3(
                     Input.GetAxis("Horizontal"),

@@ -122,8 +122,8 @@ namespace LWShootDemo.Entities
                 return;
             }
 
-            RotateToMouse();
-            TryToShoot();
+            // RotateToMouse();
+            // TryToShoot();
             Move();
         }
 

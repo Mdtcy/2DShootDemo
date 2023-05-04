@@ -14,7 +14,8 @@ namespace LWShootDemo.Entities.Player
         public override void OnEnter()
         {
             base.OnEnter();
-            animancerComponent.TryPlay("fire");
+            animancerComponent.TryPlay("fire", 0);
         }
+        
     }
 }
