@@ -31,13 +31,13 @@ namespace FSM.Samples
 
         private void FixedUpdate()
         {
-            Vector3 playerInput = new Vector3(
-                Input.GetAxis("Horizontal"),
-                0f,
-                Input.GetAxis("Vertical")
-            );
-
-            rb.velocity = playerInput * speed;
+            // Vector3 playerInput = new Vector3(
+            //     Input.GetAxis("Horizontal"),
+            //     0f,
+            //     Input.GetAxis("Vertical")
+            // );
+            //
+            // rb.velocity = playerInput * speed;
         }
 
         private void OnDestroy()
