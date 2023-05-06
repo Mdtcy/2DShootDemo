@@ -68,8 +68,8 @@ namespace LWShootDemo.Weapons
             // 生成子弹
             projectileManager.CreateProjectile(firePointPos, firePoint.rotation);
 
-            // 对持有者产生后坐力
-            owener.ApplyKnowBack(0.2f, -transform.up * fireKnockBackForce);
+            // todo 对持有者产生后坐力 
+            // owener.ApplyKnowBack(0.2f, -transform.up * fireKnockBackForce);
 
             // 开枪时缩放突出枪口震动
             scaleTween.Kill();
@@ -82,7 +82,7 @@ namespace LWShootDemo.Weapons
             soundManager.PlaySfx(SoundType.Fire);
 
             // 屏幕震动
-            cameraController.Shake((transform.position - firePointPos).normalized, 0.5f, 0.05f);
+            cameraController.Shake((transform.position - firePointPos).normalized, 0.2f, 0.05f);
         }
 
         #endregion

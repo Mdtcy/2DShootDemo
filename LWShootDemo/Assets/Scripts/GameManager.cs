@@ -152,7 +152,7 @@ namespace LWShootDemo
         [Button]
         public void RestartGame()
         {
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene("Shoot");
         }
 
         public void BackToMenu()

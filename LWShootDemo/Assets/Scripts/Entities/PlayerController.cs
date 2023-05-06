@@ -162,7 +162,6 @@ namespace LWShootDemo.Entities
             {
                 curWeapon.Use();
                 lastShotTime = Time.time;
-                lastShotTime = Time.time;
             }
         }
 

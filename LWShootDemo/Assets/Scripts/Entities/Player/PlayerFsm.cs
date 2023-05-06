@@ -14,20 +14,17 @@ namespace LWShootDemo.Entities.Player
             Shoot,
             Die
         }
-
-        [SerializeField] private AnimancerComponent animancerComponent;
-        [SerializeField] private Rigidbody2D rb2d;
         
-        
-        
+        [SerializeField] 
+        private PlayerFsmContext playerFsmContext;
         private StateMachine<PlayerState> stateMachine;
 
         public void Start()
         {
             stateMachine = new StateMachine<PlayerState>(false);
-            stateMachine.AddState(PlayerState.Idle, new IdleSate(false, animancerComponent));
-            stateMachine.AddState(PlayerState.Shoot, new ShootState(false, animancerComponent));
-            stateMachine.AddState(PlayerState.Run, new RunState(false, animancerComponent, rb2d));
+            stateMachine.AddState(PlayerState.Idle, new IdleSate(false, playerFsmContext));
+            stateMachine.AddState(PlayerState.Shoot, new ShootState(false, playerFsmContext));
+            stateMachine.AddState(PlayerState.Run, new RunState(false, playerFsmContext));
             
             stateMachine.SetStartState(PlayerState.Idle);
             
