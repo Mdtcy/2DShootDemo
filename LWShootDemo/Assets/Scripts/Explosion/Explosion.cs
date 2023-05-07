@@ -47,8 +47,8 @@ namespace LWShootDemo.Explosions
 
             // 爆炸带来的震动根据玩家和爆炸点的方向来决定
             var dir    = (transform.position - player.position).normalized;
-            GameManager.Instance.CameraController.Shake(dir, Random.Range(shakeIntensity.x, shakeIntensity.y),
-                                                        0.05f);
+            // GameManager.Instance.CameraController.Shake(dir, Random.Range(shakeIntensity.x, shakeIntensity.y),
+                                                        // 0.05f);
             GameManager.Instance.SoundManager.PlaySfx(SoundType.Explosion);
         }
 

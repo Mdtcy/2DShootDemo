@@ -50,7 +50,7 @@ namespace LWShootDemo
         public SimpleUnitySpawnPool EnemyDeathEffectPool;
 
         public SoundManager       SoundManager;
-        public CameraController   CameraController;
+        // public CameraController   CameraController;
         public TimeStopManager    TimeStopManager;
         public ExplosionManager   explosionManager;
         public DifficultyManager  DifficultyManager;

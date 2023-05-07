@@ -41,7 +41,7 @@ namespace LWShootDemo.Weapons
         // * local
         private Entity            owener;
         private SoundManager      soundManager;
-        private CameraController  cameraController;
+        // private CameraController  cameraController;
         private Tween             scaleTween;
         private ProjectileManager projectileManager;
 
@@ -82,7 +82,7 @@ namespace LWShootDemo.Weapons
             soundManager.PlaySfx(SoundType.Fire);
 
             // 屏幕震动
-            cameraController.Shake((transform.position - firePointPos).normalized, 0.2f, 0.05f);
+            // cameraController.Shake((transform.position - firePointPos).normalized, 0.2f, 0.05f);
         }
 
         #endregion
@@ -96,7 +96,7 @@ namespace LWShootDemo.Weapons
         void Start()
         {
             soundManager = GameManager.Instance.SoundManager;
-            cameraController = GameManager.Instance.CameraController;
+            // cameraController = GameManager.Instance.CameraController;
         }
 
         #endregion
