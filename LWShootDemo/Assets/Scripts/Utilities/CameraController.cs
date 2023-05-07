@@ -142,9 +142,16 @@ namespace LWShootDemo.Common
 		private void UpdateCameraPosition()
 		{
 			Vector3 tempPos = Vector3.SmoothDamp(transform.position, target, ref refVel, smoothTime);
+			
+			if (FreezeX)
+			{
+				tempPos.x = transform.position.x;
+			}
+
 			transform.position = tempPos;
 		}
 
+		public bool FreezeX;
 
 		#endregion
 
