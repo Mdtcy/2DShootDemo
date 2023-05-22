@@ -1,3 +1,4 @@
+using GameFramework;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -29,6 +30,27 @@ namespace DefaultNamespace
             Log.Warning("Warning");
             Log.Error("Error");
             Log.Fatal("Fatal");
+        }
+
+        public class AClass : IReference
+        {
+            public void Clear()
+            {
+                Log.Info("Clear");
+            }
+        }
+
+        private AClass _aClass;
+        [Button]
+        public void TestAcquireReference()
+        {
+            _aClass = ReferencePool.Acquire<AClass>();
+        }
+
+        [Button]
+        public void TestReleaseReference()
+        {
+            ReferencePool.Release(_aClass);
         }
     }
 }
