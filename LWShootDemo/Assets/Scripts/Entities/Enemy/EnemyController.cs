@@ -134,7 +134,7 @@ namespace LWShootDemo.Entities.Enemy
         {
             explosionManager.CreateExplosion(transform.position);
             CreateDeathEffect();
-            Debug.Log(gameObject.name);
+            // Debug.Log(gameObject.name);
             EnemyDeathEvent.Trigger();
         }
 

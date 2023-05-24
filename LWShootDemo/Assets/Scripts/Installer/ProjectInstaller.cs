@@ -1,5 +1,6 @@
 using System;
 using GameFramework;
+using GameFramework.Event;
 using GameFramework.Game;
 using GameFramework.ObjectPool;
 using Sirenix.OdinInspector;
@@ -33,6 +34,19 @@ public class ProjectInstaller : MonoInstaller
         // ReferencePool
         InitReferencePool();
 
+        // Event
+        Container
+            .Bind<IEventManager>()
+            .To<EventManager>()
+            .AsSingle()
+            .OnInstantiated((ctx, obj) =>
+            {
+                var eventManager = (EventManager) obj;
+                eventManager.Priority = 100;
+                _unityGameContext.AddModule(eventManager);
+                Log.Info("初始化 EventManager 优先级: {0}", eventManager.Priority);
+            });
+        
         // ObjectPool
         Container
             .Bind<IObjectPoolManager>()
@@ -49,6 +63,7 @@ public class ProjectInstaller : MonoInstaller
 
     private void InitReferencePool()
     {
+        Log.Info("初始化 ReferencePool");
         switch (_enableStrictCheck)
         {
             case ReferenceStrictCheckType.AlwaysEnable:
@@ -70,7 +85,7 @@ public class ProjectInstaller : MonoInstaller
 
         if (ReferencePool.EnableStrictCheck)
         {
-            Log.Info("Strict checking is enabled for the Reference Pool. It will drastically affect the performance.");
+            Log.Warning("Strict checking is enabled for the Reference Pool. It will drastically affect the performance.");
         }
     }
     void InitExecutionOrder()
