@@ -6,6 +6,7 @@
 //------------------------------------------------------------
 
 using System;
+using ModestTree;
 using UnityEngine;
 
 namespace GameFramework.Event
@@ -54,7 +55,6 @@ namespace GameFramework.Event
         /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
         internal override void Update(float elapseSeconds, float realElapseSeconds)
         {
-            Debug.Log("EventManager Update");
             m_EventPool.Update(elapseSeconds, realElapseSeconds);
         }
 

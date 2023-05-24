@@ -7,6 +7,8 @@
 
 using System;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityGameFramework.Runtime;
 
 namespace GameFramework.ObjectPool
 {
@@ -56,7 +58,7 @@ namespace GameFramework.ObjectPool
                 objectPool.Value.Update(elapseSeconds, realElapseSeconds);
             }
         }
-
+        
         /// <summary>
         /// 关闭并清理对象池管理器。
         /// </summary>
