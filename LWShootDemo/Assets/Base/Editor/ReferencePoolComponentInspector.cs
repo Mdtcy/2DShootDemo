@@ -36,11 +36,11 @@ namespace UnityGameFramework.Editor
 
             if (EditorApplication.isPlaying && IsPrefabInHierarchy(t.gameObject))
             {
-                bool enableStrictCheck = EditorGUILayout.Toggle("Enable Strict Check", t.EnableStrictCheck);
-                if (enableStrictCheck != t.EnableStrictCheck)
-                {
-                    t.EnableStrictCheck = enableStrictCheck;
-                }
+                // bool enableStrictCheck = EditorGUILayout.Toggle("Enable Strict Check", t.EnableStrictCheck);
+                // if (enableStrictCheck != t.EnableStrictCheck)
+                // {
+                //     t.EnableStrictCheck = enableStrictCheck;
+                // }
 
                 EditorGUILayout.LabelField("Reference Pool Count", ReferencePool.Count.ToString());
                 m_ShowFullClassName = EditorGUILayout.Toggle("Show Full Class Name", m_ShowFullClassName);

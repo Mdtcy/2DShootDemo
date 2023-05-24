@@ -1935,7 +1935,7 @@ GameObject:
   - component: {fileID: 1232105661}
   - component: {fileID: 1232105660}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2722,51 +2722,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btn: {fileID: 1732843317}
   soundType: 4
---- !u!1 &1765465114
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1765465116}
-  - component: {fileID: 1765465115}
-  m_Layer: 0
-  m_Name: ReferenceComponent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1765465115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765465114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 456c9547e09f4f4f8bd80d39e106a1a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EnableStrictCheck: 2
---- !u!4 &1765465116
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765465114}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.1428003, y: 11.962084, z: -0.09896115}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1772983408
 GameObject:
   m_ObjectHideFlags: 0
@@ -7948,8 +7903,14 @@ PrefabInstance:
     - target: {fileID: 809789501149391897, guid: 0138815c4ff2e674faefaa102a9a126d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 809789501817863334, guid: 0138815c4ff2e674faefaa102a9a126d,
+        type: 3}
+      propertyPath: _pfbProjectile
+      value: 
+      objectReference: {fileID: 1430046345506342793, guid: 154db214c14325443aecc4b4db5c9792,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0138815c4ff2e674faefaa102a9a126d, type: 3}
 --- !u!1001 &1441562773572730208
@@ -8251,7 +8212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entity: {fileID: 8375140718191325647}
   moveSpeed: 3
-  fireRate: 0.05
+  fireRate: 1
   pfbCorpse: {fileID: 6380282737978924843, guid: 91a496cff8ae402419430dc590191ab3,
     type: 3}
   deathEffect: {fileID: 6453547444083992822, guid: e94bd223910cd784785a5b6079cd935c,

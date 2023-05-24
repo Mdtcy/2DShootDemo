@@ -37,7 +37,7 @@ namespace FSM
 		/// </summary>
 		public virtual void OnEnter()
 		{
-			Debug.Log($"Enter : {this}");
+			// Debug.Log($"Enter : {this}");
 		}
 
 		/// <summary>
@@ -52,7 +52,7 @@ namespace FSM
 		/// </summary>
 		public virtual void OnExit()
 		{
-			Debug.Log($"Exit : {this}");
+			// Debug.Log($"Exit : {this}");
 		}
 
 		/// <summary>
