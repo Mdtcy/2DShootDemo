@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace LWShootDemo.BuffSystem.Event
@@ -12,21 +13,18 @@ namespace LWShootDemo.BuffSystem.Event
         public abstract int ID { get; }
         
         public abstract Type ArgType { get; }
-        
-        [ReadOnly]
-        public BuffEventType EventType;
 
         [ValueDropdown("GetActionData")]
         public List<ActionData> ActionsData = new List<ActionData>();
 
-        public void Trigger(EventActArgsBase args)
+        public void Trigger(IEventActArgs args)
         {
-            Assert.AreEqual(args.GetType(), ArgType, "触发的参数不对");
+            Assert.AreEqual(args.GetType(), ArgType, $"传入参数和事件参数不匹配 {args.GetType()} {ArgType}");
             // 获取一个ActionHandler
-            
+
             foreach (var data in ActionsData)
             {
-                Assert.AreEqual(data.ArgType, ArgType, "ActionData的参数类型不对");
+                Assert.IsTrue(ArgType == data.ArgType || ArgType.IsSubclassOf(data.ArgType), $"ActionData的参数类型不对 {data.ArgType}");
                 var action = data.CreateAction(args);
                 action.Execute();
             }
@@ -43,11 +41,10 @@ namespace LWShootDemo.BuffSystem.Event
             var result = new List<ActionData>();
             foreach (var type in types)
             {
-                // result.Add(Activator.CreateInstance(type) as ActionData);   
                 var data = Activator.CreateInstance(type) as ActionData;
-                if (data.ArgType == ArgType)
+                
+                if (data.ArgType == ArgType || ArgType.IsSubclassOf(data.ArgType))
                 {
-                    // result.Add(CreateInstance(type) as BuffEvent);
                     result.Add(Activator.CreateInstance(type) as ActionData);   
                 }
             }

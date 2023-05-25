@@ -12,7 +12,7 @@ namespace LWShootDemo.BuffSystem.Event
             _events = buffData.Events.ToDictionary(e => e.ID);
         }
 
-        public void TriggerEvent(int id, EventActArgsBase args)
+        public void TriggerEvent(int id, IEventActArgs args)
         {
             if (_events.TryGetValue(id, out var buffEvent))
             {

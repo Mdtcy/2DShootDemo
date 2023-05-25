@@ -6,14 +6,14 @@ namespace LWShootDemo.BuffSystem.Event
     {
         public abstract Type ArgType { get; }
 
-        public abstract IAction CreateAction(EventActArgsBase args);
+        public abstract IAction CreateAction(IEventActArgs args);
     }
     
-    public abstract class ActionData<T> : ActionData where T : EventActArgsBase
+    public abstract class ActionData<T> : ActionData where T : IEventActArgs
     {
         public override Type ArgType => typeof(T);
 
-        public override IAction CreateAction(EventActArgsBase args)
+        public override IAction CreateAction(IEventActArgs args)
         {
             return CreateAction((T)args);
         }
@@ -24,13 +24,8 @@ namespace LWShootDemo.BuffSystem.Event
     
     public abstract class IAction
     {
-        protected ActionData ActionData;
-        protected EventActArgsBase Args;
-
-        public IAction(ActionData data, EventActArgsBase args)
+        public IAction(ActionData data, IEventActArgs args)
         {
-            ActionData = data;
-            Args = args;
         }
 
         public abstract void Execute();
