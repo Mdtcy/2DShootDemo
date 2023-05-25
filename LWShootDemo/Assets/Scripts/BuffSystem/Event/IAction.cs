@@ -4,8 +4,8 @@ namespace LWShootDemo.BuffSystem.Event
     // {
     // }
     
-    public abstract class IAction<TArg> where TArg :EventActArgsBase
+    public abstract class IAction
     {
-        // public abstract void Execute(TArg args);
+        public abstract void Execute(EventActArgsBase args);
     }
 }

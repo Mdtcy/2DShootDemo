@@ -18,8 +18,8 @@ namespace LWShootDemo.BuffSystem.Event
         {
             foreach (var data in ActionsData)
             {
-                var action = data.CreateAction();
-                action.Execute(args);
+                // var action = data.CreateAction();
+                // action.Execute(args);
             }
         }
         
