@@ -5,29 +5,36 @@ namespace LWShootDemo.BuffSystem.Event
 {
     public class Buff
     {
-        private Dictionary<BuffEventType, BuffEvent> _events;
+        private Dictionary<int, BuffEvent> _events;
     
         public Buff(BuffData buffData)
         {
-            _events = buffData.Events.ToDictionary(e => e.EventType);
+            _events = buffData.Events.ToDictionary(e => e.ID);
         }
-    
-        public void TriggerEvent(BuffEventType eventType, EventActArgsBase args)
+
+        public void TriggerEvent(int id, EventActArgsBase args)
         {
-            if (_events.TryGetValue(eventType, out var buffEvent))
+            if (_events.TryGetValue(id, out var buffEvent))
             {
                 buffEvent.Trigger(args);
             }
         }
+        // public void TriggerEvent(BuffEventType eventType, EventActArgsBase args)
+        // {
+        //     if (_events.TryGetValue(eventType, out var buffEvent))
+        //     {
+        //         buffEvent.Trigger(args);
+        //     }
+        // }
     
-        public void OnBuffStart()
+        public void OnHitEvent(HitArgs args)
         {
-            TriggerEvent(BuffEventType.OnBuffStart, new OnBuffStartArgs());
+            TriggerEvent(HitEvent.EventId, args);
         }
-    
-        public void OnProjectileStart()
+        
+        public void OnTestEvent(TestArgs args)
         {
-            TriggerEvent(BuffEventType.OnProjectileStart, new OnProjectileStartArgs());
+            TriggerEvent(TestEvent.EventId, args);
         }
     }
 

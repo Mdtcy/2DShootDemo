@@ -4,9 +4,4 @@ namespace LWShootDemo.BuffSystem.Event
     {
         
     }
-    
-    public class DamageArgs : EventActArgsBase
-    {
-        public int Damage { get; set; }
-    }
 }

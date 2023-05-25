@@ -1,6 +1,7 @@
 using System;
 using GameFramework;
 using GameFramework.Event;
+using LWShootDemo.BuffSystem.Event;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -101,6 +102,25 @@ namespace DefaultNamespace
         public void TestReleaseReference()
         {
             ReferencePool.Release(_aClass);
+        }
+
+        public BuffData BuffData;
+
+        [Button]
+        public void TestHitEventBuff()
+        {
+            var buff = new Buff(BuffData);
+            buff.OnHitEvent(new HitArgs());
+        }
+
+        public int damage;
+        [Button]
+        public void TestTestEventBuff()
+        {
+            var buff = new Buff(BuffData);
+            var arg = new TestArgs();
+            arg.Damage = damage;
+            buff.OnTestEvent(arg);
         }
     }
 }

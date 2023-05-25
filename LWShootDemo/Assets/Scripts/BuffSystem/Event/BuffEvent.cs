@@ -9,10 +9,13 @@ namespace LWShootDemo.BuffSystem.Event
     [Serializable]
     public abstract class BuffEvent
     {
-        // public abstract Type ArgType { get; }
+        public abstract int ID { get; }
+        
+        public abstract Type ArgType { get; }
         
         [ReadOnly]
         public BuffEventType EventType;
+
         [ValueDropdown("GetActionData")]
         public List<ActionData> ActionsData = new List<ActionData>();
 
@@ -24,8 +27,8 @@ namespace LWShootDemo.BuffSystem.Event
             foreach (var data in ActionsData)
             {
                 Assert.AreEqual(data.ArgType, ArgType, "ActionData的参数类型不对");
-                var action = data.CreateAction();
-                action.Execute(args);
+                var action = data.CreateAction(args);
+                action.Execute();
             }
         }
         
@@ -41,12 +44,12 @@ namespace LWShootDemo.BuffSystem.Event
             foreach (var type in types)
             {
                 // result.Add(Activator.CreateInstance(type) as ActionData);   
-                // var data = Activator.CreateInstance(type) as ActionData;
-                // if (data.ActionArgType == ArgType || data.ActionArgType.IsSubclassOf(ArgType))
-                // {
-                //     // result.Add(CreateInstance(type) as BuffEvent);
-                //     result.Add(Activator.CreateInstance(type) as ActionData);   
-                // }
+                var data = Activator.CreateInstance(type) as ActionData;
+                if (data.ArgType == ArgType)
+                {
+                    // result.Add(CreateInstance(type) as BuffEvent);
+                    result.Add(Activator.CreateInstance(type) as ActionData);   
+                }
             }
 
             return result;
