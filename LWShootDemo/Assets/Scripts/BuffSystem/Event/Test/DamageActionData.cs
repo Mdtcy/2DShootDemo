@@ -8,11 +8,11 @@ namespace LWShootDemo.BuffSystem.Event.Test
     {
         public int Damage;
 
+        public override Type ArgType { get; }
+
         public override IAction CreateAction()
         {
             return new DamageAction(this);
         }
-
-        public override Type ActionArgType => typeof(OnProjectileStartArgs);
     }
 }

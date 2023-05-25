@@ -9,6 +9,8 @@ namespace LWShootDemo.BuffSystem.Event
     [Serializable]
     public abstract class BuffEvent
     {
+        // public abstract Type ArgType { get; }
+        
         [ReadOnly]
         public BuffEventType EventType;
         [ValueDropdown("GetActionData")]
@@ -16,10 +18,14 @@ namespace LWShootDemo.BuffSystem.Event
 
         public void Trigger(EventActArgsBase args)
         {
+            Assert.AreEqual(args.GetType(), ArgType, "触发的参数不对");
+            // 获取一个ActionHandler
+            
             foreach (var data in ActionsData)
             {
-                // var action = data.CreateAction();
-                // action.Execute(args);
+                Assert.AreEqual(data.ArgType, ArgType, "ActionData的参数类型不对");
+                var action = data.CreateAction();
+                action.Execute(args);
             }
         }
         

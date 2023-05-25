@@ -18,5 +18,4 @@ namespace LWShootDemo.BuffSystem.Event.Test
             Debug.Log($"Damage: {_data.Damage}");
         }
     }
-
 }

@@ -7,5 +7,6 @@ namespace LWShootDemo.BuffSystem.Event
         OnBuffStart,
         OnProjectileStart,
         // 在这里添加其他事件类型
+        OnBeforeHit
     }
 }
