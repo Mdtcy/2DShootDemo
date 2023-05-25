@@ -14,5 +14,4 @@ public class OnBuffStartEvent : BuffEvent
     }
 
     // 在这里添加此事件的逻辑
-    public override Type ArgType { get; }
 }

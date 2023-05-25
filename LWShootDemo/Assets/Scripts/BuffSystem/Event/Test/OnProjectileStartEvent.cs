@@ -14,5 +14,40 @@ public class OnProjectileStartEvent : BuffEvent
     }
 
     // 在这里添加此事件的逻辑
-    public override Type ArgType { get; }
+}
+
+public abstract class OnProjectileStartActionData : ActionData
+{
+    public abstract IAction<OnProjectileStartArgs> CreateAction();
+}
+
+public abstract class OnProjectileStartAction : IAction<OnProjectileStartArgs>
+{
+    private OnProjectileStartActionData _data;
+    public OnProjectileStartAction(OnProjectileStartActionData data)
+    {
+        _data = data;
+    }
+
+    public abstract void Execute(OnProjectileStartArgs args);
+}
+
+public class ProjectileStartTest1ActionData : OnProjectileStartActionData
+{
+    public override IAction<OnProjectileStartArgs> CreateAction()
+    {
+        return new ProjectileStartTest1Action(this);
+    }
+}
+
+public class ProjectileStartTest1Action : OnProjectileStartAction
+{
+    public ProjectileStartTest1Action(ProjectileStartTest1ActionData data) : base(data)
+    {
+    }
+
+    public override void Execute(OnProjectileStartArgs args)
+    {
+        
+    }
 }
