@@ -15,6 +15,7 @@ namespace LWShootDemo.BuffSystem.Event
         public abstract Type ArgType { get; }
 
         [ValueDropdown("GetActionData")]
+        [ListDrawerSettings(Expanded = true)]
         public List<ActionData> ActionsData = new List<ActionData>();
 
         public void Trigger(IEventActArgs args)

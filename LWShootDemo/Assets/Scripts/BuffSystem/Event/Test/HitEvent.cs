@@ -95,7 +95,7 @@ namespace LWShootDemo.BuffSystem.Event
         protected readonly TArgs Arg;
         
         protected readonly TActData Data;
-        public Action(TActData data, TArgs args) : base(data, args)
+        public Action(TActData data, TArgs args) 
         {
             Data = data;
             Arg = args;

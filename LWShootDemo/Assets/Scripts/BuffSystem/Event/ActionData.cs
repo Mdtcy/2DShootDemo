@@ -24,13 +24,6 @@ namespace LWShootDemo.BuffSystem.Event
     
     public abstract class IAction
     {
-        public IAction(ActionData data, IEventActArgs args)
-        {
-        }
-
         public abstract void Execute();
-        // {
-        //     Assert.AreEqual(args.GetType(), _data.ArgType, "触发的参数不对");
-        // }
     }
 }
