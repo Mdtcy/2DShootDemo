@@ -30,85 +30,45 @@ namespace LWShootDemo.BuffSystem.Event
         public override Type ExpectedArgumentType => typeof(TestArgs);
     }
     
-    public class DebugActionData : ActionData<BaseEventActArgs>
+    public class DebugActionData : ActionData<BaseEventActArgs, DebugAction>
     {
         public string info;
-        public override IAction CreateAction(BaseEventActArgs args)
-        {
-            return new DebugAction(this, args);
-        }
     }
 
     public class DebugAction : Action<BaseEventActArgs, DebugActionData>
     {
-        public DebugAction(DebugActionData data, BaseEventActArgs args) : base(data, args)
+        protected override void ExecuteInternal(BaseEventActArgs args)
         {
-        }
-
-        public override void Execute()
-        {
-            Log.Info("通用DebugAction" + Data.info);
+            Log.Info("通用DebugAction" + Data.info + args);
         }
     }
 
 
-    public class TestActionData1 : ActionData<TestArgs>
+    public class TestActionData1 : ActionData<TestArgs, TestAction1>
     {
         public string te;
         public int tt;
-        public override IAction CreateAction(TestArgs args)
-        {
-            return new TestAction1(this, args);
-        }
     }
 
     public class TestAction1 : Action<TestArgs, TestActionData1>
     {
-        public override void Execute()
+        protected override void ExecuteInternal(TestArgs args)
         {
-            Log.Info("TestAction1 {0}{1} {2}", Data.te, Data.tt, Arg.Damage);
-        }
-
-        public TestAction1(TestActionData1 data, TestArgs args) : base(data, args)
-        {
+            Log.Info("TestAction1 {0}{1} {2}", Data.te, Data.tt, args.Damage);
         }
     }
 
-    public class HitActionData1 : ActionData<HitArgs>
+    public class HitActionData1 : ActionData<HitArgs, HitAction1>
     {
-        public override IAction CreateAction(HitArgs args)
-        {
-            return new HitAction1(this, args);
-        }
     }
     
-    public class HitActionData2 : ActionData<HitArgs>
+    public class HitActionData2 : ActionData<HitArgs, HitAction2>
     {
-        public override IAction CreateAction(HitArgs args)
-        {
-            return new HitAction2(this, args);
-        }
-    }
-
-    public abstract class Action<TArgs, TActData> : IAction where TArgs : IEventActArgs where TActData : ActionData<TArgs>
-    {
-        protected readonly TArgs Arg;
-        
-        protected readonly TActData Data;
-        public Action(TActData data, TArgs args) 
-        {
-            Data = data;
-            Arg = args;
-        }
     }
 
     public class HitAction1 : Action<HitArgs, HitActionData1>
     {
-        public HitAction1(HitActionData1 data, HitArgs args) : base(data, args)
-        {
-        }
-
-        public override void Execute()
+        protected override void ExecuteInternal(HitArgs args)
         {
             Debug.Log("HitAction1");
         }
@@ -116,11 +76,7 @@ namespace LWShootDemo.BuffSystem.Event
 
     public class HitAction2 : Action<HitArgs, HitActionData2>
     {
-        public HitAction2(HitActionData2 data, HitArgs args) : base(data, args)
-        {
-        }
-
-        public override void Execute()
+        protected override void ExecuteInternal(HitArgs args)
         {
             Debug.Log("HitAction2");
         }

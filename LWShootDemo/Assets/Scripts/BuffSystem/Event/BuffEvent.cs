@@ -14,24 +14,25 @@ namespace LWShootDemo.BuffSystem.Event
         
         public abstract Type ExpectedArgumentType { get; }
 
-        [ValueDropdown("GetActionData")]
+        [ValueDropdown("GetValidActionDataTypes")]
         [ListDrawerSettings(Expanded = true)]
         public List<ActionData> ActionsData = new List<ActionData>();
 
         public void Trigger(IEventActArgs args)
         {
+            Assert.IsNotNull(args);
             Assert.AreEqual(args.GetType(), ExpectedArgumentType, $"传入参数和事件参数不匹配 {args.GetType()} {ExpectedArgumentType}");
             // 获取一个ActionHandler
 
             foreach (var data in ActionsData)
             {
                 Assert.IsTrue(ExpectedArgumentType == data.ExpectedArgumentType || ExpectedArgumentType.IsSubclassOf(data.ExpectedArgumentType), $"ActionData的参数类型不对 {data.ExpectedArgumentType}");
-                var action = data.CreateAction(args);
-                action.Execute();
+                var action = data.CreateAction();
+                action.Execute(args);
             }
         }
         
-        private IEnumerable<ActionData> GetActionData()
+        private IEnumerable<ActionData> GetValidActionDataTypes()
         {
             // 获取所有继承自ActionData的类型
             var types = AppDomain.CurrentDomain.GetAssemblies()

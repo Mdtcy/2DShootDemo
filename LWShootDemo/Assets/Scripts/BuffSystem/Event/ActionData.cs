@@ -6,24 +6,56 @@ namespace LWShootDemo.BuffSystem.Event
     {
         public abstract Type ExpectedArgumentType { get; }
 
-        public abstract IAction CreateAction(IEventActArgs args);
+        protected abstract IAction CreateActionInternal();
+        
+        public IAction CreateAction()
+        {
+            return CreateActionInternal();
+        }
     }
-    
-    public abstract class ActionData<T> : ActionData where T : IEventActArgs
+
+    public abstract class ActionData<T, TAct> : ActionData where T : IEventActArgs where TAct : IAction, new()
     {
         public override Type ExpectedArgumentType => typeof(T);
-
-        public override IAction CreateAction(IEventActArgs args)
+        protected override IAction CreateActionInternal()
         {
-            return CreateAction((T)args);
+            var act = new TAct();
+            act.Initialize(this);
+            return act;
         }
-        
-        public abstract IAction CreateAction(T args);
     }
     
-    
+
     public abstract class IAction
     {
-        public abstract void Execute();
+        public virtual void Initialize(ActionData actionData)
+        {
+        }
+
+        /// <summary>
+        /// 外部调用的接口
+        /// </summary>
+        /// <param name="args"></param>
+        public virtual void Execute(IEventActArgs args)
+        {
+        }
+    }
+    
+    public abstract class Action<TArgs, TActData> : IAction where TArgs : IEventActArgs where TActData : ActionData
+    {
+        protected TActData Data;
+        
+        protected abstract void ExecuteInternal(TArgs args);
+        
+        public override void Execute(IEventActArgs args)
+        {
+            ExecuteInternal((TArgs)args);
+        }
+
+        public override void Initialize(ActionData actionData)
+        {
+            base.Initialize(actionData);
+            Data = (TActData) actionData;
+        }
     }
 }
