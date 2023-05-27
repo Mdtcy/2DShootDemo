@@ -1,4 +1,5 @@
 using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
@@ -10,6 +11,7 @@ namespace LWShootDemo.BuffSystem.Event
         public float Damage;
     }
     
+    [LabelText("HitEvent")]
     public class HitEvent : BuffEvent<HitArgs>
     {
         public static readonly int EventId = typeof(HitEvent).GetHashCode();
@@ -22,17 +24,20 @@ namespace LWShootDemo.BuffSystem.Event
         public float Damage;
     }
     
+    [LabelText("TestEvent")]
     public class TestEvent:BuffEvent<TestArgs>
     {
         public static readonly int EventId = typeof(TestEvent).GetHashCode();
         public override int ID => EventId;
     }
     
+    // [LabelText("调试(DebugActionData)")]
     public class DebugActionData : ActionData<BaseEventActArgs, DebugAction>
     {
         public string info;
     }
 
+    [LabelText("调试信息(DebugAction)")]
     public class DebugAction : Action<BaseEventActArgs, DebugActionData>
     {
         protected override void ExecuteInternal(BaseEventActArgs args)
@@ -40,7 +45,6 @@ namespace LWShootDemo.BuffSystem.Event
             Log.Info("通用DebugAction" + Data.info + args);
         }
     }
-
 
     public class TestActionData1 : ActionData<TestArgs, TestAction1>
     {
@@ -64,6 +68,7 @@ namespace LWShootDemo.BuffSystem.Event
     {
     }
 
+    [LabelText("击打1")]
     public class HitAction1 : Action<HitArgs, HitActionData1>
     {
         protected override void ExecuteInternal(HitArgs args)
@@ -72,6 +77,7 @@ namespace LWShootDemo.BuffSystem.Event
         }
     }
 
+    [LabelText("击打2")]
     public class HitAction2 : Action<HitArgs, HitActionData2>
     {
         protected override void ExecuteInternal(HitArgs args)

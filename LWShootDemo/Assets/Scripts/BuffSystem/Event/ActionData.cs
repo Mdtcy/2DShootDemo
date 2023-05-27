@@ -1,9 +1,16 @@
 using System;
+using LWShootDemo.BuffSystem.Act;
+using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace LWShootDemo.BuffSystem.Event
 {
     public abstract class ActionData
     {
+        [TitleGroup("@LabelName", alignment: TitleAlignments.Centered)] 
+        [GUIColor(nameof(GetStateColor))]
+        public ActionState State = ActionState.Enable;
+
         public abstract Type ExpectedArgumentType { get; }
 
         protected abstract IAction CreateActionInternal();
@@ -12,10 +19,35 @@ namespace LWShootDemo.BuffSystem.Event
         {
             return CreateActionInternal();
         }
+        
+        private Color GetStateColor()
+        {
+            switch (State)
+            {
+                case ActionState.Disable:
+                    return Color.red;
+                case ActionState.Enable:
+                default:
+                    return Color.white;
+            }
+        }
     }
 
     public abstract class ActionData<T, TAct> : ActionData where T : IEventActArgs where TAct : IAction, new()
     {
+        string _labelName;
+        string LabelName
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_labelName))
+                {
+                    _labelName = OdinTool.GetLabelText(typeof(TAct));
+                }
+                return _labelName;
+            }
+        }
+
         public override Type ExpectedArgumentType => typeof(T);
         protected override IAction CreateActionInternal()
         {

@@ -36,4 +36,17 @@ public static class OdinTool
         }
         return null;
     }
+    
+    public static string GetLabelText(Type t)
+    {
+        var arr = t.GetCustomAttributes(false);
+        foreach (var item in arr)
+        {
+            if (item is LabelTextAttribute lt)
+            {
+                return lt.Text;
+            }
+        }
+        return null;
+    }
 }
