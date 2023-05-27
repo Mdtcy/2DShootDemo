@@ -14,7 +14,7 @@ namespace LWShootDemo.BuffSystem.Event
     {
         public static readonly int EventId = typeof(HitEvent).GetHashCode();
         public override int ID => EventId;
-        public override Type ArgType => typeof(HitArgs);
+        public override Type ExpectedArgumentType => typeof(HitArgs);
     }
     
     public class TestArgs : BaseEventActArgs
@@ -27,7 +27,7 @@ namespace LWShootDemo.BuffSystem.Event
     {
         public static readonly int EventId = typeof(TestEvent).GetHashCode();
         public override int ID => EventId;
-        public override Type ArgType => typeof(TestArgs);
+        public override Type ExpectedArgumentType => typeof(TestArgs);
     }
     
     public class DebugActionData : ActionData<BaseEventActArgs>

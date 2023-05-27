@@ -12,7 +12,7 @@ namespace LWShootDemo.BuffSystem.Event
     {
         public abstract int ID { get; }
         
-        public abstract Type ArgType { get; }
+        public abstract Type ExpectedArgumentType { get; }
 
         [ValueDropdown("GetActionData")]
         [ListDrawerSettings(Expanded = true)]
@@ -20,12 +20,12 @@ namespace LWShootDemo.BuffSystem.Event
 
         public void Trigger(IEventActArgs args)
         {
-            Assert.AreEqual(args.GetType(), ArgType, $"传入参数和事件参数不匹配 {args.GetType()} {ArgType}");
+            Assert.AreEqual(args.GetType(), ExpectedArgumentType, $"传入参数和事件参数不匹配 {args.GetType()} {ExpectedArgumentType}");
             // 获取一个ActionHandler
 
             foreach (var data in ActionsData)
             {
-                Assert.IsTrue(ArgType == data.ArgType || ArgType.IsSubclassOf(data.ArgType), $"ActionData的参数类型不对 {data.ArgType}");
+                Assert.IsTrue(ExpectedArgumentType == data.ExpectedArgumentType || ExpectedArgumentType.IsSubclassOf(data.ExpectedArgumentType), $"ActionData的参数类型不对 {data.ExpectedArgumentType}");
                 var action = data.CreateAction(args);
                 action.Execute();
             }
@@ -44,7 +44,7 @@ namespace LWShootDemo.BuffSystem.Event
             {
                 var data = Activator.CreateInstance(type) as ActionData;
                 
-                if (data.ArgType == ArgType || ArgType.IsSubclassOf(data.ArgType))
+                if (data.ExpectedArgumentType == ExpectedArgumentType || ExpectedArgumentType.IsSubclassOf(data.ExpectedArgumentType))
                 {
                     result.Add(Activator.CreateInstance(type) as ActionData);   
                 }
