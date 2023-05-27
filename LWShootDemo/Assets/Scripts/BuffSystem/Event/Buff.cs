@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -5,36 +6,35 @@ namespace LWShootDemo.BuffSystem.Event
 {
     public class Buff
     {
-        private Dictionary<int, BuffEvent> _events;
+        private Dictionary<Type, BuffEvent> _events;
     
         public Buff(BuffData buffData)
         {
-            _events = buffData.Events.ToDictionary(e => e.ID);
+            _events = buffData.Events.ToDictionary(e => e.GetType());
         }
 
-        public void TriggerEvent(int id, IEventActArgs args)
+        public void TriggerEvent<TBuffEvent, TEventActArgs>(TEventActArgs args)
+            where TBuffEvent : BuffEvent<TEventActArgs> where TEventActArgs : class, IEventActArgs
         {
-            if (_events.TryGetValue(id, out var buffEvent))
+            var key = typeof(TBuffEvent);
+
+            if (_events.TryGetValue(key, out var buffEvent))
             {
-                buffEvent.Trigger(args);
+                if (buffEvent is TBuffEvent tbuffEvent)
+                {
+                    tbuffEvent.Trigger(args);
+                }
             }
         }
-        // public void TriggerEvent(BuffEventType eventType, EventActArgsBase args)
-        // {
-        //     if (_events.TryGetValue(eventType, out var buffEvent))
-        //     {
-        //         buffEvent.Trigger(args);
-        //     }
-        // }
-    
+
         public void OnHitEvent(HitArgs args)
         {
-            TriggerEvent(HitEvent.EventId, args);
+            TriggerEvent<HitEvent, HitArgs>(args);
         }
         
         public void OnTestEvent(TestArgs args)
         {
-            TriggerEvent(TestEvent.EventId, args);
+            TriggerEvent<TestEvent, TestArgs>(args);
         }
     }
 

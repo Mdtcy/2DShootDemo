@@ -10,11 +10,10 @@ namespace LWShootDemo.BuffSystem.Event
         public float Damage;
     }
     
-    public class HitEvent : BuffEvent
+    public class HitEvent : BuffEvent<HitArgs>
     {
         public static readonly int EventId = typeof(HitEvent).GetHashCode();
         public override int ID => EventId;
-        public override Type ExpectedArgumentType => typeof(HitArgs);
     }
     
     public class TestArgs : BaseEventActArgs
@@ -23,11 +22,10 @@ namespace LWShootDemo.BuffSystem.Event
         public float Damage;
     }
     
-    public class TestEvent:BuffEvent
+    public class TestEvent:BuffEvent<TestArgs>
     {
         public static readonly int EventId = typeof(TestEvent).GetHashCode();
         public override int ID => EventId;
-        public override Type ExpectedArgumentType => typeof(TestArgs);
     }
     
     public class DebugActionData : ActionData<BaseEventActArgs, DebugAction>
