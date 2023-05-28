@@ -7,6 +7,7 @@ using UnityEngine;
 namespace LWShootDemo.BuffSystem.Event
 {
     [CreateAssetMenu]
+    [HideMonoScript]
     public class BuffData : SerializedScriptableObject
     {
         [LabelText("优先级")]

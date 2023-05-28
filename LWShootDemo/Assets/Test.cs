@@ -1,6 +1,7 @@
 using System;
 using GameFramework;
 using GameFramework.Event;
+using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.BuffSystem.Event;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -121,6 +122,14 @@ namespace DefaultNamespace
             var arg = new TestArgs();
             arg.Damage = damage;
             buff.OnTestEvent(arg);
+        }
+
+        [Button]
+        public void TestTick()
+        {
+            var buff = new Buff(BuffData);
+            var buffComponent = gameObject.AddComponent<BuffComponent>();
+            buffComponent.Buffs.Add(buff);
         }
     }
 }
