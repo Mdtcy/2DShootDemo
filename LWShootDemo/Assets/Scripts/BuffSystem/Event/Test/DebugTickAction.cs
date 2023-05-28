@@ -14,7 +14,7 @@ namespace LWShootDemo.BuffSystem.Event
     {
         protected override void ExecuteInternal(BuffArgs args)
         {
-            Debug.Log($"{args.Buff.Name} : {args.Buff.Ticked}次");
+            Debug.Log($"{args.Buff.ID} : {args.Buff.Ticked}次");
         }
     }
 }

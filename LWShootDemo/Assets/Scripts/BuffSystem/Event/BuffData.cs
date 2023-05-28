@@ -10,6 +10,8 @@ namespace LWShootDemo.BuffSystem.Event
     [HideMonoScript]
     public class BuffData : SerializedScriptableObject
     {
+        public string ID;
+        
         [LabelText("优先级")]
         public int Priority;
         

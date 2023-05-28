@@ -38,7 +38,7 @@ namespace LWShootDemo.BuffSystem.Event
     {
         protected override void ExecuteInternal(BaseEventActArgs args)
         {
-            Log.Info("通用DebugAction" + Data.info + args);
+            Log.Info(Data.info);
         }
     }
 

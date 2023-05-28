@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace LWShootDemo.BuffSystem.Event
 {
     public class Buff
     {
-        public string Name;
+        public string ID => Data.ID;
         
         /// <summary>
         /// 剩余多久，单位：秒
@@ -27,14 +28,47 @@ namespace LWShootDemo.BuffSystem.Event
         /// 是否是一个永久的buff，永久的duration不会减少，但是timeElapsed还会增加
         /// </summary>
         public bool Permanent;
+
+        /// <summary>
+        /// 层数
+        /// </summary>
+        public int Stack;
+        
+        /// <summary>
+        /// buff的施法者是谁，当然可以是空的
+        /// </summary>
+        public GameObject Caster;
+
+        /// <summary>
+        /// buff的携带者，实际上是作为参数传递给脚本用，具体是谁，可定是所在控件的this.gameObject了
+        /// </summary>
+        public GameObject Carrier;
+        
+
+        public BuffData Data;
         
         
         private Dictionary<Type, BuffEvent> _events;
     
-        public Buff(BuffData buffData)
+        // public Buff(BuffData buffData)
+        // {
+        //     _events = buffData.Events.ToDictionary(e => e.GetType());
+        // }
+
+        public Buff(BuffData buffData,
+            GameObject caster,
+            GameObject carrier,
+            float duration,
+            int stack, 
+            bool permanent)
         {
-            Name = buffData.name;
             _events = buffData.Events.ToDictionary(e => e.GetType());
+            Data = buffData;
+            Caster = caster;
+            Carrier = carrier;
+            Duration = duration;
+            Stack = stack;
+            Permanent = permanent;
         }
 
         public void TriggerEvent<TBuffEvent, TEventActArgs>(TEventActArgs args)

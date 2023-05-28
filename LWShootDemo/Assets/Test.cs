@@ -4,6 +4,7 @@ using GameFramework.Event;
 using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.BuffSystem.Event;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityGameFramework.Runtime;
@@ -107,29 +108,40 @@ namespace DefaultNamespace
 
         public BuffData BuffData;
 
+        public int duration = 10;
+
         [Button]
         public void TestHitEventBuff()
         {
-            var buff = new Buff(BuffData);
-            buff.OnHitEvent(new HitArgs());
+            var addBuffInfo = new AddBuffInfo(BuffData, null, null, 1, duration);
+            var buffComponent = gameObject.GetOrAddComponent<BuffComponent>();
+            buffComponent.AddBuff(addBuffInfo);
+            var arg = new HitArgs
+            {
+                Damage = damage
+            };
+            buffComponent.TriggerEvent<HitEvent, HitArgs>(arg);
         }
 
         public int damage;
         [Button]
         public void TestTestEventBuff()
         {
-            var buff = new Buff(BuffData);
+            var addBuffInfo = new AddBuffInfo(BuffData, null, null, 1, duration);
+            var buffComponent = gameObject.GetOrAddComponent<BuffComponent>();
+            buffComponent.AddBuff(addBuffInfo);
             var arg = new TestArgs();
             arg.Damage = damage;
-            buff.OnTestEvent(arg);
+            buffComponent.TriggerEvent<LWShootDemo.BuffSystem.Event.TestEvent, TestArgs>(arg);
         }
 
         [Button]
         public void TestTick()
         {
-            var buff = new Buff(BuffData);
-            var buffComponent = gameObject.AddComponent<BuffComponent>();
-            buffComponent.Buffs.Add(buff);
+            // todo 都是null有啥影响
+            var addBuffInfo = new AddBuffInfo(BuffData, null, null, 1, duration);
+            var buffComponent = gameObject.GetOrAddComponent<BuffComponent>();
+            buffComponent.AddBuff(addBuffInfo);
         }
     }
 }
