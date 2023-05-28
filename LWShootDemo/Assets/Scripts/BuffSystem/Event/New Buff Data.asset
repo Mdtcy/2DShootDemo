@@ -31,9 +31,6 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 1|LWShootDemo.BuffSystem.Event.HitEvent, Assembly-CSharp
-    - Name: EventType
-      Entry: 3
-      Data: 0
     - Name: ActionsData
       Entry: 7
       Data: 2|System.Collections.Generic.List`1[[LWShootDemo.BuffSystem.Event.ActionData,
@@ -44,18 +41,30 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 3|LWShootDemo.BuffSystem.Event.HitActionData1, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 7
-      Data: 4|LWShootDemo.BuffSystem.Event.HitActionData1, Assembly-CSharp
+      Data: 4|LWShootDemo.BuffSystem.Event.HitActionData2, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 7
-      Data: 5|LWShootDemo.BuffSystem.Event.HitActionData2, Assembly-CSharp
+      Data: 5|LWShootDemo.BuffSystem.Event.DebugActionData, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
+    - Name: info
+      Entry: 1
+      Data: hit 1
     - Name: 
       Entry: 8
       Data: 
@@ -71,25 +80,49 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 6|LWShootDemo.BuffSystem.Event.TestEvent, Assembly-CSharp
-    - Name: EventType
-      Entry: 3
-      Data: 0
     - Name: ActionsData
       Entry: 7
       Data: 7|System.Collections.Generic.List`1[[LWShootDemo.BuffSystem.Event.ActionData,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 3
     - Name: 
       Entry: 7
-      Data: 8|LWShootDemo.BuffSystem.Event.TestActionData1, Assembly-CSharp
+      Data: 8|LWShootDemo.BuffSystem.Event.DebugActionData, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
+    - Name: info
+      Entry: 1
+      Data: 11111
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 9|LWShootDemo.BuffSystem.Event.DebugActionData, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
+    - Name: info
+      Entry: 1
+      Data: 22222
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 10|LWShootDemo.BuffSystem.Event.TestActionData1, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
     - Name: te
       Entry: 1
-      Data: zzz
+      Data: ssssssssssssssssss
     - Name: tt
       Entry: 3
-      Data: 1
+      Data: 2147483647
     - Name: 
       Entry: 8
       Data: 
@@ -108,3 +141,5 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  Priority: 0
+  Tags: []

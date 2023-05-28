@@ -10,8 +10,6 @@ namespace LWShootDemo.BuffSystem.Event
     [Serializable]
     public abstract class BuffEvent
     {
-        public abstract int ID { get; }
-        
         public abstract Type ExpectedArgumentType { get; }
 
         [LabelText("操作列表")]
@@ -54,7 +52,7 @@ namespace LWShootDemo.BuffSystem.Event
             Assert.AreEqual(args.GetType(), ExpectedArgumentType, $"传入参数和事件参数不匹配 {args.GetType()} {ExpectedArgumentType}");
             // 获取一个ActionHandler
 
-            foreach (var data in ActionsData)
+            foreach (var data in ActionsData)                                
             {
                 if (data.State == ActionState.Disable)
                 {

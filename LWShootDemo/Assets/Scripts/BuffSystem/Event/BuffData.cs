@@ -6,16 +6,23 @@ using UnityEngine;
 
 namespace LWShootDemo.BuffSystem.Event
 {
-    // todo 增加vaildator 不能有相同的event
     [CreateAssetMenu]
     public class BuffData : SerializedScriptableObject
     {
+        [LabelText("优先级")]
+        public int Priority;
+        
+        [LabelText("Tags")]
+        public List<string> Tags;
+
         [ValueDropdown(nameof(GetBuffEventTypes), IsUniqueList = true, DrawDropdownForListElements = false, ExcludeExistingValuesInList = true)]
         [ListDrawerSettings(HideAddButton = false, HideRemoveButton = true, Expanded = true)]
         [HideReferenceObjectPicker]
         [Title("BuffEvent")]
         [LabelText(" ")]
         public List<BuffEvent> Events = new();
+
+        #region Odin
 
         private IEnumerable<ValueDropdownItem> GetBuffEventTypes()
         {
@@ -41,5 +48,7 @@ namespace LWShootDemo.BuffSystem.Event
 
             return result;
         }
+
+        #endregion
     }
 }

@@ -14,8 +14,6 @@ namespace LWShootDemo.BuffSystem.Event
     [LabelText("HitEvent")]
     public class HitEvent : BuffEvent<HitArgs>
     {
-        public static readonly int EventId = typeof(HitEvent).GetHashCode();
-        public override int ID => EventId;
     }
     
     public class TestArgs : BaseEventActArgs
@@ -27,18 +25,16 @@ namespace LWShootDemo.BuffSystem.Event
     [LabelText("TestEvent")]
     public class TestEvent:BuffEvent<TestArgs>
     {
-        public static readonly int EventId = typeof(TestEvent).GetHashCode();
-        public override int ID => EventId;
     }
     
     // [LabelText("调试(DebugActionData)")]
-    public class DebugActionData : ActionData<BaseEventActArgs, DebugAction>
+    public class DebugActionData : ActionData<BaseEventActArgs, DebugActionBase>
     {
         public string info;
     }
 
     [LabelText("调试信息(DebugAction)")]
-    public class DebugAction : Action<BaseEventActArgs, DebugActionData>
+    public class DebugActionBase : ActionBase<BaseEventActArgs, DebugActionData>
     {
         protected override void ExecuteInternal(BaseEventActArgs args)
         {
@@ -52,7 +48,7 @@ namespace LWShootDemo.BuffSystem.Event
         public int tt;
     }
 
-    public class TestAction1 : Action<TestArgs, TestActionData1>
+    public class TestAction1 : ActionBase<TestArgs, TestActionData1>
     {
         protected override void ExecuteInternal(TestArgs args)
         {
@@ -69,7 +65,7 @@ namespace LWShootDemo.BuffSystem.Event
     }
 
     [LabelText("击打1")]
-    public class HitAction1 : Action<HitArgs, HitActionData1>
+    public class HitAction1 : ActionBase<HitArgs, HitActionData1>
     {
         protected override void ExecuteInternal(HitArgs args)
         {
@@ -78,7 +74,7 @@ namespace LWShootDemo.BuffSystem.Event
     }
 
     [LabelText("击打2")]
-    public class HitAction2 : Action<HitArgs, HitActionData2>
+    public class HitAction2 : ActionBase<HitArgs, HitActionData2>
     {
         protected override void ExecuteInternal(HitArgs args)
         {

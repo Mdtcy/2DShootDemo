@@ -1956,6 +1956,8 @@ MonoBehaviour:
   a: 0
   b: 0
   c: 132
+  BuffData: {fileID: 11400000, guid: 09ce3969bd4d7594a84b175366864c2a, type: 2}
+  damage: 3
 --- !u!4 &1232105661
 Transform:
   m_ObjectHideFlags: 0
