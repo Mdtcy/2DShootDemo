@@ -1,4 +1,5 @@
 using System;
+using Damages;
 using GameFramework;
 using GameFramework.Event;
 using LWShootDemo.BuffSystem.Buffs;
@@ -143,5 +144,8 @@ namespace DefaultNamespace
             var buffComponent = gameObject.GetOrAddComponent<BuffComponent>();
             buffComponent.AddBuff(addBuffInfo);
         }
+
+        [Inject]
+        private IDamageManager _damageManager;
     }
 }

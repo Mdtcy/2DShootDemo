@@ -8,9 +8,8 @@ using UnityEngine;
 
 namespace LWShootDemo.Damages
 {
-    public class DamageManager : GameFrameworkModule
+    public class DamageManager : GameFrameworkModule, IDamageManager
     {
-        private List<DamageInfo> _damageInfos = new();
         private Queue<DamageInfo> _damageInfoQueue = new();
 
         internal override void Update(float elapseSeconds, float realElapseSeconds)
@@ -92,7 +91,7 @@ namespace LWShootDemo.Damages
 
         internal override void Shutdown()
         {
-            throw new System.NotImplementedException();
+            _damageInfoQueue.Clear();
         }
     }
 }

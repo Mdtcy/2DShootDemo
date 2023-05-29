@@ -1,8 +1,10 @@
 using System;
+using Damages;
 using GameFramework;
 using GameFramework.Event;
 using GameFramework.Game;
 using GameFramework.ObjectPool;
+using LWShootDemo.Damages;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityGameFramework.Runtime;
@@ -59,6 +61,18 @@ public class ProjectInstaller : MonoInstaller
             _unityGameContext.AddModule(objectPoolManager);
             Log.Info("初始化 ObjectPoolManager 优先级: {0}", objectPoolManager.Priority);
         });
+        
+        Container
+            .Bind<IDamageManager>()
+            .To<DamageManager>()
+            .AsSingle()
+            .OnInstantiated((ctx, obj) =>
+            {
+                var damageManager = (DamageManager) obj;
+                damageManager.Priority = 80;
+                _unityGameContext.AddModule(damageManager);
+                Log.Info("初始化 DamageManager 优先级: {0}", damageManager.Priority);
+            });
     }
 
     private void InitReferencePool()
