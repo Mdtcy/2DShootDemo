@@ -10,6 +10,7 @@
 using System;
 using System.Collections;
 using LWShootDemo.BuffSystem.Buffs;
+using LWShootDemo.BuffSystem.Event;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -186,10 +187,43 @@ namespace LWShootDemo.Entities
             _buffComponent.AddBuff(addBuffInfo);
         }
 
+        public void TriggerBuff<TBuffEvent, TEventActArgs>(TEventActArgs args) where TBuffEvent : BuffEvent<TEventActArgs> where TEventActArgs : class, IEventActArgs
+        {
+            _buffComponent.TriggerEvent<TBuffEvent, TEventActArgs>(args);
+        }
+
         #endregion
 
         #region STATIC METHODS
         #endregion
+
+        ///<summary>
+        ///角色的无敌状态持续时间，如果在无敌状态中，子弹不会碰撞，DamageInfo处理无效化
+        ///单位：秒
+        ///</summary>
+        public float ImmuneTime
+        {
+            get => _immuneTime;
+            set => _immuneTime = Mathf.Max(_immuneTime, value);
+        }
+        private float _immuneTime = 0.00f;
+        
+        public bool CanBeKilledByDamageInfo(DamageInfo damageInfo)
+        {
+            if (this.ImmuneTime > 0 || damageInfo.IsHeal() == true)
+            {
+                return false;
+            }
+
+            int dValue = damageInfo.DamageValue(false);
+            // return dValue >= this.resource.hp;
+            return dValue >= this.curHp;
+        }
+
+        public void TakeDamage(int damage)
+        { 
+            curHp -= damage;
+        }
     }
 }
 #pragma warning restore 0649

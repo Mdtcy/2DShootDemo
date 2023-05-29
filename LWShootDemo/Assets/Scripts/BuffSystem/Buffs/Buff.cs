@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using LWShootDemo.BuffSystem.Events;
 using UnityEngine;
 
 namespace LWShootDemo.BuffSystem.Event
@@ -80,6 +81,12 @@ namespace LWShootDemo.BuffSystem.Event
             {
                 if (buffEvent is TBuffEvent tbuffEvent)
                 {
+                    // todo 不够优雅
+                    if (args is BuffArgs buffArgs)
+                    {
+                        buffArgs.Buff = this;
+                    }
+
                     tbuffEvent.Trigger(args);
                 }
             }

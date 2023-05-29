@@ -42,7 +42,7 @@ namespace LWShootDemo.BuffSystem.Buffs
                 if (buff.TimeElapsed >= buff.Ticked + 1)
                 {
                     // 触发buffTick事件
-                    buff.TriggerEvent<BuffTickEvent, BuffArgs>(new BuffArgs(buff));
+                    buff.TriggerEvent<BuffTickEvent, BuffTickArgs>(new BuffTickArgs());
                     buff.Ticked++;
                 }
 
@@ -58,7 +58,8 @@ namespace LWShootDemo.BuffSystem.Buffs
                 Buffs.Remove(buffToRemove);
                     
                 // 触发buffRemove事件
-                buffToRemove.TriggerEvent<BuffRemoveEvent, BuffArgs>(new BuffArgs(buffToRemove));
+                var buffRemoveArgs = new BuffRemoveArgs();
+                buffToRemove.TriggerEvent<BuffRemoveEvent, BuffRemoveArgs>(buffRemoveArgs);
                     
                 // todo 重新计算属性
             }
@@ -107,7 +108,7 @@ namespace LWShootDemo.BuffSystem.Buffs
             if (toRemove == false)
             {
                 // 触发buffOccur事件
-                toAddBuff.TriggerEvent<BuffOccurEvent, BuffOccurArgs>(new BuffOccurArgs(toAddBuff, modStack));
+                toAddBuff.TriggerEvent<BuffOccurEvent, BuffOccurArgs>(new BuffOccurArgs(modStack));
             }
          
             // todo 重新计算属性

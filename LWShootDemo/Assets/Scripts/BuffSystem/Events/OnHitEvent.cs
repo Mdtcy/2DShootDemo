@@ -3,8 +3,8 @@ using Sirenix.OdinInspector;
 
 namespace LWShootDemo.BuffSystem.Events
 {
-    [LabelText("BuffTickEvent")]
-    public class BuffTickEvent : BuffEvent<BuffTickArgs>
+    [LabelText("OnHitEvent")]
+    public class OnHitEvent : BuffEvent<OnHitArgs>
     {
     }
 }

@@ -6,7 +6,7 @@ namespace LWShootDemo.BuffSystem.Events
     {
         public int ModStack;
         
-        public BuffOccurArgs(Buff buff, int modStack) : base(buff)
+        public BuffOccurArgs(int modStack)
         {
             ModStack = modStack;
         }
