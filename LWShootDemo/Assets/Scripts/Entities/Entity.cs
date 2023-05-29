@@ -9,6 +9,7 @@
 #pragma warning disable 0649
 using System;
 using System.Collections;
+using LWShootDemo.BuffSystem.Buffs;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -33,6 +34,10 @@ namespace LWShootDemo.Entities
 
         [SerializeField]
         private Rigidbody2D rb2D;
+
+        [LabelText("Buff")]
+        [SerializeField]
+        private BuffComponent _buffComponent;
 
         // 是否可以移动
         [ShowInInspector]

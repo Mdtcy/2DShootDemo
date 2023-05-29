@@ -124,7 +124,7 @@ namespace LWShootDemo.Entities
 
             // RotateToMouse();
             // TryToShoot();
-            Move();
+            // Move();
         }
 
         // 旋转到鼠标位置

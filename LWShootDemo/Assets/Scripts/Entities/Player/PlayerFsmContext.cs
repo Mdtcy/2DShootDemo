@@ -15,6 +15,10 @@ namespace LWShootDemo.Entities.Player
         
         public FaceController FaceController;
 
+        public float Speed;
+
+        public Entity Entity;
+
         [BoxGroup("Shoot")]
         public float FireRate;
 

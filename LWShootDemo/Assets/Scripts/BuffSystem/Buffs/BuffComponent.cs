@@ -120,15 +120,18 @@ namespace LWShootDemo.BuffSystem.Buffs
         /// <param name="caster">如果caster不是空，那么就代表只有buffObj.caster在caster里面的才符合条件</param>
         /// <return>符合条件的buffObj数组</return>
         /// </summary>
-        public List<Buff> GetBuffById(string id, List<GameObject> caster = null){
+        public List<Buff> GetBuffById(string id, List<GameObject> caster = null)
+        {
             List<Buff> res = new List<Buff>();
-            for (int i = 0; i < this.Buffs.Count;  i++)
+            foreach (var buff in Buffs)
             {
-                if (Buffs[i].ID == id && (caster == null || caster.Count <= 0 || caster.Contains(Buffs[i].Caster) == true))
+                if (buff.ID == id &&
+                    (caster == null || caster.Count == 0 || caster.Contains(buff.Caster) == true))
                 {
-                    res.Add(Buffs[i]);
+                    res.Add(buff);
                 }
             }
+
             return res;
         }
         

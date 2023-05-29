@@ -7,14 +7,9 @@ namespace LWShootDemo.Entities.Player
     public class RunState : PlayerFsmStateBase
     {
         private AnimancerComponent animancerComponent;
-        private Rigidbody2D rigidbody2D;
-
-        private float speed = 1;
-        
         public RunState(bool needsExitTime, PlayerFsmContext fsmContext) : base(needsExitTime, fsmContext)
         {
             this.animancerComponent = fsmContext.AnimancerComponent;
-            this.rigidbody2D = fsmContext.Rb2D;
         }
 
         public override void OnEnter()
@@ -31,24 +26,21 @@ namespace LWShootDemo.Entities.Player
         public override void OnLogic()
         {
             base.OnLogic();
-            // if(Input.GetButton("Horizontal"))
-            if (Input.GetButton("Horizontal") ||
-                Input.GetButton("Vertical") )
+            
+            // 获取输入
+            var movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+            if (movement!= Vector2.zero)
             {
-                // 获取输入
-                float horizontal = Input.GetAxis("Horizontal");
-                float vertical = Input.GetAxis("Vertical");
-                
                 // 移动
-                Vector3 playerInput = new Vector3(horizontal, 0f, vertical);
-                rigidbody2D.velocity = playerInput * speed;  
-                
+                Context.Entity.TryMove(movement.normalized, Context.Speed);
+
                 // 朝向移动方向
-                if (horizontal > 0)
+                if (movement.x > 0)
                 {
                     Context.FaceController.Face(Direction.Right);
                 }
-                else if (horizontal < 0)
+                else if (movement.x < 0)
                 {
                     Context.FaceController.Face(Direction.Left);
                 }
@@ -58,7 +50,5 @@ namespace LWShootDemo.Entities.Player
                 fsm.RequestStateChange(PlayerFsm.PlayerState.Idle);
             }
         }
-        
-        
     }
 }
