@@ -181,6 +181,11 @@ namespace LWShootDemo.Entities
             ActOnDeath?.Invoke();
         }
 
+        public void AddBuff(AddBuffInfo addBuffInfo)
+        {
+            _buffComponent.AddBuff(addBuffInfo);
+        }
+
         #endregion
 
         #region STATIC METHODS

@@ -121,30 +121,6 @@ namespace LWShootDemo.Entities
             {
                 return;
             }
-
-            // RotateToMouse();
-            // TryToShoot();
-            // Move();
-        }
-
-        // 旋转到鼠标位置
-        private void RotateToMouse()
-        {
-            mouse   = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            mouse.z = mainCamera.nearClipPlane;
-            Vector2 mouseVector = (mouse - transform.position).normalized;
-            float   gunAngle    = Mathf.Atan2(mouseVector.y, mouseVector.x) * Mathf.Rad2Deg - 90f;
-
-            entity.TryRotate(gunAngle);
-        }
-
-        // 移动
-        private void Move()
-        {
-            // // 按住开火键的时候移动速度减半  有后坐力之后不需要这个了
-            // float curSpeed = firing ? moveSpeed / 3 : moveSpeed;
-
-            entity.TryMove(movement.normalized, moveSpeed);
         }
 
         // 获取输入
@@ -153,18 +129,7 @@ namespace LWShootDemo.Entities
             movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             firing     = Input.GetMouseButton(0);
         }
-
-        // 尝试开火
-        private void TryToShoot()
-        {
-            canShoot = lastShotTime + fireRate < Time.time;
-            if (firing && canShoot)
-            {
-                curWeapon.Use();
-                lastShotTime = Time.time;
-            }
-        }
-
+        
         #endregion
 
         #region STATIC METHODS
