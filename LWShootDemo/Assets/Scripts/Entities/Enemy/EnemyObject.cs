@@ -1,5 +1,6 @@
 using GameFramework;
 using GameFramework.ObjectPool;
+using LWShootDemo.Entities.Enemy;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -44,6 +45,7 @@ namespace Entities.Enemy
             base.OnSpawn();
             GameObject enemy = (GameObject)Target;
             GameObject gameObject = enemy.gameObject;
+            enemy.GetComponent<EnemyController>().OnSpawn();
             gameObject.SetActive(true);
             SceneManager.MoveGameObjectToScene(gameObject, PoolScene);
         }
@@ -52,6 +54,7 @@ namespace Entities.Enemy
         {
             base.OnUnspawn();
             GameObject enemy = (GameObject)Target;
+            enemy.GetComponent<EnemyController>().OnDespawn();
             enemy.SetActive(false);
         }
     }

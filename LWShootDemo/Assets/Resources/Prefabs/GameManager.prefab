@@ -474,17 +474,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnArea: {x: 15, y: 10}
   debugMode: 0
-  EnemySpawnSettings:
-  - EnemyPool: {fileID: 0}
-    Prefab: {fileID: 1617456840222586617, guid: 20c6ba8e317adb540945a684262ed46b,
+  _enemySpawnSettings:
+  - Prefab: {fileID: 1617456840222586617, guid: 20c6ba8e317adb540945a684262ed46b,
       type: 3}
-    SpawnPoint: 2
-  - EnemyPool: {fileID: 0}
-    Prefab: {fileID: 1617456840222586617, guid: a005383eb34bafe4b9f03a2cddb39d4d,
+    SpawnPoint: 3
+  - Prefab: {fileID: 1617456840222586617, guid: a005383eb34bafe4b9f03a2cddb39d4d,
       type: 3}
     SpawnPoint: 5
-  - EnemyPool: {fileID: 0}
-    Prefab: {fileID: 1617456840222586617, guid: 289d08f98aadc3c4f9ef7f72ae86d814,
+  - Prefab: {fileID: 1617456840222586617, guid: 289d08f98aadc3c4f9ef7f72ae86d814,
       type: 3}
     SpawnPoint: 8
 --- !u!1 &809789501817863335

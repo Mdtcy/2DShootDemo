@@ -134,7 +134,6 @@ namespace LWShootDemo.Entities.Enemy
                 enemy.transform.position = GetRandomSpawnPosition();
 
                 var enemyController = enemy.GetComponent<EnemyController>();
-                enemyController.Setup(enemySpawnSetting.Prefab.name);
                 enemys.Add(enemyController);
             }
         }

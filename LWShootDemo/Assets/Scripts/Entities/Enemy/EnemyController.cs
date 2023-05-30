@@ -25,7 +25,7 @@ namespace LWShootDemo.Entities.Enemy
     /// 敌人控制器
     /// </summary>
     [RequireComponent(typeof(Entity))]
-    public class EnemyController : PoolObject
+    public class EnemyController : MonoBehaviour
     {
         #region FIELDS
 
@@ -60,15 +60,11 @@ namespace LWShootDemo.Entities.Enemy
         private SimpleUnitySpawnPool deathEffectPool;
         private DifficultyManager    difficultyManager;
 
-        private string _pfbName;
-        
-        public string PfbName => _pfbName;
-
         #endregion
 
         #region PROPERTIES
 
-        public bool                 IsDead => entity.IsDead;
+        public bool IsDead => entity.IsDead;
 
         #endregion
 
@@ -83,12 +79,6 @@ namespace LWShootDemo.Entities.Enemy
 
             LookAtTarget();
             ChaseTarget();
-        }
-
-        // todo 待优化 有时间再改
-        public void Setup(string pfbName)
-        {
-            _pfbName = pfbName;
         }
 
         #endregion
@@ -118,16 +108,13 @@ namespace LWShootDemo.Entities.Enemy
             entity.ActOnDeath -= OnDeath;
         }
 
-        public override void OnSpawn()
+        public void OnSpawn()
         {
-            base.OnSpawn();
-
             entity.Init();
         }
 
-        public override void OnDespawn()
+        public void OnDespawn()
         {
-            base.OnDespawn();
             spModel.material = matNormal;
             entity.Reset();
         }
