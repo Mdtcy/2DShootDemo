@@ -10,6 +10,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Damages;
+using GameFramework;
 using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.Entities;
 using UnityEngine;
@@ -19,7 +20,7 @@ namespace LWShootDemo
     /// <summary>
     /// 记录伤害信息
     /// </summary>
-    public class DamageInfo
+    public class DamageInfo : IReference
     {
         public Entity attacker;
         
@@ -31,8 +32,8 @@ namespace LWShootDemo
         ///根据这些伤害类型，逻辑处理可能会有所不同，典型的比如"reflect"，来自反伤的，那本身一个buff的作用就是受到伤害的时候反弹伤害，如果双方都有这个buff
         ///并且这个buff没有判断damageInfo.tags里面有reflect，则可能造成“短路”，最终有一下有一方就秒了。
         ///</summary>
-        public DamageInfoTag[] Tags;
-        
+        public List<DamageInfoTag> Tags = new();
+
         /// <summary>
         /// 伤害值
         /// </summary>
@@ -42,11 +43,6 @@ namespace LWShootDemo
         /// 伤害的方向
         /// </summary>
         public Vector2 Direction;
-
-        /// <summary>
-        /// 是否暴击
-        /// </summary>
-        public bool IsCrit;
         
         ///<summary>
         ///是否暴击，这是游戏设计了有暴击的可能性存在。
@@ -58,7 +54,7 @@ namespace LWShootDemo
         ///<summary>
         ///伤害过后，给角色添加的buff
         ///</summary>
-        public List<AddBuffInfo> AddBuffs = new List<AddBuffInfo>();
+        public List<AddBuffInfo> AddBuffs = new();
 
         /// <summary>
         /// 根据tag判断，这是否是一次治疗，那些tag算是治疗，当然是策划定义了才算数的
@@ -86,23 +82,36 @@ namespace LWShootDemo
             return Mathf.CeilToInt(Damage * (isCrit == true ? 2.00f:1.00f));  //暴击1.8倍（就这么设定的别问为啥，我是数值策划我说了算）
         }
 
-        public DamageInfo(Entity attacker,
+        public void Init(Entity attacker,
             Entity defender, 
             int damage,
             Vector2 damageDirection,
             float baseCriticalRate, 
-            DamageInfoTag[] tags)
+            List<DamageInfoTag> tags,
+            List<AddBuffInfo> addBuffs)
         {
             this.attacker = attacker;
             this.defender = defender;
             this.Damage = damage;
             this.CriticalRate = baseCriticalRate;
             this.Direction = damageDirection;
-            this.Tags = new DamageInfoTag[tags.Length];
-            for (int i = 0; i < tags.Length; i++)
-            {
-                this.Tags[i] = tags[i];
-            }
+            this.Tags.AddRange(tags);
+            this.AddBuffs.AddRange(addBuffs);
+        }
+
+        public DamageInfo()
+        {
+        }
+
+        public void Clear()
+        {
+            attacker = null;
+            defender = null;
+            Damage = 0;
+            Direction = Vector2.zero;
+            CriticalRate = 0;
+            AddBuffs.Clear();
+            Tags.Clear();
         }
     }
 }

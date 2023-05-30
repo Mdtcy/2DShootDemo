@@ -7,8 +7,10 @@
  */
 
 #pragma warning disable 0649
+using System.Collections.Generic;
 using Damages;
 using GameFramework.ObjectPool;
+using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.Entities;
 using LWShootDemo.Pool;
 using UnityEngine;
@@ -119,10 +121,13 @@ namespace LWShootDemo.Weapons
             {
                 var dir = (collision.transform.position - transform.position).normalized;
                 isDead = true;
-                _damageManager.DoDamage(caster,entity, damage, dir, 0,new DamageInfoTag[]{});
+                _damageManager.DoDamage(caster, 
+                    entity, damage, dir, 0, 
+                    new List<DamageInfoTag>(),
+                    new List<AddBuffInfo>());
                 // var damageInfo = new DamageInfo(damage, dir, Random.value < critChance);
                 // collision.GetComponent<Entity>().TakeDamage(damageInfo);
-                
+
             }
         }
 

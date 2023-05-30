@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Damages;
 using GameFramework;
+using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.BuffSystem.Events;
 using LWShootDemo.Entities;
 using UnityEngine;
@@ -72,6 +73,8 @@ namespace LWShootDemo.Damages
             {
                 defender.AddBuff(addBuffInfo);
             }
+            
+            ReferencePool.Release(damageInfo);
         }
 
         ///<summary>
@@ -83,10 +86,17 @@ namespace LWShootDemo.Damages
         ///<param name="criticalRate">暴击率，0-1</param>
         ///<param name="tags">伤害信息类型</param>
         ///</summary>
-        public void DoDamage(Entity attacker, Entity target, int damage, Vector2 damageDirection, float criticalRate, DamageInfoTag[] tags)
+        public void DoDamage(Entity attacker,
+            Entity target, 
+            int damage, 
+            Vector2 damageDirection,
+            float criticalRate,
+            List<DamageInfoTag> tags,
+            List<AddBuffInfo> addBuffInfos)
         {
-            this._damageInfoQueue.Enqueue(
-                new DamageInfo(attacker, target, damage, damageDirection, criticalRate, tags));
+            var damageInfo = ReferencePool.Acquire<DamageInfo>();
+            damageInfo.Init(attacker, target, damage, damageDirection, criticalRate, tags, addBuffInfos);
+            _damageInfoQueue.Enqueue(damageInfo);
         }
 
         internal override void Shutdown()
