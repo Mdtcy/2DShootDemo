@@ -2,6 +2,7 @@ using GameFramework;
 using GameFramework.ObjectPool;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace LWShootDemo.Weapons
 {
@@ -20,7 +21,7 @@ namespace LWShootDemo.Weapons
                 return _poolScene;
             }
         }
-
+        
         public static ProjectileObject Create(object target)
         {
             ProjectileObject projectileObject = ReferencePool.Acquire<ProjectileObject>();

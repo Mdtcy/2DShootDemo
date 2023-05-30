@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 1617456840222586615}
   - component: {fileID: 1617456840222586614}
   - component: {fileID: 76883030600441076}
+  - component: {fileID: 3748257947229114215}
   m_Layer: 0
   m_Name: Enemy 3
   m_TagString: Enemy
@@ -138,7 +139,6 @@ MonoBehaviour:
   knockBackForce: 100
   spModel: {fileID: 1617456840124990902}
   moveSpeed: 2
-  deathEffect: {fileID: 6453547444083992817, guid: 5b702c29a3357e94caea888fc0c73e34, type: 3}
 --- !u!50 &1617456840222586615
 Rigidbody2D:
   serializedVersion: 4
@@ -191,3 +191,17 @@ MonoBehaviour:
   side: 1
   maxHp: 4
   rb2D: {fileID: 1617456840222586615}
+  _buffComponent: {fileID: -7620510086819444739, guid: a005383eb34bafe4b9f03a2cddb39d4d,
+    type: 3}
+--- !u!114 &3748257947229114215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617456840222586613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33099e53c67a46118d363685ba6c0f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

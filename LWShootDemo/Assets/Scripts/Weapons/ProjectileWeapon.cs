@@ -66,7 +66,7 @@ namespace LWShootDemo.Weapons
             var firePointPos = firePoint.position;
 
             // 生成子弹
-            projectileManager.CreateProjectile(firePointPos, firePoint.rotation);
+            projectileManager.CreateProjectile(owener, firePointPos, firePoint.rotation);
 
             // todo 对持有者产生后坐力 
             // owener.ApplyKnowBack(0.2f, -transform.up * fireKnockBackForce);

@@ -56,10 +56,10 @@ namespace LWShootDemo.Entities
         /// </summary>
         public Action ActOnDeath;
 
-        /// <summary>
-        /// 受伤事件
-        /// </summary>
-        public Action<DamageInfo> ActOnHurt;
+        // /// <summary>
+        // /// 受伤事件
+        // /// </summary>
+        // public Action<DamageInfo> ActOnHurt;
 
         #endregion
 
@@ -76,6 +76,11 @@ namespace LWShootDemo.Entities
         public Side Side   => side;
 
         #endregion
+
+        private void Update()
+        {
+            _buffComponent.UpdateBuff(Time.deltaTime);
+        }
 
         #region PUBLIC METHODS
 
@@ -101,28 +106,7 @@ namespace LWShootDemo.Entities
 
             rb2D.MovePosition(position: direction.normalized * moveSpeed * Time.deltaTime + transform.position);
         }
-
-        /// <summary>
-        /// 造成伤害
-        /// </summary>
-        /// <param name="damageInfo"></param>
-        public void TakeDamage(DamageInfo damageInfo)
-        {
-            ActOnHurt?.Invoke(damageInfo);
-
-            int realDamage = damageInfo.Damage;
-            if (damageInfo.IsCrit)
-            {
-                realDamage *= 2;
-            }
-
-            curHp -= realDamage;
-
-            if (curHp <= 0)
-            {
-                Death();
-            }
-        }
+        
 
         /// <summary>
         /// 应用击退
@@ -222,7 +206,13 @@ namespace LWShootDemo.Entities
 
         public void TakeDamage(int damage)
         { 
+            // ActOnHurt?.Invoke(damageInfo);
             curHp -= damage;
+            
+            if (curHp <= 0)
+            {
+                Death();
+            }
         }
     }
 }

@@ -7,9 +7,12 @@
  */
 
 #pragma warning disable 0649
+using Damages;
+using GameFramework.ObjectPool;
 using LWShootDemo.Entities;
 using LWShootDemo.Pool;
 using UnityEngine;
+using Zenject;
 
 namespace LWShootDemo.Weapons
 {
@@ -59,17 +62,21 @@ namespace LWShootDemo.Weapons
         /// 是否死亡（目前是碰撞后即标记为死亡）
         /// </summary>
         public bool IsDead => isDead;
+        
+        private Entity caster;
 
         #endregion
 
         #region PUBLIC METHODS
 
         /// <summary>
-        /// 初始化
+        /// caster
         /// </summary>
+        /// <param name="caster"></param>
         /// <param name="spawnTime"></param>
-        public void Init(float spawnTime)
+        public void Init(Entity caster, float spawnTime)
         {
+            this.caster     = caster;
             this.spawnTime = spawnTime;
             isDead         = false;
         }
@@ -89,6 +96,9 @@ namespace LWShootDemo.Weapons
         #endregion
 
         #region PRIVATE METHODS
+        
+        [Inject]
+        private IDamageManager _damageManager;
 
         // 撞到非主角阵营时，造成1伤害
         private void OnTriggerEnter2D(Collider2D collision)
@@ -105,12 +115,14 @@ namespace LWShootDemo.Weapons
                 return;
             }
 
-            if (entity.Side != Side.Player)
+            if (entity.Side != caster.Side)
             {
                 var dir = (collision.transform.position - transform.position).normalized;
                 isDead = true;
-                var damageInfo = new DamageInfo(damage, dir, Random.value < critChance);
-                collision.GetComponent<Entity>().TakeDamage(damageInfo);
+                _damageManager.DoDamage(caster,entity, damage, dir, 0,new DamageInfoTag[]{});
+                // var damageInfo = new DamageInfo(damage, dir, Random.value < critChance);
+                // collision.GetComponent<Entity>().TakeDamage(damageInfo);
+                
             }
         }
 

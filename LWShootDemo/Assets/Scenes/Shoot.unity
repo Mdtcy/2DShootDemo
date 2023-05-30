@@ -1957,6 +1957,7 @@ MonoBehaviour:
   b: 0
   c: 132
   BuffData: {fileID: 11400000, guid: 09ce3969bd4d7594a84b175366864c2a, type: 2}
+  duration: 10
   damage: 3
 --- !u!4 &1232105661
 Transform:
@@ -7897,6 +7898,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 809789500414147591, guid: 0138815c4ff2e674faefaa102a9a126d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 809789500896369296, guid: 0138815c4ff2e674faefaa102a9a126d,
         type: 3}
       propertyPath: txtDifficulty
@@ -7907,6 +7913,24 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 809789501149391902, guid: 0138815c4ff2e674faefaa102a9a126d,
+        type: 3}
+      propertyPath: EnemySpawnSettings.Array.data[0].Prefab
+      value: 
+      objectReference: {fileID: 1617456840222586617, guid: 20c6ba8e317adb540945a684262ed46b,
+        type: 3}
+    - target: {fileID: 809789501149391902, guid: 0138815c4ff2e674faefaa102a9a126d,
+        type: 3}
+      propertyPath: EnemySpawnSettings.Array.data[1].Prefab
+      value: 
+      objectReference: {fileID: 1617456840222586617, guid: a005383eb34bafe4b9f03a2cddb39d4d,
+        type: 3}
+    - target: {fileID: 809789501149391902, guid: 0138815c4ff2e674faefaa102a9a126d,
+        type: 3}
+      propertyPath: EnemySpawnSettings.Array.data[2].Prefab
+      value: 
+      objectReference: {fileID: 1617456840222586617, guid: 289d08f98aadc3c4f9ef7f72ae86d814,
+        type: 3}
     - target: {fileID: 809789501817863334, guid: 0138815c4ff2e674faefaa102a9a126d,
         type: 3}
       propertyPath: _pfbProjectile
@@ -8258,6 +8282,7 @@ GameObject:
   - component: {fileID: 8375140718191325651}
   - component: {fileID: 8375140718191325652}
   - component: {fileID: 8375140718191325653}
+  - component: {fileID: 8375140718191325654}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -8643,6 +8668,7 @@ MonoBehaviour:
   side: 0
   maxHp: 1
   rb2D: {fileID: 2905730703844915099}
+  _buffComponent: {fileID: 8375140718191325654}
 --- !u!114 &8375140718191325648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8693,6 +8719,8 @@ MonoBehaviour:
   Rb2D: {fileID: 2905730703844915099}
   EnemyDetector: {fileID: 8375140718191325651}
   FaceController: {fileID: 8375140718191325652}
+  Speed: 5
+  Entity: {fileID: 8375140718191325647}
   FireRate: 0.1
   Weapon: {fileID: 2030370090}
 --- !u!114 &8375140718191325651
@@ -8736,3 +8764,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.48}
   m_Size: {x: 0.5, y: 1.45}
   m_Direction: 0
+--- !u!114 &8375140718191325654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2905730703844915103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33099e53c67a46118d363685ba6c0f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

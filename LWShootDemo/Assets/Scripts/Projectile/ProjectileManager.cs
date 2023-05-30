@@ -9,6 +9,7 @@
 #pragma warning disable 0649
 using System.Collections.Generic;
 using GameFramework.ObjectPool;
+using LWShootDemo.Entities;
 using UnityEngine;
 using Zenject;
 
@@ -58,14 +59,14 @@ namespace LWShootDemo.Weapons
         /// </summary>
         /// <param name="position"></param>
         /// <param name="rotation"></param>
-        public void CreateProjectile(Vector3 position, Quaternion rotation)
+        public void CreateProjectile(Entity caster, Vector3 position, Quaternion rotation)
         {
             var projectile = CreateProjectile(_pfbProjectile);
             var projectileTransform = projectile.transform;
             projectileTransform.position = position;
             projectileTransform.rotation = rotation;
 
-            projectile.Init(Time.time);
+            projectile.Init(caster, Time.time);
 
             Debug.Assert(!projectiles.Contains(projectile));
             projectiles.Add(projectile);
@@ -84,6 +85,9 @@ namespace LWShootDemo.Weapons
             _projectileObjectPool = _objectPoolManager.CreateSingleSpawnObjectPool<ProjectileObject>(_pfbProjectile.name, 16);
         }
 
+        [Inject]
+        private DiContainer _container;
+        
         private Projectile CreateProjectile(Projectile pfbProjectile)
         {
             Projectile projectile = null;
@@ -94,7 +98,7 @@ namespace LWShootDemo.Weapons
             }
             else
             {
-                projectile = Instantiate(pfbProjectile);
+                projectile = _container.InstantiatePrefab(pfbProjectile).GetComponent<Projectile>();
                 _projectileObjectPool.Register(ProjectileObject.Create(projectile), true);
             }
 

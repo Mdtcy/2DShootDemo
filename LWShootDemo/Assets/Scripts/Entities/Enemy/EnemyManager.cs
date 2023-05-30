@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using LWShootDemo.Difficulty;
 using LWShootDemo.Pool;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace LWShootDemo.Entities.Enemy
@@ -25,6 +26,8 @@ namespace LWShootDemo.Entities.Enemy
         public class EnemySpawnSetting
         {
             public SimpleUnitySpawnPool EnemyPool;
+            
+            public Transform Prefab;
 
             public int SpawnPoint;
         }
@@ -109,6 +112,8 @@ namespace LWShootDemo.Entities.Enemy
             }
         }
 
+        [Inject]
+        private DiContainer _diContainer;
         // 根据生成点数生成敌人 每一波有一个生成点数 每个难度对应一个生成点数，每次生成一个敌人消耗生成点数，生成点数花完就不能再生成了，可以生成超过生成点数的敌人
         private void SpawnEnemy(int spawnPoint)
         {
@@ -117,7 +122,8 @@ namespace LWShootDemo.Entities.Enemy
                 var enemyConfig = EnemySpawnSettings[Random.Range(0, EnemySpawnSettings.Count)];
                 spawnPoint -= enemyConfig.SpawnPoint;
 
-                var enemy = enemyConfig.EnemyPool.Get();
+                // todo 
+                var enemy = _diContainer.InstantiatePrefab(enemyConfig.Prefab);
                 enemy.transform.position = GetRandomSpawnPosition();
 
                 var enemyController = enemy.GetComponent<EnemyController>();

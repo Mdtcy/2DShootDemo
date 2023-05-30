@@ -59,14 +59,6 @@ namespace LWShootDemo
         ///伤害过后，给角色添加的buff
         ///</summary>
         public List<AddBuffInfo> AddBuffs = new List<AddBuffInfo>();
-        
-
-        public DamageInfo(int damage, Vector2 direction, bool isCrit)
-        {
-            Damage    = damage;
-            Direction = direction;
-            IsCrit    = isCrit;
-        }
 
         /// <summary>
         /// 根据tag判断，这是否是一次治疗，那些tag算是治疗，当然是策划定义了才算数的

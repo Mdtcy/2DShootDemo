@@ -27,20 +27,51 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 5
     - Name: 
       Entry: 7
-      Data: 1|LWShootDemo.BuffSystem.Event.HitEvent, Assembly-CSharp
+      Data: 1|LWShootDemo.BuffSystem.Events.BuffOccurEvent, Assembly-CSharp
     - Name: ActionsData
       Entry: 7
       Data: 2|System.Collections.Generic.List`1[[LWShootDemo.BuffSystem.Event.ActionData,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 3|LWShootDemo.BuffSystem.Event.DebugActionData, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
+    - Name: info
+      Entry: 1
+      Data: "\u521B\u5EFABuff"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 4|LWShootDemo.BuffSystem.Event.HitEvent, Assembly-CSharp
+    - Name: ActionsData
+      Entry: 7
+      Data: 5|System.Collections.Generic.List`1[[LWShootDemo.BuffSystem.Event.ActionData,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
       Data: 3
     - Name: 
       Entry: 7
-      Data: 3|LWShootDemo.BuffSystem.Event.HitActionData1, Assembly-CSharp
+      Data: 6|LWShootDemo.BuffSystem.Event.HitActionData1, Assembly-CSharp
     - Name: State
       Entry: 3
       Data: 0
@@ -49,7 +80,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 4|LWShootDemo.BuffSystem.Event.HitActionData2, Assembly-CSharp
+      Data: 7|LWShootDemo.BuffSystem.Event.HitActionData2, Assembly-CSharp
     - Name: State
       Entry: 3
       Data: 0
@@ -58,7 +89,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 5|LWShootDemo.BuffSystem.Event.DebugActionData, Assembly-CSharp
+      Data: 8|LWShootDemo.BuffSystem.Event.DebugActionData, Assembly-CSharp
     - Name: State
       Entry: 3
       Data: 0
@@ -79,17 +110,17 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 6|LWShootDemo.BuffSystem.Event.TestEvent, Assembly-CSharp
+      Data: 9|LWShootDemo.BuffSystem.Event.TestEvent, Assembly-CSharp
     - Name: ActionsData
       Entry: 7
-      Data: 7|System.Collections.Generic.List`1[[LWShootDemo.BuffSystem.Event.ActionData,
+      Data: 10|System.Collections.Generic.List`1[[LWShootDemo.BuffSystem.Event.ActionData,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 3
     - Name: 
       Entry: 7
-      Data: 8|LWShootDemo.BuffSystem.Event.DebugActionData, Assembly-CSharp
+      Data: 11|LWShootDemo.BuffSystem.Event.DebugActionData, Assembly-CSharp
     - Name: State
       Entry: 3
       Data: 0
@@ -101,7 +132,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 9|LWShootDemo.BuffSystem.Event.DebugActionData, Assembly-CSharp
+      Data: 12|LWShootDemo.BuffSystem.Event.DebugActionData, Assembly-CSharp
     - Name: State
       Entry: 3
       Data: 0
@@ -113,7 +144,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 10|LWShootDemo.BuffSystem.Event.TestActionData1, Assembly-CSharp
+      Data: 13|LWShootDemo.BuffSystem.Event.TestActionData1, Assembly-CSharp
     - Name: State
       Entry: 3
       Data: 0
@@ -137,17 +168,17 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 11|LWShootDemo.BuffSystem.Events.BuffTickEvent, Assembly-CSharp
+      Data: 14|LWShootDemo.BuffSystem.Events.BuffTickEvent, Assembly-CSharp
     - Name: ActionsData
       Entry: 7
-      Data: 12|System.Collections.Generic.List`1[[LWShootDemo.BuffSystem.Event.ActionData,
+      Data: 15|System.Collections.Generic.List`1[[LWShootDemo.BuffSystem.Event.ActionData,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
-      Data: 13|LWShootDemo.BuffSystem.Event.DebugActionData, Assembly-CSharp
+      Data: 16|LWShootDemo.BuffSystem.Event.DebugActionData, Assembly-CSharp
     - Name: State
       Entry: 3
       Data: 0
@@ -158,6 +189,46 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 17|LWShootDemo.BuffSystem.Event.DebugTickActionData, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 18|LWShootDemo.BuffSystem.Events.BuffRemoveEvent, Assembly-CSharp
+    - Name: ActionsData
+      Entry: 7
+      Data: 19|System.Collections.Generic.List`1[[LWShootDemo.BuffSystem.Event.ActionData,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 20|LWShootDemo.BuffSystem.Event.DebugActionData, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
+    - Name: info
+      Entry: 1
+      Data: "\u79FB\u9664Buff"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -172,5 +243,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  ID: TestBuff
   Priority: 0
   Tags: []

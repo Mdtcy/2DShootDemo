@@ -8,6 +8,7 @@
 
 #pragma warning disable 0649
 using System.Collections;
+using Damages;
 using Events;
 using LWShootDemo.Difficulty;
 using LWShootDemo.Enemy;
@@ -16,6 +17,7 @@ using LWShootDemo.Pool;
 using LWShootDemo.Sound;
 using LWShootDemo.TimeStop;
 using UnityEngine;
+using Zenject;
 
 namespace LWShootDemo.Entities.Enemy
 {
@@ -105,13 +107,13 @@ namespace LWShootDemo.Entities.Enemy
             deathEffectPool  = GameManager.Instance.EnemyDeathEffectPool;
             difficultyManager = GameManager.Instance.DifficultyManager;
 
-            entity.ActOnHurt  += OnHurt;
+            // entity.ActOnHurt  += OnHurt;
             entity.ActOnDeath += OnDeath;
         }
 
         private void OnDestroy()
         {
-            entity.ActOnHurt  -= OnHurt;
+            // entity.ActOnHurt  -= OnHurt;
             entity.ActOnDeath -= OnDeath;
         }
 
@@ -198,13 +200,19 @@ namespace LWShootDemo.Entities.Enemy
         private void OnCollisionEnter2D(Collision2D other)
         {
             // 撞到Player造成一点伤害
-            var entity = other.collider.GetComponent<Entity>();
-            if (entity!=null && entity.Side == Side.Player)
+            var target = other.collider.GetComponent<Entity>();
+            if (target!=null && target.Side == Side.Player)
             {
-                var damageInfo = new DamageInfo(1, entity.transform.position - transform.position, false);
-                entity.TakeDamage(damageInfo);
+                // var damageInfo = new DamageInfo(1, entity.transform.position - transform.position, false);
+                var dir = entity.transform.position - transform.position;
+                // var damageInfo = new DamageInfo(this.entity, target, 1, dir,0,null);
+                _damageManager.DoDamage(entity, target, 1, dir,0,new DamageInfoTag[]{});
+                // target.TakeDamage(damageInfo);
             }
         }
+
+        [Inject]
+        private IDamageManager _damageManager;
 
         // 闪光
         private IEnumerator IFlash(float duration)
