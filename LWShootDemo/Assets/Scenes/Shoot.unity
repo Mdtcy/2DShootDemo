@@ -7898,44 +7898,6 @@ PrefabInstance:
       propertyPath: txtDifficulty
       value: 
       objectReference: {fileID: 812549972}
-    - target: {fileID: 809789501149391902, guid: 0138815c4ff2e674faefaa102a9a126d,
-        type: 3}
-      propertyPath: _enemySpawnSettings.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 809789501149391902, guid: 0138815c4ff2e674faefaa102a9a126d,
-        type: 3}
-      propertyPath: _enemySpawnSettings.Array.data[0].Prefab
-      value: 
-      objectReference: {fileID: 1617456840222586617, guid: 20c6ba8e317adb540945a684262ed46b,
-        type: 3}
-    - target: {fileID: 809789501149391902, guid: 0138815c4ff2e674faefaa102a9a126d,
-        type: 3}
-      propertyPath: _enemySpawnSettings.Array.data[1].Prefab
-      value: 
-      objectReference: {fileID: 1617456840222586617, guid: a005383eb34bafe4b9f03a2cddb39d4d,
-        type: 3}
-    - target: {fileID: 809789501149391902, guid: 0138815c4ff2e674faefaa102a9a126d,
-        type: 3}
-      propertyPath: _enemySpawnSettings.Array.data[2].Prefab
-      value: 
-      objectReference: {fileID: 1617456840222586617, guid: 289d08f98aadc3c4f9ef7f72ae86d814,
-        type: 3}
-    - target: {fileID: 809789501149391902, guid: 0138815c4ff2e674faefaa102a9a126d,
-        type: 3}
-      propertyPath: _enemySpawnSettings.Array.data[0].SpawnPoint
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 809789501149391902, guid: 0138815c4ff2e674faefaa102a9a126d,
-        type: 3}
-      propertyPath: _enemySpawnSettings.Array.data[1].SpawnPoint
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 809789501149391902, guid: 0138815c4ff2e674faefaa102a9a126d,
-        type: 3}
-      propertyPath: _enemySpawnSettings.Array.data[2].SpawnPoint
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0138815c4ff2e674faefaa102a9a126d, type: 3}
 --- !u!1001 &1441562773572730208

@@ -12,7 +12,6 @@ using System.Collections.Generic;
 using Entities.Enemy;
 using GameFramework.ObjectPool;
 using LWShootDemo.Difficulty;
-using LWShootDemo.Pool;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
