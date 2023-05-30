@@ -9,6 +9,8 @@
 #pragma warning disable 0649
 using System;
 using System.Collections.Generic;
+using Entities.Enemy;
+using GameFramework.ObjectPool;
 using LWShootDemo.Difficulty;
 using LWShootDemo.Pool;
 using UnityEngine;
@@ -25,8 +27,6 @@ namespace LWShootDemo.Entities.Enemy
         [Serializable]
         public class EnemySpawnSetting
         {
-            public SimpleUnitySpawnPool EnemyPool;
-            
             public Transform Prefab;
 
             public int SpawnPoint;
@@ -41,7 +41,9 @@ namespace LWShootDemo.Entities.Enemy
         private bool debugMode;
 
         [SerializeField]
-        private List<EnemySpawnSetting> EnemySpawnSettings;
+        private List<EnemySpawnSetting> _enemySpawnSettings;
+        
+        
 
         // local
         private float             spawnTimer;
@@ -49,6 +51,12 @@ namespace LWShootDemo.Entities.Enemy
         private DifficultyManager difficultyManager;
 
         private List<EnemyController> enemys = new List<EnemyController>();
+        private IObjectPool<EnemyObject> _enemyObjectPool = null;
+
+        // * inject
+        [Inject]
+        private IObjectPoolManager _objectPoolManager;
+
 
         #endregion
 
@@ -70,6 +78,7 @@ namespace LWShootDemo.Entities.Enemy
         {
             player            = GameManager.Instance.Player;
             difficultyManager = GameManager.Instance.DifficultyManager;
+            _enemyObjectPool = _objectPoolManager.CreateSingleSpawnObjectPool<EnemyObject>("Enemy", 50);
         }
 
         private void Update()
@@ -103,7 +112,7 @@ namespace LWShootDemo.Entities.Enemy
                 if (enemy.IsDead)
                 {
                     enemys.Remove(enemy);
-                    enemy.Pool.Release(enemy);
+                    _enemyObjectPool.Unspawn(enemy.gameObject);
                 }
                 else
                 {
@@ -111,25 +120,44 @@ namespace LWShootDemo.Entities.Enemy
                 }
             }
         }
-
-        [Inject]
-        private DiContainer _diContainer;
+        
         // 根据生成点数生成敌人 每一波有一个生成点数 每个难度对应一个生成点数，每次生成一个敌人消耗生成点数，生成点数花完就不能再生成了，可以生成超过生成点数的敌人
         private void SpawnEnemy(int spawnPoint)
         {
             while (spawnPoint > 0)
             {
-                var enemyConfig = EnemySpawnSettings[Random.Range(0, EnemySpawnSettings.Count)];
-                spawnPoint -= enemyConfig.SpawnPoint;
+                var enemySpawnSetting = _enemySpawnSettings[Random.Range(0, _enemySpawnSettings.Count)];
+                spawnPoint -= enemySpawnSetting.SpawnPoint;
 
                 // todo 
-                var enemy = _diContainer.InstantiatePrefab(enemyConfig.Prefab);
+                var enemy = CreateEnemy(enemySpawnSetting.Prefab.gameObject);
                 enemy.transform.position = GetRandomSpawnPosition();
 
                 var enemyController = enemy.GetComponent<EnemyController>();
-                enemyController.Setup(enemyConfig.EnemyPool);
+                enemyController.Setup(enemySpawnSetting.Prefab.name);
                 enemys.Add(enemyController);
             }
+        }
+        
+        // todo 
+        [Inject]
+        private DiContainer _container;
+        
+        private GameObject CreateEnemy(GameObject pfbEnemy)
+        {
+            GameObject enemy = null;
+            EnemyObject enemyObject = _enemyObjectPool.Spawn(pfbEnemy.name);
+            if (enemyObject != null)
+            {
+                enemy = (GameObject)enemyObject.Target;
+            }
+            else
+            {
+                enemy = _container.InstantiatePrefab(pfbEnemy);
+                _enemyObjectPool.Register(EnemyObject.Create(enemy), true);
+            }
+
+            return enemy;
         }
 
         // 在玩家周围的生成区域随机生成一个位置，保证在围绕玩家的一个矩形上生成敌人

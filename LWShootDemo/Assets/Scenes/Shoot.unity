@@ -7888,55 +7888,54 @@ PrefabInstance:
       propertyPath: uiGameOver
       value: 
       objectReference: {fileID: 403377304}
-    - target: {fileID: 809789500414147590, guid: 0138815c4ff2e674faefaa102a9a126d,
-        type: 3}
-      propertyPath: CameraController
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 809789500414147591, guid: 0138815c4ff2e674faefaa102a9a126d,
         type: 3}
       propertyPath: m_Name
       value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 809789500414147591, guid: 0138815c4ff2e674faefaa102a9a126d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 809789500896369296, guid: 0138815c4ff2e674faefaa102a9a126d,
         type: 3}
       propertyPath: txtDifficulty
       value: 
       objectReference: {fileID: 812549972}
-    - target: {fileID: 809789501149391897, guid: 0138815c4ff2e674faefaa102a9a126d,
+    - target: {fileID: 809789501149391902, guid: 0138815c4ff2e674faefaa102a9a126d,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: _enemySpawnSettings.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 809789501149391902, guid: 0138815c4ff2e674faefaa102a9a126d,
         type: 3}
-      propertyPath: EnemySpawnSettings.Array.data[0].Prefab
+      propertyPath: _enemySpawnSettings.Array.data[0].Prefab
       value: 
       objectReference: {fileID: 1617456840222586617, guid: 20c6ba8e317adb540945a684262ed46b,
         type: 3}
     - target: {fileID: 809789501149391902, guid: 0138815c4ff2e674faefaa102a9a126d,
         type: 3}
-      propertyPath: EnemySpawnSettings.Array.data[1].Prefab
+      propertyPath: _enemySpawnSettings.Array.data[1].Prefab
       value: 
       objectReference: {fileID: 1617456840222586617, guid: a005383eb34bafe4b9f03a2cddb39d4d,
         type: 3}
     - target: {fileID: 809789501149391902, guid: 0138815c4ff2e674faefaa102a9a126d,
         type: 3}
-      propertyPath: EnemySpawnSettings.Array.data[2].Prefab
+      propertyPath: _enemySpawnSettings.Array.data[2].Prefab
       value: 
       objectReference: {fileID: 1617456840222586617, guid: 289d08f98aadc3c4f9ef7f72ae86d814,
         type: 3}
-    - target: {fileID: 809789501817863334, guid: 0138815c4ff2e674faefaa102a9a126d,
+    - target: {fileID: 809789501149391902, guid: 0138815c4ff2e674faefaa102a9a126d,
         type: 3}
-      propertyPath: _pfbProjectile
-      value: 
-      objectReference: {fileID: 1430046345506342793, guid: 154db214c14325443aecc4b4db5c9792,
+      propertyPath: _enemySpawnSettings.Array.data[0].SpawnPoint
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 809789501149391902, guid: 0138815c4ff2e674faefaa102a9a126d,
         type: 3}
+      propertyPath: _enemySpawnSettings.Array.data[1].SpawnPoint
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 809789501149391902, guid: 0138815c4ff2e674faefaa102a9a126d,
+        type: 3}
+      propertyPath: _enemySpawnSettings.Array.data[2].SpawnPoint
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0138815c4ff2e674faefaa102a9a126d, type: 3}
 --- !u!1001 &1441562773572730208

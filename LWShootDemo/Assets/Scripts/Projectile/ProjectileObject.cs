@@ -2,7 +2,6 @@ using GameFramework;
 using GameFramework.ObjectPool;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Zenject;
 
 namespace LWShootDemo.Weapons
 {

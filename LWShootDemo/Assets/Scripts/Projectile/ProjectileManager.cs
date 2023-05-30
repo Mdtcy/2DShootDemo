@@ -82,9 +82,11 @@ namespace LWShootDemo.Weapons
 
         private void Start()
         {
-            _projectileObjectPool = _objectPoolManager.CreateSingleSpawnObjectPool<ProjectileObject>(_pfbProjectile.name, 16);
+            _projectileObjectPool = 
+                _objectPoolManager.CreateSingleSpawnObjectPool<ProjectileObject>("Projectile", 50);
         }
 
+        // todo 
         [Inject]
         private DiContainer _container;
         

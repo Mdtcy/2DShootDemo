@@ -60,13 +60,14 @@ namespace LWShootDemo.Entities.Enemy
         private SimpleUnitySpawnPool deathEffectPool;
         private DifficultyManager    difficultyManager;
 
-        private SimpleUnitySpawnPool pool;
+        private string _pfbName;
+        
+        public string PfbName => _pfbName;
 
         #endregion
 
         #region PROPERTIES
 
-        public SimpleUnitySpawnPool Pool   => pool;
         public bool                 IsDead => entity.IsDead;
 
         #endregion
@@ -85,9 +86,9 @@ namespace LWShootDemo.Entities.Enemy
         }
 
         // todo 待优化 有时间再改
-        public void Setup(SimpleUnitySpawnPool enemyConfigEnemyPool)
+        public void Setup(string pfbName)
         {
-            pool = enemyConfigEnemyPool;
+            _pfbName = pfbName;
         }
 
         #endregion
