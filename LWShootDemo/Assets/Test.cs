@@ -4,6 +4,7 @@ using GameFramework;
 using GameFramework.Event;
 using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.BuffSystem.Event;
+using LWShootDemo.Entities;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -111,41 +112,43 @@ namespace DefaultNamespace
 
         public int duration = 10;
 
-        [Button]
-        public void TestHitEventBuff()
-        {
-            var addBuffInfo = new AddBuffInfo(BuffData, null, null, 1, duration);
-            var buffComponent = gameObject.GetOrAddComponent<BuffComponent>();
-            buffComponent.AddBuff(addBuffInfo);
-            var arg = new HitArgs
-            {
-                Damage = damage
-            };
-            buffComponent.TriggerEvent<HitEvent, HitArgs>(arg);
-        }
-
-        public int damage;
-        [Button]
-        public void TestTestEventBuff()
-        {
-            var addBuffInfo = new AddBuffInfo(BuffData, null, null, 1, duration);
-            var buffComponent = gameObject.GetOrAddComponent<BuffComponent>();
-            buffComponent.AddBuff(addBuffInfo);
-            var arg = new TestArgs();
-            arg.Damage = damage;
-            buffComponent.TriggerEvent<LWShootDemo.BuffSystem.Event.TestEvent, TestArgs>(arg);
-        }
+        // [Button]
+        // public void TestHitEventBuff()
+        // {
+        //     var addBuffInfo = new AddBuffInfo(BuffData, null, null, 1, duration);
+        //     var buffComponent = gameObject.GetOrAddComponent<BuffComponent>();
+        //     buffComponent.AddBuff(addBuffInfo);
+        //     var arg = new HitArgs
+        //     {
+        //         Damage = damage
+        //     };
+        //     buffComponent.TriggerEvent<HitEvent, HitArgs>(arg);
+        // }
+        //
+        // public int damage;
+        // [Button]
+        // public void TestTestEventBuff()
+        // {
+        //     var addBuffInfo = new AddBuffInfo(BuffData, null, null, 1, duration);
+        //     var buffComponent = gameObject.GetOrAddComponent<BuffComponent>();
+        //     buffComponent.AddBuff(addBuffInfo);
+        //     var arg = new TestArgs();
+        //     arg.Damage = damage;
+        //     buffComponent.TriggerEvent<LWShootDemo.BuffSystem.Event.TestEvent, TestArgs>(arg);
+        // }
 
         [Button]
         public void TestTick()
         {
             // todo 都是null有啥影响
             var addBuffInfo = new AddBuffInfo(BuffData, null, null, 1, duration);
-            var buffComponent = gameObject.GetOrAddComponent<BuffComponent>();
-            buffComponent.AddBuff(addBuffInfo);
+            // var buffComponent = gameObject.GetOrAddComponent<BuffComponent>();
+            player.AddBuff(addBuffInfo);
         }
 
         [Inject]
         private IDamageManager _damageManager;
+
+        public Entity player;
     }
 }
