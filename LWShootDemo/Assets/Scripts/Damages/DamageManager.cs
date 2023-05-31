@@ -4,13 +4,18 @@ using Damages;
 using GameFramework;
 using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.BuffSystem.Events;
+using LWShootDemo.DamageNumber;
 using LWShootDemo.Entities;
 using UnityEngine;
+using Zenject;
 
 namespace LWShootDemo.Damages
 {
     public class DamageManager : GameFrameworkModule, IDamageManager
     {
+        [Inject]
+        private IPopupManager _popupManager;
+        
         private Queue<DamageInfo> _damageInfoQueue = new();
 
         internal override void Update(float elapseSeconds, float realElapseSeconds)
@@ -65,7 +70,8 @@ namespace LWShootDemo.Damages
             {
                 defender.TakeDamage(dVal);
                 // todo 按游戏设计的规则跳数字，如果要有暴击，也可以丢在策划脚本函数（lua可以返回多参数）也可以随便怎么滴
-                // SceneVariants.PopUpNumberOnCharacter(damageInfo.defender, Mathf.Abs(dVal), isHeal);
+                var transform = damageInfo.defender.transform;
+                _popupManager.Spawn(transform.position, dVal, PopupType.Hurt_Normal, transform);
             }
 
             //伤害流程走完，添加buff

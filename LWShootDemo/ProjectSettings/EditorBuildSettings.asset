@@ -8,4 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Shoot.unity
     guid: 5aeebf89043f8944cb8ce35aff1e5232
+  - enabled: 1
+    path: Assets/Plugins/DamageNumbersPro/Demo/DNP_2D.unity
+    guid: 2c36b397b9d91ab4caf2969ffad19355
+  - enabled: 1
+    path: Assets/Plugins/DamageNumbersPro/Demo/DNP_3D.unity
+    guid: ccbd9b9efbeb19e4eaf872bcfabec7c6
+  - enabled: 1
+    path: Assets/Plugins/DamageNumbersPro/Demo/DNP_3D_HDRP.unity
+    guid: 6a82385ef6e16cf41974ebe3afb39959
+  - enabled: 1
+    path: Assets/Plugins/DamageNumbersPro/Demo/DNP_3D_URP.unity
+    guid: ecfbd32e42ff34141918e741eaabd7d9
+  - enabled: 1
+    path: Assets/Plugins/DamageNumbersPro/Demo/DNP_UI.unity
+    guid: f36414ccac3df7446a3377c5b14bc19b
   m_configObjects: {}

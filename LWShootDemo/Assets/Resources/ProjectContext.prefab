@@ -214,6 +214,8 @@ MonoBehaviour:
   _logHelper:
     rid: 7006133684877131776
   _enableStrictCheck: 2
+  PopupManagerSetting: {fileID: 11400000, guid: 3c18ec356a8a52d4e9dc0479e5268e38,
+    type: 2}
   references:
     version: 2
     RefIds:

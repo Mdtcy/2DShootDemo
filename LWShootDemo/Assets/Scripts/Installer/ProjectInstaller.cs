@@ -4,6 +4,7 @@ using GameFramework;
 using GameFramework.Event;
 using GameFramework.Game;
 using GameFramework.ObjectPool;
+using LWShootDemo.DamageNumber;
 using LWShootDemo.Damages;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -24,11 +25,15 @@ public class ProjectInstaller : MonoInstaller
     [SerializeField]
     private ReferenceStrictCheckType _enableStrictCheck = ReferenceStrictCheckType.AlwaysEnable;
     
+    [TitleGroup("PopupManager")]
+    public PopupManagerSetting PopupManagerSetting;
 
     public override void InstallBindings()
     {
         // Log
         GameFrameworkLog.SetLogHelper(_logHelper);
+
+        InitSetting();
         
         // 初始化顺序
         InitExecutionOrder();
@@ -73,6 +78,16 @@ public class ProjectInstaller : MonoInstaller
                 _unityGameContext.AddModule(damageManager);
                 Log.Info("初始化 DamageManager 优先级: {0}", damageManager.Priority);
             });
+
+        Container.Bind<IPopupManager>().To<PopupManager>().AsSingle().OnInstantiated((ctx, obj) =>
+        {
+            Log.Info("初始化 PopupManager 无Update");
+        });
+    }
+
+    private void InitSetting()
+    {
+        Container.Bind<PopupManagerSetting>().FromInstance(PopupManagerSetting).AsSingle();
     }
 
     private void InitReferencePool()
