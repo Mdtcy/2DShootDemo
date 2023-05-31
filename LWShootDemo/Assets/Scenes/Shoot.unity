@@ -8627,7 +8627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: 0
-  maxHp: 1
+  maxHp: 999
   rb2D: {fileID: 2905730703844915099}
   _buffComponent: {fileID: 8375140718191325654}
 --- !u!114 &8375140718191325648

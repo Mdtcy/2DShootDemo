@@ -1,14 +1,17 @@
+using GameFramework;
 using LWShootDemo.BuffSystem.Event;
 
 namespace LWShootDemo.BuffSystem.Events
 {
-    public class BuffOccurArgs : BuffArgs
+    public class BuffOccurArgs : BaseEventActArgs
     {
         public int ModStack;
-        
-        public BuffOccurArgs(int modStack)
+
+        public static BuffOccurArgs Create(int modStack)
         {
-            ModStack = modStack;
+            var args = ReferencePool.Acquire<BuffOccurArgs>();
+            args.ModStack = modStack;
+            return args;
         }
     }
 }

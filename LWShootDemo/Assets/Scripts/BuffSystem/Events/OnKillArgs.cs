@@ -1,9 +1,14 @@
+using GameFramework;
+
 namespace LWShootDemo.BuffSystem.Events
 {
     public class OnKillArgs : DamageArgs
     {
-        public OnKillArgs(ref DamageInfo damageInfo) : base(ref damageInfo)
+        public static OnKillArgs Create(ref DamageInfo damageInfo)
         {
+            var args = ReferencePool.Acquire<OnKillArgs>();
+            args.DamageInfo = damageInfo;
+            return args;
         }
     }
 }

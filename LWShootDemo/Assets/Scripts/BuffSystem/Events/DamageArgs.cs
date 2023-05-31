@@ -1,12 +1,17 @@
+using GameFramework;
+using LWShootDemo.BuffSystem.Event;
+
 namespace LWShootDemo.BuffSystem.Events
 {
-    public class DamageArgs : BuffArgs
+    public class DamageArgs : BaseEventActArgs
     {
         public DamageInfo DamageInfo;
 
-        public DamageArgs(ref DamageInfo damageInfo)
-        {
-            DamageInfo = damageInfo;
-        }
+        // public static DamageArgs Create(ref DamageInfo damageInfo)
+        // {
+        //     var args = ReferencePool.Acquire<DamageArgs>();
+        //     args.Init(ref damageInfo);
+        //     return args;
+        // }
     }
 }

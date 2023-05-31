@@ -40,13 +40,11 @@ namespace LWShootDemo.Damages
             // 先走一遍所有攻击者的onHit
             if (attacker)
             {
-                var onHitArgs = new OnHitArgs(ref damageInfo);
-                attacker.TriggerBuff<OnHitEvent, OnHitArgs>(onHitArgs);
+                attacker.TriggerBuff<OnHitEvent, OnHitArgs>(OnHitArgs.Create(ref damageInfo));
             }
 
             // 然后走一遍挨打者的beHurt
-            var onBeHurtArgs = new OnBeHurtArgs(ref damageInfo);
-            defender.TriggerBuff<OnBeHurtEvent, OnBeHurtArgs>(onBeHurtArgs);
+            defender.TriggerBuff<OnBeHurtEvent, OnBeHurtArgs>(OnBeHurtArgs.Create(ref damageInfo));
 
             if (defender.CanBeKilledByDamageInfo(damageInfo))
             {
@@ -54,13 +52,11 @@ namespace LWShootDemo.Damages
                 // 杀死敌人的时候，会触发onKill
                 if (attacker)
                 {
-                    var onKillArgs = new OnKillArgs(ref damageInfo);
-                    attacker.TriggerBuff<OnKillEvent, OnKillArgs>(onKillArgs);
+                    attacker.TriggerBuff<OnKillEvent, OnKillArgs>(OnKillArgs.Create(ref damageInfo));
                 }
                 
                 // 被杀死的时候，会触发onBeKilled
-                var onBeKilledArgs = new OnBeKilledArgs(ref damageInfo);
-                defender.TriggerBuff<OnBeKilledEvent, OnBeKilledArgs>(onBeKilledArgs);
+                defender.TriggerBuff<OnBeKilledEvent, OnBeKilledArgs>(OnBeKilledArgs.Create(ref damageInfo));
             }
 
             //最后根据结果处理：如果是治疗或者角色非无敌，才会对血量进行调整。

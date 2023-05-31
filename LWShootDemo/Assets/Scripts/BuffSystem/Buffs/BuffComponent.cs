@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GameFramework;
 using LWShootDemo.BuffSystem.Event;
 using LWShootDemo.BuffSystem.Events;
 using UnityEngine;
@@ -17,6 +18,8 @@ namespace LWShootDemo.BuffSystem.Buffs
             {
                 buff.TriggerEvent<TBuffEvent, TEventActArgs>(args);
             }
+            
+            ReferencePool.Release(args);
         }
 
         private void Update()
@@ -42,7 +45,7 @@ namespace LWShootDemo.BuffSystem.Buffs
                 if (buff.TimeElapsed >= buff.Ticked + 1)
                 {
                     // 触发buffTick事件
-                    buff.TriggerEvent<BuffTickEvent, BuffTickArgs>(new BuffTickArgs());
+                    buff.TriggerEvent<BuffTickEvent, BuffTickArgs>(BuffTickArgs.Create());
                     buff.Ticked++;
                 }
 
@@ -58,8 +61,7 @@ namespace LWShootDemo.BuffSystem.Buffs
                 Buffs.Remove(buffToRemove);
                     
                 // 触发buffRemove事件
-                var buffRemoveArgs = new BuffRemoveArgs();
-                buffToRemove.TriggerEvent<BuffRemoveEvent, BuffRemoveArgs>(buffRemoveArgs);
+                buffToRemove.TriggerEvent<BuffRemoveEvent, BuffRemoveArgs>(BuffRemoveArgs.Create());
                     
                 // todo 重新计算属性
             }
@@ -108,7 +110,7 @@ namespace LWShootDemo.BuffSystem.Buffs
             if (toRemove == false)
             {
                 // 触发buffOccur事件
-                toAddBuff.TriggerEvent<BuffOccurEvent, BuffOccurArgs>(new BuffOccurArgs(modStack));
+                toAddBuff.TriggerEvent<BuffOccurEvent, BuffOccurArgs>(BuffOccurArgs.Create(modStack));
             }
          
             // todo 重新计算属性
