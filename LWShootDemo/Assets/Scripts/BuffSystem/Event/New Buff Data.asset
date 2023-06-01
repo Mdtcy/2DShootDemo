@@ -246,3 +246,5 @@ MonoBehaviour:
   ID: TestBuff
   Priority: 0
   Tags: []
+  BuffTags:
+  - id: 868b27c9-f277-4fd9-b156-9eca141eb161
