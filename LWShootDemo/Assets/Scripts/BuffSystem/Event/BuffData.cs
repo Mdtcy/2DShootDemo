@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using LWShootDemo.BuffSystem.Tags;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityGameFramework.Runtime;
 
 namespace LWShootDemo.BuffSystem.Event
 {
@@ -16,8 +14,14 @@ namespace LWShootDemo.BuffSystem.Event
         
         [LabelText("优先级")]
         public int Priority;
+        
+        [HideLabel]
+        [BoxGroup("操作状态")]
+        public ControlState ControlState;
 
         public List<BuffTag> BuffTags = new();
+        
+        
 
         [ValueDropdown(nameof(GetBuffEventTypes), IsUniqueList = true, DrawDropdownForListElements = false, ExcludeExistingValuesInList = true)]
         [ListDrawerSettings(HideAddButton = false, HideRemoveButton = true, Expanded = true)]

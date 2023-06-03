@@ -21,6 +21,21 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
+    - Name: ControlState
+      Entry: 7
+      Data: LWShootDemo.BuffSystem.ControlState, Assembly-CSharp
+    - Name: CanMove
+      Entry: 5
+      Data: false
+    - Name: CanRotate
+      Entry: 5
+      Data: false
+    - Name: CanUseSkill
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: Events
       Entry: 7
       Data: 0|System.Collections.Generic.List`1[[LWShootDemo.BuffSystem.Event.BuffEvent,
@@ -245,6 +260,6 @@ MonoBehaviour:
       Data: 
   ID: TestBuff
   Priority: 0
-  Tags: []
   BuffTags:
-  - id: 868b27c9-f277-4fd9-b156-9eca141eb161
+  - id: 5b2adcd6-72e9-48f3-bf41-5edbd25275a4
+  - id: 1f13133f-296b-4d4f-961d-481786b8f9ab
