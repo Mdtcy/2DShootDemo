@@ -67,9 +67,4 @@ public class BuffTagContainer
 
         return ofType;
     }
-    
-    public bool ContainsDuplicates()
-    {
-        return _tagList.Count != new HashSet<BuffTag>(_tagList).Count;
-    }
 }

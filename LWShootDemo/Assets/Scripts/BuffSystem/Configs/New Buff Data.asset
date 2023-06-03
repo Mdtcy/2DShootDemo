@@ -262,5 +262,6 @@ MonoBehaviour:
   Priority: 0
   _buffBuffTag:
     _tagList:
+    - {fileID: 2756034444944382985, guid: e81d7bcde3228b34498468048a03c3bc, type: 2}
     - {fileID: -6870502922529118669, guid: e81d7bcde3228b34498468048a03c3bc, type: 2}
-    - {fileID: -6870502922529118669, guid: e81d7bcde3228b34498468048a03c3bc, type: 2}
+    - {fileID: -2522301036030124231, guid: e81d7bcde3228b34498468048a03c3bc, type: 2}
