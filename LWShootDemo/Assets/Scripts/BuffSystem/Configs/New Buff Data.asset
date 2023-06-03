@@ -260,6 +260,7 @@ MonoBehaviour:
       Data: 
   ID: TestBuff
   Priority: 0
-  BuffTags:
-  - id: 5b2adcd6-72e9-48f3-bf41-5edbd25275a4
-  - id: 1f13133f-296b-4d4f-961d-481786b8f9ab
+  _buffBuffTag:
+    _tagList:
+    - {fileID: -6870502922529118669, guid: e81d7bcde3228b34498468048a03c3bc, type: 2}
+    - {fileID: -6870502922529118669, guid: e81d7bcde3228b34498468048a03c3bc, type: 2}

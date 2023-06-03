@@ -1,8 +1,11 @@
-using System;
-using LWShootDemo.BuffSystem.Tags;
-using rStarTools.Scripts.StringList;
+using BOC.BTagged;
+using UnityEngine;
 
-[Serializable]
-public class BuffTag : NameBase<BuffTagOverview>
+namespace LWShootDemo.BuffSystem.Tags
 {
+    [CreateAssetMenu(fileName = "BuffTag", menuName = "BuffSystem/BuffTag")]
+    public class BuffTag : BTaggedSO
+    {
+        public string Name;
+    }
 }

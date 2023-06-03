@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BOC.BTagged;
+using LWShootDemo.BuffSystem.Tags;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -19,9 +21,9 @@ namespace LWShootDemo.BuffSystem.Event
         [BoxGroup("操作状态")]
         public ControlState ControlState;
 
-        public List<BuffTag> BuffTags = new();
-        
-        
+        [ShowInInspector]
+        public BuffTagContainer _buffBuffTag;
+
 
         [ValueDropdown(nameof(GetBuffEventTypes), IsUniqueList = true, DrawDropdownForListElements = false, ExcludeExistingValuesInList = true)]
         [ListDrawerSettings(HideAddButton = false, HideRemoveButton = true, Expanded = true)]
@@ -30,22 +32,6 @@ namespace LWShootDemo.BuffSystem.Event
         [LabelText(" ")]
         public List<BuffEvent> Events = new();
 
-        public bool ContainTag(BuffTag tag)
-        {
-            return BuffTags.Contains(tag);
-        }
-        
-        public bool ContainTags(List<BuffTag> tags)
-        {
-            foreach (var tag in tags)
-            {
-                if (BuffTags.Contains(tag) == false)
-                    return false;
-            }
-            
-            return true;
-        }
-        
         #region Odin
 
         private IEnumerable<ValueDropdownItem> GetBuffEventTypes()
