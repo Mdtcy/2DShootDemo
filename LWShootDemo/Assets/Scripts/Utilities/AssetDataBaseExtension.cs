@@ -33,5 +33,28 @@ namespace LWShootDemo.Common
             }
             return null;
         }
+        
+        /// <summary>
+        /// 获取指定路径下的所有ClassType类型的ScriptableObject
+        /// </summary>
+        /// <param name="path"></param>
+        /// <typeparam name="ClassType"></typeparam>
+        /// <returns></returns>
+        public static List<ScriptableObject> GetSubObjectOfType<ClassType>(string path) where ClassType : ScriptableObject
+        {
+            Object[] objs = AssetDatabase.LoadAllAssetsAtPath(path);
+
+            List<ScriptableObject> ofType = new List<ScriptableObject>();
+
+            foreach(Object o in objs)
+            {
+                if(o is ClassType)
+                {
+                    ofType.Add((ScriptableObject)o);
+                }
+            }
+
+            return ofType;
+        }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using LWShootDemo.BuffSystem.Tags;
+using LWShootDemo.Common;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
@@ -43,28 +44,11 @@ public class BuffTagContainer
         {
             string assetPath = AssetDatabase.GUIDToAssetPath(guid);
             ScriptableObject asset = AssetDatabase.LoadAssetAtPath<ScriptableObject>(assetPath);
-            List<ScriptableObject> objs = GetSubObjectOfType<BuffTag>(assetPath);
+            List<ScriptableObject> objs = AssetDataBaseExtension.GetSubObjectOfType<BuffTag>(assetPath);
             foreach(BuffTag tag in objs)
             {
                 yield return new ValueDropdownItem<BuffTag>(tag.name, tag);
             }
         }
-    }
-
-    private static List<ScriptableObject> GetSubObjectOfType<ClassType>(string path) where ClassType : ScriptableObject
-    {
-        Object[] objs = AssetDatabase.LoadAllAssetsAtPath(path);
-
-        List<ScriptableObject> ofType = new List<ScriptableObject>();
-
-        foreach(Object o in objs)
-        {
-            if(o is ClassType)
-            {
-                ofType.Add((ScriptableObject)o);
-            }
-        }
-
-        return ofType;
     }
 }

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using LWShootDemo.BuffSystem.Tags;
 using Sirenix.OdinInspector.Editor.Validation;
-using UnityEngine;
-using UnityEditor;
 
 [assembly: RegisterValidationRule(typeof(BuffTagContainerValidator), Name = "BuffTagContainerValidator", Description = "Some description text.")]
 
