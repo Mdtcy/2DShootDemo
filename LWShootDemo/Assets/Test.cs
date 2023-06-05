@@ -166,5 +166,11 @@ namespace DefaultNamespace
             var motion = new MotionClip_Force(true, 持续时间, 方向 * 强度, 动画曲线);
             player.PlayMotionClip(motion);
         }
+
+        [Button]
+        public void 停止Motion()
+        {
+            player.StopMotionClip();
+        }
     }
 }

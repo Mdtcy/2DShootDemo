@@ -22,7 +22,7 @@ namespace LWShootDemo.Motion
         public override void UpdateMotion(float deltaTime)
         {
             base.UpdateMotion(deltaTime);
-            velocity = (_curve == null ? _force : _curve.Evaluate(ElapsedTime / Duration) * _force) * deltaTime;
+            velocity = (_curve == null ? _force : _curve.Evaluate(ElapsedTime / Duration) * _force);
         }
 
         public override void EndMotion()

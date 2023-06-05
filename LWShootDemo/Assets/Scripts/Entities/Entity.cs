@@ -215,6 +215,11 @@ namespace LWShootDemo.Entities
                 Death();
             }
         }
+
+        public void StopMotionClip()
+        {
+            _movementComponent.StopCurrentMotionClip();
+        }
     }
 }
 #pragma warning restore 0649

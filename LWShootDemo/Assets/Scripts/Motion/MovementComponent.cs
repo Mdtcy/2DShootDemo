@@ -1,3 +1,4 @@
+using System;
 using LWShootDemo.Entities.Player;
 using UnityEngine;
 using UnityGameFramework.Runtime;
@@ -28,7 +29,7 @@ namespace LWShootDemo.Motion
             // 初始化，你可能需要设置mCurrentMotionClip为默认的运动效果
         }
 
-        void Update()
+        void FixedUpdate()
         {
             // 如果没有覆盖运动，那么就通过正常的方式移动角色
             if (mCurrentMotionClip == null || !mCurrentMotionClip.bOverrideMotion)
