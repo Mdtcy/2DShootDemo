@@ -43,7 +43,7 @@ public class BuffTagContainer
         {
             string assetPath = AssetDatabase.GUIDToAssetPath(guid);
             ScriptableObject asset = AssetDatabase.LoadAssetAtPath<ScriptableObject>(assetPath);
-            List<ScriptableObject> objs = GetSubObjectOfType<BuffTag>(asset);
+            List<ScriptableObject> objs = GetSubObjectOfType<BuffTag>(assetPath);
             foreach(BuffTag tag in objs)
             {
                 yield return new ValueDropdownItem<BuffTag>(tag.name, tag);
@@ -51,9 +51,9 @@ public class BuffTagContainer
         }
     }
 
-    private static List<ScriptableObject> GetSubObjectOfType<ClassType>(ScriptableObject asset) where ClassType : ScriptableObject
+    private static List<ScriptableObject> GetSubObjectOfType<ClassType>(string path) where ClassType : ScriptableObject
     {
-        Object[] objs = AssetDatabase.LoadAllAssetsAtPath(AssetDatabase.GetAssetPath(asset));
+        Object[] objs = AssetDatabase.LoadAllAssetsAtPath(path);
 
         List<ScriptableObject> ofType = new List<ScriptableObject>();
 
