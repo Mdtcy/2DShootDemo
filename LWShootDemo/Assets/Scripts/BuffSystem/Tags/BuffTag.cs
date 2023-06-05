@@ -6,6 +6,5 @@ namespace LWShootDemo.BuffSystem.Tags
     [CreateAssetMenu(fileName = "BuffTag", menuName = "BuffSystem/BuffTag")]
     public class BuffTag : BTaggedSO
     {
-        public string Name;
     }
 }
