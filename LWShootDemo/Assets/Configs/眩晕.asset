@@ -36,21 +36,9 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: BuffTagSet
-      Entry: 7
-      Data: 0|System.Collections.Generic.HashSet`1[[BuffTag, Assembly-CSharp]], System.Core
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: Events
       Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[LWShootDemo.BuffSystem.Event.BuffEvent,
+      Data: 0|System.Collections.Generic.List`1[[LWShootDemo.BuffSystem.Event.BuffEvent,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -63,4 +51,7 @@ MonoBehaviour:
       Data: 
   ID: "\u7729\u6655"
   Priority: 0
-  BuffTags: []
+  _buffBuffTag:
+    _tagList:
+    - {fileID: -2522301036030124231, guid: e81d7bcde3228b34498468048a03c3bc, type: 2}
+    - {fileID: -6870502922529118669, guid: e81d7bcde3228b34498468048a03c3bc, type: 2}

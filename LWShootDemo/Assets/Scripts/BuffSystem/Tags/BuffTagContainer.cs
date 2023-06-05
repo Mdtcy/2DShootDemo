@@ -7,8 +7,8 @@ using UnityEngine;
 [System.Serializable]
 public class BuffTagContainer
 {
-    [ListDrawerSettings(HideAddButton = false)]
     [ValueDropdown(nameof(GetAvailableTags), IsUniqueList = true, DrawDropdownForListElements = false, ExcludeExistingValuesInList = true)]
+    [ListDrawerSettings(HideAddButton = false, ShowFoldout = true)]
     [SerializeField]
     private List<BuffTag> _tagList = new List<BuffTag>();
 

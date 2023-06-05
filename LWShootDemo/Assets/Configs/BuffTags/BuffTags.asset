@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 131ed212fd3a408cb0e264d2ee581921, type: 3}
-  m_Name: BuffTag233
+  m_Name: "\u963F\u5FB7\u98AF\u98AF\u7684"
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2

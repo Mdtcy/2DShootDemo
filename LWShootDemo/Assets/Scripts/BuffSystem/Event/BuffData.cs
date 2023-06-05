@@ -21,6 +21,8 @@ namespace LWShootDemo.BuffSystem.Event
         [BoxGroup("操作状态")]
         public ControlState ControlState;
 
+        [HideLabel] 
+        [BoxGroup("BuffTag")]
         [ShowInInspector]
         public BuffTagContainer _buffBuffTag;
 
