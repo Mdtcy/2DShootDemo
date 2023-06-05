@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 1617456840222586614}
   - component: {fileID: 76883030600441076}
   - component: {fileID: 3748257947229114215}
+  - component: {fileID: 5138119757610017641}
   m_Layer: 0
   m_Name: Enemy 3
   m_TagString: Enemy
@@ -193,6 +194,8 @@ MonoBehaviour:
   rb2D: {fileID: 1617456840222586615}
   _buffComponent: {fileID: -7620510086819444739, guid: a005383eb34bafe4b9f03a2cddb39d4d,
     type: 3}
+  _movementComponent: {fileID: 5814812333376036238, guid: a005383eb34bafe4b9f03a2cddb39d4d,
+    type: 3}
 --- !u!114 &3748257947229114215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,3 +208,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33099e53c67a46118d363685ba6c0f61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5138119757610017641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617456840222586613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c30133b1bb4433585ccba36b55681c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb2D: {fileID: 1617456840222586615}
+  _speed: 2
+  _faceController: {fileID: 0}
+  mVelocity: {x: 0, y: 0, z: 0}

@@ -1934,7 +1934,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1232105661}
   - component: {fileID: 1232105660}
-  - component: {fileID: 1232105662}
   m_Layer: 0
   m_Name: Test
   m_TagString: Untagged
@@ -1960,6 +1959,51 @@ MonoBehaviour:
   BuffData: {fileID: 11400000, guid: 09ce3969bd4d7594a84b175366864c2a, type: 2}
   duration: 10
   player: {fileID: 8375140718191325647}
+  "\u65B9\u5411": {x: 1, y: 1, z: 0}
+  "\u5F3A\u5EA6": 600
+  "\u6301\u7EED\u65F6\u95F4": 1
+  "\u52A8\u753B\u66F2\u7EBF":
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.44018948
+      outSlope: -0.44018948
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.45256904
+      value: 0.8007839
+      inSlope: -0.7555073
+      outSlope: -0.7555073
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.82395476
+      value: 0.40309474
+      inSlope: -1.7462336
+      outSlope: -1.7462336
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9874878
+      value: 0.0070762634
+      inSlope: -2.421642
+      outSlope: -2.421642
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1232105661
 Transform:
   m_ObjectHideFlags: 0
@@ -1975,20 +2019,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1232105662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1232105659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a8dcddee36e3e34daceb884f6f8bb9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tags:
-  - {fileID: 3569187642575152680, guid: 92e179e72418432438897710057de94f, type: 2}
 --- !u!1 &1260651325
 GameObject:
   m_ObjectHideFlags: 0
@@ -8259,6 +8289,7 @@ GameObject:
   - component: {fileID: 8375140718191325652}
   - component: {fileID: 8375140718191325653}
   - component: {fileID: 8375140718191325654}
+  - component: {fileID: 8375140718191325655}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -8645,6 +8676,7 @@ MonoBehaviour:
   maxHp: 999
   rb2D: {fileID: 2905730703844915099}
   _buffComponent: {fileID: 8375140718191325654}
+  _movementComponent: {fileID: 8375140718191325655}
 --- !u!114 &8375140718191325648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8752,3 +8784,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33099e53c67a46118d363685ba6c0f61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8375140718191325655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2905730703844915103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c30133b1bb4433585ccba36b55681c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb2D: {fileID: 2905730703844915099}
+  _speed: 5
+  _faceController: {fileID: 8375140718191325652}
+  mVelocity: {x: 0, y: 0, z: 0}

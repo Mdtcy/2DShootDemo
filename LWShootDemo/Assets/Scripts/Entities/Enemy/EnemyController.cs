@@ -184,7 +184,8 @@ namespace LWShootDemo.Entities.Enemy
         private void ChaseTarget()
         {
             var direction = player.position - transform.position;
-            entity.TryMove(direction, moveSpeed * difficultyManager.GetCurrentDifficulty().EnemySpeedNum);
+            entity.InputMove(direction.normalized);
+            // entity.TryMove(direction, moveSpeed * difficultyManager.GetCurrentDifficulty().EnemySpeedNum);
         }
 
         private void OnCollisionEnter2D(Collision2D other)

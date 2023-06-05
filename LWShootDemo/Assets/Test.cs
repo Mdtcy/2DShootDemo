@@ -5,6 +5,7 @@ using GameFramework.Event;
 using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.BuffSystem.Event;
 using LWShootDemo.Entities;
+using LWShootDemo.Motion;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -150,5 +151,20 @@ namespace DefaultNamespace
         private IDamageManager _damageManager;
 
         public Entity player;
+
+        public Vector3 方向;
+        
+        public float 强度;
+
+        public float 持续时间;
+
+        public AnimationCurve 动画曲线;
+
+        [Button]
+        public void AddForce()
+        {
+            var motion = new MotionClip_Force(true, 持续时间, 方向 * 强度, 动画曲线);
+            player.PlayMotionClip(motion);
+        }
     }
 }

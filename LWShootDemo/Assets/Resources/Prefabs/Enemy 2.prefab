@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 1617456840222586614}
   - component: {fileID: 76883030600441076}
   - component: {fileID: -7620510086819444739}
+  - component: {fileID: 5814812333376036238}
   m_Layer: 0
   m_Name: Enemy 2
   m_TagString: Enemy
@@ -192,6 +193,7 @@ MonoBehaviour:
   maxHp: 2
   rb2D: {fileID: 1617456840222586615}
   _buffComponent: {fileID: -7620510086819444739}
+  _movementComponent: {fileID: 5814812333376036238}
 --- !u!114 &-7620510086819444739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,3 +206,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33099e53c67a46118d363685ba6c0f61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5814812333376036238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617456840222586613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c30133b1bb4433585ccba36b55681c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb2D: {fileID: 1617456840222586615}
+  _speed: 3
+  _faceController: {fileID: 0}
+  mVelocity: {x: 0, y: 0, z: 0}

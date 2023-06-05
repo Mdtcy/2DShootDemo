@@ -11,6 +11,7 @@ using System;
 using System.Collections;
 using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.BuffSystem.Event;
+using LWShootDemo.Motion;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -40,6 +41,9 @@ namespace LWShootDemo.Entities
         [SerializeField]
         private BuffComponent _buffComponent;
 
+        [SerializeField] 
+        private MovementComponent _movementComponent;
+        
         // 是否可以移动
         [ShowInInspector]
         [ReadOnly]
@@ -93,20 +97,17 @@ namespace LWShootDemo.Entities
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
-        /// <summary>
-        /// 尝试移动
-        /// </summary>
-        /// <param name="direction"></param>
-        public void TryMove(Vector3 direction, float moveSpeed)
-        {
-            if (!canMove)
-            {
-                return;
-            }
 
-            rb2D.MovePosition(position: direction.normalized * moveSpeed * Time.deltaTime + transform.position);
+        public void PlayMotionClip(MotionClip clip)
+        {
+            _movementComponent.PlayMotionClip(clip);
         }
-        
+
+        public void InputMove(Vector2 input)
+        {
+            _movementComponent.InputMove(input);
+        }
+
 
         /// <summary>
         /// 应用击退
