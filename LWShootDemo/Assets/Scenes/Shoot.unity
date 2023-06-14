@@ -1959,47 +1959,29 @@ MonoBehaviour:
   BuffData: {fileID: 11400000, guid: 09ce3969bd4d7594a84b175366864c2a, type: 2}
   duration: 10
   player: {fileID: 8375140718191325647}
-  "\u65B9\u5411": {x: 1, y: 1, z: 0}
-  "\u5F3A\u5EA6": 600
-  "\u6301\u7EED\u65F6\u95F4": 1
+  "\u65B9\u5411": {x: 0, y: 1, z: 0}
+  "\u5F3A\u5EA6": 1
+  "\u6301\u7EED\u65F6\u95F4": 10
   "\u52A8\u753B\u66F2\u7EBF":
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -0.44018948
-      outSlope: -0.44018948
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
-      time: 0.45256904
-      value: 0.8007839
-      inSlope: -0.7555073
-      outSlope: -0.7555073
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.82395476
-      value: 0.40309474
-      inSlope: -1.7462336
-      outSlope: -1.7462336
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.9874878
-      value: 0.0070762634
-      inSlope: -2.421642
-      outSlope: -2.421642
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -7742,6 +7724,84 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 339035766492526936}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2033701021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2033701022}
+  - component: {fileID: 2033701024}
+  - component: {fileID: 2033701023}
+  m_Layer: 0
+  m_Name: SkillExecutor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2033701022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033701021}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2905730703844915102}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2033701023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033701021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parentBlackboard: {fileID: 0}
+  _serializedBlackboard: '{"_variables":{}}'
+  _objectReferences: []
+  _serializedVariables: []
+--- !u!114 &2033701024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033701021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad115aca74ce3c4891b3f6de0b4aae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedExposedParameters: []
+  _boundGraphSerialization: 
+  _boundGraphObjectReferences: []
+  _boundGraphSource:
+    _version: 0
+    _category: 
+    _comments: 
+    _translation: {x: 0, y: 0}
+    _zoomFactor: 1
+  _firstActivation: 0
+  _enableAction: 0
+  _disableAction: 0
+  _lockBoundGraphPrefabOverrides: 1
+  _preInitializeSubGraphs: 0
+  _updateMode: 0
+  _graph: {fileID: 0}
+  _blackboard: {fileID: 2033701023}
 --- !u!1 &2099521406
 GameObject:
   m_ObjectHideFlags: 0
@@ -8267,6 +8327,7 @@ Transform:
   - {fileID: 2905730705411752827}
   - {fileID: 2030370091}
   - {fileID: 7156759750024777605}
+  - {fileID: 2033701022}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8729,7 +8790,7 @@ MonoBehaviour:
   FaceController: {fileID: 8375140718191325652}
   Speed: 5
   Entity: {fileID: 8375140718191325647}
-  FireRate: 0.1
+  FireRate: 0.4
   Weapon: {fileID: 2030370090}
 --- !u!114 &8375140718191325651
 MonoBehaviour:
@@ -8800,3 +8861,4 @@ MonoBehaviour:
   _speed: 5
   _faceController: {fileID: 8375140718191325652}
   mVelocity: {x: 0, y: 0, z: 0}
+  DebugMode: 1
