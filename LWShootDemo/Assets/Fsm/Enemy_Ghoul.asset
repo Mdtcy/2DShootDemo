@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f945e777233a59f4aba40aeca29093a6, type: 3}
+  m_Name: Enemy_Ghoul
+  m_EditorClassIdentifier: 
+  _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"Entity":{"_name":"Entity","_targetVariableID":"2bdaa268-72a6-4461-abc7-0d0d8ec119c8"},"Offset":{"_name":"Offset","_targetVariableID":"9f12b966-ad38-46e5-910e-35df27aab1ef"},"UnitAnimation":{"_name":"Unit
+    Animation","_targetVariableID":"02cb51ff-53ad-4d37-b582-f8833aa9516d"},"_name":"\u79fb\u52a8\u5411\u89d2\u8272","_position":{"x":899.0,"y":639.0},"$type":"NodeCanvas.StateMachines.MoveToPlayerState","$id":"0"},{"UnitAnimation":{"_name":"Unit
+    Animation","_targetVariableID":"02cb51ff-53ad-4d37-b582-f8833aa9516d"},"Entity":{"_name":"Entity","_targetVariableID":"2bdaa268-72a6-4461-abc7-0d0d8ec119c8"},"_name":"\u53d1\u8d77\u653b\u51fb","_position":{"x":1284.0,"y":844.0},"$type":"NodeCanvas.StateMachines.AttackState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"UnitAnimation":{"_name":"Unit
+    Animation","_targetVariableID":"02cb51ff-53ad-4d37-b582-f8833aa9516d"},"$type":"NodeCanvas.StateMachines.UnitAnimationAction"}]},"_name":"\u505c\u4e00\u4e0b","_position":{"x":929.0,"y":992.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"}],"connections":[{"_condition":{"Distance":{"_name":"AttackDistance","_targetVariableID":"0380363f-2d92-4b2b-929b-c6ee8ace5d9c"},"Self":{"_name":"Self","_targetVariableID":"ebc4f6fd-9ee3-4939-ae0b-8ee4fcb6314f"},"$type":"NodeCanvas.StateMachines.Conditions.NearToPlayer"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"timeout":{"_name":"AttackAnimation","_targetVariableID":"e2539317-aa08-4c70-80e0-6618fffa6824"},"$type":"NodeCanvas.Tasks.Conditions.Timeout"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"timeout":{"_name":"AttackBackSwine","_targetVariableID":"55ede5d2-993a-4f75-bdb2-aefa2638776b"},"$type":"NodeCanvas.Tasks.Conditions.Timeout"},"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
+  _objectReferences: []
+  _graphSource:
+    _version: 3.26
+    _category: 
+    _comments: 
+    _translation: {x: -178, y: -430}
+    _zoomFactor: 0.87410986
+  _haltSerialization: 0

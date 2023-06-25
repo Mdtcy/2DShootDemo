@@ -108,7 +108,6 @@ namespace LWShootDemo.Entities
             _movementComponent.InputMove(input);
         }
 
-
         /// <summary>
         /// 应用击退
         /// </summary>
@@ -220,6 +219,7 @@ namespace LWShootDemo.Entities
         {
             _movementComponent.StopCurrentMotionClip();
         }
+        
     }
 }
 #pragma warning restore 0649
