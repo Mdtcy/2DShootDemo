@@ -5,14 +5,14 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace UnityGameFramework.Runtime
 {
     /// <summary>
     /// 游戏框架组件抽象类。
     /// </summary>
-    public abstract class GameFrameworkComponent : MonoBehaviour
+    public abstract class GameFrameworkComponent : SerializedMonoBehaviour
     {
         /// <summary>
         /// 游戏框架组件初始化。

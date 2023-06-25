@@ -8,6 +8,7 @@
 
 #pragma warning disable 0649
 using DG.Tweening;
+using Fumiki;
 using LWShootDemo.Common;
 using LWShootDemo.Entities;
 using LWShootDemo.Sound;
@@ -43,7 +44,6 @@ namespace LWShootDemo.Weapons
         private SoundManager      soundManager;
         // private CameraController  cameraController;
         private Tween             scaleTween;
-        private ProjectileManager projectileManager;
 
         #endregion
 
@@ -56,7 +56,6 @@ namespace LWShootDemo.Weapons
         public override void Init(Entity entity)
         {
             owener = entity;
-            projectileManager = GameManager.Instance.ProjectileManager;
         }
 
         public override void Use()
@@ -66,7 +65,7 @@ namespace LWShootDemo.Weapons
             var firePointPos = firePoint.position;
 
             // 生成子弹
-            projectileManager.CreateProjectile(owener, firePointPos, firePoint.rotation);
+            GameEntry.Projectile.CreateProjectile(owener, firePointPos, firePoint.rotation);
 
             // todo 对持有者产生后坐力 
             // owener.ApplyKnowBack(0.2f, -transform.up * fireKnockBackForce);

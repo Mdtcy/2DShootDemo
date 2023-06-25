@@ -12,7 +12,7 @@ namespace NodeCanvas.StateMachines.Conditions
         protected override bool OnCheck()
         {
             var player = GameManager.Instance.Player;
-            Debug.Log($"CheckDistance {Vector3.Distance(player.transform.position, Self.value.position)}");
+            // Debug.Log($"CheckDistance {Vector3.Distance(player.transform.position, Self.value.position)}");
             return Vector3.Distance(player.transform.position, Self.value.position) < Distance.value;
         }
     }

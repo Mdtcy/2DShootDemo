@@ -11,9 +11,9 @@ using System;
 using System.Collections.Generic;
 using Entities.Enemy;
 using GameFramework.ObjectPool;
+using Fumiki;
 using LWShootDemo.Difficulty;
 using UnityEngine;
-using Zenject;
 using Random = UnityEngine.Random;
 
 namespace LWShootDemo.Entities.Enemy
@@ -51,12 +51,7 @@ namespace LWShootDemo.Entities.Enemy
 
         private List<EnemyController> enemys = new List<EnemyController>();
         private IObjectPool<EnemyObject> _enemyObjectPool = null;
-
-        // * inject
-        [Inject]
-        private IObjectPoolManager _objectPoolManager;
-
-
+        
         #endregion
 
         #region PROPERTIES
@@ -77,7 +72,7 @@ namespace LWShootDemo.Entities.Enemy
         {
             player            = GameManager.Instance.Player;
             difficultyManager = GameManager.Instance.DifficultyManager;
-            _enemyObjectPool = _objectPoolManager.CreateSingleSpawnObjectPool<EnemyObject>("Enemy", 50);
+            _enemyObjectPool = GameEntry.ObjectPool.CreateSingleSpawnObjectPool<EnemyObject>("Enemy", 50);
         }
 
         private void Update()
@@ -137,10 +132,6 @@ namespace LWShootDemo.Entities.Enemy
             }
         }
         
-        // todo 
-        [Inject]
-        private DiContainer _container;
-        
         private GameObject CreateEnemy(GameObject pfbEnemy)
         {
             GameObject enemy = null;
@@ -151,7 +142,7 @@ namespace LWShootDemo.Entities.Enemy
             }
             else
             {
-                enemy = _container.InstantiatePrefab(pfbEnemy);
+                enemy = Instantiate(pfbEnemy);
                 _enemyObjectPool.Register(EnemyObject.Create(enemy), true);
             }
 

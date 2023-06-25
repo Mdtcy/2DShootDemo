@@ -54,7 +54,6 @@ namespace LWShootDemo
         public TimeStopManager    TimeStopManager;
         public ExplosionManager   explosionManager;
         public DifficultyManager  DifficultyManager;
-        public ProjectileManager  ProjectileManager;
 
         private float gameTime;
         private bool  isGameOver;

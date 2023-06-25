@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Damages;
 using Events;
+using Fumiki;
 using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.Difficulty;
 using LWShootDemo.Enemy;
@@ -19,7 +20,6 @@ using LWShootDemo.Pool;
 using LWShootDemo.Sound;
 using LWShootDemo.TimeStop;
 using UnityEngine;
-using Zenject;
 
 namespace LWShootDemo.Entities.Enemy
 {
@@ -197,13 +197,10 @@ namespace LWShootDemo.Entities.Enemy
                 // var damageInfo = new DamageInfo(1, entity.transform.position - transform.position, false);
                 var dir = entity.transform.position - transform.position;
                 // var damageInfo = new DamageInfo(this.entity, target, 1, dir,0,null);
-                _damageManager.DoDamage(entity, target, 1, dir,0, new List<DamageInfoTag>(), new List<AddBuffInfo>());
+                GameEntry.Damage.DoDamage(entity, target, 1, dir,0, new List<DamageInfoTag>(), new List<AddBuffInfo>());
                 // target.TakeDamage(damageInfo);
             }
         }
-
-        [Inject]
-        private IDamageManager _damageManager;
 
         // 闪光
         private IEnumerator IFlash(float duration)

@@ -29,7 +29,7 @@ namespace Entities.Enemy
             return enemyObject;
         }
 
-        protected internal override void Release(bool isShutdown)
+        protected override void Release(bool isShutdown)
         {
             GameObject enemy = (GameObject)Target;
             if (enemy == null)
@@ -40,7 +40,7 @@ namespace Entities.Enemy
             Object.Destroy(enemy.gameObject);
         }
 
-        protected internal override void OnSpawn()
+        protected override void OnSpawn()
         {
             base.OnSpawn();
             GameObject enemy = (GameObject)Target;
@@ -50,7 +50,7 @@ namespace Entities.Enemy
             SceneManager.MoveGameObjectToScene(gameObject, PoolScene);
         }
 
-        protected internal override void OnUnspawn()
+        protected override void OnUnspawn()
         {
             base.OnUnspawn();
             GameObject enemy = (GameObject)Target;

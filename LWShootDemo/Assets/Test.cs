@@ -1,17 +1,15 @@
-using System;
 using Damages;
 using GameFramework;
 using GameFramework.Event;
 using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.BuffSystem.Event;
-using LWShootDemo.Entities;
 using LWShootDemo.Motion;
 using Sirenix.OdinInspector;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityGameFramework.Runtime;
-using Zenject;
+using Entity = LWShootDemo.Entities.Entity;
+using GameEntry = Fumiki.GameEntry;
 
 namespace DefaultNamespace
 {
@@ -41,25 +39,22 @@ namespace DefaultNamespace
             Log.Fatal("Fatal");
         }
 
-        [Inject]
-        private IEventManager _eventManager;
-        
         [Button]
         public void TestSurcribe()
         {
-            _eventManager.Subscribe(TestEvent.EventId, OnTestEvent);
+            GameEntry.Event.Subscribe(TestEvent.EventId, OnTestEvent);
         }
         
         [Button]
         public void TestUnSurcribe()
         {
-            _eventManager.Unsubscribe(TestEvent.EventId, OnTestEvent);
+            GameEntry.Event.Unsubscribe(TestEvent.EventId, OnTestEvent);
         }
         
         [Button]
         public void TestFireTestEvent()
         {
-            _eventManager.Fire(this, TestEvent.Create());
+            GameEntry.Event.Fire(this, TestEvent.Create());
         }
 
         private void OnTestEvent(object sender, GameEventArgs e)
@@ -146,9 +141,6 @@ namespace DefaultNamespace
             // var buffComponent = gameObject.GetOrAddComponent<BuffComponent>();
             player.AddBuff(addBuffInfo);
         }
-
-        [Inject]
-        private IDamageManager _damageManager;
 
         public Entity player;
 

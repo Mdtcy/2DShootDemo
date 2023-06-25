@@ -28,7 +28,7 @@ namespace UnityGameFramework.Runtime
 
             private string GetAccelerationEventString(AccelerationEvent accelerationEvent)
             {
-                return Utility.Text.Format("{0}, {1}", accelerationEvent.acceleration, accelerationEvent.deltaTime);
+                return Utility.Text.Format("{0}, {1}", accelerationEvent.acceleration.ToString(), accelerationEvent.deltaTime.ToString());
             }
 
             private string GetAccelerationEventsString(AccelerationEvent[] accelerationEvents)
