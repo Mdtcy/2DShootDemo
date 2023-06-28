@@ -5,7 +5,7 @@ namespace LWShootDemo.Entities.Player
 {
     public class ShootState : PlayerFsmStateBase
     {
-        private AnimancerComponent animancerComponent;
+        // private AnimancerComponent animancerComponent;
         
         // local
         private bool canShoot;
@@ -13,7 +13,7 @@ namespace LWShootDemo.Entities.Player
         
         public ShootState(bool needsExitTime, PlayerFsmContext fsmContext) : base(needsExitTime, fsmContext)
         {
-            this.animancerComponent = fsmContext.AnimancerComponent;
+            // this.animancerComponent = fsmContext.AnimancerComponent;
         }
 
         public override void OnEnter()
@@ -28,7 +28,7 @@ namespace LWShootDemo.Entities.Player
             var enemy = Context.EnemyDetector.GetNearestEnemy();
             if (canShoot)
             {
-                animancerComponent.TryPlay("fire", 0);
+                // animancerComponent.TryPlay("fire", 0);
                 if (enemy != null)
                 {
                     // 获取敌人方向
