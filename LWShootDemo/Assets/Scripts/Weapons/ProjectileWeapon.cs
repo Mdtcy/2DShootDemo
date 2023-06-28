@@ -33,7 +33,7 @@ namespace LWShootDemo.Weapons
 
         // 图片模型
         [SerializeField]
-        private Transform model;
+        private SpriteRenderer model;
 
         // 开火的作用力
         [SerializeField]
@@ -72,7 +72,7 @@ namespace LWShootDemo.Weapons
 
             // 开枪时缩放突出枪口震动
             scaleTween.Kill();
-            scaleTween = model.DOScale(2, 0.1f).OnComplete(() => model.DOScale(1, 0.1f));
+            scaleTween = model.transform.DOScale(2, 0.1f).OnComplete(() => model.transform.DOScale(1, 0.1f));
 
             // 开火粒子特效，包括枪口火焰和弹壳
             fireParticle.Play();
@@ -82,6 +82,22 @@ namespace LWShootDemo.Weapons
 
             // 屏幕震动
             // cameraController.Shake((transform.position - firePointPos).normalized, 0.2f, 0.05f);
+        }
+
+        public override void RotateTo(Vector3 dir)
+        {
+            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
+            // 武器朝向敌人
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+
+            if (dir.x > 0)
+            {
+                model.flipY = false;
+            }
+            else if(dir.x < 0)
+            {
+                model.flipY = true;
+            }
         }
 
         #endregion

@@ -48,6 +48,11 @@ namespace LWShootDemo.Weapons
             }
         }
 
+        public override void RotateTo(Vector3 dir)
+        {
+            throw new System.NotImplementedException();
+        }
+
         #endregion
 
         #region PROTECTED METHODS

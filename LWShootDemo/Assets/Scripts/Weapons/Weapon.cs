@@ -27,6 +27,8 @@ namespace LWShootDemo.Weapons
         /// 使用
         /// </summary>
         public abstract void Use();
+
+        public abstract void RotateTo(Vector3 dir);
     }
 }
 #pragma warning restore 0649

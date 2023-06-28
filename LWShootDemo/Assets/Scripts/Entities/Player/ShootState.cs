@@ -33,14 +33,14 @@ namespace LWShootDemo.Entities.Player
                 {
                     // 获取敌人方向
                     var direction = enemy.transform.position - Context.transform.position;
-                    var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-                    
-                    // 武器朝向敌人
-                    Context.Weapon.transform.rotation = Quaternion.Euler(0, 0, angle);
-                    
+                    // var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+
                     // 朝向敌人
                     var faceDirection = direction.x > 0 ? Direction.Right : Direction.Left;
                     Context.FaceController.Face(faceDirection);
+
+                    // 武器朝向敌人
+                    Context.Weapon.RotateTo(direction);
                 }
 
                 // 使用武器

@@ -1,4 +1,5 @@
 using Animancer;
+using LWShootDemo.Weapons;
 using UnityEngine;
 
 namespace LWShootDemo.Entities.Player
@@ -6,9 +7,11 @@ namespace LWShootDemo.Entities.Player
     public class RunState : PlayerFsmStateBase
     {
         private AnimancerComponent animancerComponent;
+        private Weapon _weapon;
         public RunState(bool needsExitTime, PlayerFsmContext fsmContext) : base(needsExitTime, fsmContext)
         {
             this.animancerComponent = fsmContext.AnimancerComponent;
+            _weapon = fsmContext.Weapon;
         }
 
         public override void OnEnter()
@@ -44,6 +47,7 @@ namespace LWShootDemo.Entities.Player
                 // }
             }
             
+            _weapon.RotateTo(movement);
             // 移动
             Context.Entity.InputMove(movement.normalized);
         }
