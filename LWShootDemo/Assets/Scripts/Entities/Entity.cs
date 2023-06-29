@@ -29,11 +29,28 @@ namespace LWShootDemo.Entities
         // 最大血量
         [SerializeField]
         private int maxHp;
+        
+        public int MaxHp => maxHp;
 
         // 当前血量
         [ShowInInspector]
         [ReadOnly]
         private int curHp;
+
+        public int CurHp
+        {
+            get => curHp;
+            set
+            {
+                if (!value.Equals(curHp))
+                {
+                    curHp = value;
+                    ActOnHpChanged?.Invoke(curHp);
+                }
+            }
+        }
+        
+        public Action<int> ActOnHpChanged;
 
         [SerializeField]
         private Rigidbody2D rb2D;
@@ -132,7 +149,7 @@ namespace LWShootDemo.Entities
         public void Init()
         {
             canMove = true;
-            curHp   = maxHp;
+            CurHp   = maxHp;
         }
 
         /// <summary>
@@ -204,15 +221,15 @@ namespace LWShootDemo.Entities
 
             int dValue = damageInfo.DamageValue(false);
             // return dValue >= this.resource.hp;
-            return dValue >= this.curHp;
+            return dValue >= this.CurHp;
         }
 
         public void TakeDamage(int damage)
         { 
             // ActOnHurt?.Invoke(damageInfo);
-            curHp -= damage;
+            CurHp -= damage;
             
-            if (curHp <= 0)
+            if (CurHp <= 0)
             {
                 Death();
             }
