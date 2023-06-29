@@ -11,6 +11,7 @@ using System;
 using System.Collections;
 using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.BuffSystem.Event;
+using LWShootDemo.Entities.Player;
 using LWShootDemo.Motion;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -59,6 +60,8 @@ namespace LWShootDemo.Entities
         /// 死亡事件
         /// </summary>
         public Action ActOnDeath;
+        
+        public Direction FaceDirection => _movementComponent.FaceDirection;
 
         // /// <summary>
         // /// 受伤事件

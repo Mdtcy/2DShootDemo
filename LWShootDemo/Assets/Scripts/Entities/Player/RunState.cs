@@ -25,6 +25,7 @@ namespace LWShootDemo.Entities.Player
             base.OnExit();
         }
 
+
         public override void OnLogic()
         {
             base.OnLogic();
@@ -36,18 +37,16 @@ namespace LWShootDemo.Entities.Player
             {
                 fsm.RequestStateChange(PlayerFsm.PlayerState.Idle);
 
-                // // 朝向移动方向
-                // if (movement.x > 0)
-                // {
-                //     Context.FaceController.Face(Direction.Right);
-                // }
-                // else if (movement.x < 0)
-                // {
-                //     Context.FaceController.Face(Direction.Left);
-                // }
+                if(Context.Entity.FaceDirection == Direction.Right)
+                    _weapon.RotateTo(Context.Entity.transform.right);
+                else
+                    _weapon.RotateTo(-Context.Entity.transform.right);
+            }
+            else
+            {
+                _weapon.RotateTo(movement);
             }
             
-            _weapon.RotateTo(movement);
             // 移动
             Context.Entity.InputMove(movement.normalized);
         }

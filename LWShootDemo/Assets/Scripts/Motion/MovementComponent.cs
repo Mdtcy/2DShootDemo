@@ -23,6 +23,8 @@ namespace LWShootDemo.Motion
         
         // local
         private Vector2 _inputBuffer;
+        
+        public Direction FaceDirection => _faceController.FaceDirection;
 
         void Start()
         {
