@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using GameFramework.ObjectPool;
+using LWShootDemo.Entities;
 using LWShootDemo.Weapons;
 using UnityEngine;
 using UnityGameFramework.Runtime;
-using Entity = LWShootDemo.Entities.Entity;
 
-namespace Fumiki
+namespace GameMain
 {
     public class ProjectileComponent : GameFrameworkComponent
     {
@@ -37,7 +37,7 @@ namespace Fumiki
         /// </summary>
         /// <param name="position"></param>
         /// <param name="rotation"></param>
-        public void CreateProjectile(Entity caster, Vector3 position, Quaternion rotation)
+        public void CreateProjectile(OldEntity caster, Vector3 position, Quaternion rotation)
         {
             var projectile = CreateProjectile(_pfbProjectile);
             var projectileTransform = projectile.transform;

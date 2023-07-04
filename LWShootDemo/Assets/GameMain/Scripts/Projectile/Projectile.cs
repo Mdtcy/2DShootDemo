@@ -9,7 +9,7 @@
 #pragma warning disable 0649
 using System.Collections.Generic;
 using Damages;
-using Fumiki;
+using GameMain;
 using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.Entities;
 using UnityEngine;
@@ -63,7 +63,7 @@ namespace LWShootDemo.Weapons
         /// </summary>
         public bool IsDead => isDead;
         
-        private Entity caster;
+        private OldEntity caster;
 
         #endregion
 
@@ -74,7 +74,7 @@ namespace LWShootDemo.Weapons
         /// </summary>
         /// <param name="caster"></param>
         /// <param name="spawnTime"></param>
-        public void Init(Entity caster, float spawnTime)
+        public void Init(OldEntity caster, float spawnTime)
         {
             this.caster     = caster;
             this.spawnTime = spawnTime;
@@ -105,7 +105,7 @@ namespace LWShootDemo.Weapons
                 return;
             }
 
-            var entity = collision.GetComponent<Entity>();
+            var entity = collision.GetComponent<OldEntity>();
 
             if (entity == null)
             {

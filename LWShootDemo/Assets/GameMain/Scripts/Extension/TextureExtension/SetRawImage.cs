@@ -10,7 +10,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Fumiki
+namespace GameMain
 {
     [Serializable]
     public class SetRawImage : ISetTexture2dObject

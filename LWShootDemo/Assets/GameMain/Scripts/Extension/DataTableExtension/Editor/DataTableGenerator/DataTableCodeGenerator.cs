@@ -7,7 +7,7 @@
 
 using System.Text;
 
-namespace Fumiki.Editor.DataTableGenerator
+namespace GameMain.Editor.DataTableGenerator
 {
     public delegate void DataTableCodeGenerator(DataTableProcessor dataTableProcessor, StringBuilder codeContent,
         object userData);

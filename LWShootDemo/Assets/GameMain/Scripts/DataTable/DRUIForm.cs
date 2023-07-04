@@ -14,7 +14,7 @@ using System.Text;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace Fumiki
+namespace GameMain
 {
     /// <summary>
     /// 界面配置表。

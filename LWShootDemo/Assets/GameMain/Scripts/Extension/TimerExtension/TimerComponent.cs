@@ -5,7 +5,7 @@ using GameFramework;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace Fumiki
+namespace GameMain
 {
     public class TimerComponent : GameFrameworkComponent
     {

@@ -8,7 +8,7 @@ using GameFramework.DataTable;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace Fumiki
+namespace GameMain
 {
     public class DataTableHelper : DataTableHelperBase
     {

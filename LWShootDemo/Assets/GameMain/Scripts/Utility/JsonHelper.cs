@@ -2,7 +2,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace Fumiki
+namespace GameMain
 {
     /// <summary>
     /// LitJSON 函数集辅助器

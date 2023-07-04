@@ -18,7 +18,7 @@ using UnityEngine;
 
 namespace LWShootDemo.Entities
 {
-    public class Entity : MonoBehaviour
+    public class OldEntity : MonoBehaviour
     {
         #region FIELDS
 
@@ -148,6 +148,7 @@ namespace LWShootDemo.Entities
         /// </summary>
         public void Init()
         {
+            isDead = false;
             canMove = true;
             CurHp   = maxHp;
         }

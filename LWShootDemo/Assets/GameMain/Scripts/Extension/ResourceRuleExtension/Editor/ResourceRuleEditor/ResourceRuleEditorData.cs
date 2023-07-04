@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityGameFramework.Editor.ResourceTools;
 
-namespace Fumiki.Editor.ResourceTools
+namespace GameMain.Editor.ResourceTools
 {
     public class ResourceRuleEditorData : ScriptableObject
     {

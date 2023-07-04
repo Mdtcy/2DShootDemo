@@ -20,8 +20,8 @@ namespace LWShootDemo.Weapons
         /// <summary>
         /// 初始化武器
         /// </summary>
-        /// <param name="entity"></param>
-        public abstract void Init(Entity entity);
+        /// <param name="oldEntity"></param>
+        public abstract void Init(OldEntity oldEntity);
 
         /// <summary>
         /// 使用

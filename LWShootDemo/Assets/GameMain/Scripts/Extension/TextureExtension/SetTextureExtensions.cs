@@ -1,6 +1,6 @@
 using UnityEngine.UI;
 
-namespace Fumiki
+namespace GameMain
 {
     /// <summary>
     /// 设置图片扩展

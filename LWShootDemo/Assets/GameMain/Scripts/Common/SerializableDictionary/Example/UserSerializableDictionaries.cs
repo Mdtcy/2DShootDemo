@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Fumiki
+namespace GameMain
 {
     [Serializable]
     public class StringStringDictionary : SerializableDictionary<string, string> {}

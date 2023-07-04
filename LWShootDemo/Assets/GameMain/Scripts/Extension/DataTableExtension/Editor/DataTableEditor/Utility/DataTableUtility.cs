@@ -5,7 +5,7 @@ using UnityEngine;
 using System.IO;
 using System.Text;
 
-namespace Fumiki.Editor.DataTableEditor
+namespace GameMain.Editor.DataTableEditor
 {
     public partial class Utility
     {

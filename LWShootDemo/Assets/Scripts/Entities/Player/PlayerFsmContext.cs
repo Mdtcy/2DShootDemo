@@ -17,7 +17,7 @@ namespace LWShootDemo.Entities.Player
 
         public float Speed;
 
-        public Entity Entity;
+        public OldEntity _oldEntity;
 
         [BoxGroup("Shoot")]
         public float FireRate;

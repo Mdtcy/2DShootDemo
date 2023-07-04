@@ -1,7 +1,7 @@
 using System;
 using UnityEditor;
 
-namespace Fumiki.Editor.SpriteCollection
+namespace GameMain.Editor.SpriteCollection
 {
     [InitializeOnLoad]
     public static class InitializeOnLoad

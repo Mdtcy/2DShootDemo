@@ -2,7 +2,7 @@ using GameFramework;
 using GameFramework.ObjectPool;
 using UnityGameFramework.Runtime;
 
-namespace Fumiki
+namespace GameMain
 {
     public class SpriteCollectionItemObject : ObjectBase
     {

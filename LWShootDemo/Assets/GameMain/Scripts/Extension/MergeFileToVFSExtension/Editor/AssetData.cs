@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Fumiki.Editor.VFS
+namespace GameMain.Editor.VFS
 {
     /// <summary>
     /// 文件数据

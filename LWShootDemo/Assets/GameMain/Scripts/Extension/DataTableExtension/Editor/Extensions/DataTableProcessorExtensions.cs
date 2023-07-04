@@ -4,7 +4,7 @@ using System.Linq;
 using GameFramework;
 using JetBrains.Annotations;
 
-namespace Fumiki.Editor.DataTableGenerator
+namespace GameMain.Editor.DataTableGenerator
 {
     public static class DataTableProcessorExtensions
     {

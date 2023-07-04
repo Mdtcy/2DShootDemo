@@ -1,6 +1,6 @@
 using UnityEditor;
 
-namespace Fumiki.Editor.SpriteCollection
+namespace GameMain.Editor.SpriteCollection
 {
     public static class SpriteCollectionUtility
     {
@@ -10,7 +10,7 @@ namespace Fumiki.Editor.SpriteCollection
             foreach (var guid in guids)
             {
                 string path = AssetDatabase.GUIDToAssetPath(guid);
-                Fumiki.SpriteCollection collection = AssetDatabase.LoadAssetAtPath<Fumiki.SpriteCollection>(path);
+                GameMain.SpriteCollection collection = AssetDatabase.LoadAssetAtPath<GameMain.SpriteCollection>(path);
                 collection.Pack();
             }
 

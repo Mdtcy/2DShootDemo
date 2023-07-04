@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 
-namespace Fumiki
+namespace GameMain
 {
     public abstract class UGuiFormLogic : UIFormLogic
     {

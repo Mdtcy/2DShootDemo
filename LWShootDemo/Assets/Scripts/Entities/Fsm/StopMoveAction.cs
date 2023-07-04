@@ -6,7 +6,7 @@ namespace NodeCanvas.StateMachines
 {
     public class StopMoveAction : ActionTask
     {
-        public BBParameter<Entity> Entity;
+        public BBParameter<OldEntity> Entity;
 
         protected override void OnExecute()
         {

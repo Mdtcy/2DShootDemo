@@ -1,6 +1,6 @@
 using UnityEngine.UI;
 
-namespace Fumiki
+namespace GameMain
 {
     public static partial class SetSpriteExtensions
     {

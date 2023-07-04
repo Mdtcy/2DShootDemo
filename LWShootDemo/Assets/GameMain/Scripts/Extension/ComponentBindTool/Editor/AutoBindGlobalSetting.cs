@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace Fumiki.Editor.ComponentBindTool
+namespace GameMain.Editor.ComponentBindTool
 {
     /// <summary>
     /// 自动绑定全局设置

@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace Fumiki.Editor.SpriteCollection
+namespace GameMain.Editor.SpriteCollection
 {
 #if !ODIN_INSPECTOR
     [CustomEditor(typeof(SpriteCollectionComponent))]

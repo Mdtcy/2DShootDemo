@@ -3,11 +3,11 @@ using GameFramework.DataTable;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace Fumiki
+namespace GameMain
 {
     public static partial class DataTableExtension
     {
-        private const string DataRowClassPrefixName = "Fumiki.DR";
+        private const string DataRowClassPrefixName = "GameMain.DR";
         public static readonly char[] DataSplitSeparators = {'\t'};
         public static readonly char[] DataTrimSeparators = {'\"'};
         

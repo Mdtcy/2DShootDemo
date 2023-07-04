@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace Fumiki.Editor.BuildExtension
+namespace GameMain.Editor.BuildExtension
 {
     public static class Utility
     {

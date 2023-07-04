@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.U2D;
 using Object = UnityEngine.Object;
 
-namespace Fumiki.Editor.SpriteCollection
+namespace GameMain.Editor.SpriteCollection
 {
 #if !ODIN_INSPECTOR
     [CustomEditor(typeof(SpriteCollection))]

@@ -1,4 +1,4 @@
-namespace Fumiki
+namespace GameMain
 {
     /// <summary>
     /// 任务状态

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Fumiki
+namespace GameMain
 {
     public partial class TextureSetComponent
     {

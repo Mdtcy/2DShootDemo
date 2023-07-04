@@ -1,4 +1,4 @@
-namespace Fumiki
+namespace GameMain
 {
     /// <summary>
     /// 数据表行设置

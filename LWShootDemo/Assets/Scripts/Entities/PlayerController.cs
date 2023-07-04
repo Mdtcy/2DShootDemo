@@ -25,7 +25,7 @@ namespace LWShootDemo.Entities
 
         // 实体
         [SerializeField]
-        private Entity entity;
+        private OldEntity _oldEntity;
 
         // 移动速度
         [SerializeField]
@@ -80,7 +80,7 @@ namespace LWShootDemo.Entities
             initWeapon.gameObject.SetActive(false);
             upgradeWeapon.gameObject.SetActive(true);
             curWeapon = upgradeWeapon;
-            curWeapon.Init(entity);
+            curWeapon.Init(_oldEntity);
         }
 
         #endregion
@@ -97,18 +97,18 @@ namespace LWShootDemo.Entities
             soundManager     = GameManager.Instance.SoundManager;
             timeStopManager  = GameManager.Instance.TimeStopManager;
 
-            entity.Init();
-            entity.ActOnDeath += OnDeath;
+            _oldEntity.Init();
+            _oldEntity.ActOnDeath += OnDeath;
 
             // 初始化武器
             curWeapon = initWeapon;
             initWeapon.gameObject.SetActive(true);
-            curWeapon.Init(entity);
+            curWeapon.Init(_oldEntity);
         }
 
         private void Update()
         {
-            if (entity.IsDead)
+            if (_oldEntity.IsDead)
             {
                 return;
             }
@@ -117,7 +117,7 @@ namespace LWShootDemo.Entities
         }
         private void FixedUpdate()
         {
-            if (entity.IsDead)
+            if (_oldEntity.IsDead)
             {
                 return;
             }

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using DelayQueue.Interfaces;
 
-namespace Fumiki
+namespace GameMain
 {
     /// <summary>
     /// 时间槽

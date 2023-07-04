@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityGameFramework.Editor.ResourceTools;
 
-namespace Fumiki.Editor
+namespace GameMain.Editor
 {
     public sealed class GameFrameworkBuildEventHandler : IBuildEventHandler
     {

@@ -1,7 +1,7 @@
 using GameFramework;
 using UnityEngine;
 
-namespace Fumiki
+namespace GameMain
 {
     public interface ISetSpriteObject: IReference
     {

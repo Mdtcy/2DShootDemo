@@ -8,8 +8,8 @@ namespace Damages
 {
     public interface IDamageManager
     {
-        public void DoDamage(Entity attacker,
-            Entity target,
+        public void DoDamage(OldEntity attacker,
+            OldEntity target,
             int damage,
             Vector2 damageDirection,
             float criticalRate, 

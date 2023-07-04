@@ -8,7 +8,7 @@ using UnityEditor;
 using UnityEngine;
 using Object = System.Object;
 
-namespace Fumiki.Editor.VFS
+namespace GameMain.Editor.VFS
 {
     public sealed class FileSystemHelper : IFileSystemHelper
     {

@@ -7,7 +7,7 @@ using GameFramework.FileSystem;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace Fumiki
+namespace GameMain
 {
     public partial class DataTableExtensionComponent : GameFrameworkComponent
     {

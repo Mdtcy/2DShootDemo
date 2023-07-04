@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Fumiki.Editor.ComponentBindTool
+namespace GameMain.Editor.ComponentBindTool
 {
     [CustomEditor(typeof(AutoBindGlobalSetting))]
     public class AutoBindGlobalSettingInspector : UnityEditor.Editor

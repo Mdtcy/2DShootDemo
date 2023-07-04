@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Fumiki.Editor.DataTableEditor
+namespace GameMain.Editor.DataTableEditor
 {
     [Serializable]
     public class DataTableRowData

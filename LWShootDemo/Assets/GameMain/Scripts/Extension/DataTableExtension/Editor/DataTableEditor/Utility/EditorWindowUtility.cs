@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Fumiki.Editor.DataTableEditor
+namespace GameMain.Editor.DataTableEditor
 {
     public partial class Utility
     {

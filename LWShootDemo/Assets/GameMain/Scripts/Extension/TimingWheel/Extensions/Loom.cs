@@ -4,7 +4,7 @@ using System.Threading;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace Fumiki
+namespace GameMain
 {
     public class Loom
     {

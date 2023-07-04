@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Fumiki.Editor.VFS
+namespace GameMain.Editor.VFS
 {
     public class MergeAssetScriptableObject : ScriptableObject
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Fumiki
+namespace GameMain
 {
     /// <summary>
     /// 自动绑定规则辅助器接口

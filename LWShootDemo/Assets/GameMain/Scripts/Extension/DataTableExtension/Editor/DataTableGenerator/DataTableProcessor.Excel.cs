@@ -6,7 +6,7 @@ using GameFramework;
 using OfficeOpenXml;
 using UnityEngine;
 
-namespace Fumiki.Editor.DataTableGenerator
+namespace GameMain.Editor.DataTableGenerator
 {
     public partial class DataTableProcessor
     {

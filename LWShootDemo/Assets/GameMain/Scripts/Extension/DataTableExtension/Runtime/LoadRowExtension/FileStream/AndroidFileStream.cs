@@ -3,7 +3,7 @@ using System.IO;
 using GameFramework;
 using UnityEngine;
 
-namespace Fumiki
+namespace GameMain
 {
     public class AndroidFileStream : IFileStream
     {

@@ -6,7 +6,7 @@ using TMPro;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace Fumiki
+namespace GameMain
 {
     public class ProcedurePreload : ProcedureBase
     {

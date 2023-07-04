@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityGameFramework.Runtime;
 
-namespace Fumiki
+namespace GameMain
 {
     public class CancellationToken
     {

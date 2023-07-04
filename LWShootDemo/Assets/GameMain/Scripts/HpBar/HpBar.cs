@@ -7,22 +7,22 @@ namespace DefaultNamespace.GameMain.Scripts.HpBar
     {
         [SerializeField] private ProgressBar _progressBar;
 
-        [SerializeField] private Entity _entity;
+        [SerializeField] private OldEntity _oldEntity;
         
         private void OnEnable()
         {
-            _entity.ActOnHpChanged += OnHpChanged;
-            _progressBar.UpdateProgressImmeadiatly(_entity.MaxHp, _entity.MaxHp);
+            _oldEntity.ActOnHpChanged += OnHpChanged;
+            _progressBar.UpdateProgressImmeadiatly(_oldEntity.MaxHp, _oldEntity.MaxHp);
         }
 
         private void OnDisable()
         {
-            _entity.ActOnHpChanged -= OnHpChanged;
+            _oldEntity.ActOnHpChanged -= OnHpChanged;
         }
 
         private void OnHpChanged(int hp)
         {
-            _progressBar.UpdateProgress(hp, _entity.MaxHp);
+            _progressBar.UpdateProgress(hp, _oldEntity.MaxHp);
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace Fumiki.Editor.BuildExtension
+namespace GameMain.Editor.BuildExtension
 {
     [CustomEditor(typeof(VersionInfoEditorData))]
     public class VersionInfoEditorDataEditor : UnityEditor.Editor

@@ -6,7 +6,7 @@ using UnityEditorInternal;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Fumiki.Editor.VFS
+namespace GameMain.Editor.VFS
 {
     public class MergeAssetToVFSWindow : EditorWindow
     {

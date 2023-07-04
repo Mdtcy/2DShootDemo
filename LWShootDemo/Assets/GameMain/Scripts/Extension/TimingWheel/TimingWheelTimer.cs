@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using DelayQueue;
 
-namespace Fumiki
+namespace GameMain
 {
     /// <summary>
     /// 时间轮计时器，参考kafka时间轮算法实现

@@ -1,4 +1,4 @@
-namespace Fumiki
+namespace GameMain
 {
     public enum SceneId
     {

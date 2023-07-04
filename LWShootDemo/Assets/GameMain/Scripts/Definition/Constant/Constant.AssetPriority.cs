@@ -1,4 +1,4 @@
-namespace Fumiki
+namespace GameMain
 {
     public static partial class Constant
     {
@@ -17,9 +17,8 @@ namespace Fumiki
             public const int UIFormAsset = 50;
             public const int UISoundAsset = 30;
 
-            public const int MainPlayerAsset = 100;
-            public const int PlayerAsset = 80;
-            public const int TreeAsset = 60;
+            public const int EnemyGhoulAsset = 80;
+
         }
     }
 }

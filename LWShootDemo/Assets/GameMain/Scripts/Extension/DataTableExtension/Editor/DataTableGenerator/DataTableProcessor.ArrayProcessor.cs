@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-namespace Fumiki.Editor.DataTableGenerator
+namespace GameMain.Editor.DataTableGenerator
 {
     public sealed partial class DataTableProcessor
     {

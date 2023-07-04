@@ -8,7 +8,7 @@
 using System.IO;
 using System.Linq;
 
-namespace Fumiki.Editor.DataTableGenerator
+namespace GameMain.Editor.DataTableGenerator
 {
     public sealed partial class DataTableProcessor
     {

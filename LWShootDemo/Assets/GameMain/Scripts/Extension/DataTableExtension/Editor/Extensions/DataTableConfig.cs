@@ -3,7 +3,7 @@ using System.Linq;
 using GameFramework;
 using UnityEngine;
 
-namespace Fumiki.Editor.DataTableGenerator
+namespace GameMain.Editor.DataTableGenerator
 {
     /// <summary>
     /// 数据表配置类

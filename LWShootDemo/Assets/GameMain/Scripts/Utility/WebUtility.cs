@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Fumiki
+namespace GameMain
 {
     public static class WebUtility
     {

@@ -8,7 +8,7 @@ using UnityEditorInternal;
 using UnityGameFramework.Editor.ResourceTools;
 using GFResource = UnityGameFramework.Editor.ResourceTools.Resource;
 
-namespace Fumiki.Editor.ResourceTools
+namespace GameMain.Editor.ResourceTools
 {
     /// <summary>
     /// Resource 规则编辑器，支持按规则配置自动生成 ResourceCollection.xml

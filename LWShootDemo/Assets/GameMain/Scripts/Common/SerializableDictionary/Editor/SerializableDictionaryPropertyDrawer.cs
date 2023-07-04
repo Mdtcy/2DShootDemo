@@ -4,7 +4,7 @@ using UnityEditor;
 using System.Reflection;
 using System;
 
-namespace Fumiki.Editor.SerializableDictionary
+namespace GameMain.Editor.SerializableDictionary
 {
     [CustomPropertyDrawer(typeof(SerializableDictionaryBase), true)]
 #if NET_4_6 || NET_STANDARD_2_0

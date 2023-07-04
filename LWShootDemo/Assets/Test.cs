@@ -3,13 +3,13 @@ using GameFramework;
 using GameFramework.Event;
 using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.BuffSystem.Event;
+using LWShootDemo.Entities;
 using LWShootDemo.Motion;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityGameFramework.Runtime;
-using Entity = LWShootDemo.Entities.Entity;
-using GameEntry = Fumiki.GameEntry;
+using GameEntry = GameMain.GameEntry;
 
 namespace DefaultNamespace
 {
@@ -142,7 +142,7 @@ namespace DefaultNamespace
             player.AddBuff(addBuffInfo);
         }
 
-        public Entity player;
+        public OldEntity player;
 
         public Vector3 方向;
         

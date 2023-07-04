@@ -9,7 +9,7 @@ namespace NodeCanvas.StateMachines
     public class AttackState : FSMState 
     {
         public BBParameter<UnitAnimation> UnitAnimation;
-        public BBParameter<Entity> Entity;
+        public BBParameter<OldEntity> Entity;
         
         public BBParameter<MeleeAttack> MeleeAttack;
 

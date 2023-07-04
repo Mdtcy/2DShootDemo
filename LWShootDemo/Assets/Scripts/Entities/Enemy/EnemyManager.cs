@@ -11,7 +11,7 @@ using System;
 using System.Collections.Generic;
 using Entities.Enemy;
 using GameFramework.ObjectPool;
-using Fumiki;
+using GameMain;
 using LWShootDemo.Difficulty;
 using UnityEngine;
 using Random = UnityEngine.Random;

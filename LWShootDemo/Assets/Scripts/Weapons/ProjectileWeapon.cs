@@ -8,7 +8,7 @@
 
 #pragma warning disable 0649
 using DG.Tweening;
-using Fumiki;
+using GameMain;
 using LWShootDemo.Common;
 using LWShootDemo.Entities;
 using LWShootDemo.Sound;
@@ -40,7 +40,7 @@ namespace LWShootDemo.Weapons
         private float fireKnockBackForce = 1;
 
         // * local
-        private Entity            owener;
+        private OldEntity            owener;
         private SoundManager      soundManager;
         // private CameraController  cameraController;
         private Tween             scaleTween;
@@ -53,9 +53,9 @@ namespace LWShootDemo.Weapons
 
         #region PUBLIC METHODS
 
-        public override void Init(Entity entity)
+        public override void Init(OldEntity oldEntity)
         {
-            owener = entity;
+            owener = oldEntity;
         }
 
         public override void Use()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace Fumiki.Editor.ComponentBindTool
+namespace GameMain.Editor.ComponentBindTool
 {
     public static class ComponentAutoBindToolExtensions
 {

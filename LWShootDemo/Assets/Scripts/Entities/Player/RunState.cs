@@ -37,10 +37,10 @@ namespace LWShootDemo.Entities.Player
             {
                 fsm.RequestStateChange(PlayerFsm.PlayerState.Idle);
 
-                if(Context.Entity.FaceDirection == Direction.Right)
-                    _weapon.RotateTo(Context.Entity.transform.right);
+                if(Context._oldEntity.FaceDirection == Direction.Right)
+                    _weapon.RotateTo(Context._oldEntity.transform.right);
                 else
-                    _weapon.RotateTo(-Context.Entity.transform.right);
+                    _weapon.RotateTo(-Context._oldEntity.transform.right);
             }
             else
             {
@@ -48,7 +48,7 @@ namespace LWShootDemo.Entities.Player
             }
             
             // 移动
-            Context.Entity.InputMove(movement.normalized);
+            Context._oldEntity.InputMove(movement.normalized);
         }
     }
 }

@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
-namespace Fumiki
+namespace GameMain
 {
     [AsyncMethodBuilder(typeof(AsyncETTaskCompletedMethodBuilder))]
     public struct ETTaskCompleted : ICriticalNotifyCompletion

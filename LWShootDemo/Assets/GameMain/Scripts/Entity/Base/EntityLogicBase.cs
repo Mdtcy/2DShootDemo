@@ -1,8 +1,9 @@
-﻿using GameFramework;
+﻿using Animancer;
+using GameFramework;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace Fumiki
+namespace GameMain
 {
     public abstract class EntityLogicBase : EntityLogic
     {
@@ -10,13 +11,7 @@ namespace Fumiki
         private EntityDataBase _entityData = null;
 
         public int Id => Entity.Id;
-
-        public Animator CachedAnimator
-        {
-            get;
-            set;
-        }
-
+        
 #if UNITY_2017_3_OR_NEWER
         protected override void OnInit(object userData)
 #else
@@ -24,8 +19,6 @@ namespace Fumiki
 #endif
         {
             base.OnInit(userData);
-            if (transform.GetChild(0).childCount > 0)
-                CachedAnimator = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
         }
 
 #if UNITY_2017_3_OR_NEWER
@@ -52,7 +45,7 @@ namespace Fumiki
                 return;
             }
 
-            //Name = Utility.Text.Format("[Entity {0}]", Id);
+            Name = Utility.Text.Format("[Entity {0}]", Id);
             CachedTransform.localPosition = _entityData.Position;
             CachedTransform.localRotation = _entityData.Rotation;
             CachedTransform.localScale = _entityData.Scale;

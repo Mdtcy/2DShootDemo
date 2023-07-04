@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Fumiki.Editor.DataTableGenerator
+namespace GameMain.Editor.DataTableGenerator
 {
     public static class PermutationAndCombination<T>
     {

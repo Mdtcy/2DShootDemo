@@ -1,19 +1,25 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Fumiki
+namespace GameMain
 {
     [Serializable]
     public abstract class EntityDataBase
     {
-        [SerializeField] private int _id = 0;
+        [SerializeField] 
+        private int _id = 0;
 
-        [SerializeField] private int _typeId = 0;
+        [SerializeField] 
+        private int _typeId = 0;
 
-        [SerializeField] private Vector3 _position = Vector3.zero;
+        [SerializeField] 
+        private Vector3 _position = Vector3.zero;
 
-        [SerializeField] private Quaternion _rotation = Quaternion.identity;
-        [SerializeField] private Vector3 _scale = Vector3.one;
+        [SerializeField] 
+        private Quaternion _rotation = Quaternion.identity;
+        
+        [SerializeField] 
+        private Vector3 _scale = Vector3.one;
 
         public EntityDataBase(int entityId, int typeId)
         {

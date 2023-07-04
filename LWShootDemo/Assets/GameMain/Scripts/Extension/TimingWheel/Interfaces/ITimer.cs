@@ -1,6 +1,6 @@
 using System;
 
-namespace Fumiki
+namespace GameMain
 {
     /// <summary>
     /// 时间轮计时器

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
 
-namespace Fumiki
+namespace GameMain
 {
     [AsyncMethodBuilder(typeof(ETAsyncTaskMethodBuilder))]
     public class ETTask : ICriticalNotifyCompletion

@@ -1,6 +1,6 @@
 using DelayQueue;
 
-namespace Fumiki
+namespace GameMain
 {
     /// <summary>
     /// 时间轮，采用分层算法

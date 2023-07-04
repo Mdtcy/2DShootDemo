@@ -4,7 +4,7 @@ using UnityEditor;
 using System;
 using System.IO;
 
-namespace Fumiki.Editor
+namespace GameMain.Editor
 {
 
     /// <summary>

@@ -3,7 +3,7 @@ using System.IO;
 using UnityEngine;
 using UnityGameFramework.Editor.ResourceTools;
 
-namespace Fumiki.Editor.BuildExtension
+namespace GameMain.Editor.BuildExtension
 {
     [Serializable]
     public enum Platform

@@ -4,7 +4,7 @@ using System;
 using Sirenix.OdinInspector;
 #endif
 
-namespace Fumiki
+namespace GameMain
 {
     public partial class SpriteCollectionComponent
     {

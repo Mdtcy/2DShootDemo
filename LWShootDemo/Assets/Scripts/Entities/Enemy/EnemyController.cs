@@ -11,7 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Damages;
 using Events;
-using Fumiki;
+using GameMain;
 using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.Difficulty;
 using LWShootDemo.Enemy;
@@ -26,13 +26,13 @@ namespace LWShootDemo.Entities.Enemy
     /// <summary>
     /// 敌人控制器
     /// </summary>
-    [RequireComponent(typeof(Entity))]
+    [RequireComponent(typeof(OldEntity))]
     public class EnemyController : MonoBehaviour
     {
         #region FIELDS
 
         [SerializeField]
-        private Entity entity;
+        private OldEntity _oldEntity;
 
         // 正常时候的材质
         [SerializeField]
@@ -66,7 +66,7 @@ namespace LWShootDemo.Entities.Enemy
 
         #region PROPERTIES
 
-        public bool IsDead => entity.IsDead;
+        public bool IsDead => _oldEntity.IsDead;
 
         #endregion
 
@@ -101,24 +101,24 @@ namespace LWShootDemo.Entities.Enemy
             difficultyManager = GameManager.Instance.DifficultyManager;
 
             // entity.ActOnHurt  += OnHurt;
-            entity.ActOnDeath += OnDeath;
+            _oldEntity.ActOnDeath += OnDeath;
         }
 
         private void OnDestroy()
         {
             // entity.ActOnHurt  -= OnHurt;
-            entity.ActOnDeath -= OnDeath;
+            _oldEntity.ActOnDeath -= OnDeath;
         }
 
         public void OnSpawn()
         {
-            entity.Init();
+            _oldEntity.Init();
         }
 
         public void OnDespawn()
         {
             spModel.material = matNormal;
-            entity.Reset();
+            _oldEntity.Reset();
         }
 
         // 死亡
@@ -145,7 +145,7 @@ namespace LWShootDemo.Entities.Enemy
         private void OnHurt(DamageInfo damageInfo)
         {
             // 被击退
-            entity.ApplyKnowBack(0.2f, damageInfo.Direction * knockBackForce);
+            _oldEntity.ApplyKnowBack(0.2f, damageInfo.Direction * knockBackForce);
 
             // todo 效果不明显 删除 替换为其他效果
             // // 暴击时弹出暴击字样
@@ -177,27 +177,27 @@ namespace LWShootDemo.Entities.Enemy
                 lookAngle = 360 - lookAngle;
             }
 
-            entity.TryRotate(lookAngle);
+            _oldEntity.TryRotate(lookAngle);
         }
 
         // 追踪Player
         private void ChaseTarget()
         {
             var direction = player.position - transform.position;
-            entity.InputMove(direction.normalized);
+            _oldEntity.InputMove(direction.normalized);
             // entity.TryMove(direction, moveSpeed * difficultyManager.GetCurrentDifficulty().EnemySpeedNum);
         }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
             // 撞到Player造成一点伤害
-            var target = other.collider.GetComponent<Entity>();
+            var target = other.collider.GetComponent<OldEntity>();
             if (target!=null && target.Side == Side.Player)
             {
                 // var damageInfo = new DamageInfo(1, entity.transform.position - transform.position, false);
-                var dir = entity.transform.position - transform.position;
+                var dir = _oldEntity.transform.position - transform.position;
                 // var damageInfo = new DamageInfo(this.entity, target, 1, dir,0,null);
-                GameEntry.Damage.DoDamage(entity, target, 1, dir,0, new List<DamageInfoTag>(), new List<AddBuffInfo>());
+                GameEntry.Damage.DoDamage(_oldEntity, target, 1, dir,0, new List<DamageInfoTag>(), new List<AddBuffInfo>());
                 // target.TakeDamage(damageInfo);
             }
         }

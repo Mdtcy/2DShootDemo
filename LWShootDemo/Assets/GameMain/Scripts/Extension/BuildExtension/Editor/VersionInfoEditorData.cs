@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Fumiki.Editor.BuildExtension
+namespace GameMain.Editor.BuildExtension
 {
     [CreateAssetMenu(fileName = "VersionInfoEditorData", menuName = "UGFExtensions/VersionInfoEditorData", order = 0)]
     public class VersionInfoEditorData : ScriptableObject

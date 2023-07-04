@@ -5,7 +5,7 @@ using UnityGameFramework.Runtime;
 using WebRequestFailureEventArgs = UnityGameFramework.Runtime.WebRequestFailureEventArgs;
 using WebRequestSuccessEventArgs = UnityGameFramework.Runtime.WebRequestSuccessEventArgs;
 
-namespace Fumiki
+namespace GameMain
 {
     public partial class TextureSetComponent
     {

@@ -1,7 +1,7 @@
 using LWShootDemo.DamageNumber;
 using LWShootDemo.Damages;
 
-namespace Fumiki
+namespace GameMain
 {
     public sealed partial class GameEntry
     {

@@ -7,7 +7,7 @@ using OfficeOpenXml;
 using UnityEditor;
 using Debug = UnityEngine.Debug;
 
-namespace Fumiki.Editor.DataTableGenerator
+namespace GameMain.Editor.DataTableGenerator
 {
     public sealed class DataTableGeneratorMenu
     {

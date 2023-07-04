@@ -14,7 +14,7 @@ using GameFramework;
 using GameFramework.FileSystem;
 using UnityEngine;
 
-namespace Fumiki.Editor.DataTableGenerator
+namespace GameMain.Editor.DataTableGenerator
 {
     public sealed partial class DataTableProcessor
     {

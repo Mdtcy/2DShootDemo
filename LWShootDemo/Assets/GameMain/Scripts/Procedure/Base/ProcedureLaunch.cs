@@ -4,7 +4,7 @@ using UnityGameFramework.Runtime;
 using Debug = UnityEngine.Debug;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace Fumiki
+namespace GameMain
 {
     public class ProcedureLaunch : ProcedureBase
     {

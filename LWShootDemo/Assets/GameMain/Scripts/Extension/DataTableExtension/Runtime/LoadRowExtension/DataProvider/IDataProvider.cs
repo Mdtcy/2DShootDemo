@@ -1,7 +1,7 @@
 using System;
 using GameFramework.FileSystem;
 
-namespace Fumiki
+namespace GameMain
 {
     public interface IDataProvider : IDisposable
     {

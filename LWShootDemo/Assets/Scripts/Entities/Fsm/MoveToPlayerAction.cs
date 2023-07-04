@@ -9,7 +9,7 @@ namespace NodeCanvas.StateMachines
     {
         public BBParameter<Transform> Self;
 
-        public BBParameter<Entity> Entity;
+        public BBParameter<OldEntity> Entity;
         
         public BBParameter<Vector3> Offset;
         

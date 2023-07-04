@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Fumiki.Editor.BuildExtension
+namespace GameMain.Editor.BuildExtension
 {
     [Serializable]
     public class VersionInfoWrapData

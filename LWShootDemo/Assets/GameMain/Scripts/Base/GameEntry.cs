@@ -1,6 +1,6 @@
 using Sirenix.OdinInspector;
 
-namespace Fumiki
+namespace GameMain
 {
     public sealed partial class GameEntry : SerializedMonoBehaviour
     {

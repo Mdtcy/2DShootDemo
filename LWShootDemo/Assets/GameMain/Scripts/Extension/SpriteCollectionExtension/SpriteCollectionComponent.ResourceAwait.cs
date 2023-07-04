@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Fumiki
+namespace GameMain
 {
     public partial class SpriteCollectionComponent
     {

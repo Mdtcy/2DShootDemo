@@ -53,7 +53,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8715813908995864186, guid: b7ed27dbbbb27854091191e07bf2ff75, type: 2}
+  - {fileID: 8623078618439313755, guid: 21a5fd57c8c888d44ab11a871c740c02, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,7 +136,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8715813908995864186, guid: b7ed27dbbbb27854091191e07bf2ff75, type: 2}
+  - {fileID: 8623078618439313755, guid: 21a5fd57c8c888d44ab11a871c740c02, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -224,7 +224,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8715813908995864186, guid: b7ed27dbbbb27854091191e07bf2ff75, type: 2}
+  - {fileID: 8623078618439313755, guid: 21a5fd57c8c888d44ab11a871c740c02, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -268,8 +268,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b7ed27dbbbb27854091191e07bf2ff75, type: 2}
-  m_sharedMaterial: {fileID: -8715813908995864186, guid: b7ed27dbbbb27854091191e07bf2ff75,
+  m_fontAsset: {fileID: 11400000, guid: 21a5fd57c8c888d44ab11a871c740c02, type: 2}
+  m_sharedMaterial: {fileID: 8623078618439313755, guid: 21a5fd57c8c888d44ab11a871c740c02,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   permanent: 0
-  lifetime: 2
+  lifetime: 0.5
   unscaledTime: 0
   enable3DGame: 0
   faceCameraView: 1
@@ -530,19 +530,19 @@ MonoBehaviour:
     toNumber: 100
   durationFadeIn: 0.2
   enableOffsetFadeIn: 0
-  offsetFadeIn: {x: 0, y: 0.5}
+  offsetFadeIn: {x: 0.5, y: 0}
   enableScaleFadeIn: 1
-  scaleFadeIn: {x: 0.5, y: 2}
+  scaleFadeIn: {x: 0, y: 0}
   enableCrossScaleFadeIn: 0
   crossScaleFadeIn: {x: 1, y: 1.5}
-  enableShakeFadeIn: 1
+  enableShakeFadeIn: 0
   shakeOffsetFadeIn: {x: 0, y: 1.5}
-  shakeFrequencyFadeIn: 2
-  durationFadeOut: 0.2
+  shakeFrequencyFadeIn: 4
+  durationFadeOut: 0.3
   enableOffsetFadeOut: 0
   offsetFadeOut: {x: 0.5, y: 0}
   enableScaleFadeOut: 1
-  scaleFadeOut: {x: -0.3, y: 1}
+  scaleFadeOut: {x: 0.4, y: 0.4}
   enableCrossScaleFadeOut: 0
   crossScaleFadeOut: {x: 1, y: 1.5}
   enableShakeFadeOut: 0
@@ -798,7 +798,7 @@ MonoBehaviour:
     radius: 3
     pushOffset: 1
   updateDelay: 0.0125
-  enablePooling: 0
+  enablePooling: 1
   poolSize: 50
   position: {x: 0, y: 0, z: 0}
 --- !u!210 &893872606961012070

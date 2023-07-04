@@ -1,7 +1,7 @@
 using System;
 using GameFramework;
 
-namespace Fumiki
+namespace GameMain
 {
     enum TimerType
     {

@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Security;
 
-namespace Fumiki
+namespace GameMain
 {
     public struct AsyncETVoidMethodBuilder
     {

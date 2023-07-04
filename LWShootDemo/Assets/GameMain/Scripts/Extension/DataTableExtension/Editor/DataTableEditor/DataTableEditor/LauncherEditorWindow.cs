@@ -4,7 +4,7 @@ using System.Text;
 using UnityEditor;
 using UnityEngine;
 
-namespace Fumiki.Editor.DataTableEditor
+namespace GameMain.Editor.DataTableEditor
 {
     public class LauncherEditorWindow : EditorWindow
     {

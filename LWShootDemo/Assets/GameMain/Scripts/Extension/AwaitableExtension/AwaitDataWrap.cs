@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using GameFramework;
 
-namespace Fumiki
+namespace GameMain
 {
     /// <summary>
     /// Await包装类

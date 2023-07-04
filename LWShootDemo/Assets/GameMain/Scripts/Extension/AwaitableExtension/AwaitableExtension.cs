@@ -8,7 +8,7 @@ using GameFramework.Resource;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace Fumiki
+namespace GameMain
 {
     public static class AwaitableExtension
     {

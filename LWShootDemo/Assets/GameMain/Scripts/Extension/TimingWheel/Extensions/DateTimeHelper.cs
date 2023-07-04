@@ -1,6 +1,6 @@
 using System;
 
-namespace Fumiki
+namespace GameMain
 {
     /// <summary>
     /// DateTime帮助类

@@ -3,7 +3,7 @@ using GameFramework.ObjectPool;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace Fumiki
+namespace GameMain
 {
     public class TextureItemObject : ObjectBase
     {

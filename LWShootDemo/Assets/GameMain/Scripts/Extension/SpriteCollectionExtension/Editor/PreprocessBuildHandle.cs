@@ -1,7 +1,7 @@
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 
-namespace Fumiki.Editor.SpriteCollection
+namespace GameMain.Editor.SpriteCollection
 {
     public  class PreprocessBuildHandle: IPreprocessBuildWithReport
     {

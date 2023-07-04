@@ -3,7 +3,7 @@ using GameFramework.Event;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace Fumiki
+namespace GameMain
 {
     public class ProcedureChangeScene : ProcedureBase
     {

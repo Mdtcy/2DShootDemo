@@ -1,16 +1,16 @@
 using System.Collections.Generic;
 using Damages;
 using LWShootDemo.BuffSystem.Buffs;
+using LWShootDemo.Entities;
 using UnityEngine;
-using Entity = LWShootDemo.Entities.Entity;
-using GameEntry = Fumiki.GameEntry;
+using GameEntry = GameMain.GameEntry;
 
 namespace GameMain
 {
     // todo 一次只能检测十个
     public class MeleeAttack : MonoBehaviour
     {
-        public Entity caster;
+        public OldEntity caster;
 
         public int damage;
         
@@ -25,7 +25,7 @@ namespace GameMain
         public float TimeToAttack = 0.25f;
         private float time;
         
-        private List<Entity> _entitiesHasAttacked = new();
+        private List<OldEntity> _entitiesHasAttacked = new();
 
         public void Attack()
         {
@@ -69,7 +69,7 @@ namespace GameMain
                     continue;
                 }
 
-                var entity = detectColloder.GetComponent<Entity>();
+                var entity = detectColloder.GetComponent<OldEntity>();
                 if (entity != null &&
                     entity.Side != caster.Side &&
                     !_entitiesHasAttacked.Contains(entity))

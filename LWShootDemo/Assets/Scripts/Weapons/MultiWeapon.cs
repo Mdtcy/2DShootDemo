@@ -32,11 +32,11 @@ namespace LWShootDemo.Weapons
 
         #region PUBLIC METHODS
 
-        public override void Init(Entity entity)
+        public override void Init(OldEntity oldEntity)
         {
             foreach (var weapon in weapons)
             {
-                weapon.Init(entity);
+                weapon.Init(oldEntity);
             }
         }
 

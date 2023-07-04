@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace Fumiki
+namespace GameMain
 {
     public partial class SpriteCollectionComponent : GameFrameworkComponent
     {

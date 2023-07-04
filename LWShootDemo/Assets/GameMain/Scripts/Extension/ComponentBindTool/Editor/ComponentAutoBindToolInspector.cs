@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace Fumiki.Editor.ComponentBindTool
+namespace GameMain.Editor.ComponentBindTool
 {
     [CustomEditor(typeof(ComponentAutoBindTool))]
     public class ComponentAutoBindToolInspector : UnityEditor.Editor

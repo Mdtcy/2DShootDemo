@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Fumiki
+namespace GameMain
 {
     public class MultiMap<T, K>: SortedDictionary<T, List<K>>
     {

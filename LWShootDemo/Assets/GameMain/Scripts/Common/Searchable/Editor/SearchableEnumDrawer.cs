@@ -7,7 +7,7 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
-namespace Fumiki.Editor.Searchable
+namespace GameMain.Editor.Searchable
 {
     /// <summary>
     /// Draws the custom enum selector popup for enum fileds using the

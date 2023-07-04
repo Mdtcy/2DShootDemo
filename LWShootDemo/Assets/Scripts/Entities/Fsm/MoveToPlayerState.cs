@@ -9,7 +9,7 @@ namespace NodeCanvas.StateMachines
     [Category("Enemy")]
     public class MoveToPlayerState : FSMState
     {
-        public BBParameter<Entity> Entity;
+        public BBParameter<OldEntity> Entity;
         public BBParameter<Vector3> Offset;
         public BBParameter<UnitAnimation> UnitAnimation;
 

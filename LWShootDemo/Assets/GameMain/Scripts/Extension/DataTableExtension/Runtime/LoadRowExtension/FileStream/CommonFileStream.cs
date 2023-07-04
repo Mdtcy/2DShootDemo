@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace Fumiki
+namespace GameMain
 {
     public class CommonFileStream : IFileStream
     {

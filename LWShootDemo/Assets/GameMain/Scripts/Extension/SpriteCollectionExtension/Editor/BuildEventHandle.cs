@@ -1,9 +1,9 @@
-using Fumiki.Editor.ResourceTools;
+using GameMain.Editor.ResourceTools;
 using UnityEditor;
 using UnityEngine;
 using UnityGameFramework.Editor.ResourceTools;
 
-namespace Fumiki.Editor.SpriteCollection
+namespace GameMain.Editor.SpriteCollection
 {
     public class BuildEventHandle : IBuildEventHandler
     {

@@ -1,6 +1,6 @@
 using UnityGameFramework.Runtime;
 
-namespace Fumiki
+namespace GameMain
 {
     public sealed partial class GameEntry
     {

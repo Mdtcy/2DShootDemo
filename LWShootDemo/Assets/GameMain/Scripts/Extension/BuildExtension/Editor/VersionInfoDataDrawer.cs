@@ -2,7 +2,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace Fumiki.Editor.BuildExtension
+namespace GameMain.Editor.BuildExtension
 {
     [CustomPropertyDrawer(typeof(VersionInfoData))]
     public class VersionInfoDataDrawer : PropertyDrawer

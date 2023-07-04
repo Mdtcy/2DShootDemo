@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using UnityEngine;
 
-namespace Fumiki
+namespace GameMain
 {
     public abstract class SerializableDictionaryBase
     {

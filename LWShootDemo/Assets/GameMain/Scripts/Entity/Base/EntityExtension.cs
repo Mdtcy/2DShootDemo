@@ -1,10 +1,8 @@
 ﻿using GameFramework.DataTable;
 using System;
-using System.Threading.Tasks;
-using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace Fumiki
+namespace GameMain
 {
     public static class EntityExtension
     {
@@ -35,11 +33,6 @@ namespace Fumiki
             entityComponent.AttachEntity(entity.Entity, ownerId, parentTransformPath, userData);
         }
 
-        //public static void ShowMyAircraft(this EntityComponent entityComponent, MyAircraftData data)
-        //{
-        //    entityComponent.ShowEntity(typeof(MyAircraft), "Aircraft", Constant.AssetPriority.MyAircraftAsset, data);
-        //}
-
         public static void ShowEntity(this EntityComponent entityComponent, Type logicType, int priority, EntityDataBase data)
         {
             if (data == null)
@@ -61,7 +54,10 @@ namespace Fumiki
 
         #region Show Entity Extension
         
-        
+        public static void ShowEnemyGhoul(this EntityComponent entityComponent, EnemyGhoulData data)
+        {
+            entityComponent.ShowEntity(typeof(EnemyGhoul), Constant.AssetPriority.EnemyGhoulAsset, data);
+        }
 
         #endregion
 

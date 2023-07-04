@@ -1,7 +1,7 @@
 using System;
 using UnityEditor;
 
-namespace Fumiki.Editor.BuildExtension
+namespace GameMain.Editor.BuildExtension
 {
     [CustomEditor(typeof(VersionInfoData))]
     public class VersionInfoDataEditor : UnityEditor.Editor

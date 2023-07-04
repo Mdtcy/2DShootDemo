@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace Fumiki
+namespace GameMain
 {
     /// <summary>
     /// 文件流数据提供

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityGameFramework.Editor;
 using UnityGameFramework.Editor.ResourceTools;
 
-namespace Fumiki.Editor.BuildExtension
+namespace GameMain.Editor.BuildExtension
 {
     public static class GameFrameworkConfigs
     {

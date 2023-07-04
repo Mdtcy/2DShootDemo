@@ -10,8 +10,8 @@ namespace LWShootDemo.Entities.Player
         public GameObject GetNearestEnemy()
         {
             // todo 获取所有没死的敌人里最近的
-            var enemies = FindObjectsOfType<EnemyController>().
-                Where(e => !e.IsDead).ToArray();
+            var enemies = FindObjectsOfType<OldEntity>().
+                Where(e => !e.IsDead && e.Side == Side.Enemy).ToArray();
             
             if (enemies.Length == 0)
             {

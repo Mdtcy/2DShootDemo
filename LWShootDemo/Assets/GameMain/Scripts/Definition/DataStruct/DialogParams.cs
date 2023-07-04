@@ -1,6 +1,6 @@
 using GameFramework;
 
-namespace Fumiki
+namespace GameMain
 {
     /// <summary>
     /// 对话框显示数据

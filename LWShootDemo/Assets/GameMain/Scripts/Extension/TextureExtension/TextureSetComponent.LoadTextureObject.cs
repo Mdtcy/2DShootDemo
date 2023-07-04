@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 #endif
 using UnityEngine;
 
-namespace Fumiki
+namespace GameMain
 {
     public partial class TextureSetComponent
     {

@@ -1,6 +1,6 @@
 ﻿using GameFramework;
 
-namespace Fumiki
+namespace GameMain
 {
     public class WebGetTextureData : IReference
     {

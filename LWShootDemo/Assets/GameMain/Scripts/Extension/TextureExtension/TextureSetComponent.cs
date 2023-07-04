@@ -13,7 +13,7 @@ using UnityGameFramework.Runtime;
 using Sirenix.OdinInspector;
 #endif
 
-namespace Fumiki
+namespace GameMain
 {
     public partial class TextureSetComponent : GameFrameworkComponent
     {

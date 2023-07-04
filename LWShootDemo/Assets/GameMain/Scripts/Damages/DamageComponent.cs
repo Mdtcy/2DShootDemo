@@ -5,10 +5,10 @@ using GameFramework;
 using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.BuffSystem.Events;
 using LWShootDemo.DamageNumber;
+using LWShootDemo.Entities;
 using UnityEngine;
 using UnityGameFramework.Runtime;
-using Entity = LWShootDemo.Entities.Entity;
-using GameEntry = Fumiki.GameEntry;
+using GameEntry = GameMain.GameEntry;
 
 namespace LWShootDemo.Damages
 {
@@ -85,8 +85,8 @@ namespace LWShootDemo.Damages
         ///<param name="criticalRate">暴击率，0-1</param>
         ///<param name="tags">伤害信息类型</param>
         ///</summary>
-        public void DoDamage(Entity attacker,
-            Entity target, 
+        public void DoDamage(OldEntity attacker,
+            OldEntity target, 
             int damage, 
             Vector2 damageDirection,
             float criticalRate,

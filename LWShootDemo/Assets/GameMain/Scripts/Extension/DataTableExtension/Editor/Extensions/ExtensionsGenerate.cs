@@ -8,7 +8,7 @@ using OfficeOpenXml;
 using UnityEditor;
 using UnityEngine;
 
-namespace Fumiki.Editor.DataTableGenerator
+namespace GameMain.Editor.DataTableGenerator
 {
     public static class ExtensionsGenerate
     {

@@ -9,7 +9,7 @@ using Sirenix.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Fumiki
+namespace GameMain
 {
     [Serializable]
     public class WaitSetImage : ISetSpriteObject

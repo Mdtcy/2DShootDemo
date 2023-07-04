@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using GameFramework;
 
-namespace Fumiki
+namespace GameMain
 {
     /// <summary>类型和名称的组合值。</summary>
     /// <footer><a href="https://www.google.com/search?q=TypeNamePair">`TypeNamePair` on google.com</a></footer>

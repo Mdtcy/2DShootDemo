@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using GameFramework.Resource;
 using UnityGameFramework.Runtime;
 
-namespace Fumiki
+namespace GameMain
 {
     public partial class SpriteCollectionComponent
     {

@@ -6,7 +6,7 @@ using OfficeOpenXml;
 using UnityEngine;
 using UnityEditor;
 
-namespace Fumiki.Editor.DataTableGenerator
+namespace GameMain.Editor.DataTableGenerator
 {
     public static class ExcelExtension
     {

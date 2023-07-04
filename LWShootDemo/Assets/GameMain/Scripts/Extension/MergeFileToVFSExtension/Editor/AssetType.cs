@@ -1,4 +1,4 @@
-namespace Fumiki.Editor.VFS
+namespace GameMain.Editor.VFS
 {
     public enum AssetType
     {

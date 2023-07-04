@@ -8,7 +8,7 @@ using UnityEditor.Experimental.SceneManagement;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-namespace Fumiki.Editor.ComponentBindTool
+namespace GameMain.Editor.ComponentBindTool
 {
     public static class ComponentAutoBindToolUtility
     {

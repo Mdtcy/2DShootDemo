@@ -2,7 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Fumiki
+namespace GameMain
 {
 	public static partial class DataTableExtension
 	{

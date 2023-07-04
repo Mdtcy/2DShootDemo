@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 
-namespace Fumiki.Editor.SerializableDictionary
+namespace GameMain.Editor.SerializableDictionary
 {
     [CustomEditor(typeof(SerializableDictionaryExample))]
     public class SerializableDictionaryExampleEditor : UnityEditor.Editor

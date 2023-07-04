@@ -7,7 +7,7 @@
 
 using System;
 
-namespace Fumiki.Editor.DataTableGenerator
+namespace GameMain.Editor.DataTableGenerator
 {
     public sealed partial class DataTableProcessor
     {

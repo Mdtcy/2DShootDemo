@@ -19,7 +19,7 @@ using UnityEngine;
 using UnityEngine.U2D;
 using Object = UnityEngine.Object;
 
-namespace Fumiki
+namespace GameMain
 {
     [CreateAssetMenu(fileName = "SpriteCollection", menuName = "UGFExtensions/SpriteCollection", order = 0)]
 #if ODIN_INSPECTOR

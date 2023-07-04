@@ -21,9 +21,9 @@ namespace LWShootDemo
     /// </summary>
     public class DamageInfo : IReference
     {
-        public Entity attacker;
+        public OldEntity attacker;
         
-        public Entity defender;
+        public OldEntity defender;
         
         ///<summary>
         ///这次伤害的类型Tag，这个会被用于buff相关的逻辑，是一个极其重要的信息
@@ -81,8 +81,8 @@ namespace LWShootDemo
             return Mathf.CeilToInt(Damage * (isCrit == true ? 2.00f:1.00f));  //暴击1.8倍（就这么设定的别问为啥，我是数值策划我说了算）
         }
 
-        public void Init(Entity attacker,
-            Entity defender, 
+        public void Init(OldEntity attacker,
+            OldEntity defender, 
             int damage,
             Vector2 damageDirection,
             float baseCriticalRate, 

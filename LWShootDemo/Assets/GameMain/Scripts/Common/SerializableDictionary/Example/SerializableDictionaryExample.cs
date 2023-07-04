@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Fumiki
+namespace GameMain
 {
 	public class SerializableDictionaryExample : MonoBehaviour {
 		// The dictionaries can be accessed throught a property

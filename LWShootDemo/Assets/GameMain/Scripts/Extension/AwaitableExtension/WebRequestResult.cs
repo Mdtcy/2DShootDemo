@@ -1,6 +1,6 @@
 ﻿using GameFramework;
 
-namespace Fumiki
+namespace GameMain
 {
     /// <summary>
     /// web 访问结果

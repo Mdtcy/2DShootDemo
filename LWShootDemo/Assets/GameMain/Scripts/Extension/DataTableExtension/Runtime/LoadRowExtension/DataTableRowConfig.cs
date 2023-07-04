@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Fumiki
+namespace GameMain
 {
     /// <summary>
     /// 数据表行配置

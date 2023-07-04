@@ -6,19 +6,20 @@ namespace LWShootDemo.Entities.Player
     public class FaceController : MonoBehaviour
     {
         [SerializeField] 
-        private SpriteRenderer _spriteRenderer;
+        private Transform _model;
 
         public Direction FaceDirection { get; private set; }
 
         private void Awake()
         {
-            FaceDirection = _spriteRenderer.flipX ? Direction.Left : Direction.Right;
+            FaceDirection = Math.Abs(_model.localScale.x - (-1)) < Single.Epsilon ? Direction.Left : Direction.Right;
         }
 
         public void Face(Direction direction)
         {
             FaceDirection = direction;
-            _spriteRenderer.flipX = direction == Direction.Left;
+            int x =  direction == Direction.Left ? -1 : 1;
+            _model.localScale = new Vector3(x, 1, 1);
         }
     }
 }

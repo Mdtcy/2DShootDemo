@@ -3,7 +3,7 @@ using GameFramework.Localization;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace Fumiki
+namespace GameMain
 {
     public class ChangeLanguageDebuggerWindow : IDebuggerWindow
     {

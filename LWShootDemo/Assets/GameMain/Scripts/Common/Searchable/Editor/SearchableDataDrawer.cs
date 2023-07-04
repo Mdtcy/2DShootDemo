@@ -2,7 +2,7 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
-namespace Fumiki.Editor.Searchable
+namespace GameMain.Editor.Searchable
 {
     [CustomPropertyDrawer(typeof(SearchableData))]
     public  class SearchableDataDrawer : PropertyDrawer

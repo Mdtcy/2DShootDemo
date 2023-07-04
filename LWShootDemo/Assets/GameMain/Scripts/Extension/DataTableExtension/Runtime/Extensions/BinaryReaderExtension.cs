@@ -3,7 +3,7 @@ using System.IO;
 using GameFramework;
 using UnityEngine;
 
-namespace Fumiki
+namespace GameMain
 {
     public static partial class BinaryReaderExtension
     {

@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace Fumiki
+namespace GameMain
 {
     public static class FileStreamHelper
     {
