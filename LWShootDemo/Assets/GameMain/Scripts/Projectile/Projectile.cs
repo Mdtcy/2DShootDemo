@@ -63,7 +63,7 @@ namespace LWShootDemo.Weapons
         /// </summary>
         public bool IsDead => isDead;
         
-        private OldEntity caster;
+        private Character caster;
 
         #endregion
 
@@ -74,7 +74,7 @@ namespace LWShootDemo.Weapons
         /// </summary>
         /// <param name="caster"></param>
         /// <param name="spawnTime"></param>
-        public void Init(OldEntity caster, float spawnTime)
+        public void Init(Character caster, float spawnTime)
         {
             this.caster     = caster;
             this.spawnTime = spawnTime;
@@ -105,19 +105,19 @@ namespace LWShootDemo.Weapons
                 return;
             }
 
-            var entity = collision.GetComponent<OldEntity>();
+            var character = collision.GetComponent<Character>();
 
-            if (entity == null)
+            if (character == null)
             {
                 return;
             }
 
-            if (entity.Side != caster.Side)
+            if (character.Side != caster.Side)
             {
                 var dir = (collision.transform.position - transform.position).normalized;
                 isDead = true;
                 GameEntry.Damage.DoDamage(caster, 
-                    entity, damage, dir, 0, 
+                    character, damage, dir, 0, 
                     new List<DamageInfoTag>(),
                     new List<AddBuffInfo>());
 

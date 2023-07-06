@@ -7,16 +7,18 @@ namespace GameMain
 {
     public class Enemy : Character
     {
-        [SerializeField]
-        private OldEntity _oldEntity;
-        
+
         [SerializeField]
         private FSMOwner _fsmOwner;
+        
+        private MeleeAttack _meleeAttack;
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
-            _oldEntity = GetComponent<OldEntity>();
             _fsmOwner = GetComponent<FSMOwner>();
+            _meleeAttack = GetComponentInChildren<MeleeAttack>();
+            _meleeAttack.Init(this);
+            GetComponent<EnemyContext>().Character = this;
         }
 
         protected override void OnShow(object userData)
@@ -24,15 +26,19 @@ namespace GameMain
             base.OnShow(userData);
             Log.Debug("Show EnemyGhoul");
             
-            _oldEntity.Init();
+            ActOnDeath += OnDeath;
             _fsmOwner.StartBehaviour();
-            _oldEntity.ActOnDeath += OnDeath;
         }
-        
+
+        protected override void OnHide(bool isShutdown, object userData)
+        {
+            base.OnHide(isShutdown, userData);
+            ActOnDeath -= OnDeath;
+        }
+
         private void OnDeath()
         {
             _fsmOwner.StopBehaviour();
-            _oldEntity.ActOnDeath -= OnDeath;
             GameEntry.Entity.HideEntity(this);
         }
     }

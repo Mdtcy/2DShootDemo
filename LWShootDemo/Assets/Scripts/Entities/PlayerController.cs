@@ -8,6 +8,7 @@
 
 #pragma warning disable 0649
 using Events;
+using GameMain;
 using LWShootDemo.Sound;
 using LWShootDemo.TimeStop;
 using LWShootDemo.Weapons;
@@ -24,8 +25,7 @@ namespace LWShootDemo.Entities
         #region FIELDS
 
         // 实体
-        [SerializeField]
-        private OldEntity _oldEntity;
+        private Character _character;
 
         // 移动速度
         [SerializeField]
@@ -80,7 +80,7 @@ namespace LWShootDemo.Entities
             initWeapon.gameObject.SetActive(false);
             upgradeWeapon.gameObject.SetActive(true);
             curWeapon = upgradeWeapon;
-            curWeapon.Init(_oldEntity);
+            curWeapon.Init(_character);
         }
 
         #endregion
@@ -96,31 +96,34 @@ namespace LWShootDemo.Entities
             mainCamera         = GameManager.Instance.MainCamera;
             soundManager     = GameManager.Instance.SoundManager;
             timeStopManager  = GameManager.Instance.TimeStopManager;
-
-            _oldEntity.Init();
-            _oldEntity.ActOnDeath += OnDeath;
+            
 
             // 初始化武器
             curWeapon = initWeapon;
             initWeapon.gameObject.SetActive(true);
-            curWeapon.Init(_oldEntity);
+            curWeapon.Init(_character);
+        }
+
+        public void Init(Character character)
+        {
+            _character = character;
         }
 
         private void Update()
         {
-            if (_oldEntity.IsDead)
-            {
-                return;
-            }
-
-            GetInput();
+            // if (_oldEntity.IsDead)
+            // {
+            //     return;
+            // }
+            //
+            // GetInput();
         }
         private void FixedUpdate()
         {
-            if (_oldEntity.IsDead)
-            {
-                return;
-            }
+            // if (_oldEntity.IsDead)
+            // {
+            //     return;
+            // }
         }
 
         // 获取输入

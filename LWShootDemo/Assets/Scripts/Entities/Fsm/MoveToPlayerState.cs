@@ -1,3 +1,4 @@
+using GameMain;
 using LWShootDemo;
 using LWShootDemo.Entities;
 using NodeCanvas.Framework;
@@ -9,7 +10,7 @@ namespace NodeCanvas.StateMachines
     [Category("Enemy")]
     public class MoveToPlayerState : FSMState
     {
-        public BBParameter<OldEntity> Entity;
+        public BBParameter<Character> Character;
         public BBParameter<Vector3> Offset;
         public BBParameter<UnitAnimation> UnitAnimation;
 
@@ -25,8 +26,8 @@ namespace NodeCanvas.StateMachines
         protected override void OnUpdate()
         {
             base.OnUpdate();
-            Vector2 direction = _player.position + Offset.value  - Entity.value.transform.position;
-            Entity.value.InputMove(direction.normalized);
+            Vector2 direction = _player.position + Offset.value  - Character.value.transform.position;
+            Character.value.InputMove(direction.normalized);
         }
     }
 }

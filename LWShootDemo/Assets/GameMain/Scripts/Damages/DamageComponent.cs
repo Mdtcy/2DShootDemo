@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Damages;
 using GameFramework;
+using GameMain;
 using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.BuffSystem.Events;
 using LWShootDemo.DamageNumber;
-using LWShootDemo.Entities;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameEntry = GameMain.GameEntry;
@@ -85,8 +85,8 @@ namespace LWShootDemo.Damages
         ///<param name="criticalRate">暴击率，0-1</param>
         ///<param name="tags">伤害信息类型</param>
         ///</summary>
-        public void DoDamage(OldEntity attacker,
-            OldEntity target, 
+        public void DoDamage(Character attacker,
+            Character target, 
             int damage, 
             Vector2 damageDirection,
             float criticalRate,

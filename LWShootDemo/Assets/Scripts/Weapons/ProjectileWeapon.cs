@@ -40,7 +40,7 @@ namespace LWShootDemo.Weapons
         private float fireKnockBackForce = 1;
 
         // * local
-        private OldEntity            owener;
+        private Character            owener;
         private SoundManager      soundManager;
         // private CameraController  cameraController;
         private Tween             scaleTween;
@@ -53,9 +53,9 @@ namespace LWShootDemo.Weapons
 
         #region PUBLIC METHODS
 
-        public override void Init(OldEntity oldEntity)
+        public override void Init(Character character)
         {
-            owener = oldEntity;
+            owener = character;
         }
 
         public override void Use()

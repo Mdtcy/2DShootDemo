@@ -297,7 +297,6 @@ GameObject:
   - component: {fileID: 1625162769}
   - component: {fileID: 1625162768}
   - component: {fileID: 1625162767}
-  - component: {fileID: 1625162766}
   m_Layer: 0
   m_Name: HpBar (1)
   m_TagString: Untagged
@@ -387,20 +386,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 7340087
---- !u!114 &1625162766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1625162764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4501aff07d7546dfbe041896f3b283ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _progressBar: {fileID: 680159585}
-  _oldEntity: {fileID: 1547550358056355180}
 --- !u!1 &2050694995
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cc35304631849ea90528fadc518394a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  caster: {fileID: 1547550358056355180}
+  _caster: {fileID: 0}
   damage: 1
   AttackPosition: {fileID: 2050694996}
   AttackRidus: 0.65
@@ -658,12 +643,13 @@ GameObject:
   - component: {fileID: 1547550358056355216}
   - component: {fileID: 1547550358056355178}
   - component: {fileID: 1547550358056355181}
-  - component: {fileID: 1547550358056355180}
   - component: {fileID: 1547550358056355183}
   - component: {fileID: 1547550358056355182}
   - component: {fileID: 1547550358056355217}
   - component: {fileID: 1547550358056355179}
   - component: {fileID: 6580824814092245749}
+  - component: {fileID: 5929899618107570121}
+  - component: {fileID: 5609126698159135426}
   m_Layer: 0
   m_Name: EnemyGhoul
   m_TagString: Untagged
@@ -731,23 +717,6 @@ MonoBehaviour:
   _faceController: {fileID: 1547550357387394058}
   mVelocity: {x: 0, y: 0, z: 0}
   DebugMode: 0
---- !u!114 &1547550358056355180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547550358056355218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13a9291cbbde4c9d9c2921fee4428a26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  side: 1
-  maxHp: 5
-  rb2D: {fileID: 1547550358056355183}
-  _buffComponent: {fileID: 1547550358056355178}
-  _movementComponent: {fileID: 1547550358056355181}
 --- !u!50 &1547550358056355183
 Rigidbody2D:
   serializedVersion: 4
@@ -820,14 +789,13 @@ MonoBehaviour:
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Self":{"_value":2,"_name":"Self","_id":"7bb4446c-ef6e-4f83-8505-206d49595ee7","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Melee
     Attack":{"_value":3,"_name":"Melee Attack","_id":"0f9da0f8-f8eb-4465-a782-7b00353fd341","$type":"NodeCanvas.Framework.Variable`1[[GameMain.MeleeAttack,
-    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Entity":{"_value":4,"_name":"Entity","_id":"8fa3985a-8aef-4e42-934b-19def4221c49","$type":"NodeCanvas.Framework.Variable`1[[LWShootDemo.Entities.OldEntity,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Character":{"_propertyPath":"GameMain.EnemyContext.Character","_name":"Character","_id":"c6d1ff35-b7fd-4f9b-a451-8f2e61eaa044","$type":"NodeCanvas.Framework.Variable`1[[GameMain.Character,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
   _objectReferences:
   - {fileID: 0}
   - {fileID: 1547550358056355179}
   - {fileID: 1547550358056355219}
   - {fileID: 2050694997}
-  - {fileID: 1547550358056355180}
   _serializedVariables:
   - _json: '{"_name":"Offset","_id":"d5ceb3cf-efa3-44b2-a228-1a87beb677f4","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
@@ -856,11 +824,9 @@ MonoBehaviour:
     _references:
     - {fileID: 0}
     - {fileID: 2050694997}
-  - _json: '{"_value":1,"_name":"Entity","_id":"8fa3985a-8aef-4e42-934b-19def4221c49","$type":"NodeCanvas.Framework.Variable`1[[LWShootDemo.Entities.OldEntity,
+  - _json: '{"_propertyPath":"GameMain.EnemyContext.Character","_name":"Character","_id":"c6d1ff35-b7fd-4f9b-a451-8f2e61eaa044","$type":"NodeCanvas.Framework.Variable`1[[GameMain.Character,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-    _references:
-    - {fileID: 0}
-    - {fileID: 1547550358056355180}
+    _references: []
 --- !u!114 &1547550358056355179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -904,3 +870,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5793077, y: 1.4799447}
   m_EdgeRadius: 0
+--- !u!114 &5929899618107570121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547550358056355218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 635731e4df074c498ea52ce6d07641d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Character: {fileID: 0}
+--- !u!114 &5609126698159135426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547550358056355218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4501aff07d7546dfbe041896f3b283ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _progressBar: {fileID: 680159585}

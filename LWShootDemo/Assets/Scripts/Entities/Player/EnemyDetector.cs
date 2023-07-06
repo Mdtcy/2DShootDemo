@@ -1,4 +1,5 @@
 using System.Linq;
+using GameMain;
 using LWShootDemo.Entities.Enemy;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace LWShootDemo.Entities.Player
         public GameObject GetNearestEnemy()
         {
             // todo 获取所有没死的敌人里最近的
-            var enemies = FindObjectsOfType<OldEntity>().
+            var enemies = FindObjectsOfType<Character>().
                 Where(e => !e.IsDead && e.Side == Side.Enemy).ToArray();
             
             if (enemies.Length == 0)

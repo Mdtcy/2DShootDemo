@@ -10,6 +10,7 @@
 using System;
 using System.Collections.Generic;
 using Entities.Enemy;
+using GameFramework;
 using GameFramework.ObjectPool;
 using GameMain;
 using LWShootDemo.Difficulty;
@@ -49,7 +50,7 @@ namespace LWShootDemo.Entities.Enemy
         private Transform         player;
         private DifficultyManager difficultyManager;
 
-        private List<EnemyController> enemys = new List<EnemyController>();
+        // private List<EnemyController> enemys = new List<EnemyController>();
         private IObjectPool<EnemyObject> _enemyObjectPool = null;
         
         #endregion
@@ -99,25 +100,26 @@ namespace LWShootDemo.Entities.Enemy
 
         private void FixedUpdate()
         {
-            for (int index = enemys.Count - 1; index >= 0; index--)
-            {
-                var enemy = enemys[index];
-
-                if (enemy.IsDead)
-                {
-                    enemys.Remove(enemy);
-                    _enemyObjectPool.Unspawn(enemy.gameObject);
-                }
-                else
-                {
-                    enemy.EnemyUpdate();
-                }
-            }
+            // for (int index = enemys.Count - 1; index >= 0; index--)
+            // {
+            //     var enemy = enemys[index];
+            //
+            //     if (enemy.IsDead)
+            //     {
+            //         enemys.Remove(enemy);
+            //         _enemyObjectPool.Unspawn(enemy.gameObject);
+            //     }
+            //     else
+            //     {
+            //         enemy.EnemyUpdate();
+            //     }
+            // }
         }
         
         // 根据生成点数生成敌人 每一波有一个生成点数 每个难度对应一个生成点数，每次生成一个敌人消耗生成点数，生成点数花完就不能再生成了，可以生成超过生成点数的敌人
         private void SpawnEnemy(int spawnPoint)
         {
+            throw new GameFrameworkException("未实现");
             while (spawnPoint > 0)
             {
                 var enemySpawnSetting = _enemySpawnSettings[Random.Range(0, _enemySpawnSettings.Count)];
@@ -127,8 +129,8 @@ namespace LWShootDemo.Entities.Enemy
                 var enemy = CreateEnemy(enemySpawnSetting.Prefab.gameObject);
                 enemy.transform.position = GetRandomSpawnPosition();
 
-                var enemyController = enemy.GetComponent<EnemyController>();
-                enemys.Add(enemyController);
+                // var enemyController = enemy.GetComponent<EnemyController>();
+                // enemys.Add(enemyController);
             }
         }
         

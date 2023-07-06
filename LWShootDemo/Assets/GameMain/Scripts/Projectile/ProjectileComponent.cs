@@ -37,7 +37,7 @@ namespace GameMain
         /// </summary>
         /// <param name="position"></param>
         /// <param name="rotation"></param>
-        public void CreateProjectile(OldEntity caster, Vector3 position, Quaternion rotation)
+        public void CreateProjectile(Character caster, Vector3 position, Quaternion rotation)
         {
             var projectile = CreateProjectile(_pfbProjectile);
             var projectileTransform = projectile.transform;

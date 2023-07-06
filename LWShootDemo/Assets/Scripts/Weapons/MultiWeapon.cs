@@ -8,6 +8,7 @@
 
 #pragma warning disable 0649
 using System.Collections.Generic;
+using GameMain;
 using LWShootDemo.Entities;
 using UnityEngine;
 
@@ -32,7 +33,7 @@ namespace LWShootDemo.Weapons
 
         #region PUBLIC METHODS
 
-        public override void Init(OldEntity oldEntity)
+        public override void Init(Character oldEntity)
         {
             foreach (var weapon in weapons)
             {

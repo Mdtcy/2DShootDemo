@@ -1,4 +1,5 @@
 using Animancer;
+using GameMain;
 using LWShootDemo.Weapons;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -17,7 +18,7 @@ namespace LWShootDemo.Entities.Player
 
         public float Speed;
 
-        public OldEntity _oldEntity;
+        public Character Character;
 
         [BoxGroup("Shoot")]
         public float FireRate;

@@ -10,7 +10,7 @@ namespace GameMain
     // todo 一次只能检测十个
     public class MeleeAttack : MonoBehaviour
     {
-        public OldEntity caster;
+        public Character _caster;
 
         public int damage;
         
@@ -25,7 +25,12 @@ namespace GameMain
         public float TimeToAttack = 0.25f;
         private float time;
         
-        private List<OldEntity> _entitiesHasAttacked = new();
+        private List<Character> _entitiesHasAttacked = new();
+
+        public void Init(Character caster)
+        {
+            _caster = caster;
+        }
 
         public void Attack()
         {
@@ -69,18 +74,18 @@ namespace GameMain
                     continue;
                 }
 
-                var entity = detectColloder.GetComponent<OldEntity>();
-                if (entity != null &&
-                    entity.Side != caster.Side &&
-                    !_entitiesHasAttacked.Contains(entity))
+                var character = detectColloder.GetComponent<Character>();
+                if (character != null &&
+                    character.Side != _caster.Side &&
+                    !_entitiesHasAttacked.Contains(character))
                 {
                     var dir = (detectColloder.transform.position - transform.position).normalized;
 
                     // 一次攻击只能对同一个目标造成一次伤害
-                    _entitiesHasAttacked.Add(entity);
+                    _entitiesHasAttacked.Add(character);
                 
-                    GameEntry.Damage.DoDamage(caster, 
-                        entity, damage, dir, 0, 
+                    GameEntry.Damage.DoDamage(_caster, 
+                        character, damage, dir, 0, 
                         new List<DamageInfoTag>(),
                         new List<AddBuffInfo>());
                 }  

@@ -7,6 +7,7 @@
  */
 
 #pragma warning disable 0649
+using GameMain;
 using LWShootDemo.Entities;
 using UnityEngine;
 
@@ -21,7 +22,7 @@ namespace LWShootDemo.Weapons
         /// 初始化武器
         /// </summary>
         /// <param name="oldEntity"></param>
-        public abstract void Init(OldEntity oldEntity);
+        public abstract void Init(Character character);
 
         /// <summary>
         /// 使用

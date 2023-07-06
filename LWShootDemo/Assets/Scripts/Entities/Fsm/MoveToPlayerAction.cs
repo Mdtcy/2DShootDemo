@@ -1,3 +1,4 @@
+using GameMain;
 using LWShootDemo;
 using LWShootDemo.Entities;
 using NodeCanvas.Framework;
@@ -9,7 +10,7 @@ namespace NodeCanvas.StateMachines
     {
         public BBParameter<Transform> Self;
 
-        public BBParameter<OldEntity> Entity;
+        public BBParameter<Character> Character;
         
         public BBParameter<Vector3> Offset;
         
@@ -19,7 +20,7 @@ namespace NodeCanvas.StateMachines
             var player = GameManager.Instance.Player;
             Debug.Log(player.position + " " + Self.value.position);
             Vector2 direction = player.position + Offset.value  - Self.value.position;
-            Entity.value.InputMove(direction.normalized);
+            Character.value.InputMove(direction.normalized);
         }
     }
 }

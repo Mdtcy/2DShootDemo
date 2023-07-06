@@ -1,4 +1,4 @@
-using LWShootDemo.Entities;
+using GameMain;
 using NodeCanvas.Framework;
 using UnityEngine;
 
@@ -6,12 +6,12 @@ namespace NodeCanvas.StateMachines
 {
     public class StopMoveAction : ActionTask
     {
-        public BBParameter<OldEntity> Entity;
+        public BBParameter<Character> Character;
 
         protected override void OnExecute()
         {
             base.OnExecute();
-            Entity.value.InputMove(Vector3.zero);
+            Character.value.InputMove(Vector3.zero);
         }
     }
 }

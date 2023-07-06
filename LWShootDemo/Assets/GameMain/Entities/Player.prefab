@@ -4953,7 +4953,6 @@ GameObject:
   - component: {fileID: 4789943819774005662}
   - component: {fileID: 4789943819774005663}
   - component: {fileID: 4789943819774005656}
-  - component: {fileID: 4789943819774005661}
   m_Layer: 0
   m_Name: HpBar
   m_TagString: Untagged
@@ -5043,20 +5042,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 7340087
---- !u!114 &4789943819774005661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4789943819774005658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4501aff07d7546dfbe041896f3b283ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _progressBar: {fileID: 4789943821062395898}
-  _oldEntity: {fileID: 3910028940616721300}
 --- !u!1 &4789943819998898253
 GameObject:
   m_ObjectHideFlags: 0
@@ -5534,7 +5519,6 @@ GameObject:
   - component: {fileID: 7650056835086411205}
   - component: {fileID: 7650056835086411206}
   - component: {fileID: 7650056835086411200}
-  - component: {fileID: 3910028940616721300}
   - component: {fileID: 3910028940616721291}
   - component: {fileID: 3910028940616721290}
   - component: {fileID: 3910028940616721289}
@@ -5543,6 +5527,7 @@ GameObject:
   - component: {fileID: 3910028940616721294}
   - component: {fileID: 3910028940616721293}
   - component: {fileID: 3910028940616721292}
+  - component: {fileID: 158824436435662223}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5583,7 +5568,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2013bde5945544a48ea89878ccaff9fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _oldEntity: {fileID: 3910028940616721300}
   moveSpeed: 3
   fireRate: 1
   pfbCorpse: {fileID: 6380282737978924843, guid: 91a496cff8ae402419430dc590191ab3,
@@ -5613,23 +5597,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3910028940616721300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7650056835086411204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13a9291cbbde4c9d9c2921fee4428a26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  side: 0
-  maxHp: 10
-  rb2D: {fileID: 7650056835086411200}
-  _buffComponent: {fileID: 3910028940616721293}
-  _movementComponent: {fileID: 3910028940616721292}
 --- !u!114 &3910028940616721291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5678,7 +5645,7 @@ MonoBehaviour:
   EnemyDetector: {fileID: 3910028940616721288}
   FaceController: {fileID: 3910028940616721295}
   Speed: 5
-  _oldEntity: {fileID: 3910028940616721300}
+  Character: {fileID: 0}
   FireRate: 0.4
   Weapon: {fileID: 2019050062159991951}
 --- !u!114 &3910028940616721288
@@ -5751,6 +5718,19 @@ MonoBehaviour:
   _faceController: {fileID: 3910028940616721295}
   mVelocity: {x: 0, y: 0, z: 0}
   DebugMode: 1
+--- !u!114 &158824436435662223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7650056835086411204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4501aff07d7546dfbe041896f3b283ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _progressBar: {fileID: 4789943821062395898}
 --- !u!1001 &971387991171881693
 PrefabInstance:
   m_ObjectHideFlags: 0

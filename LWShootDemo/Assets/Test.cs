@@ -139,10 +139,10 @@ namespace DefaultNamespace
             // todo 都是null有啥影响
             var addBuffInfo = new AddBuffInfo(BuffData, null, null, 1, duration);
             // var buffComponent = gameObject.GetOrAddComponent<BuffComponent>();
-            player.AddBuff(addBuffInfo);
+            // player.AddBuff(addBuffInfo);
         }
 
-        public OldEntity player;
+        // public OldEntity player;
 
         public Vector3 方向;
         
@@ -152,17 +152,17 @@ namespace DefaultNamespace
 
         public AnimationCurve 动画曲线;
 
-        [Button]
-        public void AddForce()
-        {
-            var motion = new MotionClip_Force(true, 持续时间, 方向 * 强度, 动画曲线);
-            player.PlayMotionClip(motion);
-        }
-
-        [Button]
-        public void 停止Motion()
-        {
-            player.StopMotionClip();
-        }
+        // [Button]
+        // public void AddForce()
+        // {
+        //     var motion = new MotionClip_Force(true, 持续时间, 方向 * 强度, 动画曲线);
+        //     player.PlayMotionClip(motion);
+        // }
+        //
+        // [Button]
+        // public void 停止Motion()
+        // {
+        //     player.StopMotionClip();
+        // }
     }
 }
