@@ -17,7 +17,8 @@ namespace GameMain
             public const int UIFormAsset = 50;
             public const int UISoundAsset = 30;
 
-            public const int EnemyGhoulAsset = 80;
+            public const int EnemyAsset = 80;
+            public const int PlayerAsset = 80;
 
         }
     }

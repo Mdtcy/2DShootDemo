@@ -2,5 +2,5 @@
 #	Id		AssetName	GroupName
 #	int		string	string
 #	实体编号	策划备注	资源名称	实体组名称
-	10000	玩家	MainPlayer	Default
+	10000	玩家	Player	Player
 	20001	Ghoul	EnemyGhoul	Enemy

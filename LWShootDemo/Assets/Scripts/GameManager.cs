@@ -10,6 +10,7 @@
 using System;
 using System.Collections;
 using Events;
+using GameMain;
 using LWShootDemo.Common;
 using LWShootDemo.Difficulty;
 using LWShootDemo.Explosions;
@@ -74,10 +75,12 @@ namespace LWShootDemo
         /// </summary>
         public Camera MainCamera => mainCamera;
 
+
         /// <summary>
         /// 角色
         /// </summary>
-        public Transform Player => player;
+        public Transform Player =>
+            (GameEntry.Procedure.GetProcedure<ProcedureMain>() as ProcedureMain).Player.transform;
 
         public float GameTime  => gameTime;
         public int   KillCount => killCount;

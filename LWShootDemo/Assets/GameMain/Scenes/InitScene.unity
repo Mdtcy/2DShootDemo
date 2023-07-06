@@ -262,6 +262,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7080950495088609423, guid: 7143f5f0b0f84554c8d25f529ef5fcb6,
         type: 3}
+    - target: {fileID: 7080950495088609423, guid: 7143f5f0b0f84554c8d25f529ef5fcb6,
+        type: 3}
+      propertyPath: m_EntityGroups.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080950495088609423, guid: 7143f5f0b0f84554c8d25f529ef5fcb6,
+        type: 3}
+      propertyPath: m_EntityGroups.Array.data[1].m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080950495088609423, guid: 7143f5f0b0f84554c8d25f529ef5fcb6,
+        type: 3}
+      propertyPath: m_EntityGroups.Array.data[1].m_InstanceCapacity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080950495088609423, guid: 7143f5f0b0f84554c8d25f529ef5fcb6,
+        type: 3}
+      propertyPath: m_EntityGroups.Array.data[1].m_InstancePriority
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080950495088609423, guid: 7143f5f0b0f84554c8d25f529ef5fcb6,
+        type: 3}
+      propertyPath: m_EntityGroups.Array.data[1].m_InstanceExpireTime
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080950495088609423, guid: 7143f5f0b0f84554c8d25f529ef5fcb6,
+        type: 3}
+      propertyPath: m_EntityGroups.Array.data[1].m_InstanceAutoReleaseInterval
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 7080950495088614159, guid: 7143f5f0b0f84554c8d25f529ef5fcb6,
         type: 3}
       propertyPath: serializationData.Prefab
