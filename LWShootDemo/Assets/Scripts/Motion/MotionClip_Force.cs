@@ -4,13 +4,15 @@ namespace LWShootDemo.Motion
 {
     public class MotionClip_Force : MotionClip
     {
-        Vector3 _force;
+        Vector3 _dir;
         AnimationCurve _curve;
+        float _intensity;
         
-        public MotionClip_Force(bool bOverrideMotion, float duration, Vector3 force, AnimationCurve curve) : base(bOverrideMotion, duration)
+        public MotionClip_Force(bool bOverrideMotion, float duration, Vector3 dir, AnimationCurve curve, float intensity) : base(bOverrideMotion, duration)
         {
-            _force = force;
+            _dir = dir;
             _curve = curve;
+            _intensity = intensity;
         }
         
         public override void StartMotion()
@@ -22,7 +24,7 @@ namespace LWShootDemo.Motion
         public override void UpdateMotion(float deltaTime)
         {
             base.UpdateMotion(deltaTime);
-            velocity = (_curve == null ? _force : _curve.Evaluate(ElapsedTime / Duration) * _force);
+            velocity = (_curve == null ? _dir : _curve.Evaluate(ElapsedTime / Duration) * _dir) * _intensity;
         }
 
         public override void EndMotion()
