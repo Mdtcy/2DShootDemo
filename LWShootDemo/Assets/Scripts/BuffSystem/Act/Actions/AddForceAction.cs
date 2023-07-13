@@ -11,7 +11,7 @@ namespace BuffSystem.Act.Actions
         protected override void ExecuteInternal(OnHitArgs args)
         {
             var motionClip = new MotionClip_Force(true, 0.2f, args.DamageInfo.Direction, null, Data.Intensity);
-            args.DamageInfo.attacker.PlayMotionClip(motionClip);
+            args.DamageInfo.defender.PlayMotionClip(motionClip);
         }
     }
 }
