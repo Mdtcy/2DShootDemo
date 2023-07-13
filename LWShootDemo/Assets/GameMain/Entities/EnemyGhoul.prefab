@@ -644,12 +644,10 @@ GameObject:
   - component: {fileID: 1547550358056355178}
   - component: {fileID: 1547550358056355181}
   - component: {fileID: 1547550358056355183}
-  - component: {fileID: 1547550358056355182}
-  - component: {fileID: 1547550358056355217}
   - component: {fileID: 1547550358056355179}
   - component: {fileID: 6580824814092245749}
-  - component: {fileID: 5929899618107570121}
   - component: {fileID: 5609126698159135426}
+  - component: {fileID: 5715488364061371049}
   m_Layer: 0
   m_Name: EnemyGhoul
   m_TagString: Untagged
@@ -738,95 +736,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1547550358056355182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547550358056355218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a7dbb6bbdf4ffb46ab7dd87ba8191e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _serializedExposedParameters: []
-  _boundGraphSerialization: 
-  _boundGraphObjectReferences: []
-  _boundGraphSource:
-    _version: 0
-    _category: 
-    _comments: 
-    _translation: {x: 0, y: 0}
-    _zoomFactor: 1
-  _firstActivation: 0
-  _enableAction: 1
-  _disableAction: 0
-  _lockBoundGraphPrefabOverrides: 1
-  _preInitializeSubGraphs: 0
-  _updateMode: 0
-  _graph: {fileID: 11400000, guid: 71ad236ac069bdc49ac8ff2d249b3641, type: 2}
-  _blackboard: {fileID: 1547550358056355217}
---- !u!114 &1547550358056355217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547550358056355218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _parentBlackboard: {fileID: 0}
-  _serializedBlackboard: '{"_variables":{"Offset":{"_name":"Offset","_id":"d5ceb3cf-efa3-44b2-a228-1a87beb677f4","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Unit
-    Animation":{"_value":1,"_name":"Unit Animation","_id":"bf7a2321-012d-4180-9eba-675883a4f765","$type":"NodeCanvas.Framework.Variable`1[[LWShootDemo.Entities.UnitAnimation,
-    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"AttackAnimationDuration":{"_value":0.583,"_name":"AttackAnimationDuration","_id":"b839180a-a013-4094-94f7-06ba6a2ce570","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"AttackBackSwine":{"_value":1.0,"_name":"AttackBackSwine","_id":"5f732908-2424-47b0-ae24-3d3c8b026cf1","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"AttackDistance":{"_value":0.6,"_name":"AttackDistance","_id":"dc63e43d-bf83-47e8-8e77-a8671cf259b1","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Self":{"_value":2,"_name":"Self","_id":"7bb4446c-ef6e-4f83-8505-206d49595ee7","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Melee
-    Attack":{"_value":3,"_name":"Melee Attack","_id":"0f9da0f8-f8eb-4465-a782-7b00353fd341","$type":"NodeCanvas.Framework.Variable`1[[GameMain.MeleeAttack,
-    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Character":{"_propertyPath":"GameMain.EnemyContext.Character","_name":"Character","_id":"c6d1ff35-b7fd-4f9b-a451-8f2e61eaa044","$type":"NodeCanvas.Framework.Variable`1[[GameMain.Character,
-    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
-  _objectReferences:
-  - {fileID: 0}
-  - {fileID: 1547550358056355179}
-  - {fileID: 1547550358056355219}
-  - {fileID: 2050694997}
-  _serializedVariables:
-  - _json: '{"_name":"Offset","_id":"d5ceb3cf-efa3-44b2-a228-1a87beb677f4","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
-      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-    _references: []
-  - _json: '{"_value":1,"_name":"Unit Animation","_id":"bf7a2321-012d-4180-9eba-675883a4f765","$type":"NodeCanvas.Framework.Variable`1[[LWShootDemo.Entities.UnitAnimation,
-      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-    _references:
-    - {fileID: 0}
-    - {fileID: 1547550358056355179}
-  - _json: '{"_value":0.583,"_name":"AttackAnimationDuration","_id":"b839180a-a013-4094-94f7-06ba6a2ce570","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
-    _references: []
-  - _json: '{"_value":1.0,"_name":"AttackBackSwine","_id":"5f732908-2424-47b0-ae24-3d3c8b026cf1","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
-    _references: []
-  - _json: '{"_value":0.6,"_name":"AttackDistance","_id":"dc63e43d-bf83-47e8-8e77-a8671cf259b1","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
-    _references: []
-  - _json: '{"_value":1,"_name":"Self","_id":"7bb4446c-ef6e-4f83-8505-206d49595ee7","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-    _references:
-    - {fileID: 0}
-    - {fileID: 1547550358056355219}
-  - _json: '{"_value":1,"_name":"Melee Attack","_id":"0f9da0f8-f8eb-4465-a782-7b00353fd341","$type":"NodeCanvas.Framework.Variable`1[[GameMain.MeleeAttack,
-      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-    _references:
-    - {fileID: 0}
-    - {fileID: 2050694997}
-  - _json: '{"_propertyPath":"GameMain.EnemyContext.Character","_name":"Character","_id":"c6d1ff35-b7fd-4f9b-a451-8f2e61eaa044","$type":"NodeCanvas.Framework.Variable`1[[GameMain.Character,
-      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-    _references: []
 --- !u!114 &1547550358056355179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -870,19 +779,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5793077, y: 1.4799447}
   m_EdgeRadius: 0
---- !u!114 &5929899618107570121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547550358056355218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 635731e4df074c498ea52ce6d07641d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Character: {fileID: 0}
 --- !u!114 &5609126698159135426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -896,3 +792,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _progressBar: {fileID: 680159585}
+--- !u!114 &5715488364061371049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547550358056355218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20fbb9d0f3f14eeb8b47173b5d777ddd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Offset: {x: 0, y: 0, z: 0}
+  AttackDistance: 0.6
+  MeleeAttack: {fileID: 2050694997}
+  AttackDuration: 0.583
+  AttackBackSwing: 1
