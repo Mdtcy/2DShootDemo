@@ -1,6 +1,5 @@
 using LWShootDemo.DamageNumber;
 using LWShootDemo.Damages;
-using UnityEngine.WSA;
 
 namespace GameMain
 {
@@ -15,8 +14,6 @@ namespace GameMain
         public static PopupComponent Popup { get; private set; }
         public static ProjectileComponent Projectile { get; private set; }
         
-        public static TimeLineComponent TimeLine { get; private set; }
-        
         private void InitCustomComponents()
         {
             SpriteCollection = UnityGameFramework.Runtime.GameEntry.GetComponent<SpriteCollectionComponent>();
@@ -29,7 +26,6 @@ namespace GameMain
             Damage = UnityGameFramework.Runtime.GameEntry.GetComponent<DamageComponent>();
             Popup = UnityGameFramework.Runtime.GameEntry.GetComponent<PopupComponent>();
             Projectile = UnityGameFramework.Runtime.GameEntry.GetComponent<ProjectileComponent>();
-            TimeLine = UnityGameFramework.Runtime.GameEntry.GetComponent<TimeLineComponent>();
         }
     }
 }

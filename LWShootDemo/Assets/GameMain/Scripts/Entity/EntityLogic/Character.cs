@@ -99,7 +99,6 @@ namespace GameMain
         }
 
         private HpBar _hpBar;
-        public bool charging;
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
