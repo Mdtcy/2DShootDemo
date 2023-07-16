@@ -1,3 +1,4 @@
+using Pathfinding;
 using UnityEngine;
 
 namespace GameMain
@@ -9,5 +10,8 @@ namespace GameMain
         public MeleeAttack MeleeAttack;
         public float AttackDuration;
         public float AttackBackSwing;
+
+        public AstarAI AstarAI;
+        // public AIDestinationSetter AIDestinationSetter;
     }
 }

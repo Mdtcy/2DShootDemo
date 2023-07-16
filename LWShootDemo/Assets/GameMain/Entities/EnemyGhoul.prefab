@@ -649,6 +649,8 @@ GameObject:
   - component: {fileID: 5609126698159135426}
   - component: {fileID: 5715488364061371049}
   - component: {fileID: 7690915742403846743}
+  - component: {fileID: 4506072417780401313}
+  - component: {fileID: 7696843181185798498}
   m_Layer: 0
   m_Name: EnemyGhoul
   m_TagString: Untagged
@@ -811,6 +813,7 @@ MonoBehaviour:
   MeleeAttack: {fileID: 2050694997}
   AttackDuration: 0.583
   AttackBackSwing: 1
+  AstarAI: {fileID: 7696843181185798498}
 --- !u!114 &7690915742403846743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -828,6 +831,52 @@ MonoBehaviour:
     - HitFlash
     m_values:
     - {fileID: 1529908139243671188}
+--- !u!114 &4506072417780401313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547550358056355218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
+--- !u!114 &7696843181185798498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547550358056355218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea03171d1934889958e230d02975cac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPosition: {fileID: 0}
+  speed: 2
+  nextWaypointDistance: 0.3
+  reachedEndOfPath: 0
+  movementComponent: {fileID: 1547550358056355181}
+  CanMove: 0
 --- !u!1001 &2187543693612633741
 PrefabInstance:
   m_ObjectHideFlags: 0

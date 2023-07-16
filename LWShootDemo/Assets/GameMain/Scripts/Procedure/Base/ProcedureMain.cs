@@ -48,7 +48,7 @@ namespace GameMain
                     Rotation = Quaternion.identity,
                     Scale = Vector3.one,
                     Side = Side.Enemy,
-                    MaxHp = 3
+                    MaxHp = 100
                 });
             }
         }
