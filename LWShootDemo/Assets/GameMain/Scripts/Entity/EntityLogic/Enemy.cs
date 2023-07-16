@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using GameFramework.Fsm;
+using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.Entities;
 using NodeCanvas.StateMachines;
 using Unity.VisualScripting;
@@ -23,7 +24,7 @@ namespace GameMain
             _meleeAttack = GetComponentInChildren<MeleeAttack>();
             _meleeAttack.Init(this);
         }
-
+        
         private IFsm<Enemy> _fsmOwner;
 
         public void Attack()
@@ -43,6 +44,9 @@ namespace GameMain
             _fsmOwner.Start<ChaseState>();
             ActOnDeath += OnDeath;
             
+            // todo 受击闪光
+            var buff1 = GameEntry.TableConfig.Get<BuffTable>().Get(10100001);
+            Buff.AddBuff(new AddBuffInfo(buff1, null, this.gameObject, 1, 10, true,true));
         }
 
         protected override void OnHide(bool isShutdown, object userData)

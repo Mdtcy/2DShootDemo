@@ -26,6 +26,7 @@ namespace GameMain
                 }
             }
 
+            Log.Error($"【{GetType().Name}】未找到ID: {id}");
             return default;
         }
 

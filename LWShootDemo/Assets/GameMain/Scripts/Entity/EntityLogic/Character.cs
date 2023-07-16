@@ -15,6 +15,7 @@ namespace GameMain
     {
         public BuffComponent Buff;
         private MovementComponent _movementComponent;
+        private FeedBackComponent _feedBackComponent;
         
         private bool canMove = true;
         public AnimancerComponent CachedAnimancer { get; private set; }
@@ -81,6 +82,7 @@ namespace GameMain
             CachedAnimancer = GetComponent<AnimancerComponent>();
             Buff = GetComponent<BuffComponent>();
             _movementComponent = GetComponent<MovementComponent>();
+            _feedBackComponent = GetComponent<FeedBackComponent>();
         }
 
         protected override void OnShow(object userData)
@@ -150,6 +152,11 @@ namespace GameMain
         public void PlayMotionClip(MotionClip clip)
         {
             _movementComponent.PlayMotionClip(clip);
+        }
+
+        public void PlayFeedBack(string name)
+        {
+            _feedBackComponent.Play(name);
         }
 
         public void InputMove(Vector2 input)
