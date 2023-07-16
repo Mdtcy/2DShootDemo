@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using BOC.BTagged;
-using LWShootDemo.BuffSystem.Tags;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -10,10 +8,8 @@ namespace LWShootDemo.BuffSystem.Event
 {
     [CreateAssetMenu]
     [HideMonoScript]
-    public class BuffData : SerializedScriptableObject
+    public class BuffData : IDProp
     {
-        public string ID;
-        
         [LabelText("优先级")]
         public int Priority;
         
@@ -25,7 +21,6 @@ namespace LWShootDemo.BuffSystem.Event
         [BoxGroup("BuffTag")]
         [ShowInInspector]
         public BuffTagContainer _buffBuffTag;
-
 
         [ValueDropdown(nameof(GetBuffEventTypes), IsUniqueList = true, DrawDropdownForListElements = false, ExcludeExistingValuesInList = true)]
         [ListDrawerSettings(HideAddButton = false, HideRemoveButton = true, Expanded = true)]

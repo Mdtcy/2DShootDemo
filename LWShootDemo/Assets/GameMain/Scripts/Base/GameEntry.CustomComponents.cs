@@ -13,6 +13,7 @@ namespace GameMain
         public static DamageComponent Damage { get; private set; }
         public static PopupComponent Popup { get; private set; }
         public static ProjectileComponent Projectile { get; private set; }
+        public static TableConfigComponent TableConfig { get; private set; }
         
         private void InitCustomComponents()
         {
@@ -26,6 +27,7 @@ namespace GameMain
             Damage = UnityGameFramework.Runtime.GameEntry.GetComponent<DamageComponent>();
             Popup = UnityGameFramework.Runtime.GameEntry.GetComponent<PopupComponent>();
             Projectile = UnityGameFramework.Runtime.GameEntry.GetComponent<ProjectileComponent>();
+            TableConfig = UnityGameFramework.Runtime.GameEntry.GetComponent<TableConfigComponent>();
         }
     }
 }

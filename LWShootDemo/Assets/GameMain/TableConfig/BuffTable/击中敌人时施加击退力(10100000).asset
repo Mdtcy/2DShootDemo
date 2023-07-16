@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7dbdac4d7e244b96ac9016bcba20e12b, type: 3}
-  m_Name: "\u51FB\u4E2D\u654C\u4EBA\u65F6\u65BD\u52A0\u51FB\u9000\u529B"
+  m_Name: "\u51FB\u4E2D\u654C\u4EBA\u65F6\u65BD\u52A0\u51FB\u9000\u529B(10100000)"
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -46,7 +46,7 @@ MonoBehaviour:
       Data: 0
     - Name: Intensity
       Entry: 4
-      Data: 1
+      Data: 3
     - Name: 
       Entry: 8
       Data: 
@@ -65,7 +65,8 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  ID: 
+  id: 10100000
+  DefaultName: "\u51FB\u4E2D\u654C\u4EBA\u65F6\u65BD\u52A0\u51FB\u9000\u529B"
   Priority: 0
   ControlState: 0
   _buffBuffTag:

@@ -9,7 +9,7 @@ namespace LWShootDemo.BuffSystem.Event
 {
     public class Buff
     {
-        public string ID => Data.ID;
+        public int ID => Data.ID;
         
         /// <summary>
         /// 剩余多久，单位：秒

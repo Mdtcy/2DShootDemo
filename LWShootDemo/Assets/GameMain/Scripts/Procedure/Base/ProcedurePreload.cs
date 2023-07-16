@@ -67,6 +67,11 @@ namespace GameMain
             {
                 LoadDataTable(dataTableName);
             }
+            
+            foreach (var tableConfigName in AssetNames.TableConfigNames)
+            {
+                LoadTableConfig(tableConfigName);
+            }
 
             // Preload dictionaries
             LoadDictionary("Default");
@@ -113,6 +118,24 @@ namespace GameMain
                 (assetName, status, errorMessage, userData) =>
                 {
                     Log.Error("Can not load font '{0}' from '{1}' with error message '{2}'.", fontName, assetName, errorMessage);
+                }));
+        }
+        
+        private void LoadTableConfig(string tableName)
+        {
+            _loadedFlag.Add(Utility.Text.Format("TableConfig.{0}", tableName), false);
+            GameEntry.Resource.LoadAsset(AssetUtility.GetTableConfigAsset(tableName), Constant.AssetPriority.TableConfigAsset, new LoadAssetCallbacks(
+                (assetName, asset, duration, userData) =>
+                {
+                    _loadedFlag[Utility.Text.Format("TableConfig.{0}", tableName)] = true;
+                    GameEntry.TableConfig.Register(tableName, asset as SOTableList);
+
+                    Log.Info("Load TableConfig '{0}' OK.", tableName);
+                },
+
+                (assetName, status, errorMessage, userData) =>
+                {
+                    Log.Error("Can not load ExcelData '{0}' from '{1}' with error message '{2}'.", tableName, assetName, errorMessage);
                 }));
         }
 

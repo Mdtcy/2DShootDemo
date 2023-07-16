@@ -61,7 +61,7 @@ namespace LWShootDemo.Weapons
         public override void Use()
         {
             // 随机旋转一下枪口，可以让子弹看起来更随机
-            firePoint.localEulerAngles = new Vector3(0f, 0f, Random.Range(-10f, 10f));
+            // firePoint.localEulerAngles = new Vector3(0f, 0f, Random.Range(-10f, 10f));
             var firePointPos = firePoint.position;
 
             // 生成子弹

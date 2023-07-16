@@ -58,5 +58,10 @@ namespace GameMain
         {
             return Utility.Text.Format("Assets/GameMain/UI/UISounds/{0}.wav", assetName);
         }
+
+        public static string GetTableConfigAsset(string assetName)
+        {
+            return Utility.Text.Format("Assets/GameMain/TableConfig/{0}/{0}.asset", assetName);
+        }
     }
 }

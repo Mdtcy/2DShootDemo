@@ -12,6 +12,11 @@ namespace GameMain
             "UISound",
         };
 
+        public static readonly string[] TableConfigNames =
+        {
+            "BuffTable"
+        };
+
         public static readonly string[] FontNames =
         {
             "MainFont",
