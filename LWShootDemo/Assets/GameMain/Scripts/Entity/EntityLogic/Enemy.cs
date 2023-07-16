@@ -2,9 +2,6 @@ using System.Collections.Generic;
 using GameFramework.Fsm;
 using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.Entities;
-using NodeCanvas.StateMachines;
-using Unity.VisualScripting;
-using UnityEngine;
 using UnityGameFramework.Runtime;
 
 namespace GameMain
@@ -53,6 +50,8 @@ namespace GameMain
         {
             base.OnHide(isShutdown, userData);
             ActOnDeath -= OnDeath;
+            
+            
         }
 
         private void OnDeath()
