@@ -101,7 +101,14 @@ namespace GameMain
             _hpBar.UpdateImmeadiatly(CurHp, _maxHp);
         }
 
-        private HpBar _hpBar;
+        protected override void OnHide(bool isShutdown, object userData)
+        {
+            base.OnHide(isShutdown, userData);
+            _hpBar.Hide();
+            StopMotionClip();
+        }
+
+        protected HpBar _hpBar;
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
@@ -132,7 +139,7 @@ namespace GameMain
             return dValue >= this.CurHp;
         }
         
-        public void TakeDamage(int damage)
+        public virtual void TakeDamage(int damage)
         { 
             // ActOnHurt?.Invoke(damageInfo);
             CurHp -= damage;

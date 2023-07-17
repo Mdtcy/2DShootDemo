@@ -57,7 +57,7 @@ namespace LWShootDemo.Motion
                 }
             }
         }
-
+        
         private void ApplyMotionToVelocity(float elapsedTime)
         {
             if (mCurrentMotionClip == null)

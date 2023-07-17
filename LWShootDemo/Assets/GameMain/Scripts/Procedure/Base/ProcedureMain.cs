@@ -49,7 +49,7 @@ namespace GameMain
                     Rotation = Quaternion.identity,
                     Scale = Vector3.one,
                     Side = Side.Enemy,
-                    MaxHp = 100,
+                    MaxHp = 5,
                     Speed = Random.Range(1.5f,2.5f)
                 });
             }

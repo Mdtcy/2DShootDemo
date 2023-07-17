@@ -44,6 +44,8 @@ namespace GameMain
             // todo 受击闪光
             var buff1 = GameEntry.TableConfig.Get<BuffTable>().Get(10100001);
             Buff.AddBuff(new AddBuffInfo(buff1, null, this.gameObject, 1, 10, true,true));
+            
+            _hpBar.Hide();
         }
 
         protected override void OnHide(bool isShutdown, object userData)
@@ -58,6 +60,12 @@ namespace GameMain
         {
             GameEntry.Fsm.DestroyFsm(_fsmOwner);
             GameEntry.Entity.HideEntity(this);
+        }
+        
+        public override void TakeDamage(int damage)
+        {
+            base.TakeDamage(damage);
+            _hpBar.Show();
         }
     }
 }

@@ -4953,6 +4953,7 @@ GameObject:
   - component: {fileID: 4789943819774005662}
   - component: {fileID: 4789943819774005663}
   - component: {fileID: 4789943819774005656}
+  - component: {fileID: 8807254778314476464}
   m_Layer: 3
   m_Name: HpBar
   m_TagString: Untagged
@@ -5042,6 +5043,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 7340087
+--- !u!114 &8807254778314476464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4789943819774005658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4501aff07d7546dfbe041896f3b283ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _progressBar: {fileID: 4789943821062395898}
+  _canvasGroup: {fileID: 6261759731838044265}
 --- !u!1 &4789943819998898253
 GameObject:
   m_ObjectHideFlags: 0
@@ -5359,6 +5374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4789943821062395899}
   - component: {fileID: 4789943821062395898}
+  - component: {fileID: 6261759731838044265}
   m_Layer: 3
   m_Name: ProgressBar
   m_TagString: Untagged
@@ -5403,6 +5419,18 @@ MonoBehaviour:
   increaseDelayImage: {fileID: 4789943820119384770}
   decreaseDelayImage: {fileID: 4789943819998898252}
   delaySpeed: 0.5
+--- !u!225 &6261759731838044265
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4789943821062395844}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &7650056833431998758
 GameObject:
   m_ObjectHideFlags: 0
@@ -5527,7 +5555,6 @@ GameObject:
   - component: {fileID: 3910028940616721294}
   - component: {fileID: 3910028940616721293}
   - component: {fileID: 3910028940616721292}
-  - component: {fileID: 158824436435662223}
   - component: {fileID: 1753173868119666043}
   m_Layer: 3
   m_Name: Player
@@ -5720,19 +5747,6 @@ MonoBehaviour:
   _faceController: {fileID: 3910028940616721295}
   mVelocity: {x: 0, y: 0, z: 0}
   DebugMode: 1
---- !u!114 &158824436435662223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7650056835086411204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4501aff07d7546dfbe041896f3b283ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _progressBar: {fileID: 4789943821062395898}
 --- !u!114 &1753173868119666043
 MonoBehaviour:
   m_ObjectHideFlags: 0

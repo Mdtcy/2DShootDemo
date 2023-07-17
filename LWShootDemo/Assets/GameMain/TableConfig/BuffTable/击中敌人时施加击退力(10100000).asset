@@ -40,8 +40,14 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 3|BuffSystem.Act.Actions.AddForceActionData, Assembly-CSharp
+      Data: 3|BuffSystem.Act.Actions.AddDamageForceActionData, Assembly-CSharp
     - Name: State
+      Entry: 3
+      Data: 0
+    - Name: TargetType
+      Entry: 3
+      Data: 1
+    - Name: DirectionType
       Entry: 3
       Data: 0
     - Name: Intensity

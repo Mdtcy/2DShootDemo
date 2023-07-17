@@ -86,6 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 680159584}
   - component: {fileID: 680159585}
+  - component: {fileID: 7716957344277292370}
   m_Layer: 8
   m_Name: ProgressBar
   m_TagString: Untagged
@@ -101,7 +102,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680159583}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -9}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -130,6 +131,18 @@ MonoBehaviour:
   increaseDelayImage: {fileID: 641582135}
   decreaseDelayImage: {fileID: 2090032589}
   delaySpeed: 0.5
+--- !u!225 &7716957344277292370
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680159583}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &976935789
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,6 +310,7 @@ GameObject:
   - component: {fileID: 1625162769}
   - component: {fileID: 1625162768}
   - component: {fileID: 1625162767}
+  - component: {fileID: 1142379618705562389}
   m_Layer: 8
   m_Name: HpBar (1)
   m_TagString: Untagged
@@ -386,6 +400,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 7340087
+--- !u!114 &1142379618705562389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625162764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4501aff07d7546dfbe041896f3b283ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _progressBar: {fileID: 680159585}
+  _canvasGroup: {fileID: 7716957344277292370}
+  _showDuration: 2
 --- !u!1 &2050694995
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,7 +674,6 @@ GameObject:
   - component: {fileID: 1547550358056355181}
   - component: {fileID: 1547550358056355183}
   - component: {fileID: 1547550358056355179}
-  - component: {fileID: 5609126698159135426}
   - component: {fileID: 5715488364061371049}
   - component: {fileID: 7690915742403846743}
   - component: {fileID: 4506072417780401313}
@@ -757,19 +785,6 @@ MonoBehaviour:
   Walk: {fileID: 7400000, guid: e6cd2847b458e22478e834a69566e509, type: 2}
   Attack: {fileID: 7400000, guid: ab6caa17385733e47ada086cec656348, type: 2}
   Dead: {fileID: 7400000, guid: 33f1302c0eddcfb4b8c5767ea5f3244c, type: 2}
---- !u!114 &5609126698159135426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547550358056355218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4501aff07d7546dfbe041896f3b283ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _progressBar: {fileID: 680159585}
 --- !u!114 &5715488364061371049
 MonoBehaviour:
   m_ObjectHideFlags: 0
