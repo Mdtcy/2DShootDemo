@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7559524163663519091}
   - component: {fileID: 1273553548967454871}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 1430046345506342793}
   - component: {fileID: 2856155821797058214}
   - component: {fileID: 734995531194521674}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,6 +132,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
+  damage: 1
+  critChance: 0.2
   rb2D: {fileID: 2856155821797058214}
 --- !u!50 &2856155821797058214
 Rigidbody2D:

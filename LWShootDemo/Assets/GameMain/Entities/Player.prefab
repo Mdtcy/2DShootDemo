@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2389343864911207902}
   - component: {fileID: 1483125959734011480}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MultiWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 4789943819257595428}
   - component: {fileID: 4789943819257595430}
   - component: {fileID: 4789943819257595429}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4874,7 +4874,7 @@ GameObject:
   - component: {fileID: 4789943819518280389}
   - component: {fileID: 4789943819518280443}
   - component: {fileID: 4789943819518280388}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SkillExecutor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4953,7 +4953,7 @@ GameObject:
   - component: {fileID: 4789943819774005662}
   - component: {fileID: 4789943819774005663}
   - component: {fileID: 4789943819774005656}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HpBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5053,7 +5053,7 @@ GameObject:
   - component: {fileID: 4789943819998898252}
   - component: {fileID: 4789943819998898242}
   - component: {fileID: 4789943819998898243}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Decrease
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5129,7 +5129,7 @@ GameObject:
   - component: {fileID: 4789943820119384770}
   - component: {fileID: 4789943820119384768}
   - component: {fileID: 4789943820119384769}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Increase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5205,7 +5205,7 @@ GameObject:
   - component: {fileID: 4789943820674114910}
   - component: {fileID: 4789943820674114908}
   - component: {fileID: 4789943820674114909}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Font
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5281,7 +5281,7 @@ GameObject:
   - component: {fileID: 4789943820971204845}
   - component: {fileID: 4789943820971204835}
   - component: {fileID: 4789943820971204844}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5359,7 +5359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4789943821062395899}
   - component: {fileID: 4789943821062395898}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5414,7 +5414,7 @@ GameObject:
   - component: {fileID: 7650056833431998752}
   - component: {fileID: 7650056833431998759}
   - component: {fileID: 7650056833431998757}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5529,7 +5529,7 @@ GameObject:
   - component: {fileID: 3910028940616721292}
   - component: {fileID: 158824436435662223}
   - component: {fileID: 1753173868119666043}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -5688,8 +5688,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 0.81}
+  m_Offset: {x: 0, y: 0.12}
+  m_Size: {x: 0.65, y: 1.36}
   m_Direction: 0
 --- !u!114 &3910028940616721293
 MonoBehaviour:
@@ -5812,10 +5812,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 3649712208016598301, guid: 9c60e11cb9b1730469e00c32a76eb215,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242812090803230556, guid: 9c60e11cb9b1730469e00c32a76eb215,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242812092257373729, guid: 9c60e11cb9b1730469e00c32a76eb215,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242812092651433978, guid: 9c60e11cb9b1730469e00c32a76eb215,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7126856707233348546, guid: 9c60e11cb9b1730469e00c32a76eb215,
         type: 3}
       propertyPath: m_Name
       value: ProjectileWeapon (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7126856707233348546, guid: 9c60e11cb9b1730469e00c32a76eb215,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c60e11cb9b1730469e00c32a76eb215, type: 3}
@@ -5899,10 +5924,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -20
       objectReference: {fileID: 0}
+    - target: {fileID: 3649712208016598301, guid: 9c60e11cb9b1730469e00c32a76eb215,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242812090803230556, guid: 9c60e11cb9b1730469e00c32a76eb215,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242812092257373729, guid: 9c60e11cb9b1730469e00c32a76eb215,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242812092651433978, guid: 9c60e11cb9b1730469e00c32a76eb215,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7126856707233348546, guid: 9c60e11cb9b1730469e00c32a76eb215,
         type: 3}
       propertyPath: m_Name
       value: ProjectileWeapon (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7126856707233348546, guid: 9c60e11cb9b1730469e00c32a76eb215,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c60e11cb9b1730469e00c32a76eb215, type: 3}
@@ -5986,10 +6036,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3649712208016598301, guid: 9c60e11cb9b1730469e00c32a76eb215,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242812090803230556, guid: 9c60e11cb9b1730469e00c32a76eb215,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242812092257373729, guid: 9c60e11cb9b1730469e00c32a76eb215,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242812092651433978, guid: 9c60e11cb9b1730469e00c32a76eb215,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7126856707233348546, guid: 9c60e11cb9b1730469e00c32a76eb215,
         type: 3}
       propertyPath: m_Name
       value: InitWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 7126856707233348546, guid: 9c60e11cb9b1730469e00c32a76eb215,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c60e11cb9b1730469e00c32a76eb215, type: 3}
@@ -6078,6 +6153,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HitFlashFeedBack
       objectReference: {fileID: 0}
+    - target: {fileID: 819906091397955611, guid: 6e72e498e43f16549aa0f787c701eed3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e72e498e43f16549aa0f787c701eed3, type: 3}
 --- !u!4 &9122019502164943208 stripped
@@ -6160,10 +6240,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3649712208016598301, guid: 9c60e11cb9b1730469e00c32a76eb215,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242812090803230556, guid: 9c60e11cb9b1730469e00c32a76eb215,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242812092257373729, guid: 9c60e11cb9b1730469e00c32a76eb215,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242812092651433978, guid: 9c60e11cb9b1730469e00c32a76eb215,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7126856707233348546, guid: 9c60e11cb9b1730469e00c32a76eb215,
         type: 3}
       propertyPath: m_Name
       value: ProjectileWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 7126856707233348546, guid: 9c60e11cb9b1730469e00c32a76eb215,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c60e11cb9b1730469e00c32a76eb215, type: 3}

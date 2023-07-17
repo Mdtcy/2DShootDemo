@@ -96,6 +96,7 @@ namespace GameMain
             isDead = false;
             canMove = true;
             CurHp   = _maxHp;
+            _movementComponent.SetSpeed(characterData.Speed);
             
             _hpBar.UpdateImmeadiatly(CurHp, _maxHp);
         }

@@ -25,7 +25,8 @@ namespace GameMain
                 Rotation = Quaternion.identity,
                 Scale = Vector3.one,
                 Side = Side.Player,
-                MaxHp = 10
+                MaxHp = 10,
+                Speed = 5,
             });
             GameEntry.Entity.ShowEnemy(new EnemyData(GameEntry.Entity.GenerateSerialId(), 20001)
             {
@@ -48,7 +49,8 @@ namespace GameMain
                     Rotation = Quaternion.identity,
                     Scale = Vector3.one,
                     Side = Side.Enemy,
-                    MaxHp = 100
+                    MaxHp = 100,
+                    Speed = Random.Range(1.5f,2.5f)
                 });
             }
         }

@@ -121,5 +121,10 @@ namespace LWShootDemo.Motion
         {
             _inputBuffer = input;
         }
+
+        public void SetSpeed(float characterDataSpeed)
+        {
+            _speed = characterDataSpeed;
+        }
     }
 }
