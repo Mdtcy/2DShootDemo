@@ -27,5 +27,5 @@ MonoBehaviour:
   InitBuffs:
   - Buff: {fileID: 11400000, guid: 445de59ef61e90a4f8171fa4ca7facd7, type: 2}
     Stack: 1
-    Duration: 0
-    IsPermanent: 0
+    Duration: 10
+    IsPermanent: 1

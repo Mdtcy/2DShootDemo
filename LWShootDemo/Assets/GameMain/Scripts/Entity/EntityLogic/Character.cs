@@ -104,7 +104,13 @@ namespace GameMain
             // buff
             foreach (var AddbuffData in characterProp.InitBuffs)
             {
-                AddBuff(new AddBuffInfo(AddbuffData.Buff, null, gameObject, AddbuffData.Stack, AddbuffData.IsPermanent?10f: AddbuffData.Duration, AddbuffData.IsPermanent));
+                AddBuff(new AddBuffInfo(AddbuffData.Buff, 
+                    null, 
+                    gameObject,
+                    stack: AddbuffData.Stack, 
+                    duration: AddbuffData.IsPermanent? 10f: AddbuffData.Duration, 
+                    durationSetTo:true,
+                    permanent: AddbuffData.IsPermanent));
             }
         }
 
