@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb445c0dc0dd4de6bed8e3691b8eb389, type: 3}
-  m_Name: Player(10200000)
+  m_Script: {fileID: 11500000, guid: 124078a2ceb648e9871922d89e2faa6d, type: 3}
+  m_Name: Ghoul(10300001)
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,11 +21,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  id: 10200000
-  DefaultName: Player
-  Side: 0
-  InitBuffs:
-  - Buff: {fileID: 11400000, guid: 6a2cf083afcf77140b6ac513c9a94ad2, type: 2}
-    Stack: 1
-    Duration: 10
-    IsPermanent: 1
+  id: 10300001
+  DefaultName: Ghoul
+  AssetName: EnemyGhoul
+  GroupName: Enemy

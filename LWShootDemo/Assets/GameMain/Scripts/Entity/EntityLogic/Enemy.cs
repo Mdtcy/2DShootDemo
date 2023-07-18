@@ -40,11 +40,7 @@ namespace GameMain
             _fsmOwner = GameEntry.Fsm.CreateFsm<Enemy>(Id.ToString(), this, stateList);
             _fsmOwner.Start<ChaseState>();
             ActOnDeath += OnDeath;
-            
-            // todo 受击闪光
-            var buff1 = GameEntry.TableConfig.Get<BuffTable>().Get(10100001);
-            Buff.AddBuff(new AddBuffInfo(buff1, null, this.gameObject, 1, 10, true,true));
-            
+
             _hpBar.Hide();
         }
 

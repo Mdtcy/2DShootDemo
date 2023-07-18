@@ -19,21 +19,21 @@ namespace GameMain
             GameEntry.Projectile.Init();
             
             _playerEntityId = GameEntry.Entity.GenerateSerialId();
-            GameEntry.Entity.ShowPlayer(new PlayerData(_playerEntityId, 10000)
+            GameEntry.Entity.ShowPlayer(new PlayerData(_playerEntityId, 10300000)
             {
                 Position = new Vector3(0, -1, 0),
                 Rotation = Quaternion.identity,
                 Scale = Vector3.one,
-                Side = Side.Player,
+                PropID = 10200000,
                 MaxHp = 10,
                 Speed = 5,
             });
-            GameEntry.Entity.ShowEnemy(new EnemyData(GameEntry.Entity.GenerateSerialId(), 20001)
+            GameEntry.Entity.ShowEnemy(new EnemyData(GameEntry.Entity.GenerateSerialId(), 10300001)
             {
                 Position = new Vector3(0, 3, 0),
                 Rotation = Quaternion.identity,
                 Scale = Vector3.one,
-                Side = Side.Enemy,
+                PropID = 10200001,
                 MaxHp = 3
             });
         }
@@ -43,12 +43,12 @@ namespace GameMain
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                GameEntry.Entity.ShowEnemy(new EnemyData(GameEntry.Entity.GenerateSerialId(), 20001)
+                GameEntry.Entity.ShowEnemy(new EnemyData(GameEntry.Entity.GenerateSerialId(), 10300001)
                 {
                     Position = new Vector3(0, 0, 0),
                     Rotation = Quaternion.identity,
                     Scale = Vector3.one,
-                    Side = Side.Enemy,
+                    PropID = 10200001,
                     MaxHp = 5,
                     Speed = Random.Range(1.5f,2.5f)
                 });

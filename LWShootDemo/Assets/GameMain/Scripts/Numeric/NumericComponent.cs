@@ -50,7 +50,7 @@ namespace GameMain
 
                 NumericDic[(int)numericType] = value;
 
-                Update(numericType);
+                UpdateNumeric(numericType);
             }
         }
         private int GetByKey(int key)
@@ -59,7 +59,7 @@ namespace GameMain
             this.NumericDic.TryGetValue(key, out value);
             return value;
         }
-        public void Update(NumericType numericType)
+        public void UpdateNumeric(NumericType numericType)
         {
             if (numericType > NumericType.Max)
             {

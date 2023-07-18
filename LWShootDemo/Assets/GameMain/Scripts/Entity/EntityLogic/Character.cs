@@ -90,8 +90,9 @@ namespace GameMain
             base.OnShow(userData);
             
             var characterData = userData as CharacterData;
+            var characterProp = GameEntry.TableConfig.Get<CharacterTable>().Get(characterData.PropID);
             _maxHp = characterData.MaxHp;
-            _side = characterData.Side;
+            _side = characterProp.Side;
             
             isDead = false;
             canMove = true;
@@ -99,12 +100,19 @@ namespace GameMain
             _movementComponent.SetSpeed(characterData.Speed);
             
             _hpBar.UpdateImmeadiatly(CurHp, _maxHp);
+            
+            // buff
+            foreach (var AddbuffData in characterProp.InitBuffs)
+            {
+                AddBuff(new AddBuffInfo(AddbuffData.Buff, null, gameObject, AddbuffData.Stack, AddbuffData.IsPermanent?10f: AddbuffData.Duration, AddbuffData.IsPermanent));
+            }
         }
 
         protected override void OnHide(bool isShutdown, object userData)
         {
             base.OnHide(isShutdown, userData);
             _hpBar.Hide();
+            Buff.OnHide();
             StopMotionClip();
         }
 

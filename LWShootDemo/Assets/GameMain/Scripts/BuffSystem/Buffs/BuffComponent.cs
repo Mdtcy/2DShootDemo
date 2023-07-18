@@ -11,6 +11,12 @@ namespace LWShootDemo.BuffSystem.Buffs
     {
         public List<Buff> Buffs = new();
 
+        // todo 
+        public void OnHide()
+        {
+            Buffs.Clear();
+        }
+
         public void TriggerEvent<TBuffEvent, TEventActArgs>(TEventActArgs args)
             where TBuffEvent : BuffEvent<TEventActArgs> where TEventActArgs : class, IEventActArgs
         {

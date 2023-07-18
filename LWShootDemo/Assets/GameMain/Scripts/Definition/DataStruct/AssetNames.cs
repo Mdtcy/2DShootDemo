@@ -4,7 +4,7 @@ namespace GameMain
     {
         public static readonly string[] DataTableNames =
         {
-            "Entity",
+            // "Entity",
             "Music",
             "Scene",
             "Sound",
@@ -14,7 +14,9 @@ namespace GameMain
 
         public static readonly string[] TableConfigNames =
         {
-            "BuffTable"
+            "BuffTable",
+            "EntityTable",
+            "CharacterTable",
         };
 
         public static readonly string[] FontNames =

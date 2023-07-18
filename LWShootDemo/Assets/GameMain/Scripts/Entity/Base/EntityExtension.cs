@@ -41,15 +41,17 @@ namespace GameMain
                 return;
             }
 
-            IDataTable<DREntity> dtEntity = GameEntry.DataTable.GetDataTable<DREntity>();
-            DREntity drEntity = dtEntity.GetDataRow(data.TypeId);
-            if (drEntity == null)
+            var entityTable = GameEntry.TableConfig.Get<EntityTable>();
+            var entityProp = entityTable.Get(data.TypeId);
+            // IDataTable<DREntity> dtEntity = GameEntry.DataTable.GetDataTable<DREntity>();
+            // DREntity drEntity = dtEntity.GetDataRow(data.TypeId);
+            if (entityProp == null)
             {
                 Log.Warning("Can not load entity id '{0}' from data table.", data.TypeId.ToString());
                 return;
             }
 
-            entityComponent.ShowEntity(data.Id, logicType, AssetUtility.GetEntityAsset(drEntity.AssetName), drEntity.GroupName, priority, data);
+            entityComponent.ShowEntity(data.Id, logicType, AssetUtility.GetEntityAsset(entityProp.AssetName), entityProp.GroupName, priority, data);
         }
 
         #region Show Entity Extension
