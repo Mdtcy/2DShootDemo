@@ -24,6 +24,13 @@ MonoBehaviour:
   id: 10200001
   DefaultName: EnemyGhoul
   Side: 1
+  InitNumerics:
+  - Type: 10001
+    Value: 2
+  - Type: 10021
+    Value: 5
+  - Type: 10011
+    Value: 5
   InitBuffs:
   - Buff: {fileID: 11400000, guid: 445de59ef61e90a4f8171fa4ca7facd7, type: 2}
     Stack: 1

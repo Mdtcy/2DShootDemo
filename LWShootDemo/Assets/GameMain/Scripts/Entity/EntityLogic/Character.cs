@@ -8,6 +8,7 @@ using LWShootDemo.Entities;
 using LWShootDemo.Entities.Player;
 using LWShootDemo.Motion;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace GameMain
 {
@@ -16,6 +17,7 @@ namespace GameMain
         public BuffComponent Buff;
         private MovementComponent _movementComponent;
         private FeedBackComponent _feedBackComponent;
+        private NumericComponent _numericComponent;
         
         private bool canMove = true;
         public AnimancerComponent CachedAnimancer { get; private set; }
@@ -43,29 +45,26 @@ namespace GameMain
         /// 死亡事件
         /// </summary>
         public Action ActOnDeath;
-        
-        // 最大血量
-        private int _maxHp;
-        
-        public int MaxHp => _maxHp;
+
         private Side _side;
         public Side Side => _side;
 
         public Action<int> ActOnHpChanged;
         
+        // 最大血量
+        public int MaxHp => _numericComponent[NumericType.MaxHp];
+        
         // 当前血量
-        private int _curHp;
-
         public int CurHp
         {
-            get => _curHp;
+            get => _numericComponent[NumericType.Hp];
             set
             {
-                if (!value.Equals(_curHp))
+                if (!value.Equals(_numericComponent[NumericType.Hp]))
                 {
-                    _curHp = value;
-                    ActOnHpChanged?.Invoke(_curHp);
-                    _hpBar.UpdateProgress(_curHp, _maxHp);
+                    _numericComponent[NumericType.Hp] = value;
+                    ActOnHpChanged?.Invoke(value);
+                    _hpBar.UpdateProgress(value, _numericComponent[NumericType.MaxHp]);
                 }
             }
         }
@@ -83,6 +82,8 @@ namespace GameMain
             Buff = GetComponent<BuffComponent>();
             _movementComponent = GetComponent<MovementComponent>();
             _feedBackComponent = GetComponent<FeedBackComponent>();
+            _numericComponent = GetComponentInChildren<NumericComponent>();
+            _numericComponent.Init(Entity);
         }
 
         protected override void OnShow(object userData)
@@ -91,15 +92,17 @@ namespace GameMain
             
             var characterData = userData as CharacterData;
             var characterProp = GameEntry.TableConfig.Get<CharacterTable>().Get(characterData.PropID);
-            _maxHp = characterData.MaxHp;
             _side = characterProp.Side;
             
             isDead = false;
             canMove = true;
-            CurHp   = _maxHp;
-            _movementComponent.SetSpeed(characterData.Speed);
-            
-            _hpBar.UpdateImmeadiatly(CurHp, _maxHp);
+
+            // numeric
+            // todo 现在配置的全是int, float每管
+            foreach (var initNumeric in characterProp.InitNumerics)
+            {
+                _numericComponent.Set(initNumeric.Type, initNumeric.Value);
+            }
             
             // buff
             foreach (var AddbuffData in characterProp.InitBuffs)
@@ -112,6 +115,12 @@ namespace GameMain
                     durationSetTo:true,
                     permanent: AddbuffData.IsPermanent));
             }
+            Assert.IsTrue(_numericComponent[NumericType.Speed] > 0);
+            Assert.IsTrue(_numericComponent[NumericType.Hp] > 0);
+            Assert.IsTrue(_numericComponent[NumericType.MaxHp] > 0);
+
+            _movementComponent.SetSpeed(_numericComponent[NumericType.Speed]);
+            _hpBar.UpdateImmeadiatly(CurHp, MaxHp);
         }
 
         protected override void OnHide(bool isShutdown, object userData)
@@ -119,7 +128,8 @@ namespace GameMain
             base.OnHide(isShutdown, userData);
             _hpBar.Hide();
             Buff.OnHide();
-            StopMotionClip();
+            StopMotionClip();// todo movement
+            _numericComponent.OnHide();
         }
 
         protected HpBar _hpBar;

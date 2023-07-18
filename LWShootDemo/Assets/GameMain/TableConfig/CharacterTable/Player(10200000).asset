@@ -24,6 +24,13 @@ MonoBehaviour:
   id: 10200000
   DefaultName: Player
   Side: 0
+  InitNumerics:
+  - Type: 10001
+    Value: 5
+  - Type: 10021
+    Value: 10
+  - Type: 10011
+    Value: 10
   InitBuffs:
   - Buff: {fileID: 11400000, guid: 6a2cf083afcf77140b6ac513c9a94ad2, type: 2}
     Stack: 1

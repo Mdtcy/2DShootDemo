@@ -61,7 +61,7 @@ namespace GameMain
         }
         public void UpdateNumeric(NumericType numericType)
         {
-            if (numericType > NumericType.Max)
+            if (numericType < NumericType.Max)
             {
                 return;
             }
@@ -77,6 +77,11 @@ namespace GameMain
             this.NumericDic[final] = ((this.GetByKey(bas) + this.GetByKey(add)) * (100 + this.GetByKey(pct)) / 100 + this.GetByKey(finalAdd)) * (100 + this.GetByKey(finalPct)) / 100;
             
             GameEntry.Event.Fire(NumericChangeEventArgs.EventId, NumericChangeEventArgs.Create(_entity, numericType, final));
+        }
+
+        public void OnHide()
+        {
+            NumericDic.Clear();
         }
     }
 }

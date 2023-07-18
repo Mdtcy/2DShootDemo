@@ -25,8 +25,6 @@ namespace GameMain
                 Rotation = Quaternion.identity,
                 Scale = Vector3.one,
                 PropID = 10200000,
-                MaxHp = 10,
-                Speed = 5,
             });
             GameEntry.Entity.ShowEnemy(new EnemyData(GameEntry.Entity.GenerateSerialId(), 10300001)
             {
@@ -34,7 +32,6 @@ namespace GameMain
                 Rotation = Quaternion.identity,
                 Scale = Vector3.one,
                 PropID = 10200001,
-                MaxHp = 3
             });
         }
 
@@ -49,8 +46,6 @@ namespace GameMain
                     Rotation = Quaternion.identity,
                     Scale = Vector3.one,
                     PropID = 10200001,
-                    MaxHp = 5,
-                    Speed = Random.Range(1.5f,2.5f)
                 });
             }
         }
