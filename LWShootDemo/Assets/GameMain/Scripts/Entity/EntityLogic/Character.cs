@@ -121,6 +121,7 @@ namespace GameMain
 
             _movementComponent.SetSpeed(_numericComponent[NumericType.Speed]);
             _hpBar.UpdateImmeadiatly(CurHp, MaxHp);
+            _feedBackComponent.Play("Reset");
         }
 
         protected override void OnHide(bool isShutdown, object userData)
