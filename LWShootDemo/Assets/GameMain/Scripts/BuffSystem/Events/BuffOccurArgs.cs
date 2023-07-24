@@ -3,7 +3,7 @@ using LWShootDemo.BuffSystem.Event;
 
 namespace LWShootDemo.BuffSystem.Events
 {
-    public class BuffOccurArgs : BaseEventActArgs
+    public class BuffOccurArgs : BaseBuffEventActArgs
     {
         public int ModStack;
 

@@ -3,7 +3,7 @@ using LWShootDemo.BuffSystem.Event;
 
 namespace LWShootDemo.BuffSystem.Events
 {
-    public class BuffRemoveArgs : BaseEventActArgs
+    public class BuffRemoveArgs : BaseBuffEventActArgs
     {
         public static BuffRemoveArgs Create()
         {

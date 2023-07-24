@@ -3,7 +3,7 @@ using LWShootDemo.BuffSystem.Event;
 
 namespace LWShootDemo.BuffSystem.Events
 {
-    public class DamageArgs : BaseEventActArgs
+    public class DamageArgs : BaseBuffEventActArgs
     {
         public DamageInfo DamageInfo;
 

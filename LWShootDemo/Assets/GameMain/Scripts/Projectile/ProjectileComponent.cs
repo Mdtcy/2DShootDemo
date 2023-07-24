@@ -44,7 +44,7 @@ namespace GameMain
             projectileTransform.position = position;
             projectileTransform.rotation = rotation;
 
-            projectile.Init(caster, Time.time);
+            // projectile.Init(caster, Time.time);
 
             Debug.Assert(!projectiles.Contains(projectile));
             projectiles.Add(projectile);
@@ -80,20 +80,20 @@ namespace GameMain
         // 将超时的子弹和死亡的子弹回收，其余子弹移动
         private void FixedUpdate()
         {
-            for (int index = projectiles.Count - 1; index >= 0; index--)
-            {
-                var projectile = projectiles[index];
-
-                if (projectile.IsDead || projectile.SpawnTime + projectileLifeTime < Time.time)
-                {
-                    projectiles.Remove(projectile);
-                    _projectileObjectPool.Unspawn(projectile);
-                }
-                else
-                {
-                    projectile.Move();
-                }
-            }
+            // for (int index = projectiles.Count - 1; index >= 0; index--)
+            // {
+            //     var projectile = projectiles[index];
+            //
+            //     if (projectile.IsDead || projectile.SpawnTime + projectileLifeTime < Time.time)
+            //     {
+            //         projectiles.Remove(projectile);
+            //         _projectileObjectPool.Unspawn(projectile);
+            //     }
+            //     else
+            //     {
+            //         projectile.Move();
+            //     }
+            // }
         }
 
         #endregion

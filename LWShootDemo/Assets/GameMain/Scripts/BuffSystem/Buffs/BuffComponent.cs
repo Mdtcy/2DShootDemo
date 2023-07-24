@@ -18,7 +18,7 @@ namespace LWShootDemo.BuffSystem.Buffs
         }
 
         public void TriggerEvent<TBuffEvent, TEventActArgs>(TEventActArgs args)
-            where TBuffEvent : BuffEvent<TEventActArgs> where TEventActArgs : class, IEventActArgs
+            where TBuffEvent : BuffEvent<TEventActArgs> where TEventActArgs : BaseBuffEventActArgs
         {
             foreach (var buff in Buffs)
             {

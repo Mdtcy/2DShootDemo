@@ -147,7 +147,7 @@ namespace GameMain
             Buff.AddBuff(addBuffInfo);
         }
 
-        public void TriggerBuff<TBuffEvent, TEventActArgs>(TEventActArgs args) where TBuffEvent : BuffEvent<TEventActArgs> where TEventActArgs : class, IEventActArgs
+        public void TriggerBuff<TBuffEvent, TEventActArgs>(TEventActArgs args) where TBuffEvent : BuffEvent<TEventActArgs> where TEventActArgs : BaseBuffEventActArgs
         {
             Buff.TriggerEvent<TBuffEvent, TEventActArgs>(args);
         }

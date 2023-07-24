@@ -74,7 +74,7 @@ namespace LWShootDemo.BuffSystem.Event
         }
 
         public void TriggerEvent<TBuffEvent, TEventActArgs>(TEventActArgs args)
-            where TBuffEvent : BuffEvent<TEventActArgs> where TEventActArgs : class, IEventActArgs
+            where TBuffEvent : BuffEvent<TEventActArgs> where TEventActArgs : BaseBuffEventActArgs
         {
             var key = typeof(TBuffEvent);
 
