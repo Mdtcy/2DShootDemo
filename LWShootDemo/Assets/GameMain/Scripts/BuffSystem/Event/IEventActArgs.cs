@@ -18,8 +18,13 @@ namespace LWShootDemo.BuffSystem.Event
     }
     
     // 所有ProjectileEvent的参数都继承自这个类
-    public class BaseProjectileEventActArgs : BaseBuffEventActArgs
+    public class BaseProjectileEventActArgs : IEventActArgs
     {
+        public void Clear()
+        {
+            
+        }
+        
         public Projectile Projectile { get; set; }
     }
 }

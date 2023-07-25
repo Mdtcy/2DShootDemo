@@ -14,7 +14,7 @@ namespace GameMain
         [HideReferenceObjectPicker]
         [Title("ProjectEvent")]
         [LabelText(" ")]
-        public List<ProjectEvent> Events = new();
+        public List<ProjectileEvent> Events = new();
         
         #region Odin
 
