@@ -11,7 +11,7 @@ namespace GameMain
     {
         protected override void ExecuteInternal(OnProjectileHitArgs args)
         {
-            var caster = args.Projectile.caster;
+            var caster = args.Projectile.Caster;
             var target = args.HitObject.GetComponent<Character>();
             int damage = Data.Damage;
             var dir = args.HitDirection;

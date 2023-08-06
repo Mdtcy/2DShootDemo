@@ -83,6 +83,12 @@ namespace LWShootDemo.Weapons
             // cameraController.Shake((transform.position - firePointPos).normalized, 0.2f, 0.05f);
             
             var projectileProp = GameEntry.TableConfig.Get<ProjectileTable>().TableList[0];
+            var rotation = firePoint.rotation;
+            // float random = Random.Range(-90,-45);
+            // float random2 = Random.Range(45,90);
+            // var ss = Random.value > 0.5f ? random : random2;
+            // Debug.Log("123  "+ ss);
+            // rotation.eulerAngles = new Vector3(0, 0, ss);
             GameEntry.Projectile.CreateProjectile(projectileProp, owener, firePoint.position, firePoint.rotation);
         }
 

@@ -20,6 +20,7 @@ namespace LWShootDemo.BuffSystem.Event
         public override Type ExpectedArgumentType => typeof(T);
         protected override ActionBase CreateActionInternal()
         {
+            // todo 优化new
             var act = new TAct();
             act.Initialize(this);
             return act;

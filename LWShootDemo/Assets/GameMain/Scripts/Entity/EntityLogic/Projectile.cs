@@ -12,35 +12,37 @@ namespace GameMain
     public class Projectile : EntityLogicBase
     {
         public ProjectileProp Prop;
+        
+        /// <summary>
+        /// 要发射子弹的这个人
+        /// 当然可以是null发射的，但是写效果逻辑的时候得小心caster是null的情况
+        /// </summary>
+        public Character Caster => _caster;
+        private Character _caster;
+        
+        /// <summary>
+        /// 子弹的速度，单位：米/秒，跟Tween结合获得Tween得到当前移动速度
+        /// </summary>
+        private float _speed;
+        public float Speed => _speed;
+        
+        /// <summary>
+        /// 子弹的生命周期，单位：秒
+        /// </summary>
+        private float _duration;
 
-        ///<summary>
-        ///要发射子弹的这个人
-        ///当然可以是null发射的，但是写效果逻辑的时候得小心caster是null的情况
-        ///</summary>
-        public Character caster;
+        /// <summary>
+        /// 子弹已经存在了多久了，单位：秒
+        /// 毕竟duration是可以被重设的，比如经过一个aoe，生命周期减半了
+        /// </summary>
+        public float _timeElapsed = 0;
         
         ///<summary>
-        ///发射的角度，单位：角度，如果useFireDegreeForever == true，那就得用这个角度来获得当前飞行路线了
+        ///还能命中几次
         ///</summary>
-        public float fireDegree;
-        
-        ///<summary>
-        ///子弹的初速度，单位：米/秒，跟Tween结合获得Tween得到当前移动速度
-        ///</summary>
-        public float speed;
-        
-        ///<summary>
-        ///子弹的生命周期，单位：秒
-        ///</summary>
-        public float duration;
+        public int hp = 1;
 
-        ///<summary>
-        ///子弹已经存在了多久了，单位：秒
-        ///毕竟duration是可以被重设的，比如经过一个aoe，生命周期减半了
-        ///</summary>
-        public float timeElapsed = 0;
-
-        private ProjectileTween _projectileTween;
+        private HomingProjectileTween1 _homingProjectileTween1;
         
         ///<summary>
         ///本帧的移动
@@ -74,12 +76,9 @@ namespace GameMain
         ///子弹传入的参数，逻辑用的到的临时记录
         ///</summary>
         public Dictionary<string, object> param = new Dictionary<string, object>();
-        
-        ///<summary>
-        ///还能命中几次
-        ///</summary>
-        public int hp = 1;
-        
+
+        public Vector3 StartPos;
+
         public Vector3 Forward 
         { 
             set => transform.up = value;
@@ -102,10 +101,15 @@ namespace GameMain
             base.OnShow(userData);
             var projectileData = userData as ProjectileData;
             Prop = projectileData.Prop;
-            caster = projectileData.Caster;
-            duration = Prop.Duration;
+            _caster = projectileData.Caster;
+            _duration = Prop.Duration;
             hp = Prop.HitTimes;
-            
+            canHitAfterCreated = Prop.CanHitAfterCreated;
+            _speed = Prop.Speed;
+            _timeElapsed = 0;
+            StartPos = transform.position;
+            _homingProjectileTween1 = Prop.TweenData.CreateTween();
+
             // todo 是否需要优化的操作
             _events = Prop.Events.ToDictionary(e => e.GetType());
         }
@@ -114,6 +118,8 @@ namespace GameMain
         {
             Prop = null;
             _events.Clear();
+            _homingProjectileTween1.ReleaseToPool();
+            _homingProjectileTween1 = null;
             base.OnHide(isShutdown, userData);
         }
 
@@ -122,7 +128,7 @@ namespace GameMain
             base.OnUpdate(elapseSeconds, realElapseSeconds);
 
             //如果是刚创建的，那么就要处理刚创建的事情
-            if (timeElapsed <= 0)
+            if (_timeElapsed <= 0)
             {
                 var projectileCreateArgs = OnProjectileCreateActArgs.Create();
                 TriggerEvent<OnProjectileCreateEvent, OnProjectileCreateActArgs>(projectileCreateArgs);
@@ -144,9 +150,12 @@ namespace GameMain
                     hIndex += 1;
                 }
             }
-
+            
+            MoveStep = _homingProjectileTween1.Tween(elapseSeconds, this, followingTarget?.transform);
+            
             //处理子弹的移动信息
-            Move();
+            Move(MoveStep);
+            Forward = MoveStep.normalized;
 
             //处理子弹的碰撞信息，如果子弹可以碰撞，才会执行碰撞逻辑
             if (canHitAfterCreated > 0)
@@ -156,9 +165,9 @@ namespace GameMain
             else
             {
                 Side side = Side.None;
-                if (caster)
+                if (_caster)
                 {
-                    Character character = caster.GetComponent<Character>();
+                    Character character = _caster.GetComponent<Character>();
                     Assert.IsNotNull(character);
                     side = character.Side;
                 }
@@ -212,11 +221,11 @@ namespace GameMain
 
 
             // 更新子弹时间
-            duration -= elapseSeconds;
-            timeElapsed += elapseSeconds;
+            _duration -= elapseSeconds;
+            _timeElapsed += elapseSeconds;
 
             // 生命周期的结算
-            if (duration <= 0 || // 持续时间结束
+            if (_duration <= 0 || // 持续时间结束
                 HitObstacle() || // 子弹碰到障碍物
                 hp <= 0) // 子弹命中次数不足
             {
@@ -271,10 +280,10 @@ namespace GameMain
         }
 
         // private Vector3     
-        public void Move()
+        public void Move(Vector3 moveforce)
         {
             // todo 
-                _movementComponent.InputMove(Forward * Prop.Speed);
+                _movementComponent.InputMove(moveforce);
             // throw new NotImplementedException();
         }
         

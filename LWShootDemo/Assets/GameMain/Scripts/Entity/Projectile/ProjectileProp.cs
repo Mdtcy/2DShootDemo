@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using LWShootDemo.BuffSystem.Event;
 using Sirenix.OdinInspector;
-using UnityEditor;
 using UnityEngine;
 
 namespace GameMain
@@ -13,18 +12,29 @@ namespace GameMain
         [InlineEditor]
         public EntityProp EntityProp;
         
+        [SerializeReference]
+        public ProjectileTweenData TweenData;
+        
         public float Speed;
         
-
         ///<summary>
         ///子弹是否会命中敌人
         ///</summary>
+        [BoxGroup("子弹是否会命中敌人")]
         public bool hitFoe;
 
         ///<summary>
         ///子弹是否会命中盟军
         ///</summary>
+        [LabelText("子弹是否会命中盟军")]
         public bool hitAlly;
+
+        /// <summary>
+        /// 子弹创建后多久是没有碰撞的，这样比如子母弹之类的，不会在创建后立即命中目标，但绝大多子弹还应该是0的
+        /// 单位：秒
+        /// </summary>
+        [BoxGroup("子弹创建后多久是没有碰撞的")]
+        public float CanHitAfterCreated;
         
         ///<summary>
         ///子弹碰触同一个目标的延迟，单位：秒，最小值是Time.fixedDeltaTime（每帧发生一次）

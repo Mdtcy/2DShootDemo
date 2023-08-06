@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace GameMain
 {
     public class ProjectileData : EntityDataBase

@@ -23,13 +23,13 @@ namespace GameMain
 
         #region PUBLIC METHODS
 
-        /// <summary>
-        /// 生成子弹
-        /// </summary>
-        /// <param name="projectileProp"></param>
-        /// <param name="caster"></param>
-        /// <param name="position"></param>
-        /// <param name="rotation"></param>
+       /// <summary>
+       /// 生成子弹
+       /// </summary>
+       /// <param name="projectileProp"></param>
+       /// <param name="caster"></param>
+       /// <param name="position"></param>
+       /// <param name="rotation"></param>
         public void CreateProjectile(ProjectileProp projectileProp,
             Character caster,
             Vector3 position,
@@ -47,6 +47,18 @@ namespace GameMain
                 Scale = Vector3.one,
             });
         }
+        
+        // private void Update()
+        // {
+        //
+        //     if (Input.GetMouseButtonDown(1))
+        //     {
+        //         var projectileProp = GameEntry.TableConfig.Get<ProjectileTable>().TableList[0];
+        //         var launcherProp = GameEntry.TableConfig.Get<ProjectileLauncherTable>().TableList[0];
+        //         // todo
+        //         CreateProjectile(launcherProp, projectileProp, GameManager.Instance.Player.GetComponent<Character>(), GameManager.Instance.Player.transform);
+        //     }
+        // }
 
         #endregion
         
