@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: BuffTable
   m_EditorClassIdentifier: 
   TableList:
-  - {fileID: 11400000, guid: 6a2cf083afcf77140b6ac513c9a94ad2, type: 2}
   - {fileID: 11400000, guid: 445de59ef61e90a4f8171fa4ca7facd7, type: 2}
