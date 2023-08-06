@@ -23,3 +23,7 @@ MonoBehaviour:
     SerializationNodes: []
   id: 20200000
   DefaultName: "\u53D1\u5C04\u5668"
+  InitDirection: 0
+  Angle: 270
+  Count: 0
+  Delay: 0

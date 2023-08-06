@@ -93,6 +93,9 @@ namespace GameMain
             
             var characterData = userData as CharacterData;
             var characterProp = GameEntry.TableConfig.Get<CharacterTable>().Get(characterData.PropID);
+#if UNITY_EDITOR
+            name = characterProp.DefaultName;      
+#endif
             _side = characterProp.Side;
             
             isDead = false;

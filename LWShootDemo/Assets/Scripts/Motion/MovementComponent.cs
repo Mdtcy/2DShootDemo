@@ -1,4 +1,5 @@
 using LWShootDemo.Entities.Player;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
@@ -12,7 +13,9 @@ namespace GameMain
         [SerializeField] 
         private FaceController _faceController;
 
-        public Vector3 mVelocity;
+        [ShowInInspector]
+        [ReadOnly]
+        private Vector3 _velocity;
         public MotionClip mCurrentMotionClip;
 
         public bool DebugMode;
@@ -33,21 +36,21 @@ namespace GameMain
             if (mCurrentMotionClip == null || !mCurrentMotionClip.bOverrideMotion)
             {
                 // todo 
-                mVelocity = CalcVelocity();
+                _velocity = CalcVelocity();
             }
             
             ApplyMotionToVelocity(Time.deltaTime);
             
             // 应用速度
-            _rb2D.velocity = mVelocity;
+            _rb2D.velocity = _velocity;
 
             if (_faceController != null)
             {
-                if(mVelocity.x > 0)
+                if(_velocity.x > 0)
                 {
                     _faceController.Face(Direction.Right);
                 }
-                else if(mVelocity.x < 0)
+                else if(_velocity.x < 0)
                 {
                     _faceController.Face(Direction.Left);
                 }
@@ -63,7 +66,7 @@ namespace GameMain
             
             if (DebugMode)
             {
-                Log.Debug($"MotionClip: {mCurrentMotionClip.GetType().Name}, 速度: {mVelocity} , 持续时间:{mCurrentMotionClip.ElapsedTime}");
+                Log.Debug($"MotionClip: {mCurrentMotionClip.GetType().Name}, 速度: {_velocity} , 持续时间:{mCurrentMotionClip.ElapsedTime}");
             }
             
             // 更新MotionClip
@@ -79,11 +82,11 @@ namespace GameMain
 
             if (mCurrentMotionClip.bOverrideMotion)
             {
-                mVelocity = mCurrentMotionClip.GetVelocity();
+                _velocity = mCurrentMotionClip.GetVelocity();
             }
             else
             {
-                mVelocity += mCurrentMotionClip.GetVelocity();
+                _velocity += mCurrentMotionClip.GetVelocity();
             }
         }
 

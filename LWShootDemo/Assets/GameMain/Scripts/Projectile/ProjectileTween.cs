@@ -1,4 +1,5 @@
 using GameFramework;
+using UnityEngine;
 
 namespace GameMain
 {
@@ -8,11 +9,17 @@ namespace GameMain
         {
         }
 
-        public static ProjectileTween Create()
+        public virtual Vector3 Tween(float timeElapsed, Projectile projectile, Transform followTarget = null)
         {
-            var projectileTween = ReferencePool.Acquire<ProjectileTween>();
-            return projectileTween;
+            return Vector3.zero;
         }
+        
+        
+        // public static ProjectileTween Create()
+        // {
+        //     var projectileTween = ReferencePool.Acquire<ProjectileTween>();
+        //     return projectileTween;
+        // }
 
         public void ReleaseToPool()
         {

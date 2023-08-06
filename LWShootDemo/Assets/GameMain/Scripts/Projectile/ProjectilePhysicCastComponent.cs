@@ -13,7 +13,7 @@ namespace GameMain
         {
             // todo 可以使用layerMask优化
             // var cf2d = new ContactFilter2D() {useLayerMask = true, useTriggers = true, layerMask = _layerMask};
-            var cf2d = new ContactFilter2D() {useLayerMask = true, useTriggers = true};
+            var cf2d = new ContactFilter2D() {useLayerMask = false, useTriggers = true};
             
             var bounds = _collider2D.bounds;
             if (_collider2D is CircleCollider2D)

@@ -13,6 +13,9 @@ namespace GameMain
         [InlineEditor]
         public EntityProp EntityProp;
         
+        public float Speed;
+        
+
         ///<summary>
         ///子弹是否会命中敌人
         ///</summary>
@@ -27,7 +30,7 @@ namespace GameMain
         ///子弹碰触同一个目标的延迟，单位：秒，最小值是Time.fixedDeltaTime（每帧发生一次）
         ///</summary>
         public float sameTargetDelay;
-
+        
         [BoxGroup("生命周期")]
         [LabelText("持续时间(秒)")]
         public float Duration;

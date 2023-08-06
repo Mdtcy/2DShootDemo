@@ -27,7 +27,38 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|GameMain.OnProjectileHitEvent, Assembly-CSharp
+    - Name: ActionsData
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[LWShootDemo.BuffSystem.Event.ActionData,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 3|GameMain.ProjectileHitDamageActionData, Assembly-CSharp
+    - Name: State
+      Entry: 3
       Data: 0
+    - Name: Damage
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -37,7 +68,8 @@ MonoBehaviour:
   id: 20100000
   DefaultName: "\u89D2\u8272\u5B50\u5F391"
   EntityProp: {fileID: 11400000, guid: b06010f438381e944806516ea5c0a019, type: 2}
-  hitFoe: 0
+  Speed: 10
+  hitFoe: 1
   hitAlly: 0
   sameTargetDelay: 0
   Duration: 5

@@ -4,6 +4,7 @@ using System.Linq;
 using GameFramework;
 using LWShootDemo.BuffSystem.Event;
 using LWShootDemo.Entities;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -82,17 +83,19 @@ namespace GameMain
         
         public Vector3 Forward 
         { 
-            set => transform.right = value;
-            get => transform.right;
+            set => transform.up = value;
+            get => transform.up;
         }
 
         private Dictionary<Type, ProjectileEvent> _events;
-        
+
         private ProjectilePhysicCastComponent _physicCastComponent;
+        private MovementComponent _movementComponent;
 
         private void Awake()
         {
             _physicCastComponent = GetComponent<ProjectilePhysicCastComponent>();
+            _movementComponent = GetComponent<MovementComponent>();
         }
 
         protected override void OnShow(object userData)
@@ -126,7 +129,7 @@ namespace GameMain
                 TriggerEvent<OnProjectileCreateEvent, OnProjectileCreateActArgs>(projectileCreateArgs);
                 ReferencePool.Release(projectileCreateArgs);
             }
-            
+
             //处理子弹命中纪录信息
             int hIndex = 0;
             while (hIndex < hitRecords.Count)
@@ -142,83 +145,89 @@ namespace GameMain
                     hIndex += 1;
                 }
             }
-            
+
             //处理子弹的移动信息
-                Move();
+            Move();
 
-                //处理子弹的碰撞信息，如果子弹可以碰撞，才会执行碰撞逻辑
-                if (canHitAfterCreated > 0)
+            //处理子弹的碰撞信息，如果子弹可以碰撞，才会执行碰撞逻辑
+            if (canHitAfterCreated > 0)
+            {
+                canHitAfterCreated -= elapseSeconds;
+            }
+            else
+            {
+                Side side = Side.None;
+                if (caster)
                 {
-                    canHitAfterCreated -= elapseSeconds;
+                    Character character = caster.GetComponent<Character>();
+                    Assert.IsNotNull(character);
+                    side = character.Side;
                 }
-                else
+
+                // todo ListPool
+                List<RaycastHit2D> hitInfos = new List<RaycastHit2D>(100);
+
+                // todo 这里的检测不是很精确 
+                PhysicCast(-Forward, MoveDistance, ref hitInfos);
+
+                foreach (var hitInfo in hitInfos)
                 {
-                    Side side = Side.None;
-                    if (caster)
+                    // 如果无法击中，直接跳过
+                    if (CanHit(hitInfo.collider.gameObject) == false)
                     {
-                        Character character = caster.GetComponent<Character>();
-                        Assert.IsNotNull(character);
-                        side = character.Side;
+                        continue;
                     }
-                    
-                    // todo ListPool
-                    List<RaycastHit2D> hitInfos = new List<RaycastHit2D>(100);
 
-                    // todo 这里的检测不是很精确 
-                    PhysicCast(-Forward, MoveDistance, ref hitInfos);
-
-                    foreach (var hitInfo in hitInfos)
+                    // 如果因为阵营问题无法击中，直接跳过
+                    var hitCharacter = hitInfo.collider.gameObject.GetComponent<Character>();
+                    if (hitCharacter != null)
                     {
-                        // 如果无法击中，直接跳过
-                        if (CanHit(hitInfo.collider.gameObject) == false)
+                        if ((Prop.hitAlly == false && side == hitCharacter.Side) ||
+                            (Prop.hitFoe == false && side != hitCharacter.Side))
                         {
                             continue;
                         }
-                        
-                        // 如果因为阵营问题无法击中，直接跳过
-                        var hitCharacter = hitInfo.collider.gameObject.GetComponent<Character>();
-                        if (hitCharacter != null)
-                        {
-                            if ((Prop.hitAlly == false && side == hitCharacter.Side)||
-                                (Prop.hitFoe == false && side != hitCharacter.Side))
-                            {
-                                continue;
-                            }
-                        }
-                        
-                        // 执行击中逻辑
-                        hp -= 1;
-                        
-                        // 子弹击中事件
-                        var projectileHitArgs = OnProjectileHitArgs.Create();
-                        TriggerEvent<OnProjectileHitEvent, OnProjectileHitArgs>(projectileHitArgs);
-                        ReferencePool.Release(projectileHitArgs);
+                    }
+                    else
+                    {
+                        continue;
+                    }
 
-                        // 记录子弹命中
-                        if (hp > 0)
-                        {
-                            AddHitRecord(hitInfo.collider.gameObject);
-                        }
+                    // 执行击中逻辑
+                    hp -= 1;
+
+                    // 子弹击中事件 hitInfo.normal是从被击中的表面指向投射物 所以传入相反的作为方向
+                    var projectileHitArgs = OnProjectileHitArgs.Create(hitInfo.collider.gameObject, 
+                        hitInfo.point,
+                        -hitInfo.normal);
+                    TriggerEvent<OnProjectileHitEvent, OnProjectileHitArgs>(projectileHitArgs);
+                    ReferencePool.Release(projectileHitArgs);
+
+                    // 记录子弹命中
+                    if (hp > 0)
+                    {
+                        AddHitRecord(hitInfo.collider.gameObject);
                     }
                 }
-                
-            
-                // 更新子弹时间
-                duration -= elapseSeconds;
-                timeElapsed += elapseSeconds;
-                
-                // 生命周期的结算
-                if (duration <= 0 || // 持续时间结束
-                    HitObstacle() || // 子弹碰到障碍物
-                    hp <= 0) // 子弹命中次数不足
-                {
-                    // 子弹移除事件
-                    var projectileRemoveArgs = OnProjectileRemoveArgs.Create();
-                    TriggerEvent<OnProjectileRemoveEvent, OnProjectileRemoveArgs>(projectileRemoveArgs);
-                    ReferencePool.Release(projectileRemoveArgs);
+            }
 
-                    GameEntry.Entity.HideEntity(Id);
-                }
+
+            // 更新子弹时间
+            duration -= elapseSeconds;
+            timeElapsed += elapseSeconds;
+
+            // 生命周期的结算
+            if (duration <= 0 || // 持续时间结束
+                HitObstacle() || // 子弹碰到障碍物
+                hp <= 0) // 子弹命中次数不足
+            {
+                // 子弹移除事件
+                var projectileRemoveArgs = OnProjectileRemoveArgs.Create();
+                TriggerEvent<OnProjectileRemoveEvent, OnProjectileRemoveArgs>(projectileRemoveArgs);
+                ReferencePool.Release(projectileRemoveArgs);
+
+                GameEntry.Entity.HideEntity(Id);
+            }
         }
 
         ///<summary>
@@ -262,8 +271,11 @@ namespace GameMain
             }
         }
 
+        // private Vector3     
         public void Move()
         {
+            // todo 
+                _movementComponent.InputMove(Forward * Prop.Speed);
             // throw new NotImplementedException();
         }
         

@@ -34,6 +34,21 @@ namespace GameMain
             Character caster,
             Transform firePoint)
         {
+            var quaternion = Quaternion.identity;
+            switch (launcherProp.InitDirection)
+            {
+                case ProjectileInitDirection.FirePointDirection:
+                    quaternion = firePoint.rotation;
+                    break;
+                case ProjectileInitDirection.FixAngle:
+                    quaternion = Quaternion.Euler(0, 0, launcherProp.Angle);
+                    break;
+                default:
+                    Log.Error("未定义的初始方向: " + launcherProp.InitDirection);
+                    break;
+            }
+
+            
             // 生成子弹实体
             int id = GameEntry.Entity.GenerateSerialId();
             GameEntry.Entity.ShowProjectile(new ProjectileData(id,
@@ -42,7 +57,7 @@ namespace GameMain
                 caster)
             {
                 Position = firePoint.transform.position,
-                Rotation = Quaternion.identity,
+                Rotation = quaternion,
                 Scale = Vector3.one,
             });
         }
