@@ -551,9 +551,6 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  projectileLifeTime: 5
-  _pfbProjectile: {fileID: 1430046345506342793, guid: 154db214c14325443aecc4b4db5c9792,
-    type: 3}
 --- !u!1 &6082148913147599622
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,6 +1317,11 @@ MonoBehaviour:
   - m_Name: Player
     m_InstanceAutoReleaseInterval: 60
     m_InstanceCapacity: 1
+    m_InstanceExpireTime: 60
+    m_InstancePriority: 1
+  - m_Name: Projectile
+    m_InstanceAutoReleaseInterval: 60
+    m_InstanceCapacity: 16
     m_InstanceExpireTime: 60
     m_InstancePriority: 1
 --- !u!1 &7080950495078840131

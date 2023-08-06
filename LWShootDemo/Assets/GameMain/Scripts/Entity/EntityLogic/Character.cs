@@ -6,7 +6,6 @@ using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.BuffSystem.Event;
 using LWShootDemo.Entities;
 using LWShootDemo.Entities.Player;
-using LWShootDemo.Motion;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -50,6 +49,8 @@ namespace GameMain
         public Side Side => _side;
 
         public Action<int> ActOnHpChanged;
+        
+        public float Speed => _numericComponent[NumericType.Speed];
         
         // 最大血量
         public int MaxHp => _numericComponent[NumericType.MaxHp];
@@ -119,7 +120,7 @@ namespace GameMain
             Assert.IsTrue(_numericComponent[NumericType.Hp] > 0);
             Assert.IsTrue(_numericComponent[NumericType.MaxHp] > 0);
 
-            _movementComponent.SetSpeed(_numericComponent[NumericType.Speed]);
+            // _movementComponent.SetSpeed(_numericComponent[NumericType.Speed]);
             _hpBar.UpdateImmeadiatly(CurHp, MaxHp);
             _feedBackComponent.Play("Reset");
         }

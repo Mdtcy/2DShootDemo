@@ -6,7 +6,7 @@ namespace GameMain
 {
     public class OnProjectileHitArgs : BaseProjectileEventActArgs
     {
-        public static OnProjectileHitArgs Create(GameObject hitObject, Vector3 hitPoint, Vector3 hitNormal)
+        public static OnProjectileHitArgs Create()
         {
             var args = ReferencePool.Acquire<OnProjectileHitArgs>();
             // args.HitObject = hitObject;

@@ -1,11 +1,14 @@
 ﻿using System.Collections.Generic;
 using GameFramework;
+using Sirenix.OdinInspector;
 using UnityGameFramework.Runtime;
 
 namespace GameMain
 {
     public class TableConfigComponent : GameFrameworkComponent
     {
+        [ReadOnly]
+        [ShowInInspector]
         private Dictionary<string, SOTableList> _tableConfigDict = new();
         
         public void Register(string name, SOTableList soTableList)

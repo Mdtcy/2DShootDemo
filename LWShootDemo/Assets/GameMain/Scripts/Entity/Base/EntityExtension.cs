@@ -65,6 +65,11 @@ namespace GameMain
         {
             entityComponent.ShowEntity(typeof(Player), Constant.AssetPriority.PlayerAsset, data);
         }
+        
+        public static void ShowProjectile(this EntityComponent entityComponent, ProjectileData data)
+        {
+            entityComponent.ShowEntity(typeof(Projectile), Constant.AssetPriority.ProjectileAsset, data);
+        }
 
         #endregion
 

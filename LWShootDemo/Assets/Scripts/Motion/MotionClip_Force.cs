@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace LWShootDemo.Motion
+namespace GameMain
 {
     public class MotionClip_Force : MotionClip
     {

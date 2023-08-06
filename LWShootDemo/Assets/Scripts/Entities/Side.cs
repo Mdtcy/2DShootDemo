@@ -15,7 +15,8 @@ namespace LWShootDemo.Entities
     public enum Side
     {
         Player,
-        Enemy
+        Enemy,
+        None
     }
 }
 #pragma warning restore 0649

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace LWShootDemo.Motion
+namespace GameMain
 {
     public abstract class MotionClip 
     {

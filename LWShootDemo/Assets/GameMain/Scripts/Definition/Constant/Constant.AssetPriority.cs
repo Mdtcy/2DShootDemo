@@ -21,6 +21,7 @@ namespace GameMain
 
             public const int EnemyAsset = 80;
             public const int PlayerAsset = 80;
+            public const int ProjectileAsset = 80;
 
             public const int TableConfigAsset = 100;
         }

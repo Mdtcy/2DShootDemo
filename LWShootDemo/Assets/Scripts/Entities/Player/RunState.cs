@@ -48,7 +48,7 @@ namespace LWShootDemo.Entities.Player
             }
             
             // 移动
-            Context.Character.InputMove(movement.normalized);
+            Context.Character.InputMove(movement.normalized * Context.Character.Speed);
         }
     }
 }

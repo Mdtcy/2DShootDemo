@@ -1,17 +1,13 @@
-using System;
 using LWShootDemo.Entities.Player;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace LWShootDemo.Motion
+namespace GameMain
 {
     public class MovementComponent : MonoBehaviour
     {
         [SerializeField] 
         private Rigidbody2D _rb2D;
-
-        [SerializeField] 
-        private float _speed;
 
         [SerializeField] 
         private FaceController _faceController;
@@ -93,8 +89,7 @@ namespace LWShootDemo.Motion
 
         public Vector2 CalcVelocity()
         {
-            // 这里使用输入的方向（已经被规范化为长度为1）乘以角色的移动速度
-            return _inputBuffer.normalized * _speed;
+            return _inputBuffer;
         }
 
         public void PlayMotionClip(MotionClip clip)
@@ -120,11 +115,6 @@ namespace LWShootDemo.Motion
         public void InputMove(Vector2 input)
         {
             _inputBuffer = input;
-        }
-
-        public void SetSpeed(float characterDataSpeed)
-        {
-            _speed = characterDataSpeed;
         }
     }
 }

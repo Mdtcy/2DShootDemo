@@ -65,7 +65,7 @@ namespace LWShootDemo.Weapons
             var firePointPos = firePoint.position;
 
             // 生成子弹
-            GameEntry.Projectile.CreateProjectile(owener, firePointPos, firePoint.rotation);
+            // GameEntry.Projectile.CreateProjectile(owener, firePointPos, firePoint.rotation);
 
             // todo 对持有者产生后坐力 
             // owener.ApplyKnowBack(0.2f, -transform.up * fireKnockBackForce);
@@ -82,6 +82,10 @@ namespace LWShootDemo.Weapons
 
             // 屏幕震动
             // cameraController.Shake((transform.position - firePointPos).normalized, 0.2f, 0.05f);
+            
+            var projectileProp = GameEntry.TableConfig.Get<ProjectileTable>().TableList[0];
+            var projectileLauncherProp = GameEntry.TableConfig.Get<ProjectileLauncherTable>().TableList[0];
+            GameEntry.Projectile.CreateProjectile(projectileLauncherProp, projectileProp, owener, firePoint);
         }
 
         public override void RotateTo(Vector3 dir)
