@@ -26,29 +26,15 @@ namespace GameMain
         /// <summary>
         /// 生成子弹
         /// </summary>
-        /// <param name="launcherProp"></param>
         /// <param name="projectileProp"></param>
-        /// <param name="firePoint"></param>
-        public void CreateProjectile(ProjectileLauncherProp launcherProp,
-            ProjectileProp projectileProp,
+        /// <param name="caster"></param>
+        /// <param name="position"></param>
+        /// <param name="rotation"></param>
+        public void CreateProjectile(ProjectileProp projectileProp,
             Character caster,
-            Transform firePoint)
+            Vector3 position,
+            Quaternion rotation)
         {
-            var quaternion = Quaternion.identity;
-            switch (launcherProp.InitDirection)
-            {
-                case ProjectileInitDirection.FirePointDirection:
-                    quaternion = firePoint.rotation;
-                    break;
-                case ProjectileInitDirection.FixAngle:
-                    quaternion = Quaternion.Euler(0, 0, launcherProp.Angle);
-                    break;
-                default:
-                    Log.Error("未定义的初始方向: " + launcherProp.InitDirection);
-                    break;
-            }
-
-            
             // 生成子弹实体
             int id = GameEntry.Entity.GenerateSerialId();
             GameEntry.Entity.ShowProjectile(new ProjectileData(id,
@@ -56,23 +42,11 @@ namespace GameMain
                 projectileProp,
                 caster)
             {
-                Position = firePoint.transform.position,
-                Rotation = quaternion,
+                Position = position,
+                Rotation = rotation,
                 Scale = Vector3.one,
             });
         }
-        
-        // private void Update()
-        // {
-        //
-        //     if (Input.GetMouseButtonDown(1))
-        //     {
-        //         var projectileProp = GameEntry.TableConfig.Get<ProjectileTable>().TableList[0];
-        //         var launcherProp = GameEntry.TableConfig.Get<ProjectileLauncherTable>().TableList[0];
-        //         // todo
-        //         CreateProjectile(launcherProp, projectileProp, GameManager.Instance.Player.GetComponent<Character>(), GameManager.Instance.Player.transform);
-        //     }
-        // }
 
         #endregion
         
