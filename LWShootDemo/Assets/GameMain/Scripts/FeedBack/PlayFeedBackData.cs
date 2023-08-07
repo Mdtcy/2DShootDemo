@@ -11,8 +11,8 @@ namespace GameMain
         
         public Vector3 Offset;
         
-        public Transform FollowTarget;
-        
+        public bool IsFollow;
+
         public void Clear()
         {
         }

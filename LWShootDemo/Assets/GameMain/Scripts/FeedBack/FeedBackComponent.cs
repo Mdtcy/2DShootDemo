@@ -92,7 +92,7 @@ namespace GameMain
         /// <param name="isFollow"></param>
         /// <param name="feedbacks"></param>
         /// <param name="playFeedBackData"></param>
-        public void Play(bool isFollow, GameObject feedbacks, PlayFeedBackData playFeedBackData)
+        public void Play(GameObject feedbacks, PlayFeedBackData playFeedBackData)
         {
             var mmfPlayer = FindMMfPlayer(feedbacks);
             if (mmfPlayer == null)
@@ -101,7 +101,7 @@ namespace GameMain
                 return;
             }
 
-            PlayInternal(isFollow, mmfPlayer, playFeedBackData);
+            PlayInternal(mmfPlayer, playFeedBackData);
         }
 
         /// <summary>
@@ -111,12 +111,20 @@ namespace GameMain
         /// <param name="feedbacks"></param>
         /// <param name="playFeedBackData"></param>
         /// <returns></returns>
-        private MMF_Player PlayInternal(bool isFollow, MMF_Player feedbacks, PlayFeedBackData playFeedBackData)
+        private MMF_Player PlayInternal(MMF_Player feedbacks, PlayFeedBackData playFeedBackData)
         {
-            var feedBackObject = isFollow ?
-                New(feedbacks, playFeedBackData.Offset, playFeedBackData.FollowTarget) :
+            var unitBindManager = playFeedBackData.Target.GetComponent<UnitBindManager>();
+            Assert.IsNotNull(unitBindManager, "【FeedBacksSystem】Stop Feedbacks:" + feedbacks.name + " UnitBindManager is null!");
+            var unitBindPoint = unitBindManager.GetBindPointByKey(playFeedBackData.Key);
+            Assert.IsNotNull(unitBindPoint, "【FeedBacksSystem】Stop Feedbacks:" + feedbacks.name + " UnitBindPoint is null!");
+            
+            var feedBackObject = playFeedBackData.IsFollow ?
+                New(feedbacks, playFeedBackData.Offset, unitBindPoint.transform) :
                 New(feedbacks, playFeedBackData.Offset);
             var mmfPlayer = feedBackObject.Target as MMF_Player;
+
+            // 指定feedBack位置
+            mmfPlayer.transform.position = unitBindPoint.transform.position + playFeedBackData.Offset;
             mmfPlayer.PlayFeedbacks();
             _usingFeedBacks.Add(feedBackObject);
             
