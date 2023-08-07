@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GameMain
 {
-    public class PlayFeedBackData : IReference
+    public class PlayAtTargetFeedBackData : IReference
     {
         public Transform Target;
 
@@ -17,9 +17,9 @@ namespace GameMain
         {
         }
         
-        public static PlayFeedBackData Create()
+        public static PlayAtTargetFeedBackData Create()
         {
-            PlayFeedBackData data = ReferencePool.Acquire<PlayFeedBackData>();
+            PlayAtTargetFeedBackData data = ReferencePool.Acquire<PlayAtTargetFeedBackData>();
             return data;
         }
         

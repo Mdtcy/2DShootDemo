@@ -89,10 +89,9 @@ namespace GameMain
         /// <summary>
         /// 播放特效
         /// </summary>
-        /// <param name="isFollow"></param>
         /// <param name="feedbacks"></param>
-        /// <param name="playFeedBackData"></param>
-        public void Play(GameObject feedbacks, PlayFeedBackData playFeedBackData)
+        /// <param name="playAtTargetFeedBackData"></param>
+        public void PlayAtTarget(GameObject feedbacks, PlayAtTargetFeedBackData playAtTargetFeedBackData)
         {
             var mmfPlayer = FindMMfPlayer(feedbacks);
             if (mmfPlayer == null)
@@ -101,34 +100,59 @@ namespace GameMain
                 return;
             }
 
-            PlayInternal(mmfPlayer, playFeedBackData);
+            PlayAtTargetInternal(mmfPlayer, playAtTargetFeedBackData);
+        }
+        
+        public void PlayAtPos(GameObject feedbacks, PlayAtPosFeedBackData playAtPosFeedBackData)
+        {
+            var mmfPlayer = FindMMfPlayer(feedbacks);
+            if (mmfPlayer == null)
+            {
+                Log.Error("【FeedBacksSystem】Play Feedbacks:" + feedbacks.name + " is null!");
+                return;
+            }
+
+            PlayAtPosInternal(mmfPlayer, playAtPosFeedBackData);
         }
 
-        /// <summary>
-        /// 播放特效
-        /// </summary>
-        /// <param name="isFollow"></param>
-        /// <param name="feedbacks"></param>
-        /// <param name="playFeedBackData"></param>
-        /// <returns></returns>
-        private MMF_Player PlayInternal(MMF_Player feedbacks, PlayFeedBackData playFeedBackData)
+        private MMF_Player PlayAtPosInternal(MMF_Player feedbacks, PlayAtPosFeedBackData playAtPosFeedBackData)
         {
-            var unitBindManager = playFeedBackData.Target.GetComponent<UnitBindManager>();
-            Assert.IsNotNull(unitBindManager, "【FeedBacksSystem】Stop Feedbacks:" + feedbacks.name + " UnitBindManager is null!");
-            var unitBindPoint = unitBindManager.GetBindPointByKey(playFeedBackData.Key);
-            Assert.IsNotNull(unitBindPoint, "【FeedBacksSystem】Stop Feedbacks:" + feedbacks.name + " UnitBindPoint is null!");
-            
-            var feedBackObject = playFeedBackData.IsFollow ?
-                New(feedbacks, playFeedBackData.Offset, unitBindPoint.transform) :
-                New(feedbacks, playFeedBackData.Offset);
+            var feedBackObject = New(feedbacks, Vector3.zero);
             var mmfPlayer = feedBackObject.Target as MMF_Player;
 
             // 指定feedBack位置
-            mmfPlayer.transform.position = unitBindPoint.transform.position + playFeedBackData.Offset;
+            mmfPlayer.transform.position = playAtPosFeedBackData.Pos;
             mmfPlayer.PlayFeedbacks();
             _usingFeedBacks.Add(feedBackObject);
             
-            playFeedBackData.ReleaseToPool();
+            playAtPosFeedBackData.ReleaseToPool();
+            
+            return mmfPlayer;
+        }
+        /// <summary>
+        /// 播放特效
+        /// </summary>
+        /// <param name="feedbacks"></param>
+        /// <param name="playAtTargetFeedBackData"></param>
+        /// <returns></returns>
+        private MMF_Player PlayAtTargetInternal(MMF_Player feedbacks, PlayAtTargetFeedBackData playAtTargetFeedBackData)
+        {
+            var unitBindManager = playAtTargetFeedBackData.Target.GetComponent<UnitBindManager>();
+            Assert.IsNotNull(unitBindManager, "【FeedBacksSystem】Stop Feedbacks:" + feedbacks.name + " UnitBindManager is null!");
+            var unitBindPoint = unitBindManager.GetBindPointByKey(playAtTargetFeedBackData.Key);
+            Assert.IsNotNull(unitBindPoint, "【FeedBacksSystem】Stop Feedbacks:" + feedbacks.name + " UnitBindPoint is null!");
+            
+            var feedBackObject = playAtTargetFeedBackData.IsFollow ?
+                New(feedbacks, playAtTargetFeedBackData.Offset, unitBindPoint.transform) :
+                New(feedbacks, playAtTargetFeedBackData.Offset);
+            var mmfPlayer = feedBackObject.Target as MMF_Player;
+
+            // 指定feedBack位置
+            mmfPlayer.transform.position = unitBindPoint.transform.position + playAtTargetFeedBackData.Offset;
+            mmfPlayer.PlayFeedbacks();
+            _usingFeedBacks.Add(feedBackObject);
+            
+            playAtTargetFeedBackData.ReleaseToPool();
             
             return mmfPlayer;
         }
