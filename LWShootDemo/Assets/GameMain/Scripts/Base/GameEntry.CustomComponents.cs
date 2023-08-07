@@ -15,6 +15,8 @@ namespace GameMain
         public static ProjectileComponent Projectile { get; private set; }
         public static TableConfigComponent TableConfig { get; private set; }
         
+        public static FeedBackComponent FeedBack { get; private set; }
+        
         private void InitCustomComponents()
         {
             SpriteCollection = UnityGameFramework.Runtime.GameEntry.GetComponent<SpriteCollectionComponent>();
@@ -28,6 +30,7 @@ namespace GameMain
             Popup = UnityGameFramework.Runtime.GameEntry.GetComponent<PopupComponent>();
             Projectile = UnityGameFramework.Runtime.GameEntry.GetComponent<ProjectileComponent>();
             TableConfig = UnityGameFramework.Runtime.GameEntry.GetComponent<TableConfigComponent>();
+            FeedBack = UnityGameFramework.Runtime.GameEntry.GetComponent<FeedBackComponent>();
         }
     }
 }

@@ -16,6 +16,8 @@ namespace GameMain
         {
             base.OnEnter(procedureOwner);
             Log.Debug("Enter ProcedureMain.");
+            
+            GameEntry.FeedBack.Init();
             // GameEntry.Projectile.Init();
             
             _playerEntityId = GameEntry.Entity.GenerateSerialId();

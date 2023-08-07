@@ -15,7 +15,7 @@ namespace GameMain
     {
         public BuffComponent Buff;
         private MovementComponent _movementComponent;
-        private FeedBackComponent _feedBackComponent;
+        private CharacterFeedBackComponent _characterFeedBackComponent;
         private NumericComponent _numericComponent;
         
         private bool canMove = true;
@@ -82,7 +82,7 @@ namespace GameMain
             CachedAnimancer = GetComponent<AnimancerComponent>();
             Buff = GetComponent<BuffComponent>();
             _movementComponent = GetComponent<MovementComponent>();
-            _feedBackComponent = GetComponent<FeedBackComponent>();
+            _characterFeedBackComponent = GetComponent<CharacterFeedBackComponent>();
             _numericComponent = GetComponentInChildren<NumericComponent>();
             _numericComponent.Init(Entity);
         }
@@ -125,7 +125,7 @@ namespace GameMain
 
             // _movementComponent.SetSpeed(_numericComponent[NumericType.Speed]);
             _hpBar.UpdateImmeadiatly(CurHp, MaxHp);
-            _feedBackComponent.Play("Reset");
+            _characterFeedBackComponent.Play("Reset");
         }
 
         protected override void OnHide(bool isShutdown, object userData)
@@ -193,7 +193,7 @@ namespace GameMain
 
         public void PlayFeedBack(string name)
         {
-            _feedBackComponent.Play(name);
+            _characterFeedBackComponent.Play(name);
         }
 
         public void InputMove(Vector2 input)
