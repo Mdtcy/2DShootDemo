@@ -15,7 +15,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 4319245318243544894, guid: 79f1c8eb9d5d3754382f618a3609678f, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -37,7 +38,7 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 7
       Data: 3|GameMain.ProjectileHitDamageActionData, Assembly-CSharp
@@ -52,7 +53,19 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 4|GameMain.AddProjectileForceActionData, Assembly-CSharp
+      Data: 4|GameMain.PlayFeedBackOnProjectileHitPointActData, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
+    - Name: PfbFeedBack
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|GameMain.AddProjectileForceActionData, Assembly-CSharp
     - Name: State
       Entry: 3
       Data: 0

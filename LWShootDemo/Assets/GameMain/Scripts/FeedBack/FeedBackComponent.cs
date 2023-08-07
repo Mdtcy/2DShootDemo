@@ -124,9 +124,7 @@ namespace GameMain
             mmfPlayer.transform.position = playAtPosFeedBackData.Pos;
             mmfPlayer.PlayFeedbacks();
             _usingFeedBacks.Add(feedBackObject);
-            
-            playAtPosFeedBackData.ReleaseToPool();
-            
+
             return mmfPlayer;
         }
         /// <summary>
@@ -151,9 +149,7 @@ namespace GameMain
             mmfPlayer.transform.position = unitBindPoint.transform.position + playAtTargetFeedBackData.Offset;
             mmfPlayer.PlayFeedbacks();
             _usingFeedBacks.Add(feedBackObject);
-            
-            playAtTargetFeedBackData.ReleaseToPool();
-            
+
             return mmfPlayer;
         }
 
