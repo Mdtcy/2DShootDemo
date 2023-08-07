@@ -6,6 +6,7 @@ using LWShootDemo.BuffSystem.Event;
 using LWShootDemo.Entities;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Pool;
 
 namespace GameMain
 {
@@ -40,44 +41,43 @@ namespace GameMain
         ///<summary>
         ///还能命中几次
         ///</summary>
-        public int hp = 1;
+        public int _hp = 1;
 
-        private HomingProjectileTween1 _homingProjectileTween1;
+        /// <summary>
+        /// 运动轨迹
+        /// </summary>
+        private ProjectileTween _projectileTween;
         
         ///<summary>
         ///本帧的移动
         ///</summary>
-        public Vector3 MoveStep = new();
+        private Vector3 _moveStep;
 
-        public float MoveDistance;
-        
-        ///<summary>
-        ///子弹的移动轨迹是否严格遵循发射出来的角度
-        ///</summary>
-        public bool useFireDegreeForever = false;
-        
-        ///<summary>
-        ///子弹命中纪录
-        ///</summary>
-        public List<BulletHitRecord> hitRecords = new();
+        /// <summary>
+        /// 本帧的移动距离 todo 这样是否合理
+        /// </summary>
+        private float MoveDistance => _moveStep.magnitude;
 
-        ///<summary>
-        ///子弹创建后多久是没有碰撞的，这样比如子母弹之类的，不会在创建后立即命中目标，但绝大多子弹还应该是0的
-        ///单位：秒
-        ///</summary>
-        public float canHitAfterCreated = 0;
+        /// <summary>
+        /// 子弹命中纪录
+        /// </summary>
+        private List<BulletHitRecord> _hitRecords = new();
 
-        ///<summary>
-        ///子弹正在追踪的目标，不太建议使用这个，最好保持null
-        ///</summary>
-        public GameObject followingTarget = null;
+        /// <summary>
+        /// 子弹创建后多久是没有碰撞的，这样比如子母弹之类的，不会在创建后立即命中目标，但绝大多子弹还应该是0的
+        /// 单位：秒
+        /// </summary>
+        public float _canHitAfterCreated;
 
-        ///<summary>
-        ///子弹传入的参数，逻辑用的到的临时记录
-        ///</summary>
+        /// <summary>
+        /// 子弹正在追踪的目标，不太建议使用这个，最好保持null todo 未初始化
+        /// </summary>
+        public GameObject _followingTarget;
+
+        /// <summary>
+        /// 子弹传入的参数，逻辑用的到的临时记录 todo 
+        /// </summary>
         public Dictionary<string, object> param = new Dictionary<string, object>();
-
-        public Vector3 StartPos;
 
         public Vector3 Forward 
         { 
@@ -103,12 +103,11 @@ namespace GameMain
             Prop = projectileData.Prop;
             _caster = projectileData.Caster;
             _duration = Prop.Duration;
-            hp = Prop.HitTimes;
-            canHitAfterCreated = Prop.CanHitAfterCreated;
+            _hp = Prop.HitTimes;
+            _canHitAfterCreated = Prop.CanHitAfterCreated;
             _speed = Prop.Speed;
             _timeElapsed = 0;
-            StartPos = transform.position;
-            _homingProjectileTween1 = Prop.TweenData.CreateTween();
+            _projectileTween = Prop.TweenData.CreateTween();
 
             // todo 是否需要优化的操作
             _events = Prop.Events.ToDictionary(e => e.GetType());
@@ -118,8 +117,8 @@ namespace GameMain
         {
             Prop = null;
             _events.Clear();
-            _homingProjectileTween1.ReleaseToPool();
-            _homingProjectileTween1 = null;
+            _projectileTween.ReleaseToPool();
+            _projectileTween = null;
             base.OnHide(isShutdown, userData);
         }
 
@@ -136,31 +135,27 @@ namespace GameMain
             }
 
             //处理子弹命中纪录信息
-            int hIndex = 0;
-            while (hIndex < hitRecords.Count)
+            for (int i = _hitRecords.Count - 1; i >= 0; i--)
             {
-                hitRecords[hIndex].timeToCanHit -= elapseSeconds;
-                if (hitRecords[hIndex].timeToCanHit <= 0 || hitRecords[hIndex].target == null)
+                var hitRecord = _hitRecords[i];
+                hitRecord.timeToCanHit -= elapseSeconds;
+                if (hitRecord.timeToCanHit <= 0 || hitRecord.target == null)
                 {
                     //理论上应该支持可以鞭尸，所以即使target dead了也得留着……
-                    hitRecords.RemoveAt(hIndex);
-                }
-                else
-                {
-                    hIndex += 1;
+                    _hitRecords.Remove(hitRecord);
                 }
             }
-            
-            MoveStep = _homingProjectileTween1.Tween(elapseSeconds, this, followingTarget?.transform);
+
+            _moveStep = _projectileTween.Tween(elapseSeconds, this, _followingTarget?.transform);
             
             //处理子弹的移动信息
-            Move(MoveStep);
-            Forward = MoveStep.normalized;
+            Move(_moveStep); 
+            Forward = _moveStep.normalized;
 
             //处理子弹的碰撞信息，如果子弹可以碰撞，才会执行碰撞逻辑
-            if (canHitAfterCreated > 0)
+            if (_canHitAfterCreated > 0)
             {
-                canHitAfterCreated -= elapseSeconds;
+                _canHitAfterCreated -= elapseSeconds;
             }
             else
             {
@@ -171,11 +166,9 @@ namespace GameMain
                     Assert.IsNotNull(character);
                     side = character.Side;
                 }
-
-                // todo ListPool
-                List<RaycastHit2D> hitInfos = new List<RaycastHit2D>(100);
-
-                // todo 这里的检测不是很精确 
+                
+                var hitInfos = ListPool<RaycastHit2D>.Get();
+                // todo 目前并没有找到办法验证这个方法的正确性 distance
                 PhysicCast(-Forward, MoveDistance, ref hitInfos);
 
                 foreach (var hitInfo in hitInfos)
@@ -202,7 +195,7 @@ namespace GameMain
                     }
 
                     // 执行击中逻辑
-                    hp -= 1;
+                    _hp -= 1;
 
                     // 子弹击中事件 hitInfo.normal是从被击中的表面指向投射物 所以传入相反的作为方向
                     var projectileHitArgs = OnProjectileHitArgs.Create(hitInfo.collider.gameObject, 
@@ -212,11 +205,13 @@ namespace GameMain
                     ReferencePool.Release(projectileHitArgs);
 
                     // 记录子弹命中
-                    if (hp > 0)
+                    if (_hp > 0)
                     {
                         AddHitRecord(hitInfo.collider.gameObject);
                     }
                 }
+                
+                ListPool<RaycastHit2D>.Release(hitInfos);
             }
 
 
@@ -227,7 +222,7 @@ namespace GameMain
             // 生命周期的结算
             if (_duration <= 0 || // 持续时间结束
                 HitObstacle() || // 子弹碰到障碍物
-                hp <= 0) // 子弹命中次数不足
+                _hp <= 0) // 子弹命中次数不足
             {
                 // 子弹移除事件
                 var projectileRemoveArgs = OnProjectileRemoveArgs.Create();
@@ -244,26 +239,32 @@ namespace GameMain
         ///</summary>
         public bool CanHit(GameObject target)
         {
-            if (canHitAfterCreated > 0)
+            if (_canHitAfterCreated > 0)
             {
                 return false;
             }
 
-            for (int i = 0; i < hitRecords.Count; i++)
+            for (int i = 0; i < _hitRecords.Count; i++)
             {
-                if (hitRecords[i].target == target)
+                if (_hitRecords[i].target == target)
                 {
                     return false;
                 }
             }
-        
-            // todo 
+
+            // todo 无敌的处理暂时略去
             // ChaState cs = target.GetComponent<ChaState>();
             // if (cs && cs.immuneTime > 0) return false;
 
             return true;
         }
         
+        /// <summary>
+        /// 触发子弹事件
+        /// </summary>
+        /// <param name="args"></param>
+        /// <typeparam name="TProjectileEvent"></typeparam>
+        /// <typeparam name="TEventActArgs"></typeparam>
         public void TriggerEvent<TProjectileEvent, TEventActArgs>(TEventActArgs args)
             where TProjectileEvent : ProjectileEvent<TEventActArgs> where TEventActArgs : BaseProjectileEventActArgs
         {
@@ -280,13 +281,12 @@ namespace GameMain
         }
 
         // private Vector3     
-        public void Move(Vector3 moveforce)
+        private void Move(Vector3 moveForce)
         {
-            // todo 
-                _movementComponent.InputMove(moveforce);
-            // throw new NotImplementedException();
+            _movementComponent.InputMove(moveForce);
         }
         
+        // todo 击中障碍物的判断
         public bool HitObstacle()
         {
             return false;
@@ -302,9 +302,9 @@ namespace GameMain
         /// 添加命中纪录
         /// </summary>
         /// <param name="target"></param>
-        public void AddHitRecord(GameObject target)
+        private void AddHitRecord(GameObject target)
         {
-            hitRecords.Add(new BulletHitRecord(
+            _hitRecords.Add(new BulletHitRecord(
                 target,
                 Prop.sameTargetDelay
             ));
