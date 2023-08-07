@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace GameMain
 {
@@ -18,7 +17,7 @@ namespace GameMain
             UnitBindPoint[] bindPoints = this.gameObject.GetComponentsInChildren<UnitBindPoint>();
             for (int i = 0; i < bindPoints.Length; i++)
             {
-                if (bindPoints[i].key == key)
+                if (bindPoints[i].Key == key)
                 {
                     return bindPoints[i];
                 }
@@ -27,43 +26,43 @@ namespace GameMain
             return null;
         }
 
-        ///<summary>
-        ///往某个绑点下添加一个gameObject绑定
-        ///<param name="bindPointKey">绑点的key</param>
-        ///<param name="goPath">要挂载的gameObject的prefab在resources下的路径</param>
-        ///<param name="key">挂载信息的key，其实就是dictionary的key，手动删除的时候要用</param>
-        ///<param name="loop">是否循环播放，直到手动删除</param>
-        ///</summary>
-        public void AddBindGameObject(string bindPointKey, string go, string key, bool loop)
-        {
-            UnitBindPoint bp = GetBindPointByKey(bindPointKey);
-            Assert.IsNotNull(bp, $"找不到绑点：{bindPointKey}");
-            bp.AddBindGameObject(go, key, loop);
-        }
-
-        ///<summary>
-        ///在某个绑点下删除一个gameObject绑定
-        ///<param name="bindPointKey">绑点的key</param>
-        ///<param name="key">挂载信息的key</param>
-        ///</summary>
-        public void RemoveBindGameObject(string bindPointKey, string key)
-        {
-            UnitBindPoint bp = GetBindPointByKey(bindPointKey);
-            Assert.IsNotNull(bp, $"找不到绑点：{bindPointKey}");
-            bp.RemoveBindGameObject(key);
-        }
-
-        ///<summary>
-        ///删除绑点下所有一个gameObject绑定
-        ///<param name="key">挂载信息的key</param>
-        ///</summary>
-        public void RemoveAllBindGameObject(string key)
-        {
-            UnitBindPoint[] bindPoints = this.gameObject.GetComponentsInChildren<UnitBindPoint>();
-            for (int i = 0; i < bindPoints.Length; i++)
-            {
-                bindPoints[i].RemoveBindGameObject(key);
-            }
-        }
+        // ///<summary>
+        // ///往某个绑点下添加一个gameObject绑定
+        // ///<param name="bindPointKey">绑点的key</param>
+        // ///<param name="goPath">要挂载的gameObject的prefab在resources下的路径</param>
+        // ///<param name="key">挂载信息的key，其实就是dictionary的key，手动删除的时候要用</param>
+        // ///<param name="loop">是否循环播放，直到手动删除</param>
+        // ///</summary>
+        // public void AddBindGameObject(string bindPointKey, string go, string key, bool loop)
+        // {
+        //     UnitBindPoint bp = GetBindPointByKey(bindPointKey);
+        //     Assert.IsNotNull(bp, $"找不到绑点：{bindPointKey}");
+        //     bp.AddBindGameObject(go, key, loop);
+        // }
+        //
+        // ///<summary>
+        // ///在某个绑点下删除一个gameObject绑定
+        // ///<param name="bindPointKey">绑点的key</param>
+        // ///<param name="key">挂载信息的key</param>
+        // ///</summary>
+        // public void RemoveBindGameObject(string bindPointKey, string key)
+        // {
+        //     UnitBindPoint bp = GetBindPointByKey(bindPointKey);
+        //     Assert.IsNotNull(bp, $"找不到绑点：{bindPointKey}");
+        //     bp.RemoveBindGameObject(key);
+        // }
+        //
+        // ///<summary>
+        // ///删除绑点下所有一个gameObject绑定
+        // ///<param name="key">挂载信息的key</param>
+        // ///</summary>
+        // public void RemoveAllBindGameObject(string key)
+        // {
+        //     UnitBindPoint[] bindPoints = this.gameObject.GetComponentsInChildren<UnitBindPoint>();
+        //     for (int i = 0; i < bindPoints.Length; i++)
+        //     {
+        //         bindPoints[i].RemoveBindGameObject(key);
+        //     }
+        // }
     }
 }
