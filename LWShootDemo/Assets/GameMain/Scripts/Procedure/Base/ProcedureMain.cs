@@ -28,13 +28,13 @@ namespace GameMain
                 Scale = Vector3.one,
                 PropID = 10200000,
             });
-            GameEntry.Entity.ShowEnemy(new EnemyData(GameEntry.Entity.GenerateSerialId(), 10300001)
-            {
-                Position = new Vector3(0, 3, 0),
-                Rotation = Quaternion.identity,
-                Scale = Vector3.one,
-                PropID = 10200001,
-            });
+            // GameEntry.Entity.ShowEnemy(new EnemyData(GameEntry.Entity.GenerateSerialId(), 10300001)
+            // {
+            //     Position = new Vector3(0, 3, 0),
+            //     Rotation = Quaternion.identity,
+            //     Scale = Vector3.one,
+            //     PropID = 10200001,
+            // });
         }
 
         protected override void OnUpdate(IFsm<IProcedureManager> procedureOwner, float elapseSeconds, float realElapseSeconds)
