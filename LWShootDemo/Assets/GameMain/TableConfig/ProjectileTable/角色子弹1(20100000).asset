@@ -16,7 +16,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 4319245318243544894, guid: 79f1c8eb9d5d3754382f618a3609678f, type: 3}
+    - {fileID: 4521218356239276309, guid: 757ca74ca03ba1b419884d9775fd450a, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -24,8 +24,8 @@ MonoBehaviour:
     SerializationNodes:
     - Name: Events
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[LWShootDemo.BuffSystem.Event.ProjectileEvent,
-        Assembly-CSharp]], mscorlib
+      Data: 0|System.Collections.Generic.List`1[[GameMain.ProjectileEvent, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -34,8 +34,8 @@ MonoBehaviour:
       Data: 1|GameMain.OnProjectileHitEvent, Assembly-CSharp
     - Name: ActionsData
       Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[LWShootDemo.BuffSystem.Event.ActionData,
-        Assembly-CSharp]], mscorlib
+      Data: 2|System.Collections.Generic.List`1[[GameMain.ActionData, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 3
@@ -53,19 +53,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 4|GameMain.PlayFeedBackOnProjectileHitPointActData, Assembly-CSharp
-    - Name: State
-      Entry: 3
-      Data: 1
-    - Name: PfbFeedBack
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 5|GameMain.AddProjectileForceActionData, Assembly-CSharp
+      Data: 4|GameMain.AddProjectileForceActionData, Assembly-CSharp
     - Name: State
       Entry: 3
       Data: 0
@@ -75,6 +63,18 @@ MonoBehaviour:
     - Name: Intensity
       Entry: 4
       Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|GameMain.PlayFeedBackOnProjectileHitPointActData, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
+    - Name: PfbFeedBack
+      Entry: 10
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
