@@ -1,8 +1,7 @@
 using System;
-using LWShootDemo.BuffSystem.Act;
 using UnityEngine.Assertions;
 
-namespace LWShootDemo.BuffSystem.Event
+namespace GameMain
 {
     public abstract class ProjectileEvent<TArgs> : ProjectileEvent where TArgs : BaseProjectileEventActArgs
     {

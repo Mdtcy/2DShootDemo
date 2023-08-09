@@ -1,11 +1,9 @@
 using System.Collections.Generic;
 using GameFramework;
-using LWShootDemo.BuffSystem.Event;
-using LWShootDemo.BuffSystem.Events;
 using UnityEngine;
 using UnityEngine.Pool;
 
-namespace LWShootDemo.BuffSystem.Buffs
+namespace GameMain
 {
     public class BuffComponent : MonoBehaviour
     {

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TableList:
   - {fileID: 11400000, guid: 445de59ef61e90a4f8171fa4ca7facd7, type: 2}
+  - {fileID: 11400000, guid: de7f551de4c2f0a4bb00ba8bb3813386, type: 2}

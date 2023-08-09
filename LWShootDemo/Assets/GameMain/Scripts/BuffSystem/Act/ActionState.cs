@@ -1,6 +1,6 @@
 using Sirenix.OdinInspector;
 
-namespace LWShootDemo.BuffSystem.Act
+namespace GameMain
 {
     public enum ActionState
     {

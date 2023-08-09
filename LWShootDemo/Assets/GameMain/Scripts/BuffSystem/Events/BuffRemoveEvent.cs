@@ -1,7 +1,7 @@
-using LWShootDemo.BuffSystem.Event;
+
 using Sirenix.OdinInspector;
 
-namespace LWShootDemo.BuffSystem.Events
+namespace GameMain
 {
     [LabelText("Buff移除时")]
     public class BuffRemoveEvent : BuffEvent<BuffRemoveArgs>

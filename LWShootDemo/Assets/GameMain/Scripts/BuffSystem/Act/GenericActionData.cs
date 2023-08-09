@@ -1,6 +1,6 @@
 using System;
 
-namespace LWShootDemo.BuffSystem.Event
+namespace GameMain
 {
     public abstract class ActionData<T, TAct> : ActionData where T : IEventActArgs where TAct : ActionBase, new()
     {

@@ -1,7 +1,7 @@
-using LWShootDemo.BuffSystem.Event;
+
 using Sirenix.OdinInspector;
 
-namespace LWShootDemo.BuffSystem.Events
+namespace GameMain
 {
     [LabelText("OnKillEvent")]
     public class OnKillEvent : BuffEvent<OnKillArgs>

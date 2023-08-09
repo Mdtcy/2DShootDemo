@@ -1,7 +1,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace LWShootDemo.BuffSystem.Event
+namespace GameMain
 {
     public class DebugTickActionData : ActionData<BaseBuffEventActArgs, DebugTickAction>
     {

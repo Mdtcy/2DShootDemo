@@ -1,7 +1,5 @@
 using GameFramework;
-using LWShootDemo.BuffSystem.Event;
-
-namespace LWShootDemo.BuffSystem.Events
+namespace GameMain
 {
     public class BuffOccurArgs : BaseBuffEventActArgs
     {

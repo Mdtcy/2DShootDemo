@@ -1,8 +1,7 @@
 using System;
-using LWShootDemo.BuffSystem.Act;
 using UnityEngine.Assertions;
 
-namespace LWShootDemo.BuffSystem.Event
+namespace GameMain
 {
     public abstract class BuffEvent<TArgs> : BuffEvent where TArgs : BaseBuffEventActArgs
     {

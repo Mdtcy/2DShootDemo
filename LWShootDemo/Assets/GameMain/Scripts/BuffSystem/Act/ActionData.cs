@@ -1,9 +1,8 @@
 using System;
-using LWShootDemo.BuffSystem.Act;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace LWShootDemo.BuffSystem.Event
+namespace GameMain
 {
     [Serializable]
     public abstract class ActionData

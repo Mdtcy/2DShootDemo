@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Damages;
-using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.Entities;
 using UnityEngine;
 using GameEntry = GameMain.GameEntry;

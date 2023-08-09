@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using GameFramework;
-using LWShootDemo.BuffSystem.Event;
 using LWShootDemo.Entities;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -49,14 +48,14 @@ namespace GameMain
         private ProjectileTween _projectileTween;
         
         ///<summary>
-        ///本帧的移动
+        ///本帧的速度
         ///</summary>
-        private Vector3 _moveStep;
+        private Vector3 _velocity;
 
         /// <summary>
         /// 本帧的移动距离 todo 这样是否合理
         /// </summary>
-        private float MoveDistance => _moveStep.magnitude;
+        private float MoveDistance => _velocity.magnitude * Time.deltaTime;
 
         /// <summary>
         /// 子弹命中纪录
@@ -146,11 +145,11 @@ namespace GameMain
                 }
             }
 
-            _moveStep = _projectileTween.Tween(elapseSeconds, this, _followingTarget?.transform);
+            _velocity = _projectileTween.Tween(elapseSeconds, this, _followingTarget?.transform);
             
             //处理子弹的移动信息
-            Move(_moveStep); 
-            Forward = _moveStep.normalized;
+            Move(_velocity); 
+            Forward = _velocity.normalized;
 
             //处理子弹的碰撞信息，如果子弹可以碰撞，才会执行碰撞逻辑
             if (_canHitAfterCreated > 0)

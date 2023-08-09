@@ -1,6 +1,6 @@
-using LWShootDemo.BuffSystem.Event;
 
-namespace LWShootDemo.BuffSystem.Events
+
+namespace GameMain
 {
     public class OnBeKilledEvent : BuffEvent<OnBeKilledArgs>
     {

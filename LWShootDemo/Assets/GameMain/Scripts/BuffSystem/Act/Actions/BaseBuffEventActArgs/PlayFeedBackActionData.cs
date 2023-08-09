@@ -1,7 +1,7 @@
-using LWShootDemo.BuffSystem.Event;
+
 using Sirenix.OdinInspector;
 
-namespace BuffSystem.Act.Actions
+namespace GameMain
 {
     public class PlayFeedBackActionData : ActionData<BaseBuffEventActArgs, PlayFeedBackAction>
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace LWShootDemo.BuffSystem
+namespace GameMain
 {
     [Flags]
     public enum ControlState

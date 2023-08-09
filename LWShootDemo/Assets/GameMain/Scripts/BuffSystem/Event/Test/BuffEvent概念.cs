@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace LWShootDemo.BuffSystem.Event
+namespace GameMain
 {
     public class BuffEvent概念
     {

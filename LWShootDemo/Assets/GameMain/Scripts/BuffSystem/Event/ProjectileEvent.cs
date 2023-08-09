@@ -1,4 +1,4 @@
-namespace LWShootDemo.BuffSystem.Event
+namespace GameMain
 {
     public abstract class ProjectileEvent : BaseEvent
     {

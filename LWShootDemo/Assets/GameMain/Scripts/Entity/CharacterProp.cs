@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using LWShootDemo.BuffSystem.Event;
 using LWShootDemo.Entities;
 using Sirenix.OdinInspector;
 using UnityEngine;

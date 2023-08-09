@@ -10,8 +10,6 @@
 using System.Collections.Generic;
 using Damages;
 using GameMain;
-using LWShootDemo.BuffSystem.Buffs;
-using LWShootDemo.Entities;
 using UnityEngine;
 
 namespace LWShootDemo.Weapons

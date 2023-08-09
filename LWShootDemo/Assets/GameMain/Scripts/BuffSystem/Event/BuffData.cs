@@ -4,7 +4,7 @@ using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace LWShootDemo.BuffSystem.Event
+namespace GameMain
 {
     [CreateAssetMenu]
     [HideMonoScript]

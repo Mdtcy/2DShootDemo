@@ -36,3 +36,7 @@ MonoBehaviour:
     Stack: 1
     Duration: 10
     IsPermanent: 1
+  - Buff: {fileID: 11400000, guid: de7f551de4c2f0a4bb00ba8bb3813386, type: 2}
+    Stack: 1
+    Duration: 10
+    IsPermanent: 1

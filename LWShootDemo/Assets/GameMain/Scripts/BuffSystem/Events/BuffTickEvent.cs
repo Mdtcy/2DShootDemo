@@ -1,7 +1,7 @@
-using LWShootDemo.BuffSystem.Event;
+
 using Sirenix.OdinInspector;
 
-namespace LWShootDemo.BuffSystem.Events
+namespace GameMain
 {
     [LabelText("BuffTickEvent")]
     public class BuffTickEvent : BuffEvent<BuffTickArgs>

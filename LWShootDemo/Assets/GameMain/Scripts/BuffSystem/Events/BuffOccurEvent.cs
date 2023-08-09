@@ -1,7 +1,7 @@
-using LWShootDemo.BuffSystem.Event;
+
 using Sirenix.OdinInspector;
 
-namespace LWShootDemo.BuffSystem.Events
+namespace GameMain
 {
     [LabelText("Buff创建时或层数增加")]
     public class BuffOccurEvent : BuffEvent<BuffOccurArgs>

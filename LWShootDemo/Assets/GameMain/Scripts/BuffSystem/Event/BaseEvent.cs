@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
 
-namespace LWShootDemo.BuffSystem.Event
+namespace GameMain
 {
     [Serializable]
     public abstract class BaseEvent

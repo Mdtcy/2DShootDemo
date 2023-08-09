@@ -1,11 +1,9 @@
 using GameMain;
-using LWShootDemo.BuffSystem.Event;
-using LWShootDemo.BuffSystem.Events;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace BuffSystem.Act.Actions
+namespace GameMain
 {
     [LabelText("添加伤害力(AddDamageForceAction)")]
     public class AddDamageForceAction : ActionBase<DamageArgs, AddDamageForceActionData>

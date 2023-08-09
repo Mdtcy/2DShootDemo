@@ -1,9 +1,6 @@
 using System;
 using Animancer;
 using DefaultNamespace.GameMain.Scripts.HpBar;
-using LWShootDemo;
-using LWShootDemo.BuffSystem.Buffs;
-using LWShootDemo.BuffSystem.Event;
 using LWShootDemo.Entities;
 using LWShootDemo.Entities.Player;
 using UnityEngine;

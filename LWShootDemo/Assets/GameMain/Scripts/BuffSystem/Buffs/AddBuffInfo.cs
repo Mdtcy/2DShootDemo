@@ -1,7 +1,7 @@
-using LWShootDemo.BuffSystem.Event;
+
 using UnityEngine;
 
-namespace LWShootDemo.BuffSystem.Buffs
+namespace GameMain
 {
     public class AddBuffInfo
     {

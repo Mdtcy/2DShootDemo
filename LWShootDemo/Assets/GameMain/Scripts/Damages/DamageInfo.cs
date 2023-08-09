@@ -11,11 +11,10 @@ using System.Collections.Generic;
 using Damages;
 using GameFramework;
 using GameMain;
-using LWShootDemo.BuffSystem.Buffs;
 using LWShootDemo.Entities;
 using UnityEngine;
 
-namespace LWShootDemo
+namespace GameMain
 {
     /// <summary>
     /// 记录伤害信息

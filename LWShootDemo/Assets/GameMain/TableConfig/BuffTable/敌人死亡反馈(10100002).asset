@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7dbdac4d7e244b96ac9016bcba20e12b, type: 3}
-  m_Name: "\u53D7\u51FB\u65F6\u95EA\u5149(10100001)"
+  m_Name: "\u654C\u4EBA\u6B7B\u4EA1\u53CD\u9988(10100002)"
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 4319245318243544894, guid: 79f1c8eb9d5d3754382f618a3609678f, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -30,7 +31,7 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 1|GameMain.OnBeHurtEvent, Assembly-CSharp
+      Data: 1|GameMain.OnBeKilledEvent, Assembly-CSharp
     - Name: ActionsData
       Entry: 7
       Data: 2|System.Collections.Generic.List`1[[GameMain.ActionData, Assembly-CSharp]],
@@ -40,13 +41,25 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 3|GameMain.PlayFeedBackActionData, Assembly-CSharp
+      Data: 3|GameMain.FeedBackOnBuffCarrierActData, Assembly-CSharp
     - Name: State
       Entry: 3
       Data: 0
-    - Name: FeedBackName
-      Entry: 1
-      Data: HitFlash
+    - Name: PfbFeedBack
+      Entry: 10
+      Data: 0
+    - Name: Offset
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -65,8 +78,8 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  id: 10100001
-  DefaultName: "\u53D7\u51FB\u65F6\u95EA\u5149"
+  id: 10100002
+  DefaultName: "\u654C\u4EBA\u6B7B\u4EA1\u53CD\u9988"
   Priority: 0
   ControlState: 0
   _buffBuffTag:

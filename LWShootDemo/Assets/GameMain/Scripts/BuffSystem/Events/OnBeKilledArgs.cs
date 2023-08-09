@@ -1,6 +1,6 @@
 using GameFramework;
 
-namespace LWShootDemo.BuffSystem.Events
+namespace GameMain
 {
     public class OnBeKilledArgs : DamageArgs
     {

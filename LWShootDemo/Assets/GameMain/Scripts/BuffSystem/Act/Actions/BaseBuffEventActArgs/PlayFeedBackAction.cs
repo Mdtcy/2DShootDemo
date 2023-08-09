@@ -1,8 +1,7 @@
-using GameMain;
-using LWShootDemo.BuffSystem.Event;
+
 using Sirenix.OdinInspector;
 
-namespace BuffSystem.Act.Actions
+namespace GameMain
 {
     [LabelText("播放FeedBack(PlayFeedBackAction)")]
     public class PlayFeedBackAction : ActionBase<BaseBuffEventActArgs, PlayFeedBackActionData>

@@ -1,7 +1,7 @@
 using GameFramework;
 using GameMain;
 
-namespace LWShootDemo.BuffSystem.Event
+namespace GameMain
 {
     public interface IEventActArgs : IReference
     {

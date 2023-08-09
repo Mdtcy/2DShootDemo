@@ -56,7 +56,7 @@ MonoBehaviour:
       Data: 4|GameMain.PlayFeedBackOnProjectileHitPointActData, Assembly-CSharp
     - Name: State
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: PfbFeedBack
       Entry: 10
       Data: 0

@@ -1,4 +1,4 @@
-namespace LWShootDemo.BuffSystem.Event
+namespace GameMain
 {
     public abstract class ActionBase<TArgs, TActData> : ActionBase where TArgs : IEventActArgs where TActData : ActionData
     {

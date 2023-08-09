@@ -1,5 +1,4 @@
 using GameFramework;
-using LWShootDemo.BuffSystem.Event;
 
 namespace GameMain
 {

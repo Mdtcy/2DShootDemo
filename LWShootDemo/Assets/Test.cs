@@ -1,16 +1,13 @@
 using Damages;
 using GameFramework;
 using GameFramework.Event;
-using LWShootDemo.BuffSystem.Buffs;
-using LWShootDemo.BuffSystem.Event;
-using LWShootDemo.Entities;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityGameFramework.Runtime;
 using GameEntry = GameMain.GameEntry;
 
-namespace DefaultNamespace
+namespace GameMain
 {
 
     public class Test : MonoBehaviour

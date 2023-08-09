@@ -1,8 +1,5 @@
-using LWShootDemo.BuffSystem.Event;
-using LWShootDemo.BuffSystem.Events;
-using UnityEngine;
 
-namespace BuffSystem.Act.Actions
+namespace GameMain
 {
     public class AddDamageForceActionData : ActionData<DamageArgs, AddDamageForceAction>
     {
