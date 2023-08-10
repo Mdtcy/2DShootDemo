@@ -5,6 +5,7 @@ using GameFramework;
 using LWShootDemo.Entities;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityGameFramework.Runtime;
 
 namespace GameMain
 {
@@ -50,11 +51,6 @@ namespace GameMain
         ///本帧的速度
         ///</summary>
         private Vector3 _velocity;
-
-        /// <summary>
-        /// 本帧的移动距离 todo 这样是否合理
-        /// </summary>
-        private float MoveDistance => _velocity.magnitude * Time.deltaTime;
 
         /// <summary>
         /// 子弹命中纪录
@@ -126,6 +122,17 @@ namespace GameMain
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
 
+            // OnTrigger2D 在OnUpdate之前（待更进一步验证） 所以销毁放在这
+            // 生命周期的结算
+            if (NeedDestroy())
+            {
+                // 子弹移除事件
+                var projectileRemoveArgs = OnProjectileRemoveArgs.Create();
+                TriggerEvent<OnProjectileRemoveEvent, OnProjectileRemoveArgs>(projectileRemoveArgs);
+                ReferencePool.Release(projectileRemoveArgs);
+
+                GameEntry.Entity.HideEntity(Id);
+            }
             //如果是刚创建的，那么就要处理刚创建的事情
             if (_timeElapsed <= 0)
             {
@@ -156,17 +163,6 @@ namespace GameMain
             // 更新子弹时间
             _duration -= elapseSeconds;
             _timeElapsed += elapseSeconds;
-
-            // 生命周期的结算
-            if (NeedDestroy())
-            {
-                // 子弹移除事件
-                var projectileRemoveArgs = OnProjectileRemoveArgs.Create();
-                TriggerEvent<OnProjectileRemoveEvent, OnProjectileRemoveArgs>(projectileRemoveArgs);
-                ReferencePool.Release(projectileRemoveArgs);
-
-                GameEntry.Entity.HideEntity(Id);
-            }
         }
 
         private bool NeedDestroy()
@@ -342,8 +338,11 @@ namespace GameMain
                 var size = box.size;
                 return Mathf.Max(size.x, size.y) * 0.5f;
             }
-
-            return 0f;
+            else
+            {
+                Log.Error("子弹的碰撞体不是圆形或者矩形");
+                return 0f;
+            }
         }
 
     }
