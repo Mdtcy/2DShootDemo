@@ -67,6 +67,8 @@ namespace GameMain
         /// 子弹正在追踪的目标，不太建议使用这个，最好保持null todo 未初始化
         /// </summary>
         public GameObject _followingTarget;
+        
+        private bool _hitObstacle = false;
 
         /// <summary>
         /// 子弹传入的参数，逻辑用的到的临时记录 todo 
@@ -115,6 +117,7 @@ namespace GameMain
             _events.Clear();
             _projectileTween.ReleaseToPool();
             _projectileTween = null;
+            _hitObstacle = false;
             base.OnHide(isShutdown, userData);
         }
 
@@ -132,7 +135,9 @@ namespace GameMain
                 ReferencePool.Release(projectileRemoveArgs);
 
                 GameEntry.Entity.HideEntity(Id);
+                return;
             }
+            
             //如果是刚创建的，那么就要处理刚创建的事情
             if (_timeElapsed <= 0)
             {
@@ -178,7 +183,7 @@ namespace GameMain
         ///</summary>
         public bool CanHit(GameObject target)
         {
-            if (_canHitAfterCreated > 0)
+            if (_timeElapsed < _canHitAfterCreated)
             {
                 return false;
             }
@@ -225,11 +230,9 @@ namespace GameMain
             _movementComponent.InputMove(moveForce);
         }
         
-        // todo 击中障碍物的判断
         public bool HitObstacle()
         {
-            return false;
-            // throw new NotImplementedException();
+            return _hitObstacle;
         }
         
         /// <summary>
@@ -244,8 +247,9 @@ namespace GameMain
             ));
         }
 
+
         RaycastHit2D[] hitResults = new RaycastHit2D[50];  
-        private void OnTriggerEnter2D(Collider2D collider)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             // 如果子弹已经要销毁了，直接跳过
             if (NeedDestroy())
@@ -253,19 +257,12 @@ namespace GameMain
                 return;
             }
 
-            // 处理子弹的碰撞信息，如果子弹可以碰撞，才会执行碰撞逻辑
-            if (_timeElapsed<_canHitAfterCreated)
-            {
-                return;
-            }
-            
-            
             // 如果无法击中，直接跳过
-            if (CanHit(collider.gameObject) == false)
+            if (CanHit(other.gameObject) == false)
             {
                 return;
             }
-            
+
             Side side = Side.None;
             if (_caster)
             {
@@ -275,7 +272,7 @@ namespace GameMain
             }
             
             // 如果因为阵营问题无法击中，直接跳过
-            var hitCharacter = collider.gameObject.GetComponent<Character>();
+            var hitCharacter = other.gameObject.GetComponent<Character>();
             if (hitCharacter != null)
             {
                 if ((Prop.hitAlly == false && side == hitCharacter.Side) ||
@@ -284,9 +281,13 @@ namespace GameMain
                     return;
                 }
             }
-            else
+            else 
             {
-                return;
+                int obstacleLayer = LayerMask.NameToLayer("Obstacles");
+                if (other.gameObject.layer == obstacleLayer)
+                {
+                    _hitObstacle = true;
+                }
             }
 
             // 执行击中逻辑
@@ -301,9 +302,9 @@ namespace GameMain
             bool hasHit = false;
             for (int i = 0; i < numberOfHits; i++)
             {
-                if (hitResults[i].collider == collider)
+                if (hitResults[i].collider == other)
                 {
-                    var projectileHitArgs = OnProjectileHitArgs.Create(collider.gameObject, 
+                    var projectileHitArgs = OnProjectileHitArgs.Create(other.gameObject, 
                         hitResults[i].point,
                         -hitResults[i].normal);
                     TriggerEvent<OnProjectileHitEvent, OnProjectileHitArgs>(projectileHitArgs);
@@ -318,7 +319,7 @@ namespace GameMain
             // 记录子弹命中
             if (_hp > 0)
             {
-                AddHitRecord(collider.gameObject);
+                AddHitRecord(other.gameObject);
             }
         }
         
