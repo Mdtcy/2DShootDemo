@@ -5,7 +5,6 @@ using GameFramework;
 using LWShootDemo.Entities;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.Pool;
 
 namespace GameMain
 {
@@ -86,13 +85,15 @@ namespace GameMain
 
         private Dictionary<Type, ProjectileEvent> _events;
 
-        private ProjectilePhysicCastComponent _physicCastComponent;
         private MovementComponent _movementComponent;
+        private Rigidbody2D _rigidbody2D;
+        private Collider2D _collider2D;
 
         private void Awake()
         {
-            _physicCastComponent = GetComponent<ProjectilePhysicCastComponent>();
             _movementComponent = GetComponent<MovementComponent>();
+            _rigidbody2D = GetComponent<Rigidbody2D>();
+            _collider2D = GetComponent<Collider2D>();
         }
 
         protected override void OnShow(object userData)
@@ -151,77 +152,13 @@ namespace GameMain
             Move(_velocity); 
             Forward = _velocity.normalized;
 
-            //处理子弹的碰撞信息，如果子弹可以碰撞，才会执行碰撞逻辑
-            if (_canHitAfterCreated > 0)
-            {
-                _canHitAfterCreated -= elapseSeconds;
-            }
-            else
-            {
-                Side side = Side.None;
-                if (_caster)
-                {
-                    Character character = _caster.GetComponent<Character>();
-                    Assert.IsNotNull(character);
-                    side = character.Side;
-                }
-                
-                var hitInfos = ListPool<RaycastHit2D>.Get();
-                // todo 目前并没有找到办法验证这个方法的正确性 distance
-                PhysicCast(-Forward, MoveDistance, ref hitInfos);
-
-                foreach (var hitInfo in hitInfos)
-                {
-                    // 如果无法击中，直接跳过
-                    if (CanHit(hitInfo.collider.gameObject) == false)
-                    {
-                        continue;
-                    }
-
-                    // 如果因为阵营问题无法击中，直接跳过
-                    var hitCharacter = hitInfo.collider.gameObject.GetComponent<Character>();
-                    if (hitCharacter != null)
-                    {
-                        if ((Prop.hitAlly == false && side == hitCharacter.Side) ||
-                            (Prop.hitFoe == false && side != hitCharacter.Side))
-                        {
-                            continue;
-                        }
-                    }
-                    else
-                    {
-                        continue;
-                    }
-
-                    // 执行击中逻辑
-                    _hp -= 1;
-
-                    // 子弹击中事件 hitInfo.normal是从被击中的表面指向投射物 所以传入相反的作为方向
-                    var projectileHitArgs = OnProjectileHitArgs.Create(hitInfo.collider.gameObject, 
-                        hitInfo.point,
-                        -hitInfo.normal);
-                    TriggerEvent<OnProjectileHitEvent, OnProjectileHitArgs>(projectileHitArgs);
-                    ReferencePool.Release(projectileHitArgs);
-
-                    // 记录子弹命中
-                    if (_hp > 0)
-                    {
-                        AddHitRecord(hitInfo.collider.gameObject);
-                    }
-                }
-                
-                ListPool<RaycastHit2D>.Release(hitInfos);
-            }
-
 
             // 更新子弹时间
             _duration -= elapseSeconds;
             _timeElapsed += elapseSeconds;
 
             // 生命周期的结算
-            if (_duration <= 0 || // 持续时间结束
-                HitObstacle() || // 子弹碰到障碍物
-                _hp <= 0) // 子弹命中次数不足
+            if (NeedDestroy())
             {
                 // 子弹移除事件
                 var projectileRemoveArgs = OnProjectileRemoveArgs.Create();
@@ -230,6 +167,13 @@ namespace GameMain
 
                 GameEntry.Entity.HideEntity(Id);
             }
+        }
+
+        private bool NeedDestroy()
+        {
+            return (_duration <= 0 || // 持续时间结束
+                    HitObstacle() || // 子弹碰到障碍物
+                    _hp <= 0); // 子弹命中次数不足
         }
 
         ///<summary>
@@ -291,11 +235,6 @@ namespace GameMain
             return false;
             // throw new NotImplementedException();
         }
-
-        public void PhysicCast(Vector3 direction, float distance, ref List<RaycastHit2D> hitInfos)
-        {
-            _physicCastComponent.PhysicCast(direction, distance, ref hitInfos);
-        }
         
         /// <summary>
         /// 添加命中纪录
@@ -308,5 +247,104 @@ namespace GameMain
                 Prop.sameTargetDelay
             ));
         }
+
+        RaycastHit2D[] hitResults = new RaycastHit2D[50];  
+        private void OnTriggerEnter2D(Collider2D collider)
+        {
+            // 如果子弹已经要销毁了，直接跳过
+            if (NeedDestroy())
+            {
+                return;
+            }
+
+            // 处理子弹的碰撞信息，如果子弹可以碰撞，才会执行碰撞逻辑
+            if (_timeElapsed<_canHitAfterCreated)
+            {
+                return;
+            }
+            
+            
+            // 如果无法击中，直接跳过
+            if (CanHit(collider.gameObject) == false)
+            {
+                return;
+            }
+            
+            Side side = Side.None;
+            if (_caster)
+            {
+                Character character = _caster.GetComponent<Character>();
+                Assert.IsNotNull(character);
+                side = character.Side;
+            }
+            
+            // 如果因为阵营问题无法击中，直接跳过
+            var hitCharacter = collider.gameObject.GetComponent<Character>();
+            if (hitCharacter != null)
+            {
+                if ((Prop.hitAlly == false && side == hitCharacter.Side) ||
+                    (Prop.hitFoe == false && side != hitCharacter.Side))
+                {
+                    return;
+                }
+            }
+            else
+            {
+                return;
+            }
+
+            // 执行击中逻辑
+            _hp -= 1;
+
+            // 定义射线的起点和方向
+            Vector2 rayOrigin = transform.position;
+            Vector2 rayDirection = _rigidbody2D.velocity.normalized;
+            
+            int numberOfHits = Physics2D.CircleCastNonAlloc(rayOrigin, GetRadius(), rayDirection, hitResults, 2);
+
+            bool hasHit = false;
+            for (int i = 0; i < numberOfHits; i++)
+            {
+                if (hitResults[i].collider == collider)
+                {
+                    var projectileHitArgs = OnProjectileHitArgs.Create(collider.gameObject, 
+                        hitResults[i].point,
+                        -hitResults[i].normal);
+                    TriggerEvent<OnProjectileHitEvent, OnProjectileHitArgs>(projectileHitArgs);
+                    ReferencePool.Release(projectileHitArgs);
+                    hasHit = true;
+                    break;
+                }
+            }
+            
+            Assert.IsTrue(hasHit, "没有检测到子弹击中的碰撞体");
+            
+            // 记录子弹命中
+            if (_hp > 0)
+            {
+                AddHitRecord(collider.gameObject);
+            }
+        }
+        
+        /// <summary>
+        /// 获取一个大概的半径
+        /// </summary>
+        /// <returns></returns>
+        float GetRadius()
+        {
+            if (_collider2D is CircleCollider2D circle)
+            {
+                return circle.radius;
+            }
+            else if (_collider2D is BoxCollider2D box)
+            {
+                // 取较长的那个维度（宽或高）的一半作为“半径”
+                var size = box.size;
+                return Mathf.Max(size.x, size.y) * 0.5f;
+            }
+
+            return 0f;
+        }
+
     }
 }
