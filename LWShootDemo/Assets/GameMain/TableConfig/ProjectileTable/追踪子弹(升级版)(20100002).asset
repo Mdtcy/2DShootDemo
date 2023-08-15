@@ -95,7 +95,7 @@ MonoBehaviour:
       Data: 
   id: 20100002
   DefaultName: "\u8FFD\u8E2A\u5B50\u5F39(\u5347\u7EA7\u7248)"
-  EntityProp: {fileID: 11400000, guid: aba1b1f30003bff46ab22a20a429a0c5, type: 2}
+  EntityProp: {fileID: 11400000, guid: 79ab9390250d9ee48979342cf051c5ec, type: 2}
   TweenData:
     rid: 1231441281064632320
   Tag: 0
