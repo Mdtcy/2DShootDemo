@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fcfa2e4d8e54f4aadd06b8755585685, type: 3}
-  m_Name: "\u8FFD\u8E2A\u5B50\u5F39(20100001)"
+  m_Name: "\u8FFD\u8E2A\u5B50\u5F39(\u5347\u7EA7\u7248)(20100002)"
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -93,8 +93,8 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  id: 20100001
-  DefaultName: "\u8FFD\u8E2A\u5B50\u5F39"
+  id: 20100002
+  DefaultName: "\u8FFD\u8E2A\u5B50\u5F39(\u5347\u7EA7\u7248)"
   EntityProp: {fileID: 11400000, guid: aba1b1f30003bff46ab22a20a429a0c5, type: 2}
   TweenData:
     rid: 1231441281064632320

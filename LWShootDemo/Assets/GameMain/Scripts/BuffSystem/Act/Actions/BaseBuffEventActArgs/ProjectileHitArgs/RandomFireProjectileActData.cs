@@ -5,6 +5,11 @@ namespace GameMain
 {
     public class RandomFireProjectileActData : ActionData<BuffOnProjectileHitArgs, RandomFireProjectileAction>
     {
+        public int Count;
+
+        [LabelText("多子弹发射时间隔的角度")]
+        public int SectorAngle;
+        
         public ProjectileProp ProjectileProp;
         
         [LabelText("带有这种子弹标签的子弹才会触发")]
