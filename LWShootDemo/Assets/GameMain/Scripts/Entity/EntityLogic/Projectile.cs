@@ -158,7 +158,8 @@ namespace GameMain
                 }
             }
 
-            _velocity = _projectileTween.Tween(elapseSeconds, this, _followingTarget?.transform);
+            var target = _followingTarget == null ? null : _followingTarget.transform;
+            _velocity = _projectileTween.Tween(elapseSeconds, this, target);
             
             //处理子弹的移动信息
             Move(_velocity); 

@@ -1,0 +1,140 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fcfa2e4d8e54f4aadd06b8755585685, type: 3}
+  m_Name: "\u8FFD\u8E2A\u5B50\u5F39(20100001)"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 4521218356239276309, guid: 757ca74ca03ba1b419884d9775fd450a, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: Events
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[GameMain.ProjectileEvent, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|GameMain.OnProjectileHitEvent, Assembly-CSharp
+    - Name: ActionsData
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[GameMain.ActionData, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 3|GameMain.ProjectileHitDamageActionData, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
+    - Name: Damage
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 4|GameMain.AddProjectileForceActionData, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
+    - Name: Duration
+      Entry: 4
+      Data: 0.2
+    - Name: Intensity
+      Entry: 4
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|GameMain.PlayFeedBackOnProjectileHitPointActData, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
+    - Name: PfbFeedBack
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  id: 20100001
+  DefaultName: "\u8FFD\u8E2A\u5B50\u5F39"
+  EntityProp: {fileID: 11400000, guid: aba1b1f30003bff46ab22a20a429a0c5, type: 2}
+  TweenData:
+    rid: 1231441281064632320
+  Speed: 13
+  hitFoe: 1
+  hitAlly: 0
+  CanHitAfterCreated: 0
+  sameTargetDelay: 0
+  Duration: 20
+  HitTimes: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 1231441281064632320
+      type: {class: HomingProjectileTweenData1, ns: GameMain, asm: Assembly-CSharp}
+      data:
+        RotateSpeed: 270
+        ForwardTime: 0.5
+        SpeedCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0.0083351135
+            value: 0.14624023
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 2
+            outSlope: 2
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        MaxSpeedTime: 1

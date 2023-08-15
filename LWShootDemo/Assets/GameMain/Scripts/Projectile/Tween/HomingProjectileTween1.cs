@@ -12,15 +12,21 @@ namespace GameMain
     {
         private HomingProjectileTweenData1 HomingProjectileTweenData1 => (HomingProjectileTweenData1) Data;
 
+        private Transform _target;
+
         private Vector3 _veolcityLastFrame;
         public override void Clear()
         {
-            // Implement according to your needs
+            _target = null;
+            _veolcityLastFrame = Vector3.zero;
         }
 
         public override Vector3 Tween(float timeElapsed, Projectile projectile, Transform followTarget = null)
         {
-            followTarget = GetNearestEnemy(projectile.transform)?.transform;
+            if (_target == null || _target.GetComponent<Character>().IsDead)
+            {
+                followTarget = GetNearestEnemy(projectile.transform)?.transform;
+            }
             
             float timeMin = Mathf.Max(projectile._timeElapsed, 0.01f);
             var speedMultiplier = HomingProjectileTweenData1.SpeedCurve.Evaluate(timeMin/ HomingProjectileTweenData1.MaxSpeedTime);

@@ -44,7 +44,7 @@ namespace LWShootDemo.Entities.Player
                 }
 
                 // 使用武器
-                Context.Weapon.Use();
+                // Context.Weapon.Use();
                 lastShotTime = Time.time;
             }
             
