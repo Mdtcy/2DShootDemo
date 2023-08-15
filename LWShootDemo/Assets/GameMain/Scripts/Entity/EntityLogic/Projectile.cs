@@ -310,6 +310,17 @@ namespace GameMain
                         -hitResults[i].normal);
                     TriggerEvent<OnProjectileHitEvent, OnProjectileHitArgs>(projectileHitArgs);
                     ReferencePool.Release(projectileHitArgs);
+
+                    if (_caster != null)
+                    {
+                        var buffProjectileHitArgs = BuffOnProjectileHitArgs.Create(this,
+                            other.gameObject, 
+                            hitResults[i].point,
+                            -hitResults[i].normal);
+                        _caster.TriggerBuff<BuffOnProjectileHitEvent,BuffOnProjectileHitArgs>(buffProjectileHitArgs);
+                        ReferencePool.Release(buffProjectileHitArgs);
+                    }
+
                     hasHit = true;
                     break;
                 }
@@ -322,6 +333,11 @@ namespace GameMain
             {
                 AddHitRecord(other.gameObject);
             }
+        }
+        
+        public bool ContainTag(ProjectileTag tag)
+        {
+            return Prop.Tag.HasFlag(tag);
         }
         
         /// <summary>

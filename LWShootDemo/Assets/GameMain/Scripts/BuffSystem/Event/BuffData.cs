@@ -29,6 +29,10 @@ namespace GameMain
         [LabelText(" ")]
         public List<BuffEvent> Events = new();
 
+        [LabelText("备注")]
+        [PropertyOrder(-1)]
+        public string Remark;
+
         #region Odin
 
         private IEnumerable<ValueDropdownItem> GetBuffEventTypes()

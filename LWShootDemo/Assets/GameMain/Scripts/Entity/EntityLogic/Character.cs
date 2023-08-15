@@ -14,6 +14,7 @@ namespace GameMain
         private MovementComponent _movementComponent;
         private CharacterFeedBackComponent _characterFeedBackComponent;
         private NumericComponent _numericComponent;
+        public UnitBindManager UnitBindManager;
         
         private bool canMove = true;
         public AnimancerComponent CachedAnimancer { get; private set; }
@@ -23,7 +24,7 @@ namespace GameMain
         
         /// <summary>
         /// 是否死亡
-        /// </summary>
+        /// </summary>z
         public bool IsDead => isDead;
         
         ///<summary>
@@ -80,6 +81,7 @@ namespace GameMain
             Buff = GetComponent<BuffComponent>();
             _movementComponent = GetComponent<MovementComponent>();
             _characterFeedBackComponent = GetComponent<CharacterFeedBackComponent>();
+            UnitBindManager = GetComponent<UnitBindManager>();
             _numericComponent = GetComponentInChildren<NumericComponent>();
             _numericComponent.Init(Entity);
         }

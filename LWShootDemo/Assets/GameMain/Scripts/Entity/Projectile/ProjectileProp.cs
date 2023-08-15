@@ -14,6 +14,8 @@ namespace GameMain
         [SerializeReference]
         public ProjectileTweenData TweenData;
         
+        public ProjectileTag Tag;
+        
         public float Speed;
         
         ///<summary>

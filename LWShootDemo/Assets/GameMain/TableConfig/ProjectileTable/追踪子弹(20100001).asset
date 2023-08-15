@@ -98,6 +98,7 @@ MonoBehaviour:
   EntityProp: {fileID: 11400000, guid: aba1b1f30003bff46ab22a20a429a0c5, type: 2}
   TweenData:
     rid: 1231441281064632320
+  Tag: 0
   Speed: 13
   hitFoe: 1
   hitAlly: 0
@@ -111,7 +112,7 @@ MonoBehaviour:
     - rid: 1231441281064632320
       type: {class: HomingProjectileTweenData1, ns: GameMain, asm: Assembly-CSharp}
       data:
-        RotateSpeed: 270
+        RotateSpeed: 360
         ForwardTime: 0.5
         SpeedCurve:
           serializedVersion: 2
