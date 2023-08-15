@@ -11,6 +11,13 @@ namespace GameMain
         {
             var caster = args.Projectile.Caster;
             var target = args.HitObject.GetComponent<Character>();
+            
+            // todo 现在只伤害敌人
+            if (target == null)
+            {
+                return;
+            }
+
             int damage = Data.Damage;
             var dir = args.HitDirection;
             GameEntry.Damage.DoDamage(caster, 

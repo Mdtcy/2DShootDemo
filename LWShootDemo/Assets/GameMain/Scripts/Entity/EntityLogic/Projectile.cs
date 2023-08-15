@@ -345,6 +345,5 @@ namespace GameMain
                 return 0f;
             }
         }
-
     }
 }
