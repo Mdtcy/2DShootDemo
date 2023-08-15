@@ -15,7 +15,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 195f8d2f08294a24eb61be84407d8d39, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -27,7 +28,56 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|GameMain.BuffOnProjectileHitEvent, Assembly-CSharp
+    - Name: ActionsData
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[GameMain.ActionData, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 3|GameMain.RandomFireProjectileActData, Assembly-CSharp
+    - Name: State
+      Entry: 3
       Data: 0
+    - Name: ProjectileProp
+      Entry: 10
+      Data: 0
+    - Name: ProjectileTag
+      Entry: 3
+      Data: 1
+    - Name: ProbabilityPerStack
+      Entry: 4
+      Data: 0.1
+    - Name: RandomFireRotationRange
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: -15
+    - Name: 
+      Entry: 4
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -40,3 +90,5 @@ MonoBehaviour:
   ControlState: 0
   _buffBuffTag:
     _tagList: []
+  Remark: "\u547D\u4E2D\u65F6\uFF1A10% \u51E0\u7387\u53D1\u5C04\u9020\u6210 300%
+    \u4F24\u5BB3\u7684\u5BFC\u5F39 \u53E0\u52A0\uFF0B10\u51E0\u7387"

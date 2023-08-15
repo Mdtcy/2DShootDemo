@@ -98,6 +98,7 @@ MonoBehaviour:
   EntityProp: {fileID: 11400000, guid: b06010f438381e944806516ea5c0a019, type: 2}
   TweenData:
     rid: 1231441075811385351
+  Tag: 1
   Speed: 10
   hitFoe: 1
   hitAlly: 0

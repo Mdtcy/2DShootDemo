@@ -318,7 +318,6 @@ namespace GameMain
                             hitResults[i].point,
                             -hitResults[i].normal);
                         _caster.TriggerBuff<BuffOnProjectileHitEvent,BuffOnProjectileHitArgs>(buffProjectileHitArgs);
-                        ReferencePool.Release(buffProjectileHitArgs);
                     }
 
                     hasHit = true;
