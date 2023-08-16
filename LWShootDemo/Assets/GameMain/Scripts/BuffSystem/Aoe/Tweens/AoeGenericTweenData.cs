@@ -1,11 +1,10 @@
 using GameFramework;
-using UnityEngine;
 
 namespace GameMain
 {
-    public abstract class ProjectileGenericTweenData<T> : ProjectileTweenData where T : ProjectileTween, new()
+    public class AoeTweenData<T> : AoeTweenData where T : AoeTween , new()
     {
-        public override ProjectileTween CreateTween()
+        public override AoeTween CreateTween()
         {
             var tween = ReferencePool.Acquire<T>();
             tween.Init(this);

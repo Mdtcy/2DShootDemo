@@ -5,6 +5,6 @@ namespace GameMain
     [System.Serializable]
     public abstract class ProjectileTweenData
     {
-        public abstract HomingProjectileTween1 CreateTween();
+        public abstract ProjectileTween CreateTween();
     }
 }

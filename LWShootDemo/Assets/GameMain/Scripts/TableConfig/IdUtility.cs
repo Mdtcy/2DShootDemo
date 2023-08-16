@@ -6,9 +6,16 @@ public static class IdUtility
     
     public const int ProjectilePrefix = 201;
     public const int ProjectileLauncherPrefix = 202;
+    
+    public const int AoePrefix = 301;
 
     // id生成规则是三位数前缀*Capacity 范围是 xxx00000 ~ xxx99999
     public const int Capacity = 100000;
+    
+    public static int AoeStartId()
+    {
+        return AoePrefix * Capacity;
+    }
 
     public static int BuffStartId()
     {
