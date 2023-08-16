@@ -324,9 +324,14 @@ namespace GameMain
                     break;
                 }
             }
-            
-            Assert.IsTrue(hasHit, "没有检测到子弹击中的碰撞体");
-            
+
+            if (!hasHit)
+            {
+                // todo 暂时不知道原因
+                Log.Error("没有检测到子弹击中的碰撞体");
+                return;
+            }
+
             // 记录子弹命中
             if (_hp > 0)
             {

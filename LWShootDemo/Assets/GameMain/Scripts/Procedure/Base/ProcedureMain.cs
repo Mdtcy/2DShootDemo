@@ -40,11 +40,12 @@ namespace GameMain
         protected override void OnUpdate(IFsm<IProcedureManager> procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
+            var playerPos = Player.transform.position;
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 GameEntry.Entity.ShowEnemy(new EnemyData(GameEntry.Entity.GenerateSerialId(), 10300001)
                 {
-                    Position = new Vector3(0, 0, 0),
+                    Position = playerPos + new Vector3(Random.Range(-15f,15f), Random.Range(-15f,15f), 0),
                     Rotation = Quaternion.identity,
                     Scale = Vector3.one,
                     PropID = 10200001,

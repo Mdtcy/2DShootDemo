@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GameMain
 {
-    public class RandomFireProjectileActData : ActionData<BuffOnProjectileHitArgs, RandomFireProjectileAction>
+    public class RandomFireProjectileOnProjectileHitActData : ActionData<BuffOnProjectileHitArgs, RandomFireProjectileOnProjectileHitAction>
     {
         public int Count;
 

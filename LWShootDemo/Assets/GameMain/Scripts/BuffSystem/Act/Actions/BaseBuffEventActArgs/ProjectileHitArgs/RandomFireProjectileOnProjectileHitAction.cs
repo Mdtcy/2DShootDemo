@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GameMain
 {
-    public class RandomFireProjectileAction : ActionBase<BuffOnProjectileHitArgs, RandomFireProjectileActData>
+    public class RandomFireProjectileOnProjectileHitAction : ActionBase<BuffOnProjectileHitArgs, RandomFireProjectileOnProjectileHitActData>
     {
         protected override void ExecuteInternal(BuffOnProjectileHitArgs args)
         {
@@ -18,7 +18,7 @@ namespace GameMain
                     Quaternion rotation = firePoint.rotation * Quaternion.Euler(0, 0, -totalAngle / 2 + Data.SectorAngle * i);   
                     var randomRotation = 
                         Quaternion.Euler(0, 0, Random.Range(Data.RandomFireRotationRange.x, Data.RandomFireRotationRange.y));
-                    rotation = rotation * randomRotation;
+                    rotation *= randomRotation;
                     CreateProjectile(carrier, firePoint, rotation);
                 }
             }

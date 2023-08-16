@@ -41,7 +41,7 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 3|GameMain.RandomFireProjectileActData, Assembly-CSharp
+      Data: 3|GameMain.RandomFireProjectileOnProjectileHitActData, Assembly-CSharp
     - Name: State
       Entry: 3
       Data: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
       Data: 3
     - Name: SectorAngle
       Entry: 3
-      Data: 15
+      Data: 8
     - Name: ProjectileProp
       Entry: 10
       Data: 0
