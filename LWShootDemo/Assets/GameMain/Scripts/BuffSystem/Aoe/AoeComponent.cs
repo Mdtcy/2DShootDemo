@@ -5,7 +5,7 @@ namespace GameMain
 {
     public class AoeComponent : GameFrameworkComponent
     {
-        public void CreateAoe(AoeProp aoeProp, Vector3 position, Quaternion rotation, Character caster, Transform followTarget = null)
+        public void CreateAoe(AoeProp aoeProp, Vector3 position, Quaternion rotation, Character caster)
         {
             int id = GameEntry.Entity.GenerateSerialId();
             GameEntry.Entity.ShowAoe(new AoeData(id,

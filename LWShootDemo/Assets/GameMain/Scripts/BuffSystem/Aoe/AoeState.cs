@@ -12,9 +12,28 @@ namespace GameMain
         private Character _caster;
         private float _timeElapsed;
         private Dictionary<Type, AoeEvent> _events;
+        private AoeTween _tween;
+        private MovementComponent _movementComponent;
+        
+        ///<summary>
+        ///本帧的速度
+        ///</summary>
+        private Vector3 _velocity;
         
         // tick了几次
         private int _tickCount;
+        
+        public Vector3 Forward 
+        { 
+            set => transform.up = value;
+            get => transform.up;
+        }
+
+        protected override void OnInit(object userData)
+        {
+            base.OnInit(userData);
+            _movementComponent = GetComponent<MovementComponent>();
+        }
 
         protected override void OnShow(object userData)
         {
@@ -25,6 +44,7 @@ namespace GameMain
             _tickCount = 0;
             // todo 优化
             _events = _prop.Events.ToDictionary(e => e.GetType());
+            _tween = _prop.TweenData.CreateTween();
             
             // Aoe创建事件
             var aoeCreateArgs = OnAoeCreateArgs.Create();
@@ -38,6 +58,8 @@ namespace GameMain
             _caster = null;
             _events = null;
             _tickCount = 0;
+            _tween.ReleaseToPool();
+            _tween = null;
             
             base.OnRecycle();
         }
@@ -57,8 +79,6 @@ namespace GameMain
                 
                 return;
             }
-            
-            _timeElapsed += elapseSeconds;
 
             if (_timeElapsed >= (_tickCount + 1) * _prop.TickTime)
             {
@@ -69,6 +89,13 @@ namespace GameMain
                 
                 _tickCount++;
             }
+            
+            // 移动
+            _velocity = _tween.Tween(elapseSeconds, this);
+            Move(_velocity);
+            Forward = _velocity.normalized;
+            
+            _timeElapsed += elapseSeconds;
         }
 
         /// <summary>
@@ -85,6 +112,12 @@ namespace GameMain
             return false;
         }
 
+        // private Vector3     
+        private void Move(Vector3 moveForce)
+        {
+            _movementComponent.InputMove(moveForce);
+        }
+        
         /// <summary>
         /// 触发Aoe事件
         /// </summary>
