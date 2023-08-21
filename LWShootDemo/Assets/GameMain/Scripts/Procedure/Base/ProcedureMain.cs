@@ -51,6 +51,12 @@ namespace GameMain
                     PropID = 10200001,
                 });
             }
+
+            var aoeProp = GameEntry.TableConfig.Get<AoeTable>().TableList[0];
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                GameEntry.Aoe.CreateAoe(aoeProp, playerPos, Quaternion.identity, Player.Logic as Character);
+            }
         }
     }
 }

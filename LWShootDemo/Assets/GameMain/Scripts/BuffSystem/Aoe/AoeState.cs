@@ -31,6 +31,11 @@ namespace GameMain
             set => transform.up = value;
             get => transform.up;
         }
+        
+        public Character Caster => _caster;
+        
+        public List<Character> ChaInAoe => _chaInAoe;
+        public List<Projectile> ProjectileInAoe => _projectileInAoe;
 
         protected override void OnInit(object userData)
         {

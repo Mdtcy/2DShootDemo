@@ -30,14 +30,26 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 1|GameMain.OnAoeCreateEvent, Assembly-CSharp
+      Data: 1|GameMain.OnAoeTickEvent, Assembly-CSharp
     - Name: ActionsData
       Entry: 7
       Data: 2|System.Collections.Generic.List`1[[GameMain.ActionData, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 3|GameMain.AoeTickDamageActionData, Assembly-CSharp
+    - Name: State
+      Entry: 3
       Data: 0
+    - Name: BasePercent
+      Entry: 4
+      Data: 0.5
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -55,11 +67,12 @@ MonoBehaviour:
       Data: 
   id: 30100000
   DefaultName: "\u9760\u8FD1\u53D7\u4F24\u5BB3"
-  EntityProp: {fileID: 0}
+  EntityProp: {fileID: 11400000, guid: 4ace4209c876b8a4caf353d719fa5f9a, type: 2}
   Remark: "\u9760\u8FD1\u4F60\u7684\u654C\u4EBA\u6BCF\u79D2\u53D7\u5230 50% \u4F24\u5BB3
     +20% \u66F4\u5927\u534A\u5F84\u548C +10% \u4F24\u5BB3/\u79D2"
-  Tag: 0
-  TickTime: 0
+  Tag: 1
+  TickTime: 1
+  Duration: 99999
   TweenData:
     rid: 1231441281064632321
   references:

@@ -1,5 +1,5 @@
-using System;
-using UnityEngine;
+using System.Collections.Generic;
+using Damages;
 
 namespace GameMain
 {
@@ -7,11 +7,17 @@ namespace GameMain
     {
         protected override void ExecuteInternal(OnAoeTickArgs args)
         {
-            var player = (GameEntry.Procedure.CurrentProcedure as ProcedureMain).Player.Logic as Character;
-            float damage = player.Attack * Data.Percent;
-            
-            // todo 
-            throw new NotImplementedException();
+            var caster = args.Aoe.Caster;
+            float damage = caster.Attack * Data.BasePercent;
+
+            foreach (var character in args.Aoe.ChaInAoe)
+            {
+                var dir = character.transform.position - args.Aoe.transform.position;
+                GameEntry.Damage.DoDamage(caster, 
+                    character, (int)damage, dir, 0, 
+                    new List<DamageInfoTag>(),
+                    new List<AddBuffInfo>());
+            }
         }
     }
 }

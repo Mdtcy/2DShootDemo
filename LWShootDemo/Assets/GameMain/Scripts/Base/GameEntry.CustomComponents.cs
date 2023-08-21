@@ -17,6 +17,8 @@ namespace GameMain
         
         public static FeedBackComponent FeedBack { get; private set; }
         
+        public static AoeComponent Aoe { get; private set; }
+        
         private void InitCustomComponents()
         {
             SpriteCollection = UnityGameFramework.Runtime.GameEntry.GetComponent<SpriteCollectionComponent>();
@@ -31,6 +33,7 @@ namespace GameMain
             Projectile = UnityGameFramework.Runtime.GameEntry.GetComponent<ProjectileComponent>();
             TableConfig = UnityGameFramework.Runtime.GameEntry.GetComponent<TableConfigComponent>();
             FeedBack = UnityGameFramework.Runtime.GameEntry.GetComponent<FeedBackComponent>();
+            Aoe = UnityGameFramework.Runtime.GameEntry.GetComponent<AoeComponent>();
         }
     }
 }

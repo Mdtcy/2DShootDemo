@@ -15,7 +15,7 @@ namespace GameMain
             {
                 Position = position,
                 Rotation = rotation,
-                Scale = Vector3.one,
+                Scale = Vector3.one * 10,
             });
         }
     }
