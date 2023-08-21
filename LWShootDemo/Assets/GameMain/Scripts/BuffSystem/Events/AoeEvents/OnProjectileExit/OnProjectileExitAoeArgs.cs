@@ -4,13 +4,13 @@ using Sirenix.OdinInspector;
 namespace GameMain
 {
     [LabelText("投射物离开AOE时")]
-    public class OnProjectileExitArgs : BaseAoeEventActArgs
+    public class OnProjectileExitAoeArgs : BaseAoeEventActArgs
     {
         public Projectile Projectile;
         
-        public static OnProjectileExitArgs Create(Projectile projectile)
+        public static OnProjectileExitAoeArgs Create(Projectile projectile)
         {
-            var args = ReferencePool.Acquire<OnProjectileExitArgs>();
+            var args = ReferencePool.Acquire<OnProjectileExitAoeArgs>();
             args.Projectile = projectile;
             return args;
         }

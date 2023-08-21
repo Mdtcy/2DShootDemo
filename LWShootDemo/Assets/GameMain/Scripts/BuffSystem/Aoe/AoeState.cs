@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GameFramework;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace GameMain
 {
@@ -62,6 +63,8 @@ namespace GameMain
             _tickCount = 0;
             _tween.ReleaseToPool();
             _tween = null;
+            _chaInAoe.Clear();
+            _projectileInAoe.Clear();
             
             base.OnRecycle();
         }
@@ -150,6 +153,21 @@ namespace GameMain
                 var chaEnterAoe = OnChaEnterAoeArgs.Create(character);
                 TriggerEvent<OnChaEnterAoeEvent, OnChaEnterAoeArgs>(chaEnterAoe);
                 ReferencePool.Release(chaEnterAoe);
+                
+                _chaInAoe.Add(character);
+            }
+            else
+            {
+                var projectile = col.GetComponent<Projectile>();
+                if (projectile != null)
+                {
+                    // Projectile EnterAoe事件
+                    var projectileEnterAoeArgs = OnProjectileEnterAoeArgs.Create(projectile);
+                    TriggerEvent<OnProjectileEnterAoeEvent, OnProjectileEnterAoeArgs>(projectileEnterAoeArgs);
+                    ReferencePool.Release(projectileEnterAoeArgs);
+                    
+                    _projectileInAoe.Add(projectile);
+                }
             }
         }
         
@@ -162,6 +180,23 @@ namespace GameMain
                 var onChaExitAoeArgs = OnChaExitAoeArgs.Create(character);
                 TriggerEvent<OnChaExitAoeEvent, OnChaExitAoeArgs>(onChaExitAoeArgs);
                 ReferencePool.Release(onChaExitAoeArgs);
+                
+                Assert.IsTrue(_chaInAoe.Contains(character));
+                _chaInAoe.Remove(character);
+            }
+            else
+            {
+                var projectile = col.GetComponent<Projectile>();
+                if (projectile != null)
+                {
+                    // Projectile ExitAoe事件
+                    var projectileExitAoeArgs = OnProjectileExitAoeArgs.Create(projectile);
+                    TriggerEvent<OnProjectileExitAoeEvent, OnProjectileExitAoeArgs>(projectileExitAoeArgs);
+                    ReferencePool.Release(projectileExitAoeArgs);
+                    
+                    Assert.IsTrue(_projectileInAoe.Contains(projectile));
+                    _projectileInAoe.Remove(projectile);
+                }
             }
         }
 
