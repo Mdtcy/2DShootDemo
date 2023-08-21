@@ -18,6 +18,7 @@ namespace GameMain
             "EntityTable",
             "CharacterTable",
             "ProjectileTable",
+            "AoeTable",
         };
 
         public static readonly string[] FontNames =

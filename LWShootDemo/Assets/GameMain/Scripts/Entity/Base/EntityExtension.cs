@@ -71,6 +71,11 @@ namespace GameMain
             entityComponent.ShowEntity(typeof(Projectile), Constant.AssetPriority.ProjectileAsset, data);
         }
 
+        public static void ShowAoe(this EntityComponent entityComponent, AoeData data)
+        {
+            entityComponent.ShowEntity(typeof(AoeState), Constant.AssetPriority.AoeAsset, data);
+        }
+
         #endregion
 
         public static int GenerateSerialId(this EntityComponent entityComponent)

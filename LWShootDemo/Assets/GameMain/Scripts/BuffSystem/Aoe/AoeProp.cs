@@ -22,6 +22,11 @@ namespace GameMain
         /// 如果这个时间小于等于0，或者没有onTick，则不会执行aoe的onTick事件
         /// </summary>
         public float TickTime;
+
+        /// <summary>
+        /// 持续时间 单位：秒
+        /// </summary>
+        public float Duration;
         
         [SerializeReference]
         public AoeTweenData TweenData;
