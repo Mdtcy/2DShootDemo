@@ -50,6 +50,8 @@ namespace GameMain
         
         public float Speed => _numericComponent[NumericType.Speed];
         
+        public float Attack => _numericComponent[NumericType.Attack];
+        
         // 最大血量
         public int MaxHp => _numericComponent[NumericType.MaxHp];
         

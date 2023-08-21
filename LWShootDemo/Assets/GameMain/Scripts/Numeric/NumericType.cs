@@ -22,5 +22,12 @@ namespace GameMain
         MaxHpPct = MaxHp * 10 + 3,
         MaxHpFinalAdd = MaxHp * 10 + 4,
         MaxHpFinalPct = MaxHp * 10 + 5,
+        
+        Attack = 1003,
+        AttackBase = Attack * 10 + 1,
+        AttackAdd = Attack * 10 + 2,
+        AttackPct = Attack * 10 + 3,
+        AttackFinalAdd = Attack * 10 + 4,
+        AttackFinalPct = Attack * 10 + 5,
     }
 }

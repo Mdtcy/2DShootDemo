@@ -14,7 +14,9 @@ namespace GameMain
         private Dictionary<Type, AoeEvent> _events;
         private AoeTween _tween;
         private MovementComponent _movementComponent;
-        
+        private List<Character> _chaInAoe = new();
+        private List<Projectile> _projectileInAoe = new();
+
         ///<summary>
         ///本帧的速度
         ///</summary>
@@ -136,6 +138,30 @@ namespace GameMain
                     args.Aoe = this;
                     tAoeEvent.Trigger(args);
                 }
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            var character = col.GetComponent<Character>();
+            if (character != null)
+            {
+                // ChaEnterAoe事件
+                var chaEnterAoe = OnChaEnterAoeArgs.Create(character);
+                TriggerEvent<OnChaEnterAoeEvent, OnChaEnterAoeArgs>(chaEnterAoe);
+                ReferencePool.Release(chaEnterAoe);
+            }
+        }
+        
+        private void OnTriggerExit2D(Collider2D col)
+        {
+            var character = col.GetComponent<Character>();
+            if (character != null)
+            {
+                // ChaExitAoe事件
+                var onChaExitAoeArgs = OnChaExitAoeArgs.Create(character);
+                TriggerEvent<OnChaExitAoeEvent, OnChaExitAoeArgs>(onChaExitAoeArgs);
+                ReferencePool.Release(onChaExitAoeArgs);
             }
         }
 
