@@ -47,6 +47,12 @@ MonoBehaviour:
     - Name: BasePercent
       Entry: 4
       Data: 0.5
+    - Name: HitFoe
+      Entry: 5
+      Data: true
+    - Name: HitAlly
+      Entry: 5
+      Data: false
     - Name: 
       Entry: 8
       Data: 
@@ -74,9 +80,9 @@ MonoBehaviour:
   TickTime: 1
   Duration: 99999
   TweenData:
-    rid: 1231441281064632321
+    rid: 1231441439627149312
   references:
     version: 2
     RefIds:
-    - rid: 1231441281064632321
-      type: {class: NotMoveAoeTweenData, ns: GameMain, asm: Assembly-CSharp}
+    - rid: 1231441439627149312
+      type: {class: AoeFollowCasterTweenData, ns: GameMain, asm: Assembly-CSharp}

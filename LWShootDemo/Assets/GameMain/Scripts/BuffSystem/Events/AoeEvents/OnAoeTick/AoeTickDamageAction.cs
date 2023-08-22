@@ -10,8 +10,12 @@ namespace GameMain
             var caster = args.Aoe.Caster;
             float damage = caster.Attack * Data.BasePercent;
 
+            var side = caster.Side;
             foreach (var character in args.Aoe.ChaInAoe)
             {
+                if(character.Side == side && !Data.HitAlly) continue;
+                if(character.Side != side && !Data.HitFoe) continue;
+                
                 var dir = character.transform.position - args.Aoe.transform.position;
                 GameEntry.Damage.DoDamage(caster, 
                     character, (int)damage, dir, 0, 

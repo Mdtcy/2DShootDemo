@@ -282,7 +282,12 @@ namespace GameMain
                     return;
                 }
             }
-            else 
+            // 如果是AOE，直接跳过
+            else if (other.gameObject.GetComponent<AoeState>() != null)
+            {
+                return;
+            }
+            else
             {
                 int obstacleLayer = LayerMask.NameToLayer("Obstacles");
                 if (other.gameObject.layer == obstacleLayer)
