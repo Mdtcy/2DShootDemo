@@ -8,7 +8,10 @@ namespace GameMain
         protected override void ExecuteInternal(OnAoeTickArgs args)
         {
             var caster = args.Aoe.Caster;
-            float damage = caster.Attack * Data.BasePercent;
+
+            var bindBuff = args.Aoe.RelatedBuff;
+            float percent = bindBuff == null ? Data.BasePercent : Data.BasePercent + (bindBuff.Stack - 1) * Data.PercentPerStack;
+            float damage = caster.Attack * percent;
 
             var side = caster.Side;
             foreach (var character in args.Aoe.ChaInAoe)

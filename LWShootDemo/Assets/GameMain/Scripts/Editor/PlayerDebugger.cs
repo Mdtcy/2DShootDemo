@@ -23,7 +23,7 @@ namespace GameMain.Editor
         public void 添加Buff()
         {
             var player = (GameEntry.Procedure.CurrentProcedure as ProcedureMain).Player.Logic as Character;
-            var addBuffInfo = new AddBuffInfo(BuffData, null, player.gameObject, Stack, Duration);
+            var addBuffInfo = new AddBuffInfo(BuffData, player.gameObject, player.gameObject, Stack, Duration);
             player.Buff.AddBuff(addBuffInfo);
         }
     }

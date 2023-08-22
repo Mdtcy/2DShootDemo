@@ -3,10 +3,6 @@ using UnityEngine;
 
 namespace GameMain
 {
-    public class DebugTickActionData : ActionData<BaseBuffEventActArgs, DebugTickAction>
-    {
-    }
-    
     [LabelText("DebugTickAction")]
     public class DebugTickAction : ActionBase<BaseBuffEventActArgs, DebugTickActionData>
     {

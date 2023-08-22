@@ -17,6 +17,10 @@ namespace GameMain
         private MovementComponent _movementComponent;
         private List<Character> _chaInAoe = new();
         private List<Projectile> _projectileInAoe = new();
+        
+        // 关联的buff
+        private Buff _relatedBuff;
+        public Buff RelatedBuff => _relatedBuff;
 
         ///<summary>
         ///本帧的速度
@@ -70,6 +74,7 @@ namespace GameMain
             _tween = null;
             _chaInAoe.Clear();
             _projectileInAoe.Clear();
+            _relatedBuff = null;
             
             base.OnRecycle();
         }
@@ -106,6 +111,16 @@ namespace GameMain
             Forward = _velocity.normalized;
             
             _timeElapsed += elapseSeconds;
+        }
+
+        public void BindBuff(Buff buff)
+        {
+            _relatedBuff = buff;
+        }
+
+        public void SetRange(float range)
+        {
+            SetScale(Vector3.one * range);
         }
 
         /// <summary>

@@ -15,7 +15,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 0a064fc2158f66543ba4a24e9a9b41fc, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -27,10 +28,10 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
-      Data: 1|GameMain.OnAoeTickEvent, Assembly-CSharp
+      Data: 1|GameMain.OnAoeCreateEvent, Assembly-CSharp
     - Name: ActionsData
       Entry: 7
       Data: 2|System.Collections.Generic.List`1[[GameMain.ActionData, Assembly-CSharp]],
@@ -40,13 +41,47 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 3|GameMain.AoeTickDamageActionData, Assembly-CSharp
+      Data: 3|GameMain.BindCasterBuffOnCreateActionData, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
+    - Name: BuffData
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 4|GameMain.OnAoeTickEvent, Assembly-CSharp
+    - Name: ActionsData
+      Entry: 7
+      Data: 5|System.Collections.Generic.List`1[[GameMain.ActionData, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 6|GameMain.AoeTickDamageActionData, Assembly-CSharp
     - Name: State
       Entry: 3
       Data: 0
     - Name: BasePercent
       Entry: 4
       Data: 0.5
+    - Name: PercentPerStack
+      Entry: 4
+      Data: 0.1
     - Name: HitFoe
       Entry: 5
       Data: true
