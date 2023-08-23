@@ -344,7 +344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &288747908
 RectTransform:
   m_ObjectHideFlags: 0
@@ -846,7 +846,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &426159990
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1425,7 +1425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &812549971
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2153,7 +2153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1232105660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3054,6 +3054,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1981265105, guid: 0138815c4ff2e674faefaa102a9a126d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 809789500414147589, guid: 0138815c4ff2e674faefaa102a9a126d,
         type: 3}
       propertyPath: m_RootOrder
@@ -3134,15 +3138,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 809789500414147591, guid: 0138815c4ff2e674faefaa102a9a126d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 809789500896369296, guid: 0138815c4ff2e674faefaa102a9a126d,
         type: 3}
       propertyPath: txtDifficulty
       value: 
       objectReference: {fileID: 812549972}
+    - target: {fileID: 809789500896369298, guid: 0138815c4ff2e674faefaa102a9a126d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 809789501149391897, guid: 0138815c4ff2e674faefaa102a9a126d,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 809789501817863335, guid: 0138815c4ff2e674faefaa102a9a126d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0138815c4ff2e674faefaa102a9a126d, type: 3}
@@ -3407,6 +3426,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UIDeathEnemyCount
+      objectReference: {fileID: 0}
+    - target: {fileID: 1629652373727706097, guid: 212ff05b95b218e4d9d7e75112715f62,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 212ff05b95b218e4d9d7e75112715f62, type: 3}

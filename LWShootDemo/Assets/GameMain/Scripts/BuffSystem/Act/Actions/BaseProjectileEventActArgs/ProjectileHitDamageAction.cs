@@ -18,7 +18,7 @@ namespace GameMain
                 return;
             }
 
-            int damage = Data.Damage;
+            int damage = (int) (caster.Attack * Data.DamagePercent);
             var dir = args.HitDirection;
             GameEntry.Damage.DoDamage(caster, 
                 target, damage, dir, 0, 

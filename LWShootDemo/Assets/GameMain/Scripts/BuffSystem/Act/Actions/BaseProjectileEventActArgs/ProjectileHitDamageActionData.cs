@@ -1,8 +1,11 @@
 
+using Sirenix.OdinInspector;
+
 namespace GameMain
 {
     public class ProjectileHitDamageActionData : ActionData<OnProjectileHitArgs, ProjectileHitDamageAction>
     {
-        public int Damage;
+        [LabelText("造成攻击力的百分比伤害")]
+        public float DamagePercent;
     }
 }

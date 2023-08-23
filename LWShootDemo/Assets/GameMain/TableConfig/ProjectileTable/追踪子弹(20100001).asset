@@ -45,9 +45,9 @@ MonoBehaviour:
     - Name: State
       Entry: 3
       Data: 0
-    - Name: Damage
-      Entry: 3
-      Data: 1
+    - Name: DamagePercent
+      Entry: 4
+      Data: 0.2
     - Name: 
       Entry: 8
       Data: 
