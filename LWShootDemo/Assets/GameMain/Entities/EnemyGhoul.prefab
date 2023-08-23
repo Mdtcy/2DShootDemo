@@ -678,6 +678,7 @@ GameObject:
   - component: {fileID: 4506072417780401313}
   - component: {fileID: 7696843181185798498}
   - component: {fileID: 604908391184868885}
+  - component: {fileID: 2148748551463493608}
   m_Layer: 8
   m_Name: EnemyGhoul
   m_TagString: Untagged
@@ -744,9 +745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb2D: {fileID: 1547550358056355183}
-  _speed: 2
   _faceController: {fileID: 1547550357387394058}
-  mVelocity: {x: 0, y: 0, z: 0}
   DebugMode: 0
 --- !u!50 &1547550358056355183
 Rigidbody2D:
@@ -885,6 +884,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.25}
   serializedVersion: 2
   m_Radius: 0.65
+--- !u!210 &2148748551463493608
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547550358056355218}
+  m_Enabled: 1
+  m_SortingLayerID: -1595645785
+  m_SortingLayer: 4
+  m_SortingOrder: 0
 --- !u!1 &1981330841971739778
 GameObject:
   m_ObjectHideFlags: 0

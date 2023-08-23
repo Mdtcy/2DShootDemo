@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 2856155821797058214}
   - component: {fileID: 5401723408748609129}
   - component: {fileID: 7485700525183126576}
+  - component: {fileID: 2942457372171117246}
   m_Layer: 10
   m_Name: HomingProjectileUpgrade
   m_TagString: Untagged
@@ -181,3 +182,14 @@ MonoBehaviour:
   _rb2D: {fileID: 2856155821797058214}
   _faceController: {fileID: 0}
   DebugMode: 0
+--- !u!210 &2942457372171117246
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8184216371984781616}
+  m_Enabled: 1
+  m_SortingLayerID: -1999188989
+  m_SortingLayer: 5
+  m_SortingOrder: 0
