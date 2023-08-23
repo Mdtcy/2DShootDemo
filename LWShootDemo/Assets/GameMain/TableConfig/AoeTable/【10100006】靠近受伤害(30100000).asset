@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73bec3b1a4ce4aa5bb1421321e0062e3, type: 3}
+  m_Name: "\u301010100006\u3011\u9760\u8FD1\u53D7\u4F24\u5BB3(30100000)"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 0a064fc2158f66543ba4a24e9a9b41fc, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: Events
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[GameMain.AoeEvent, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 1|GameMain.OnAoeCreateEvent, Assembly-CSharp
+    - Name: ActionsData
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[GameMain.ActionData, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 3|GameMain.BindCasterBuffOnCreateActionData, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
+    - Name: BuffData
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 4|GameMain.OnAoeTickEvent, Assembly-CSharp
+    - Name: ActionsData
+      Entry: 7
+      Data: 5|System.Collections.Generic.List`1[[GameMain.ActionData, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 6|GameMain.AoeTickDamageActionData, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
+    - Name: BasePercent
+      Entry: 4
+      Data: 0.5
+    - Name: PercentPerStack
+      Entry: 4
+      Data: 0.1
+    - Name: HitFoe
+      Entry: 5
+      Data: true
+    - Name: HitAlly
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  id: 30100000
+  DefaultName: "\u301010100006\u3011\u9760\u8FD1\u53D7\u4F24\u5BB3"
+  EntityProp: {fileID: 11400000, guid: 4ace4209c876b8a4caf353d719fa5f9a, type: 2}
+  Remark: "\u9760\u8FD1\u4F60\u7684\u654C\u4EBA\u6BCF\u79D2\u53D7\u5230 50% \u4F24\u5BB3
+    +20% \u66F4\u5927\u534A\u5F84\u548C +10% \u4F24\u5BB3/\u79D2"
+  Tag: 1
+  TickTime: 1
+  Duration: 99999
+  TweenData:
+    rid: 1231441439627149312
+  references:
+    version: 2
+    RefIds:
+    - rid: 1231441439627149312
+      type: {class: AoeFollowCasterTweenData, ns: GameMain, asm: Assembly-CSharp}

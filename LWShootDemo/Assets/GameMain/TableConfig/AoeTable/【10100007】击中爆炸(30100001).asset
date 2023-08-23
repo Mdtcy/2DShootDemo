@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73bec3b1a4ce4aa5bb1421321e0062e3, type: 3}
-  m_Name: "\u9760\u8FD1\u53D7\u4F24\u5BB3(30100000)"
+  m_Name: "\u301010100007\u3011\u51FB\u4E2D\u7206\u70B8(30100001)"
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 0a064fc2158f66543ba4a24e9a9b41fc, type: 2}
+    - {fileID: 11400000, guid: cb1ff1c8a30edf54dbd0f0c2a1629e22, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -28,7 +28,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 7
       Data: 1|GameMain.OnAoeCreateEvent, Assembly-CSharp
@@ -38,7 +38,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
       Data: 3|GameMain.BindCasterBuffOnCreateActionData, Assembly-CSharp
@@ -52,42 +52,39 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
       Entry: 7
-      Data: 4|GameMain.OnAoeTickEvent, Assembly-CSharp
-    - Name: ActionsData
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[GameMain.ActionData, Assembly-CSharp]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 6|GameMain.AoeTickDamageActionData, Assembly-CSharp
+      Data: 4|GameMain.AoeDamage10100007ActionData, Assembly-CSharp
     - Name: State
       Entry: 3
       Data: 0
     - Name: BasePercent
       Entry: 4
-      Data: 0.5
+      Data: 0.2
     - Name: PercentPerStack
       Entry: 4
-      Data: 0.1
+      Data: 0.2
     - Name: HitFoe
       Entry: 5
       Data: true
     - Name: HitAlly
       Entry: 5
       Data: false
+    - Name: DamageTag
+      Entry: 7
+      Data: 5|System.Collections.Generic.List`1[[Damages.DamageInfoTag, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 12
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -106,18 +103,17 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  id: 30100000
-  DefaultName: "\u9760\u8FD1\u53D7\u4F24\u5BB3"
-  EntityProp: {fileID: 11400000, guid: 4ace4209c876b8a4caf353d719fa5f9a, type: 2}
-  Remark: "\u9760\u8FD1\u4F60\u7684\u654C\u4EBA\u6BCF\u79D2\u53D7\u5230 50% \u4F24\u5BB3
-    +20% \u66F4\u5927\u534A\u5F84\u548C +10% \u4F24\u5BB3/\u79D2"
-  Tag: 1
-  TickTime: 1
-  Duration: 99999
+  id: 30100001
+  DefaultName: "\u301010100007\u3011\u51FB\u4E2D\u7206\u70B8"
+  EntityProp: {fileID: 11400000, guid: 9cfc9bb58adba7744952f04c7d4a6926, type: 2}
+  Remark: 
+  Tag: 0
+  TickTime: 0
+  Duration: 0.2
   TweenData:
-    rid: 1231441439627149312
+    rid: 1231441464338939905
   references:
     version: 2
     RefIds:
-    - rid: 1231441439627149312
-      type: {class: AoeFollowCasterTweenData, ns: GameMain, asm: Assembly-CSharp}
+    - rid: 1231441464338939905
+      type: {class: NotMoveAoeTweenData, ns: GameMain, asm: Assembly-CSharp}

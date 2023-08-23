@@ -54,14 +54,10 @@ namespace GameMain
             _prop = data.Prop;
             _caster = data.Caster;
             _tickCount = 0;
+            _timeElapsed = 0;
             // todo 优化
             _events = _prop.Events.ToDictionary(e => e.GetType());
             _tween = _prop.TweenData.CreateTween();
-            
-            // Aoe创建事件
-            var aoeCreateArgs = OnAoeCreateArgs.Create();
-            TriggerEvent<OnAoeCreateEvent, OnAoeCreateArgs>(aoeCreateArgs);
-            ReferencePool.Release(aoeCreateArgs);
         }
 
         protected override void OnRecycle()
@@ -75,6 +71,7 @@ namespace GameMain
             _chaInAoe.Clear();
             _projectileInAoe.Clear();
             _relatedBuff = null;
+            _timeElapsed = 0;
             
             base.OnRecycle();
         }
@@ -109,7 +106,15 @@ namespace GameMain
             _velocity = _tween.Tween(elapseSeconds, this);
             Move(_velocity);
             Forward = _velocity.normalized;
-            
+
+            if (_timeElapsed <= 0)
+            {
+                // Aoe创建事件
+                var aoeCreateArgs = OnAoeCreateArgs.Create();
+                TriggerEvent<OnAoeCreateEvent, OnAoeCreateArgs>(aoeCreateArgs);
+                ReferencePool.Release(aoeCreateArgs);
+            }
+
             _timeElapsed += elapseSeconds;
         }
 

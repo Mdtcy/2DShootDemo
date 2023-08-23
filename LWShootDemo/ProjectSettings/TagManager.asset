@@ -51,3 +51,9 @@ TagManager:
   - name: Layer 3
     uniqueID: 4189426099
     locked: 0
+  - name: Character
+    uniqueID: 2699321511
+    locked: 0
+  - name: Projectile
+    uniqueID: 2295778307
+    locked: 0
