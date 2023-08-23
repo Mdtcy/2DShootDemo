@@ -4,11 +4,13 @@ namespace GameMain
     {
         public AoeProp Prop;
         public Character Caster;
+        public float Radius;
         
-        public AoeData(int entityId, int typeId, AoeProp prop, Character caster) : base(entityId, typeId)
+        public AoeData(int entityId, int typeId, AoeProp prop, Character caster, float radius) : base(entityId, typeId)
         {
             Prop = prop;
             Caster = caster;
+            Radius = radius;
         }
     }
 }

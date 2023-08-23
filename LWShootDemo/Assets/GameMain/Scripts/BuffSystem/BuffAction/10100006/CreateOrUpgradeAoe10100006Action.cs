@@ -22,7 +22,7 @@ namespace GameMain
             {
                 // 修改半径
                 float range = Data.InitRange + Data.UpgradeRangePerStack * args.Buff.Stack;
-                ((aoes[0] as Entity).Logic as AoeState).SetRange(range);
+                ((aoes[0] as Entity).Logic as AoeState).SetRadius(range);
             }
         }
     }

@@ -47,7 +47,7 @@ MonoBehaviour:
       Data: 0
     - Name: DamagePercent
       Entry: 4
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -59,10 +59,10 @@ MonoBehaviour:
       Data: 0
     - Name: Duration
       Entry: 4
-      Data: 0.2
+      Data: 0
     - Name: Intensity
       Entry: 4
-      Data: 2
+      Data: 0
     - Name: 
       Entry: 8
       Data: 

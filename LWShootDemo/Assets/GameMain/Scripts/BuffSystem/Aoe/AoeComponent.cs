@@ -11,11 +11,11 @@ namespace GameMain
             GameEntry.Entity.ShowAoe(new AoeData(id,
                 aoeProp.EntityProp.ID,
                 aoeProp,
-                caster)
+                caster,
+                range)
             {
                 Position = position,
                 Rotation = rotation,
-                Scale = Vector3.one * range,
             });
 
             return id;
