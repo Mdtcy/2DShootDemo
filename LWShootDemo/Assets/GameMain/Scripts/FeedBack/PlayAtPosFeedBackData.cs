@@ -6,6 +6,7 @@ namespace GameMain
     public class PlayAtPosFeedBackData : IReference
     {
         public Vector3 Pos;
+        public float Scale;
         
         public void Clear()
         {
@@ -19,6 +20,8 @@ namespace GameMain
         
         public void ReleaseToPool()
         {
+            Pos = Vector3.zero;
+            Scale = 0;
             ReferencePool.Release(this);
         }
     }

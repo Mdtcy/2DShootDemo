@@ -17,6 +17,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 11400000, guid: cb1ff1c8a30edf54dbd0f0c2a1629e22, type: 2}
+    - {fileID: 4521218356239276309, guid: 4e0cee303894a414eb9a68e9ada1e3ba, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -38,7 +39,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 7
       Data: 3|GameMain.BindCasterBuffOnCreateActionData, Assembly-CSharp
@@ -53,7 +54,34 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 4|GameMain.AoeDamage10100007ActionData, Assembly-CSharp
+      Data: 4|GameMain.FeedBackOnCreateAoeActionData, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
+    - Name: PfbFeedBack
+      Entry: 10
+      Data: 1
+    - Name: Offset
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: UseAoeRadiusAsScale
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|GameMain.AoeDamage10100007ActionData, Assembly-CSharp
     - Name: State
       Entry: 3
       Data: 0
@@ -71,7 +99,7 @@ MonoBehaviour:
       Data: false
     - Name: DamageTag
       Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[Damages.DamageInfoTag, Assembly-CSharp]],
+      Data: 6|System.Collections.Generic.List`1[[Damages.DamageInfoTag, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
@@ -109,7 +137,7 @@ MonoBehaviour:
   Remark: 
   Tag: 0
   TickTime: 0
-  Duration: 0.2
+  Duration: 0.1
   TweenData:
     rid: 1231441464338939905
   references:

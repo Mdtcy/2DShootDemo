@@ -122,6 +122,7 @@ namespace GameMain
 
             // 指定feedBack位置
             mmfPlayer.transform.position = playAtPosFeedBackData.Pos;
+            mmfPlayer.transform.localScale = playAtPosFeedBackData.Scale * Vector3.one;
             mmfPlayer.PlayFeedbacks();
             _usingFeedBacks.Add(feedBackObject);
 

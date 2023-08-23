@@ -19,7 +19,8 @@ namespace GameMain
         private List<Character> _chaInAoe = new();
         private List<Projectile> _projectileInAoe = new();
         private float _radius;
-        
+        public float Radius => _radius;
+
         // 关联的buff
         private Buff _relatedBuff;
         public Buff RelatedBuff => _relatedBuff;

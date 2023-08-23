@@ -47,7 +47,7 @@ MonoBehaviour:
       Data: 0
     - Name: Radius
       Entry: 4
-      Data: 4
+      Data: 2.5
     - Name: AoeProp
       Entry: 10
       Data: 0
