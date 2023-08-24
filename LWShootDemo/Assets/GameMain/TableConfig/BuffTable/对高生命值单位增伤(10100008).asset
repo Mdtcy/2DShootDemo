@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7dbdac4d7e244b96ac9016bcba20e12b, type: 3}
-  m_Name: "\u51FB\u4E2D\u9020\u6210\u7206\u70B8(10100007)"
+  m_Name: "\u5BF9\u9AD8\u751F\u547D\u503C\u5355\u4F4D\u589E\u4F24(10100008)"
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 45c8d21f50005a74fa91fac096508e34, type: 2}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -31,7 +30,7 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 1|GameMain.BuffOnProjectileHitEvent, Assembly-CSharp
+      Data: 1|GameMain.OnHitEvent, Assembly-CSharp
     - Name: ActionsData
       Entry: 7
       Data: 2|System.Collections.Generic.List`1[[GameMain.ActionData, Assembly-CSharp]],
@@ -41,16 +40,19 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 3|GameMain.CreateAoe10100007ActionData, Assembly-CSharp
+      Data: 3|GameMain.ModifyDamageIfHighHp10100008ActionData, Assembly-CSharp
     - Name: State
       Entry: 3
       Data: 0
-    - Name: Radius
+    - Name: HpCanModify
       Entry: 4
-      Data: 1.8
-    - Name: AoeProp
-      Entry: 10
-      Data: 0
+      Data: 0.8
+    - Name: BasePct
+      Entry: 3
+      Data: 50
+    - Name: PctPerStack
+      Entry: 3
+      Data: 30
     - Name: 
       Entry: 8
       Data: 
@@ -69,11 +71,11 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  id: 10100007
-  DefaultName: "\u51FB\u4E2D\u9020\u6210\u7206\u70B8"
+  id: 10100008
+  DefaultName: "\u5BF9\u9AD8\u751F\u547D\u503C\u5355\u4F4D\u589E\u4F24"
   Priority: 0
   ControlState: 0
   _buffBuffTag:
     _tagList: []
-  Remark: "\u4F60\u7684\u6240\u6709\u653B\u51FB\u90FD\u4F1A\u7206\u70B8\uFF0C\u5BF9\u9644\u8FD1\u7684\u654C\u4EBA\u9020\u6210\u989D\u5916
-    20% \u7684\u4F24\u5BB3\u3002\u6BCF\u5C42+20% \u7206\u70B8\u4F24\u5BB3"
+  Remark: "\u51FB\u4E2D\u65F6\uFF1A\u5BF9\u751F\u547D\u503C\u9AD8\u4E8E 80% \u7684\u654C\u4EBA\u9020\u6210
+    +50% \u4F24\u5BB3"

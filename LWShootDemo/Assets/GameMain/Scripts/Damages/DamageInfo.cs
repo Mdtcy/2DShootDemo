@@ -38,6 +38,14 @@ namespace GameMain
         /// </summary>
         public int Damage;
 
+        public int Add;
+
+        public int Pct;
+
+        public int FinalAdd;
+        
+        public int FinalPct;
+        
         /// <summary>
         /// 伤害的方向
         /// </summary>
@@ -72,13 +80,15 @@ namespace GameMain
         // todo 可配置
         public int DamageValue(bool isHeal)
         {
+            // 应用修饰
+            int finalDamage = ((Damage + Add) * (100 + Pct) / 100 + FinalAdd) * (100 + FinalPct) / 100;
+
             bool isCrit = Random.Range(0.00f, 1.00f) <= CriticalRate;
             if (isHeal)
             {
-                Damage = -Damage;
+                finalDamage = -finalDamage;
             }
-
-            return Mathf.CeilToInt(Damage * (isCrit == true ? 2.00f:1.00f));  //暴击1.8倍（就这么设定的别问为啥，我是数值策划我说了算）
+            return Mathf.CeilToInt(finalDamage * (isCrit == true ? 2.00f:1.00f));  //暴击1.8倍（就这么设定的别问为啥，我是数值策划我说了算）
         }
 
         public void Init(Character attacker,
@@ -109,6 +119,10 @@ namespace GameMain
             Damage = 0;
             Direction = Vector2.zero;
             CriticalRate = 0;
+            Add = 0;
+            Pct = 0;
+            FinalAdd = 0;
+            FinalPct = 0;
             AddBuffs.Clear();
             Tags.Clear();
         }
