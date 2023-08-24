@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PopupManagerSetting
   m_EditorClassIdentifier: 
   PopupMap:
-    keyData: 00000000
+    keyData: 0000000001000000
     valueData:
     - {fileID: 4532991492852957994, guid: cfbed16bb016d8e41968c09244d240b4, type: 3}
+    - {fileID: 4532991492852957994, guid: 01d5cc0cfbdd78f418f7b1dd417903e1, type: 3}

@@ -11,8 +11,6 @@ namespace GameMain
     {
         public Character _caster;
 
-        public int damage;
-        
         // public Collider2D AttackCollider;
         
         public Transform AttackPosition;
@@ -83,6 +81,7 @@ namespace GameMain
                     // 一次攻击只能对同一个目标造成一次伤害
                     _entitiesHasAttacked.Add(character);
                 
+                    int damage = (int)(_caster.Attack);
                     GameEntry.Damage.DoDamage(_caster, 
                         character, damage, dir, 0, 
                         new List<DamageInfoTag>(),

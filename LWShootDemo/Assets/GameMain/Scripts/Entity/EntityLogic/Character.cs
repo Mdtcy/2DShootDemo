@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using Animancer;
+using Damages;
 using DefaultNamespace.GameMain.Scripts.HpBar;
 using LWShootDemo.Entities;
 using LWShootDemo.Entities.Player;
@@ -70,8 +72,17 @@ namespace GameMain
             }
         }
         
-        
+        /// <summary>
+        /// 每秒回复血量
+        /// </summary>
+        public int HpRegen => _numericComponent[NumericType.HpRegen];
+
         public Direction FaceDirection => _movementComponent.FaceDirection;
+        
+        // local
+        // tick次数 每秒tick一次
+        private int _tickTimes;
+        private float _totalElapsedSeconds;
         
         protected override void OnInit(object userData)
         {
@@ -101,7 +112,8 @@ namespace GameMain
             
             isDead = false;
             canMove = true;
-
+            _tickTimes = 0;
+            
             // numeric
             // todo 现在配置的全是int, float每管
             foreach (var initNumeric in characterProp.InitNumerics)
@@ -144,6 +156,20 @@ namespace GameMain
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
             Buff.UpdateBuff(elapseSeconds);
+
+            _totalElapsedSeconds += elapseSeconds;
+            if (_totalElapsedSeconds > (_tickTimes + 1))
+            {
+                _tickTimes++;
+                int hpRegen = Mathf.Min(HpRegen, MaxHp - CurHp);
+                if (hpRegen > 0)
+                {
+                    GameEntry.Damage.DoDamage(null, 
+                        this, (int)hpRegen, Vector3.zero, 0, 
+                        new List<DamageInfoTag>(){DamageInfoTag.directHeal},
+                        new List<AddBuffInfo>());
+                } 
+            }
         }
         
         

@@ -26,20 +26,24 @@ namespace LWShootDemo.Damages
         {
             var attacker = damageInfo.attacker;
             var defender = damageInfo.defender;
+            bool isHeal = damageInfo.IsHeal();
             
             // 如果目标已经挂了，就直接return了
             if (!defender || defender.IsDead)
             {
                 return;
             }
-            // 先走一遍所有攻击者的onHit
-            if (attacker)
-            {
-                attacker.TriggerBuff<OnHitEvent, OnHitArgs>(OnHitArgs.Create(ref damageInfo));
-            }
 
-            // 然后走一遍挨打者的beHurt
-            defender.TriggerBuff<OnBeHurtEvent, OnBeHurtArgs>(OnBeHurtArgs.Create(ref damageInfo));
+            if (!isHeal)
+            {
+                // 先走一遍所有攻击者的onHit
+                if (attacker)
+                {
+                    attacker.TriggerBuff<OnHitEvent, OnHitArgs>(OnHitArgs.Create(ref damageInfo));
+                }
+                // 然后走一遍挨打者的beHurt
+                defender.TriggerBuff<OnBeHurtEvent, OnBeHurtArgs>(OnBeHurtArgs.Create(ref damageInfo));
+            }
 
             if (defender.CanBeKilledByDamageInfo(damageInfo))
             {
@@ -55,14 +59,21 @@ namespace LWShootDemo.Damages
             }
 
             //最后根据结果处理：如果是治疗或者角色非无敌，才会对血量进行调整。
-            bool isHeal = damageInfo.IsHeal();
             int dVal = damageInfo.DamageValue(isHeal);
             if (isHeal == true || defender.ImmuneTime <= 0)
             {
                 defender.TakeDamage(dVal);
                 // todo 按游戏设计的规则跳数字，如果要有暴击，也可以丢在策划脚本函数（lua可以返回多参数）也可以随便怎么滴
-                var transform = damageInfo.defender.transform;
-                GameEntry.Popup.Spawn(transform.position, dVal, PopupType.Hurt_Normal, transform);
+                var popupPoint = damageInfo.defender.UnitBindManager.GetBindPointByKey("PopupPoint");
+                var popupPos = popupPoint ? popupPoint.transform : damageInfo.defender.transform;
+                if (isHeal)
+                {
+                    GameEntry.Popup.Spawn(popupPos.position, Mathf.Abs(dVal), PopupType.Heal_Normal, popupPos);
+                }
+                else
+                {
+                    GameEntry.Popup.Spawn(popupPos.position, Mathf.Abs(dVal), PopupType.Hurt_Normal, popupPos);
+                }
             }
 
             //伤害流程走完，添加buff

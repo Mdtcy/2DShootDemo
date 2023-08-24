@@ -29,5 +29,12 @@ namespace GameMain
         AttackPct = Attack * 10 + 3,
         AttackFinalAdd = Attack * 10 + 4,
         AttackFinalPct = Attack * 10 + 5,
+        
+        HpRegen = 1004,
+        HpRegenBase = HpRegen * 10 + 1,
+        HpRegenAdd = HpRegen * 10 + 2,
+        HpRegenPct = HpRegen * 10 + 3,
+        HpRegenFinalAdd = HpRegen * 10 + 4,
+        HpRegenFinalPct = HpRegen * 10 + 5,
     }
 }
