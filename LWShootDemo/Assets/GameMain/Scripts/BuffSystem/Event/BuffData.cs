@@ -16,6 +16,9 @@ namespace GameMain
         [HideLabel]
         [BoxGroup("操作状态")]
         public ControlState ControlState;
+        
+        [LabelText("属性")]
+        public List<AttrValue> AttrValues = new();
 
         [HideLabel] 
         [BoxGroup("BuffTag")]
