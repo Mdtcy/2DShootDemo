@@ -7,6 +7,7 @@ using LWShootDemo.Entities;
 using LWShootDemo.Entities.Player;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityGameFramework.Runtime;
 
 namespace GameMain
 {
@@ -49,33 +50,56 @@ namespace GameMain
         public Side Side => _side;
 
         public Action<int> ActOnHpChanged;
+
+        public float Speed => _numericComponent.GetAsInt(NumericType.Speed);
         
-        public float Speed => _numericComponent[NumericType.Speed];
-        
-        public float Attack => _numericComponent[NumericType.Attack];
+        public float Attack => _numericComponent.GetAsInt(NumericType.Attack);
         
         // 最大血量
-        public int MaxHp => _numericComponent[NumericType.MaxHp];
+        public int MaxHp => _numericComponent.GetAsInt(NumericType.MaxHp);
         
+        public float HpRegen => _numericComponent.GetAsFloat(NumericType.HpRegen);
+
         // 当前血量
         public int CurHp
         {
-            get => _numericComponent[NumericType.Hp];
+            get => _numericComponent.GetAsInt(NumericType.Hp);
             set
             {
-                if (!value.Equals(_numericComponent[NumericType.Hp]))
+                if (!value.Equals(CurHp))
                 {
-                    _numericComponent[NumericType.Hp] = value;
+                    _numericComponent.Set(NumericType.Hp, value);
                     ActOnHpChanged?.Invoke(value);
-                    _hpBar.UpdateProgress(value, _numericComponent[NumericType.MaxHp]);
+                    _hpBar.UpdateProgress(value, MaxHp);
                 }
             }
         }
-        
-        /// <summary>
-        /// 每秒回复血量
-        /// </summary>
-        public int HpRegen => _numericComponent[NumericType.HpRegen];
+
+        public void UpdateAttr(NumericType numericType, float value)
+        {
+            if (numericType < NumericType.Max)
+            {
+                Log.Error("UpdateAttr error, numericType < NumericType.Max");
+                return;
+            }
+
+            if (numericType > NumericType.Float)
+            {
+                float curValue = _numericComponent.GetAsFloat(numericType);
+                _numericComponent.Set(numericType, curValue + value);    
+            }
+            else
+            {
+                int curValue = _numericComponent.GetAsInt(numericType);
+                _numericComponent.Set(numericType, curValue + (int)value);
+            }
+
+        }
+
+        // /// <summary>
+        // /// 每秒回复血量
+        // /// </summary>
+        // public int HpRegen => _numericComponent[IntNumericType.HpRegen];
 
         public Direction FaceDirection => _movementComponent.FaceDirection;
         
@@ -115,26 +139,25 @@ namespace GameMain
             _tickTimes = 0;
             
             // numeric
-            // todo 现在配置的全是int, float每管
             foreach (var initNumeric in characterProp.InitNumerics)
             {
-                _numericComponent.Set(initNumeric.Type, initNumeric.Value);
+                UpdateAttr(initNumeric.Type, initNumeric.Value);
             }
             
             // buff
-            foreach (var AddbuffData in characterProp.InitBuffs)
+            foreach (var addbuffData in characterProp.InitBuffs)
             {
-                AddBuff(new AddBuffInfo(AddbuffData.Buff, 
+                AddBuff(new AddBuffInfo(addbuffData.Buff, 
                     null, 
                     gameObject,
-                    stack: AddbuffData.Stack, 
-                    duration: AddbuffData.IsPermanent? 10f: AddbuffData.Duration, 
+                    stack: addbuffData.Stack, 
+                    duration: addbuffData.IsPermanent? 10f: addbuffData.Duration, 
                     durationSetTo:true,
-                    permanent: AddbuffData.IsPermanent));
+                    permanent: addbuffData.IsPermanent));
             }
-            Assert.IsTrue(_numericComponent[NumericType.Speed] > 0);
-            Assert.IsTrue(_numericComponent[NumericType.Hp] > 0);
-            Assert.IsTrue(_numericComponent[NumericType.MaxHp] > 0);
+            Assert.IsTrue(Speed > 0, "Speed > 0");
+            Assert.IsTrue(CurHp > 0, "CurHp > 0");
+            Assert.IsTrue(MaxHp > 0, "MaxHp > 0");
 
             // _movementComponent.SetSpeed(_numericComponent[NumericType.Speed]);
             _hpBar.UpdateImmeadiatly(CurHp, MaxHp);
@@ -158,10 +181,11 @@ namespace GameMain
             Buff.UpdateBuff(elapseSeconds);
 
             _totalElapsedSeconds += elapseSeconds;
-            if (_totalElapsedSeconds > (_tickTimes + 1))
+            if (_totalElapsedSeconds > _tickTimes + 1)
             {
                 _tickTimes++;
-                int hpRegen = Mathf.Min(HpRegen, MaxHp - CurHp);
+                float hpRegen = Mathf.Min(HpRegen, MaxHp - CurHp);
+                // Log.Debug("<color=#FF0000>hpRegen:</color> " + hpRegen);
                 if (hpRegen > 0)
                 {
                     GameEntry.Damage.DoDamage(null, 

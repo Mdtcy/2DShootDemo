@@ -1,7 +1,7 @@
 namespace GameMain
 {
     [System.Serializable]
-    public class AttrValue
+    public class NumericValue
     {
         public NumericType Type;
         public float Value;

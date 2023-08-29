@@ -18,7 +18,7 @@ namespace GameMain
         public ControlState ControlState;
         
         [LabelText("属性")]
-        public List<AttrValue> AttrValues = new();
+        public List<NumericValue> AttrValues = new();
 
         [HideLabel] 
         [BoxGroup("BuffTag")]

@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using GameFramework;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.Pool;
+using UnityGameFramework.Runtime;
 
 namespace GameMain
 {
@@ -26,11 +28,6 @@ namespace GameMain
             ReferencePool.Release(args);
         }
 
-        private void Update()
-        {
-            UpdateBuff(Time.deltaTime);
-        }
-        
         public void UpdateBuff(float elapseSeconds)
         {
             var buffsToRemove = ListPool<Buff>.Get();
@@ -40,6 +37,7 @@ namespace GameMain
                 if (buff.Permanent == false)
                 {
                     buff.Duration -= elapseSeconds;
+                    // Log.Debug($"buff:{buff.Data.DefaultName} 剩余时间:{buff.Duration}");
                 }
 
                 // 更新buff的时间
@@ -70,6 +68,12 @@ namespace GameMain
                 var removeArgs = BuffRemoveArgs.Create();
                 buffToRemove.TriggerEvent<BuffRemoveEvent, BuffRemoveArgs>(removeArgs);
                 ReferencePool.Release(removeArgs);
+                
+                int modStack = -buffToRemove.Stack;
+                // 触发buffModStack事件
+                var buffModStackArgs = BuffModStackArgs.Create(modStack);
+                buffToRemove.TriggerEvent<BuffModStackEvent, BuffModStackArgs>(buffModStackArgs);
+                ReferencePool.Release(buffModStackArgs);
                     
                 // todo 重新计算属性
             }
@@ -88,16 +92,23 @@ namespace GameMain
             // todo caster是null啥情况
             List<Buff> hasOnes = GetBuffById(addBuffInfo.BuffData.ID, bCaster);
             int modStack = addBuffInfo.AddStack;
+            if(modStack < 0)
+            {
+                modStack = Mathf.Max(modStack, -hasOnes[0].Stack);
+            }
+            
             bool toRemove = false;
             Buff toAddBuff = null;
             
             if (hasOnes.Count > 0)
             {
                 hasOnes[0].Duration = (addBuffInfo.DurationSetTo == true) ? addBuffInfo.Duration : (addBuffInfo.Duration + hasOnes[0].Duration);
+                Log.Debug($"add buff:{hasOnes[0].Data.DefaultName} 剩余时间:{hasOnes[0].Duration}");
                 hasOnes[0].Stack += modStack;
                 hasOnes[0].Permanent = addBuffInfo.Permanent;
                 toAddBuff = hasOnes[0];
                 toRemove = hasOnes[0].Stack <= 0;
+                Assert.IsTrue(hasOnes[0].Stack >= 0);
             }else
             {
                 // 新建一个buff
@@ -122,6 +133,11 @@ namespace GameMain
                 toAddBuff.TriggerEvent<BuffOccurEvent, BuffOccurArgs>(buffOccurArgs);
                 ReferencePool.Release(buffOccurArgs);
             }
+            
+            // 触发buffModStack事件
+            var buffModStackArgs = BuffModStackArgs.Create(modStack);
+            toAddBuff.TriggerEvent<BuffModStackEvent, BuffModStackArgs>(buffModStackArgs);
+            ReferencePool.Release(buffModStackArgs);
          
             // todo 重新计算属性
             // AttrRecheck();

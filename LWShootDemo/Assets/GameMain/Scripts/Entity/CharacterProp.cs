@@ -12,7 +12,7 @@ namespace GameMain
         public Side Side;
         
         [Header("初始数值")]
-        public List<InitNumeric> InitNumerics = new();
+        public List<NumericValue> InitNumerics = new();
 
         [Header("初始Buff")]
         public List<AddBuffData> InitBuffs = new();
@@ -29,14 +29,6 @@ namespace GameMain
             public float Duration = 10;
 
             public bool IsPermanent = true;
-        }
-        
-        [Serializable]
-        public class InitNumeric
-        {
-            public NumericType Type;
-            
-            public int Value;
         }
     }
 }

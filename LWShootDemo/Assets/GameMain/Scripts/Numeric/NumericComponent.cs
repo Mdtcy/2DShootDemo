@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityGameFramework.Runtime;
 
 namespace GameMain
@@ -13,7 +14,7 @@ namespace GameMain
         {
             _entity = entity;
         }
-
+        
         public float GetAsFloat(NumericType numericType)
         {
             return (float)GetByKey((int)numericType) / 10000;
@@ -26,15 +27,19 @@ namespace GameMain
 
         public void Set(NumericType nt, float value)
         {
+            Assert.IsTrue(nt > NumericType.Max || nt == NumericType.Hp, $"Set只能设置大于Max的值,当前值为{nt}");
+            Assert.IsTrue(nt > NumericType.Float, "NumericType must be float type");
             this[nt] = (int) (value * 10000);
         }
 
         public void Set(NumericType nt, int value)
         {
+            Assert.IsTrue(nt > NumericType.Max || nt == NumericType.Hp, $"Set只能设置大于Max的值,当前值为{nt}");
+            Assert.IsTrue(nt < NumericType.Float, "NumericType must be int type");
             this[nt] = value;
         }
 
-        public int this[NumericType numericType]
+        private int this[NumericType numericType]
         {
             get
             {
@@ -59,7 +64,7 @@ namespace GameMain
             this.NumericDic.TryGetValue(key, out value);
             return value;
         }
-        public void UpdateNumeric(NumericType numericType)
+        private void UpdateNumeric(NumericType numericType)
         {
             if (numericType < NumericType.Max)
             {

@@ -31,8 +31,8 @@ MonoBehaviour:
     Value: 1000
   - Type: 10011
     Value: 100
-  - Type: 1003
+  - Type: 10031
     Value: 10
-  - Type: 1004
-    Value: 1
+  - Type: 50011
+    Value: 1.1
   InitBuffs: []

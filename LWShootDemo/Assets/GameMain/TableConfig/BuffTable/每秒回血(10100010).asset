@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dbdac4d7e244b96ac9016bcba20e12b, type: 3}
+  m_Name: "\u6BCF\u79D2\u56DE\u8840(10100010)"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: Events
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[GameMain.BuffEvent, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|GameMain.BuffModStackEvent, Assembly-CSharp
+    - Name: ActionsData
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[GameMain.ActionData, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 3|GameMain.ChangeAttrOnBuffModStackActData, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
+    - Name: AttrValues
+      Entry: 7
+      Data: 4|System.Collections.Generic.List`1[[GameMain.NumericValue, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 5|GameMain.NumericValue, Assembly-CSharp
+    - Name: Type
+      Entry: 3
+      Data: 50012
+    - Name: Value
+      Entry: 4
+      Data: 1.2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  id: 10100010
+  DefaultName: "\u6BCF\u79D2\u56DE\u8840"
+  Priority: 0
+  ControlState: 0
+  AttrValues: []
+  _buffBuffTag:
+    _tagList: []
+  Remark: "+1.2hp \u56DE\u590D"

@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace GameMain
 {
     public enum NumericType
@@ -29,12 +27,16 @@ namespace GameMain
         AttackPct = Attack * 10 + 3,
         AttackFinalAdd = Attack * 10 + 4,
         AttackFinalPct = Attack * 10 + 5,
+
+        // float类型的属性>50000
+        Float = 50000,
         
-        HpRegen = 1004,
+        HpRegen = 5001,
         HpRegenBase = HpRegen * 10 + 1,
         HpRegenAdd = HpRegen * 10 + 2,
         HpRegenPct = HpRegen * 10 + 3,
         HpRegenFinalAdd = HpRegen * 10 + 4,
         HpRegenFinalPct = HpRegen * 10 + 5,
+        
     }
 }
