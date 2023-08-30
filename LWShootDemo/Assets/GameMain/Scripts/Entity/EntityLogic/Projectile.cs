@@ -179,12 +179,22 @@ namespace GameMain
         }
 
         ///<summary>
-        ///判断子弹是否还能击中某个GameObject
+        ///判断子弹是否还能击中某个GameObject todo 
         ///<param name="target">目标gameObject</param>
         ///</summary>
         public bool CanHit(GameObject target)
         {
             if (_timeElapsed < _canHitAfterCreated)
+            {
+                return false;
+            }
+
+            if (target.GetComponent<AoeState>() != null)
+            {
+                return false;
+            }
+
+            if (target.GetComponent<Fruit>() != null)
             {
                 return false;
             }
@@ -281,11 +291,6 @@ namespace GameMain
                 {
                     return;
                 }
-            }
-            // 如果是AOE，直接跳过
-            else if (other.gameObject.GetComponent<AoeState>() != null)
-            {
-                return;
             }
             else
             {

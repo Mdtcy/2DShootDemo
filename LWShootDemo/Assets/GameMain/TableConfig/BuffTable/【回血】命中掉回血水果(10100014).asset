@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dbdac4d7e244b96ac9016bcba20e12b, type: 3}
+  m_Name: "\u3010\u56DE\u8840\u3011\u547D\u4E2D\u6389\u56DE\u8840\u6C34\u679C(10100014)"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: a634cb6c96bbe794ca169755935b998e, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: Events
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[GameMain.BuffEvent, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|GameMain.OnHitEvent, Assembly-CSharp
+    - Name: ActionsData
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[GameMain.ActionData, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 3|GameMain.GenerateFruitOnHit10100014ActData, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
+    - Name: FruitProp
+      Entry: 10
+      Data: 0
+    - Name: RandomPosRange
+      Entry: 4
+      Data: 2
+    - Name: Possibality
+      Entry: 4
+      Data: 0.08
+    - Name: GenerateCount
+      Entry: 3
+      Data: 2
+    - Name: RecoverPerStack
+      Entry: 3
+      Data: 6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  id: 10100014
+  DefaultName: "\u3010\u56DE\u8840\u3011\u547D\u4E2D\u6389\u56DE\u8840\u6C34\u679C"
+  Priority: 0
+  ControlState: 0
+  AttrValues: []
+  _buffBuffTag:
+    _tagList: []
+  Remark: 

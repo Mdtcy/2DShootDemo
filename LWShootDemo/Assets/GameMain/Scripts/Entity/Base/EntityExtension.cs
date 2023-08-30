@@ -76,6 +76,11 @@ namespace GameMain
             entityComponent.ShowEntity(typeof(AoeState), Constant.AssetPriority.AoeAsset, data);
         }
 
+        public static void ShowFruit(this EntityComponent entityComponent, FruitData data)
+        {
+            entityComponent.ShowEntity(typeof(Fruit), Constant.AssetPriority.FruitAsset, data);
+        }
+
         #endregion
 
         public static int GenerateSerialId(this EntityComponent entityComponent)

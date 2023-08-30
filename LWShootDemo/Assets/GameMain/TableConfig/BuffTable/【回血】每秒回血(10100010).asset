@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7dbdac4d7e244b96ac9016bcba20e12b, type: 3}
-  m_Name: "\u6BCF\u79D2\u56DE\u8840(10100010)"
+  m_Name: "\u3010\u56DE\u8840\u3011\u6BCF\u79D2\u56DE\u8840(10100010)"
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -88,7 +88,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   id: 10100010
-  DefaultName: "\u6BCF\u79D2\u56DE\u8840"
+  DefaultName: "\u3010\u56DE\u8840\u3011\u6BCF\u79D2\u56DE\u8840"
   Priority: 0
   ControlState: 0
   AttrValues: []

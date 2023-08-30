@@ -24,7 +24,7 @@ namespace GameMain.Editor
         {
             var player = (GameEntry.Procedure.CurrentProcedure as ProcedureMain).Player.Logic as Character;
             var addBuffInfo = new AddBuffInfo(BuffData, player.gameObject, player.gameObject, Stack, Duration);
-            player.Buff.AddBuff(addBuffInfo);
+            player.Buff.AddBuff(addBuffInfo, false);
         }
     }
 }

@@ -81,7 +81,7 @@ namespace GameMain
             ListPool<Buff>.Release(buffsToRemove);
         }
 
-        public void AddBuff(AddBuffInfo addBuffInfo)
+        public void AddBuff(AddBuffInfo addBuffInfo, bool forceNew)
         {
             List<GameObject> bCaster = new List<GameObject>();
             if (addBuffInfo.Caster)
@@ -89,7 +89,6 @@ namespace GameMain
                 bCaster.Add(addBuffInfo.Caster);
             }
 
-            // todo caster是null啥情况
             List<Buff> hasOnes = GetBuffById(addBuffInfo.BuffData.ID, bCaster);
             int modStack = addBuffInfo.AddStack;
             if(modStack < 0)
@@ -100,8 +99,9 @@ namespace GameMain
             bool toRemove = false;
             Buff toAddBuff = null;
             
-            if (hasOnes.Count > 0)
+            if (hasOnes.Count > 0 && forceNew == false)
             {
+                Assert.IsTrue(hasOnes.Count == 1, "目前一个buff只能有一个");
                 hasOnes[0].Duration = (addBuffInfo.DurationSetTo == true) ? addBuffInfo.Duration : (addBuffInfo.Duration + hasOnes[0].Duration);
                 Log.Debug($"add buff:{hasOnes[0].Data.DefaultName} 剩余时间:{hasOnes[0].Duration}");
                 hasOnes[0].Stack += modStack;

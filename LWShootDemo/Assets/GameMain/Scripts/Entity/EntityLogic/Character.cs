@@ -185,21 +185,27 @@ namespace GameMain
             {
                 _tickTimes++;
                 float hpRegen = Mathf.Min(HpRegen, MaxHp - CurHp);
-                // Log.Debug("<color=#FF0000>hpRegen:</color> " + hpRegen);
-                if (hpRegen > 0)
-                {
-                    GameEntry.Damage.DoDamage(null, 
-                        this, (int)hpRegen, Vector3.zero, 0, 
-                        new List<DamageInfoTag>(){DamageInfoTag.directHeal},
-                        new List<AddBuffInfo>());
-                } 
+                RecoverHp((int)hpRegen);
             }
         }
         
-        
-        public void AddBuff(AddBuffInfo addBuffInfo)
+        public void RecoverHp(int hp)
         {
-            Buff.AddBuff(addBuffInfo);
+            hp = Mathf.Min(hp, MaxHp - CurHp);
+            // Log.Debug("<color=#FF0000>hpRegen:</color> " + hpRegen);
+            if (hp > 0)
+            {
+                GameEntry.Damage.DoDamage(null, 
+                    this, (int)hp, Vector3.zero, 0, 
+                    new List<DamageInfoTag>(){DamageInfoTag.directHeal},
+                    new List<AddBuffInfo>());
+            } 
+        }
+        
+        
+        public void AddBuff(AddBuffInfo addBuffInfo, bool forceNew = false)
+        {
+            Buff.AddBuff(addBuffInfo, forceNew);
         }
 
         public void TriggerBuff<TBuffEvent, TEventActArgs>(TEventActArgs args) where TBuffEvent : BuffEvent<TEventActArgs> where TEventActArgs : BaseBuffEventActArgs
