@@ -4,5 +4,6 @@ namespace LWShootDemo.DamageNumber
     {
         Hurt_Normal,
         Heal_Normal,
+        Hurt_Bleed,
     }
 }

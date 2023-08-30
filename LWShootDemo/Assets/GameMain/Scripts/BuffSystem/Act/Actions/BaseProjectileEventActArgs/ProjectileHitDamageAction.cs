@@ -23,7 +23,7 @@ namespace GameMain
             GameEntry.Damage.DoDamage(caster, 
                 target, damage, dir, 0, 
                 new List<DamageInfoTag>(),
-                new List<AddBuffInfo>());
+                null);
         }
     }
 }

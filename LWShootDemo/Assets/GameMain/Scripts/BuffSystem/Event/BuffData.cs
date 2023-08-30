@@ -25,6 +25,8 @@ namespace GameMain
         [ShowInInspector]
         public BuffTagContainer _buffBuffTag;
 
+        public float TickTime = -1;
+
         [ValueDropdown(nameof(GetBuffEventTypes), IsUniqueList = true, DrawDropdownForListElements = false, ExcludeExistingValuesInList = true)]
         [ListDrawerSettings(HideAddButton = false, HideRemoveButton = true, Expanded = true)]
         [HideReferenceObjectPicker]

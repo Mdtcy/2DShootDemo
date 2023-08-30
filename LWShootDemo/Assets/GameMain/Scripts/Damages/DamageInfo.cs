@@ -105,7 +105,10 @@ namespace GameMain
             this.CriticalRate = baseCriticalRate;
             this.Direction = damageDirection;
             this.Tags.AddRange(tags);
-            this.AddBuffs.AddRange(addBuffs);
+            if (addBuffs != null)
+            {
+                this.AddBuffs.AddRange(addBuffs);
+            }
         }
 
         public DamageInfo()

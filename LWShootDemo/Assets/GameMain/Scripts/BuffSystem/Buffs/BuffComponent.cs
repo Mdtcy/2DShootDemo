@@ -43,14 +43,17 @@ namespace GameMain
                 // 更新buff的时间
                 buff.TimeElapsed += elapseSeconds;
 
-                // Buff每秒Tick一次
-                if (buff.TimeElapsed >= buff.Ticked + 1)
+                if (buff.Data.TickTime > 0)
                 {
-                    // 触发buffTick事件
-                    var buffTickArgs = BuffTickArgs.Create();
-                    buff.TriggerEvent<BuffTickEvent, BuffTickArgs>(buffTickArgs);
-                    ReferencePool.Release(buffTickArgs);
-                    buff.Ticked++;
+                    // BuffTick
+                    if (buff.TimeElapsed >= (buff.Ticked + 1) * buff.Data.TickTime)
+                    {
+                        // 触发buffTick事件
+                        var buffTickArgs = BuffTickArgs.Create();
+                        buff.TriggerEvent<BuffTickEvent, BuffTickArgs>(buffTickArgs);
+                        ReferencePool.Release(buffTickArgs);
+                        buff.Ticked++;
+                    }
                 }
 
                 if (buff.Duration <= 0 || buff.Stack <= 0)

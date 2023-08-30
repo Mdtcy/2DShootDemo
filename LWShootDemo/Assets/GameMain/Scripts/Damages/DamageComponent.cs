@@ -72,7 +72,14 @@ namespace LWShootDemo.Damages
                 }
                 else
                 {
-                    GameEntry.Popup.Spawn(popupPos.position, Mathf.Abs(dVal), PopupType.Hurt_Normal, popupPos);
+                    if (damageInfo.HasTag(DamageInfoTag.bleed))
+                    {
+                        GameEntry.Popup.Spawn(popupPos.position, Mathf.Abs(dVal), PopupType.Hurt_Bleed, popupPos);
+                    }
+                    else
+                    {
+                        GameEntry.Popup.Spawn(popupPos.position, Mathf.Abs(dVal), PopupType.Hurt_Normal, popupPos);
+                    }
                 }
             }
 

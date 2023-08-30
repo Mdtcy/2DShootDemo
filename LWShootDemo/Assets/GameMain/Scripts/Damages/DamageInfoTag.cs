@@ -13,6 +13,7 @@ namespace Damages
         directHeal = 10,    //直接治疗
         periodHeal = 11,    //间歇性治疗
         explosion = 12, // 爆炸伤害
+        bleed = 13, // 流血伤害
         monkeyDamage = 9999    //这个类型的伤害在目前这个demo中没有意义，只是告诉你可以随意扩展，仅仅比string严肃些。
     }
 }
