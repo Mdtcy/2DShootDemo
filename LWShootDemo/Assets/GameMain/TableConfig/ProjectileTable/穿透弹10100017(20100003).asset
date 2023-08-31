@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fcfa2e4d8e54f4aadd06b8755585685, type: 3}
-  m_Name: "\u89D2\u8272\u5B50\u5F391(20100000)"
+  m_Name: "\u7A7F\u900F\u5F3910100017(20100003)"
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 4521218356239276309, guid: 757ca74ca03ba1b419884d9775fd450a, type: 3}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -38,7 +37,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 7
       Data: 3|GameMain.ProjectileHitDamageActionData, Assembly-CSharp
@@ -52,33 +51,6 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
-      Entry: 7
-      Data: 4|GameMain.AddProjectileForceActionData, Assembly-CSharp
-    - Name: State
-      Entry: 3
-      Data: 0
-    - Name: Duration
-      Entry: 4
-      Data: 0.2
-    - Name: Intensity
-      Entry: 4
-      Data: 5
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 5|GameMain.PlayFeedBackOnProjectileHitPointActData, Assembly-CSharp
-    - Name: State
-      Entry: 3
-      Data: 0
-    - Name: PfbFeedBack
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -93,21 +65,21 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  id: 20100000
-  DefaultName: "\u89D2\u8272\u5B50\u5F391"
-  EntityProp: {fileID: 11400000, guid: b06010f438381e944806516ea5c0a019, type: 2}
+  id: 20100003
+  DefaultName: "\u7A7F\u900F\u5F3910100017"
+  EntityProp: {fileID: 11400000, guid: 84e86a188e80e3d478bc89fd41571f4f, type: 2}
   TweenData:
-    rid: 1231441075811385351
-  Tag: 2
-  Speed: 10
+    rid: 1231441643455905792
+  Tag: 0
+  Speed: 20
   hitFoe: 1
   hitAlly: 0
   CanHitAfterCreated: 0
-  sameTargetDelay: 0
+  sameTargetDelay: 0.5
   Duration: 5
-  HitTimes: 1
+  HitTimes: 999
   references:
     version: 2
     RefIds:
-    - rid: 1231441075811385351
+    - rid: 1231441643455905792
       type: {class: ForwardTweenData, ns: GameMain, asm: Assembly-CSharp}

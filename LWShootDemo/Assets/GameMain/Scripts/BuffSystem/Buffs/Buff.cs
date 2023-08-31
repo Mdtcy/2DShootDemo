@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GameFramework;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace GameMain
 {
@@ -50,7 +51,26 @@ namespace GameMain
         
         
         private Dictionary<Type, BuffEvent> _events;
-    
+
+        public Dictionary<string, object> Params = new();
+
+        public void Add(string name, object ob)
+        {
+            Params[name] = ob;
+        }
+
+        public object Get(string name)
+        {
+            if (Params.ContainsKey(name))
+            {
+                return Params[name];
+            }
+            else
+            {
+                return null;
+            }
+        }
+        
         // public Buff(BuffData buffData)
         // {
         //     _events = buffData.Events.ToDictionary(e => e.GetType());

@@ -141,6 +141,9 @@ namespace GameMain
             //如果是刚创建的，那么就要处理刚创建的事情
             if (_timeElapsed <= 0)
             {
+                var buffOnProjectileCreateArgs = BuffOnProjectileCreateArgs.Create(this);
+                _caster.TriggerBuff<BuffOnProjectileCreateEvent, BuffOnProjectileCreateArgs>(buffOnProjectileCreateArgs);
+
                 var projectileCreateArgs = OnProjectileCreateActArgs.Create();
                 TriggerEvent<OnProjectileCreateEvent, OnProjectileCreateActArgs>(projectileCreateArgs);
                 ReferencePool.Release(projectileCreateArgs);
