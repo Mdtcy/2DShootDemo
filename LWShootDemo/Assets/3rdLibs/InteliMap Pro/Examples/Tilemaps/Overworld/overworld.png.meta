@@ -3,7 +3,7 @@ guid: 21db14d869b6861469a8e2476e2d2fc7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,6 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -94,6 +95,18 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -4597,11 +4610,11 @@ TextureImporter:
       overworld_167: 51891916
       overworld_102: 1229466273
       overworld_10: 1549373376
-      overworld_194: -1269272188
+      overworld_187: -990026767
       overworld_33: -923556248
       overworld_38: 447688707
+      overworld_194: -1269272188
       overworld_8: 797239873
-      overworld_187: -990026767
       overworld_68: -1693705806
       overworld_42: 485029417
       overworld_83: -666090148
