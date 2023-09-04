@@ -19,7 +19,7 @@ namespace GameMain
         private NumericComponent _numericComponent;
         public UnitBindManager UnitBindManager;
         
-        private bool canMove = true;
+        // private bool _canMove = true;
         public AnimancerComponent CachedAnimancer { get; private set; }
         
         // 是否死亡
@@ -53,7 +53,7 @@ namespace GameMain
 
         public float Speed => _numericComponent.GetAsInt(NumericType.Speed);
         
-        public float Attack => _numericComponent.GetAsInt(NumericType.Attack);
+        public float Atk => _numericComponent.GetAsInt(NumericType.Attack);
         
         // 最大血量
         public int MaxHp => _numericComponent.GetAsInt(NumericType.MaxHp);
@@ -135,7 +135,7 @@ namespace GameMain
             _side = characterProp.Side;
             
             isDead = false;
-            canMove = true;
+            // _canMove = true;
             _tickTimes = 0;
             
             // numeric

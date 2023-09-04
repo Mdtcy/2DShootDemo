@@ -11,18 +11,11 @@ using System;
 using System.Collections;
 using Events;
 using GameMain;
-using LWShootDemo.Common;
 using LWShootDemo.Difficulty;
-using LWShootDemo.Explosions;
-using LWShootDemo.Pool;
 using LWShootDemo.Sound;
 using LWShootDemo.TimeStop;
-using LWShootDemo.UI;
-using LWShootDemo.Weapons;
-using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace LWShootDemo
 {
@@ -43,17 +36,9 @@ namespace LWShootDemo
         [SerializeField]
         private TextMeshProUGUI txtTime;
 
-        [SerializeField]
-        private UIGameOver uiGameOver;
-
-        // todo 暂时放这
-        [SerializeField]
-        public SimpleUnitySpawnPool EnemyDeathEffectPool;
-
         public SoundManager       SoundManager;
         // public CameraController   CameraController;
         public TimeStopManager    TimeStopManager;
-        public ExplosionManager   explosionManager;
         public DifficultyManager  DifficultyManager;
 
         private float gameTime;
@@ -148,23 +133,7 @@ namespace LWShootDemo
         private IEnumerator ShowGameOverDelay()
         {
             yield return new WaitForSeconds(1f);
-            uiGameOver.Show();
         }
-
-        [Button]
-        public void RestartGame()
-        {
-            SceneManager.LoadScene("Shoot");
-        }
-
-        public void BackToMenu()
-        {
-            SceneManager.LoadScene("Menu");
-        }
-
-        #endregion
-
-        #region STATIC METHODS
 
         #endregion
     }

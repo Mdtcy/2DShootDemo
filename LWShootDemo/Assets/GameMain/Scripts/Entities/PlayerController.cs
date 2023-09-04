@@ -54,11 +54,7 @@ namespace LWShootDemo.Entities
         // * local
         private SoundManager     soundManager;
         private TimeStopManager  timeStopManager;
-
-        private Camera  mainCamera;
-        private bool    canShoot = true;
-        private Vector2 movement;
-        private bool    firing;
+        
         private Vector3 mouse;
         private float   lastShotTime;
         private Weapon  curWeapon;
@@ -93,7 +89,6 @@ namespace LWShootDemo.Entities
 
         private void Start()
         {
-            mainCamera         = GameManager.Instance.MainCamera;
             soundManager     = GameManager.Instance.SoundManager;
             timeStopManager  = GameManager.Instance.TimeStopManager;
             
@@ -126,13 +121,6 @@ namespace LWShootDemo.Entities
             // }
         }
 
-        // 获取输入
-        private void GetInput()
-        {
-            movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            firing     = Input.GetMouseButton(0);
-        }
-        
         #endregion
 
         #region STATIC METHODS

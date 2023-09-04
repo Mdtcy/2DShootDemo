@@ -11,7 +11,7 @@ namespace GameMain
             {
                 if (string.IsNullOrEmpty(_labelName))
                 {
-                    _labelName = OdinTool.GetLabelText(typeof(TAct));
+                    _labelName = OdinToolUtility.GetLabelText(typeof(TAct));
                 }
                 return _labelName;
             }

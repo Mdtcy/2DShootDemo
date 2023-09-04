@@ -13,7 +13,7 @@ namespace GameMain
         [LabelText("操作列表")]
         [ValueDropdown("GetValidActionDataTypes", IsUniqueList = true, DrawDropdownForListElements = false, ExcludeExistingValuesInList = true)]
         [HideReferenceObjectPicker]
-        [ListDrawerSettings(Expanded = true)]
+        [ListDrawerSettings(ShowFoldout = true)]
         public List<ActionData> ActionsData = new();
 
         private IEnumerable<ValueDropdownItem> GetValidActionDataTypes()
@@ -31,7 +31,7 @@ namespace GameMain
                 
                 if (data.ExpectedArgumentType == ExpectedArgumentType || ExpectedArgumentType.IsSubclassOf(data.ExpectedArgumentType))
                 {
-                    var valueDropDown = new ValueDropdownItem(OdinTool.GetLabelText(type), Activator.CreateInstance(type) as ActionData);
+                    var valueDropDown = new ValueDropdownItem(OdinToolUtility.GetLabelText(type), Activator.CreateInstance(type) as ActionData);
                     result.Add(valueDropDown);   
                 }
             }

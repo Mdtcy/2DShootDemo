@@ -51,7 +51,7 @@ namespace GameMain
         public int HitTimes;
         
         [ValueDropdown(nameof(GetProjectileEventTypes), IsUniqueList = true, DrawDropdownForListElements = false, ExcludeExistingValuesInList = true)]
-        [ListDrawerSettings(HideAddButton = false, HideRemoveButton = true, Expanded = true)]
+        [ListDrawerSettings(HideAddButton = false, HideRemoveButton = true, ShowFoldout = true)]
         [HideReferenceObjectPicker]
         [Title("ProjectEvent")]
         [LabelText(" ")]
@@ -77,7 +77,7 @@ namespace GameMain
                 if (existingTypes.Contains(type))
                     continue;
 
-                var valueDropDown = new ValueDropdownItem(OdinTool.GetLabelText(type), Activator.CreateInstance(type) as ProjectileEvent);
+                var valueDropDown = new ValueDropdownItem(OdinToolUtility.GetLabelText(type), Activator.CreateInstance(type) as ProjectileEvent);
                 result.Add(valueDropDown);
             }
 

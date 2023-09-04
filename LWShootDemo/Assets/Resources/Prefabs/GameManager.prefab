@@ -1,53 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1981265105
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1981265106}
-  - component: {fileID: 1981265107}
-  m_Layer: 0
-  m_Name: DeathEffectPool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1981265106
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1981265105}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 809789500414147589}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1981265107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1981265105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 385681a7c2344dfdbea149aeb6399a3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collectionChecks: 1
-  maxPoolSize: 30
-  defaultCapacity: 100
-  prefab: {fileID: 1363150822992344476, guid: 5b702c29a3357e94caea888fc0c73e34, type: 3}
 --- !u!1 &809789500414147591
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,10 +32,7 @@ Transform:
   - {fileID: 809789500586545987}
   - {fileID: 809789501149391896}
   - {fileID: 809789502066421102}
-  - {fileID: 809789502101178729}
   - {fileID: 809789500896369297}
-  - {fileID: 809789501817863333}
-  - {fileID: 1981265106}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -103,12 +52,11 @@ MonoBehaviour:
   player: {fileID: 0}
   txtTime: {fileID: 0}
   uiGameOver: {fileID: 0}
-  EnemyDeathEffectPool: {fileID: 1981265107}
+  EnemyDeathEffectPool: {fileID: 0}
   SoundManager: {fileID: 809789500586545986}
   TimeStopManager: {fileID: 809789502066421103}
-  explosionManager: {fileID: 809789502101178730}
+  explosionManager: {fileID: 0}
   DifficultyManager: {fileID: 809789500896369296}
-  ProjectileManager: {fileID: 809789501817863334}
 --- !u!1 &809789500586545996
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,54 +106,6 @@ MonoBehaviour:
   musicAudioSource: {fileID: 809789501035758960}
   sfxAudioSource: {fileID: 809789502046249603}
   soundManagerConfig: {fileID: 11400000, guid: 1caa30eac9589d44799f26b27f040220, type: 2}
---- !u!1 &809789500718614234
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 809789500718614233}
-  - component: {fileID: 809789500718614232}
-  m_Layer: 0
-  m_Name: ProjectilePool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &809789500718614233
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809789500718614234}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 809789501817863333}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &809789500718614232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809789500718614234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 385681a7c2344dfdbea149aeb6399a3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collectionChecks: 1
-  maxPoolSize: 50
-  defaultCapacity: 100
-  prefab: {fileID: 0}
 --- !u!1 &809789500896369298
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,7 +136,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 809789500414147589}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &809789500896369296
 MonoBehaviour:
@@ -252,54 +152,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   txtDifficulty: {fileID: 0}
   config: {fileID: 11400000, guid: 09eb6318834c7de4283d938b73acdc49, type: 2}
---- !u!1 &809789500954237131
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 809789500954237129}
-  - component: {fileID: 809789500954237130}
-  m_Layer: 0
-  m_Name: ExplosionPool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &809789500954237129
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809789500954237131}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 809789502101178729}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &809789500954237130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809789500954237131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 385681a7c2344dfdbea149aeb6399a3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collectionChecks: 1
-  maxPoolSize: 50
-  defaultCapacity: 100
-  prefab: {fileID: 3697119890374960320, guid: 4fa8b9ab3cc20f84e88cb824a7d1e2cc, type: 3}
 --- !u!1 &809789501035758962
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,54 +336,6 @@ MonoBehaviour:
   - Prefab: {fileID: 1617456840222586617, guid: 289d08f98aadc3c4f9ef7f72ae86d814,
       type: 3}
     SpawnPoint: 8
---- !u!1 &809789501817863335
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 809789501817863333}
-  - component: {fileID: 809789501817863334}
-  m_Layer: 0
-  m_Name: ProjectileManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &809789501817863333
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809789501817863335}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 809789500718614233}
-  m_Father: {fileID: 809789500414147589}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &809789501817863334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809789501817863335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e0dc324735d4502a3df5b498bdd4666, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileLifeTime: 2
-  _pfbProjectile: {fileID: 1430046345506342793, guid: 154db214c14325443aecc4b4db5c9792,
-    type: 3}
 --- !u!1 &809789502046249612
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,50 +508,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b694edf59b24d5da70eab4a5adfdd12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &809789502101178731
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 809789502101178729}
-  - component: {fileID: 809789502101178730}
-  m_Layer: 0
-  m_Name: ExplosionManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &809789502101178729
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809789502101178731}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 809789500954237129}
-  m_Father: {fileID: 809789500414147589}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &809789502101178730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809789502101178731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3503db34955b4fa2a15f3f4ad5d719d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionPool: {fileID: 809789500954237130}
-  lifeTime: 1

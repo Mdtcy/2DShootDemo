@@ -32,10 +32,6 @@ namespace LWShootDemo.Weapons
         [SerializeField]
         private int damage = 1;
 
-        // 暴击概率
-        [SerializeField]
-        private float critChance = 0.2f;
-
         [SerializeField]
         private Rigidbody2D rb2D;
 

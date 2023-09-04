@@ -120,18 +120,18 @@ namespace LWShootDemo.Entities.Enemy
         private void SpawnEnemy(int spawnPoint)
         {
             throw new GameFrameworkException("未实现");
-            while (spawnPoint > 0)
-            {
-                var enemySpawnSetting = _enemySpawnSettings[Random.Range(0, _enemySpawnSettings.Count)];
-                spawnPoint -= enemySpawnSetting.SpawnPoint;
-
-                // todo 
-                var enemy = CreateEnemy(enemySpawnSetting.Prefab.gameObject);
-                enemy.transform.position = GetRandomSpawnPosition();
-
-                // var enemyController = enemy.GetComponent<EnemyController>();
-                // enemys.Add(enemyController);
-            }
+            // while (spawnPoint > 0)
+            // {
+            //     var enemySpawnSetting = _enemySpawnSettings[Random.Range(0, _enemySpawnSettings.Count)];
+            //     spawnPoint -= enemySpawnSetting.SpawnPoint;
+            //
+            //     // todo 
+            //     var enemy = CreateEnemy(enemySpawnSetting.Prefab.gameObject);
+            //     enemy.transform.position = GetRandomSpawnPosition();
+            //
+            //     // var enemyController = enemy.GetComponent<EnemyController>();
+            //     // enemys.Add(enemyController);
+            // }
         }
         
         private GameObject CreateEnemy(GameObject pfbEnemy)

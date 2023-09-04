@@ -74,7 +74,7 @@ namespace LWShootDemo.BuffSystem.Tags
             {
                 string assetPath = AssetDatabase.GUIDToAssetPath(guid);
                 ScriptableObject asset = AssetDatabase.LoadAssetAtPath<ScriptableObject>(assetPath);
-                List<ScriptableObject> objs = AssetDataBaseExtension.GetSubObjectOfType<T>(assetPath);
+                List<ScriptableObject> objs = AssetDataBaseUtility.GetSubObjectOfType<T>(assetPath);
                 foreach(T tag in objs)
                 {
                     yield return new ValueDropdownItem<T>(tag.name, tag);

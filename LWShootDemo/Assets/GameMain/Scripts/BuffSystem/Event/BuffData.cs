@@ -28,7 +28,7 @@ namespace GameMain
         public float TickTime = -1;
 
         [ValueDropdown(nameof(GetBuffEventTypes), IsUniqueList = true, DrawDropdownForListElements = false, ExcludeExistingValuesInList = true)]
-        [ListDrawerSettings(HideAddButton = false, HideRemoveButton = true, Expanded = true)]
+        [ListDrawerSettings(HideAddButton = false, HideRemoveButton = true, ShowFoldout = true)]
         [HideReferenceObjectPicker]
         [Title("BuffEvent")]
         [LabelText(" ")]
@@ -58,7 +58,7 @@ namespace GameMain
                 if (existingTypes.Contains(type))
                     continue;
 
-                var valueDropDown = new ValueDropdownItem(OdinTool.GetLabelText(type), Activator.CreateInstance(type) as BuffEvent);
+                var valueDropDown = new ValueDropdownItem(OdinToolUtility.GetLabelText(type), Activator.CreateInstance(type) as BuffEvent);
                 result.Add(valueDropDown);
             }
 

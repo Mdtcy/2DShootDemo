@@ -8,7 +8,7 @@ namespace GameMain
         protected override void ExecuteInternal(OnAoeCreateArgs args)
         {
             var caster = args.Aoe.Caster;
-            float atk = caster.Attack;
+            float atk = caster.Atk;
             float damage = atk * Data.AtkPercent * (int)args.Aoe.Get("粘性爆炸层数");
 
             var side = caster.Side;

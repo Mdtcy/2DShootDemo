@@ -10,6 +10,6 @@ public class BuffSystemSetting : ScriptableObject
     
     public static BuffSystemSetting Inst()
     {
-        return AssetDataBaseExtension.FindAssetByType<BuffSystemSetting>();
+        return AssetDataBaseUtility.FindAssetByType<BuffSystemSetting>();
     }
 }

@@ -10,7 +10,7 @@ namespace GameMain
 
             var bindBuff = args.Aoe.RelatedBuff;
             float percent = bindBuff == null ? Data.BasePercent : Data.BasePercent + (bindBuff.Stack - 1) * Data.PercentPerStack;
-            float damage = caster.Attack * percent;
+            float damage = caster.Atk * percent;
 
             var side = caster.Side;
             foreach (var character in args.Aoe.ChaInAoe)

@@ -11,7 +11,7 @@ namespace GameMain
         protected override void ExecuteInternal(BuffTickArgs args)
         {
             var caster = args.Buff.Caster.GetComponent<Character>();
-            int damage = (int) (caster.Attack * Data.DamageAtkPercent);
+            int damage = (int) (caster.Atk * Data.DamageAtkPercent);
             GameEntry.Damage.DoDamage(caster, 
                 args.Buff.Carrier.GetComponent<Character>(), damage, Vector3.zero, 0, 
                 Data.DamageInfoTags,
