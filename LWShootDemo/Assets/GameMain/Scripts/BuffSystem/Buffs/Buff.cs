@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using GameFramework;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace GameMain
 {
@@ -70,11 +68,6 @@ namespace GameMain
                 return null;
             }
         }
-        
-        // public Buff(BuffData buffData)
-        // {
-        //     _events = buffData.Events.ToDictionary(e => e.GetType());
-        // }
 
         public Buff(BuffData buffData,
             GameObject caster,

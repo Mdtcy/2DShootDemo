@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dbdac4d7e244b96ac9016bcba20e12b, type: 3}
+  m_Name: "\u51FB\u4E2D\u7C98\u6027\u70B8\u5F39(10100018)"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: ecff0ba88b013f44684dcc73edfc9e3a, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: Events
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[GameMain.BuffEvent, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|GameMain.BuffOnProjectileHitEvent, Assembly-CSharp
+    - Name: ActionsData
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[GameMain.ActionData, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 3|GameMain.AddBoomOnProjectileHitActData, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
+    - Name: BasePossibility
+      Entry: 4
+      Data: 0.04
+    - Name: PossibilityPerStack
+      Entry: 4
+      Data: 0.04
+    - Name: BoomBuff
+      Entry: 10
+      Data: 0
+    - Name: DelayBoomDuration
+      Entry: 4
+      Data: 1.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  id: 10100018
+  DefaultName: "\u51FB\u4E2D\u7C98\u6027\u70B8\u5F39"
+  Priority: 0
+  ControlState: 0
+  AttrValues: []
+  _buffBuffTag:
+    _tagList: []
+  TickTime: -1
+  Remark: "\u51FB\u4E2D\u65F6\uFF1A8% \u51E0\u7387\u7ED9\u654C\u4EBA\u9644\u4E0A\u70B8\u5F39\uFF0C\u6BCF\u4E2A\u70B8\u5F39\u7206\u70B8\u9020\u6210
+    200% \u4F24\u5BB3 +4%\u6982\u7387"

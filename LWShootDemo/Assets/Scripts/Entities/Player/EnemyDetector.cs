@@ -1,7 +1,5 @@
 using System.Linq;
 using GameMain;
-using LWShootDemo.Entities.Enemy;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace LWShootDemo.Entities.Player

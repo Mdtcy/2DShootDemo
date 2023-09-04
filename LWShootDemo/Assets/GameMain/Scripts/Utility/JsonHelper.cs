@@ -1,7 +1,6 @@
 ﻿using GameFramework;
 using System;
 using Newtonsoft.Json;
-
 namespace GameMain
 {
     /// <summary>

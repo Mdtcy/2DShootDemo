@@ -44,6 +44,30 @@ namespace GameMain
         public List<Character> ChaInAoe => _chaInAoe;
         public List<Projectile> ProjectileInAoe => _projectileInAoe;
 
+        public Dictionary<string, object> Params;
+
+        public void Add(string name, object ob)
+        {
+            Params[name] = ob;
+        }
+
+        public object Get(string name)
+        {
+            if (Params == null)
+            {
+                return null;
+            }
+
+            if (Params.ContainsKey(name))
+            {
+                return Params[name];
+            }
+            else
+            {
+                return null;
+            }
+        }
+        
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
@@ -58,6 +82,7 @@ namespace GameMain
             _caster = data.Caster;
             _tickCount = 0;
             _timeElapsed = 0;
+            Params = data.Params;
             SetRadius(data.Radius);
             
             // todo 优化
