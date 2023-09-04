@@ -9,7 +9,7 @@ namespace Rowlan.Tools.QuickNav
         /// Menu. In case you need a shortcut, use eg "%h" like ".../Quick Nav %h"
         /// </summary>
         public const string MENU = "Tools/Rowlan/QuickNav";
-        public const string SETTINGS_FOLDER = "Assets/Rowlan/Tools/QuickNav Data";
+        public const string SETTINGS_FOLDER = "Assets/3rdlibs/Rowlan/Tools/QuickNav Data";
         public const string SETTINGS_FILENAME = "Preferences.asset";
     }
 }
