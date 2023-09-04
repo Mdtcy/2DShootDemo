@@ -14,22 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   historyItemsMax: 20
   history:
-  - context: 1
+  - context: 0
     title: 
-    unityObject: {fileID: 102900000, guid: 8ac528d0709adbb49a51e6b8ad728432, type: 3}
-    objectGuid: GlobalObjectId_V1-1-8ac528d0709adbb49a51e6b8ad728432-102900000-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 102900000, guid: 4768793e18e4dee43a0c0ffb8e2cdbdd, type: 3}
-    objectGuid: GlobalObjectId_V1-1-4768793e18e4dee43a0c0ffb8e2cdbdd-102900000-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 102900000, guid: 657b2a8dd4456a140ad702b6e39fe0b6, type: 3}
-    objectGuid: GlobalObjectId_V1-1-657b2a8dd4456a140ad702b6e39fe0b6-102900000-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 102900000, guid: 798fcc03edef943c38723288f622f765, type: 3}
-    objectGuid: GlobalObjectId_V1-1-798fcc03edef943c38723288f622f765-102900000-0
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c80d88989c10f8e40a99804df627cbd8-878137296-0
   favorites:
   - context: 1
     title: 
