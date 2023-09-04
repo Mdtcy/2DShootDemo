@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6db90f1c0c896d48bdb75d58952248a, type: 3}
+  m_Name: Preferences
+  m_EditorClassIdentifier: 
+  historyItemsMax: 20
+  history:
+  - context: 1
+    title: 
+    unityObject: {fileID: 102900000, guid: e49c7cd6f6e70b347b6993c7365a99e0, type: 3}
+    objectGuid: GlobalObjectId_V1-1-e49c7cd6f6e70b347b6993c7365a99e0-102900000-0
+  - context: 1
+    title: 
+    unityObject: {fileID: 102900000, guid: 236a3400da942da439ce4aa9de5864b2, type: 3}
+    objectGuid: GlobalObjectId_V1-1-236a3400da942da439ce4aa9de5864b2-102900000-0
+  - context: 1
+    title: 
+    unityObject: {fileID: 102900000, guid: 68ef7ebc3299f4b41814c89029f2fd63, type: 3}
+    objectGuid: GlobalObjectId_V1-1-68ef7ebc3299f4b41814c89029f2fd63-102900000-0
+  - context: 1
+    title: 
+    unityObject: {fileID: 102900000, guid: 43413f11ac3727840af03bc91b638956, type: 3}
+    objectGuid: GlobalObjectId_V1-1-43413f11ac3727840af03bc91b638956-102900000-0
+  - context: 1
+    title: 
+    unityObject: {fileID: 102900000, guid: 3cb2c36010092b44a8f7855ab974c052, type: 3}
+    objectGuid: GlobalObjectId_V1-1-3cb2c36010092b44a8f7855ab974c052-102900000-0
+  - context: 1
+    title: 
+    unityObject: {fileID: 102900000, guid: 45c2e04073d60be46aaa70504e1a61da, type: 3}
+    objectGuid: GlobalObjectId_V1-1-45c2e04073d60be46aaa70504e1a61da-102900000-0
+  favorites:
+  - context: 1
+    title: 
+    unityObject: {fileID: 1547550358056355218, guid: 74a6af754b91ab241a0fec2b93a05730,
+      type: 3}
+    objectGuid: GlobalObjectId_V1-1-74a6af754b91ab241a0fec2b93a05730-1547550358056355218-0
+  - context: 1
+    title: 
+    unityObject: {fileID: 8184216371984781616, guid: 154db214c14325443aecc4b4db5c9792,
+      type: 3}
+    objectGuid: GlobalObjectId_V1-1-154db214c14325443aecc4b4db5c9792-8184216371984781616-0
+  - context: 1
+    title: 
+    unityObject: {fileID: 7650056835086411204, guid: 20277d90bd5254a4b97354a33e2103b2,
+      type: 3}
+    objectGuid: GlobalObjectId_V1-1-20277d90bd5254a4b97354a33e2103b2-7650056835086411204-0
