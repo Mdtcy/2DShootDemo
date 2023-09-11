@@ -7,7 +7,6 @@
  */
 
 #pragma warning disable 0649
-using Events;
 using GameMain;
 using LWShootDemo.Sound;
 using LWShootDemo.TimeStop;
@@ -144,8 +143,6 @@ namespace LWShootDemo.Entities
 
             // 尸体
             Instantiate(pfbCorpse, transform.position, transform.rotation);
-
-            PlayDeathEvent.Trigger();
 
             Destroy(gameObject);
         }

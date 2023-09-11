@@ -32,7 +32,6 @@ Transform:
   - {fileID: 809789500586545987}
   - {fileID: 809789501149391896}
   - {fileID: 809789502066421102}
-  - {fileID: 809789500896369297}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51,12 +50,9 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   player: {fileID: 0}
   txtTime: {fileID: 0}
-  uiGameOver: {fileID: 0}
-  EnemyDeathEffectPool: {fileID: 0}
   SoundManager: {fileID: 809789500586545986}
   TimeStopManager: {fileID: 809789502066421103}
-  explosionManager: {fileID: 0}
-  DifficultyManager: {fileID: 809789500896369296}
+  DifficultyManager: {fileID: 0}
 --- !u!1 &809789500586545996
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,52 +102,6 @@ MonoBehaviour:
   musicAudioSource: {fileID: 809789501035758960}
   sfxAudioSource: {fileID: 809789502046249603}
   soundManagerConfig: {fileID: 11400000, guid: 1caa30eac9589d44799f26b27f040220, type: 2}
---- !u!1 &809789500896369298
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 809789500896369297}
-  - component: {fileID: 809789500896369296}
-  m_Layer: 0
-  m_Name: DifficultyManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &809789500896369297
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809789500896369298}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 809789500414147589}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &809789500896369296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809789500896369298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95ceb68acba94c1c8399e4e0073f4fb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  txtDifficulty: {fileID: 0}
-  config: {fileID: 11400000, guid: 09eb6318834c7de4283d938b73acdc49, type: 2}
 --- !u!1 &809789501035758962
 GameObject:
   m_ObjectHideFlags: 0

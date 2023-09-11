@@ -72,7 +72,7 @@ namespace LWShootDemo.Entities.Enemy
         private void Start()
         {
             player            = GameManager.Instance.Player;
-            difficultyManager = GameManager.Instance.DifficultyManager;
+            // difficultyManager = GameManager.Instance.DifficultyManager;
             _enemyObjectPool = GameEntry.ObjectPool.CreateSingleSpawnObjectPool<EnemyObject>("Enemy", 50);
         }
 

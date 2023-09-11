@@ -1,15 +1,13 @@
 /**
- * @author BoLuo
+ * @author BoLuo * @modify date 2023年3月9日
  * @email [ tktetb@163.com ]
  * @create date  2023年3月9日
- * @modify date 2023年3月9日
  * @desc [游戏管理器]
  */
 
 #pragma warning disable 0649
 using System;
 using System.Collections;
-using Events;
 using GameMain;
 using LWShootDemo.Difficulty;
 using LWShootDemo.Sound;
@@ -32,14 +30,14 @@ namespace LWShootDemo
 
         [SerializeField]
         private Transform player;
-
-        [SerializeField]
-        private TextMeshProUGUI txtTime;
+        //
+        // [SerializeField]
+        // private TextMeshProUGUI txtTime;
 
         public SoundManager       SoundManager;
         // public CameraController   CameraController;
         public TimeStopManager    TimeStopManager;
-        public DifficultyManager  DifficultyManager;
+        // public DifficultyManager  DifficultyManager;
 
         private float gameTime;
         private bool  isGameOver;
@@ -97,21 +95,9 @@ namespace LWShootDemo
         private void Start()
         {
             SoundManager.PlayMusic(SoundType.BattleMusic);
-            PlayDeathEvent.Register(OnPlayerDeath);
-            EnemyDeathEvent.Register(OnEnemyDeath);
         }
-
-        private void OnEnemyDeath()
-        {
-            killCount++;
-        }
-
-        private void OnDestroy()
-        {
-            PlayDeathEvent.Unregister(OnPlayerDeath);
-            EnemyDeathEvent.Unregister(OnEnemyDeath);
-        }
-
+        
+        
         private void Update()
         {
             if (isGameOver)
@@ -121,15 +107,9 @@ namespace LWShootDemo
 
             gameTime += Time.deltaTime;
             TimeSpan timeSpan = TimeSpan.FromSeconds(gameTime);
-            txtTime.text = $"{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}";
+            // txtTime.text = $"{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}";
         }
-
-        private void OnPlayerDeath()
-        {
-            StartCoroutine(ShowGameOverDelay());
-            isGameOver = true;
-        }
-
+        
         private IEnumerator ShowGameOverDelay()
         {
             yield return new WaitForSeconds(1f);
