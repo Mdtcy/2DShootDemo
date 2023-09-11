@@ -42,7 +42,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Layer 1
+  - name: Bg
     uniqueID: 2425651459
     locked: 0
   - name: Layer 2
@@ -56,4 +56,7 @@ TagManager:
     locked: 0
   - name: Projectile
     uniqueID: 2295778307
+    locked: 0
+  - name: WorldUI
+    uniqueID: 3538415195
     locked: 0

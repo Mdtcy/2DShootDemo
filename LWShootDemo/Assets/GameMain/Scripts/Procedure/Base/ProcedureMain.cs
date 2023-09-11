@@ -1,6 +1,8 @@
+using System.Collections;
+using BerserkPixel.Tilemap_Generator;
+using Cysharp.Threading.Tasks;
 using GameFramework.Fsm;
 using GameFramework.Procedure;
-using LWShootDemo.Entities;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
@@ -17,9 +19,13 @@ namespace GameMain
             base.OnEnter(procedureOwner);
             Log.Debug("Enter ProcedureMain.");
             
+            _levelTileGenerators = Object.FindObjectsOfType<LevelTileGenerator>();
+            _levelObjectGenerators = Object.FindObjectsOfType<LevelObjectGenerator>();
+            _mapObjectPlacer = Object.FindObjectOfType<MapObjectPlacer>();
+            GenerateLevel().Forget();
             GameEntry.FeedBack.Init();
             // GameEntry.Projectile.Init();
-            
+
             _playerEntityId = GameEntry.Entity.GenerateSerialId();
             GameEntry.Entity.ShowPlayer(new PlayerData(_playerEntityId, 10300000)
             {
@@ -51,6 +57,38 @@ namespace GameMain
                     PropID = 10200001,
                 });
             }
+
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                GenerateLevel().Forget();
+            }
+        }
+        
+        private MapObjectPlacer _mapObjectPlacer;
+        private LevelTileGenerator[] _levelTileGenerators;
+        private LevelObjectGenerator[] _levelObjectGenerators;
+
+        private async UniTask GenerateLevel()
+        {
+            await UniTask.Yield(PlayerLoopTiming.PostLateUpdate);
+
+
+            if (_mapObjectPlacer != null) _mapObjectPlacer.ClearObjects();
+
+            if (_levelTileGenerators != null && _levelTileGenerators.Length > 0)
+                foreach (var levelTileGenerator in _levelTileGenerators)
+                {
+                    foreach (var layer in levelTileGenerator.GetActiveLayers()) layer.SetRandomSeed();
+                    levelTileGenerator.GenerateLayers();
+                }
+            else if (_levelObjectGenerators != null)
+                foreach (var levelObjectGenerator in _levelObjectGenerators)
+                {
+                    foreach (var layer in levelObjectGenerator.GetActiveLayers()) layer.SetRandomSeed();
+                    levelObjectGenerator.GenerateLayers();
+                }
+            
+            if (_mapObjectPlacer != null) _mapObjectPlacer.PlaceObjects();
         }
     }
 }

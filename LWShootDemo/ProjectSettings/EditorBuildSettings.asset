@@ -11,4 +11,24 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GameMain/Scenes/Shoot.unity
     guid: 5aeebf89043f8944cb8ce35aff1e5232
+  - enabled: 0
+    path: Assets/3rdLibs/BerserkPixel/Avesta Tilemap Generator/Samples/Scenes/Bomberman
+      Scene.unity
+    guid: f36e0f62b1b994a1fb6ec46db85704b6
+  - enabled: 0
+    path: Assets/3rdLibs/BerserkPixel/Avesta Tilemap Generator/Samples/Scenes/Demo
+      3D Scene.unity
+    guid: 5fd71b7229b8495479364c4bd8703a47
+  - enabled: 0
+    path: Assets/3rdLibs/BerserkPixel/Avesta Tilemap Generator/Samples/Scenes/Demo
+      Scene.unity
+    guid: 1be7828038c4147d5a732164f0ff20c3
+  - enabled: 0
+    path: Assets/3rdLibs/BerserkPixel/Avesta Tilemap Generator/Samples/Scenes/Destructible
+      Scene.unity
+    guid: cc323658cf1aa40f7a8b20949ccdebda
+  - enabled: 0
+    path: Assets/3rdLibs/BerserkPixel/Avesta Tilemap Generator/Samples/Scenes/Occlusion
+      Scene.unity
+    guid: 31932c2abe46cd64b80e6109f76ffdec
   m_configObjects: {}

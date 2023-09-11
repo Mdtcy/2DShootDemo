@@ -5090,7 +5090,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -756552101
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &4789943819774005663
@@ -5714,8 +5714,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1953750253
-  m_SortingLayer: 0
+  m_SortingLayerID: -1595645785
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: -2052215185, guid: dc8e5ce165de48d4c8553f59178d2cc1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
