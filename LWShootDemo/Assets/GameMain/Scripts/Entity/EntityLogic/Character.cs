@@ -14,7 +14,7 @@ namespace GameMain
     public class Character : EntityLogicBase
     {
         public BuffComponent Buff;
-        private MovementComponent _movementComponent;
+        protected MovementComponent _movementComponent;
         private CharacterFeedBackComponent _characterFeedBackComponent;
         private NumericComponent _numericComponent;
         public UnitBindManager UnitBindManager;

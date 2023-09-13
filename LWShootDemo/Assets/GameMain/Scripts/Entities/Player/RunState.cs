@@ -32,19 +32,19 @@ namespace LWShootDemo.Entities.Player
             
             // 获取输入
             var movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
+            
             if (movement == Vector2.zero)
             {
                 fsm.RequestStateChange(PlayerFsm.PlayerState.Idle);
-
-                if(Context.Character.FaceDirection == Direction.Right)
-                    _weapon.RotateTo(Context.Character.transform.right);
-                else
-                    _weapon.RotateTo(-Context.Character.transform.right);
+                //
+                // if(Context.Character.FaceDirection == Direction.Right)
+                //     _weapon.RotateTo(Context.Character.transform.right);
+                // else
+                //     _weapon.RotateTo(-Context.Character.transform.right);
             }
             else
             {
-                _weapon.RotateTo(movement);
+                // _weapon.RotateTo(movement);
             }
             
             // 移动

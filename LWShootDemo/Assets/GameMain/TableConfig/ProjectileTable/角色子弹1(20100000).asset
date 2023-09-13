@@ -38,7 +38,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 2
     - Name: 
       Entry: 7
       Data: 3|GameMain.ProjectileHitDamageActionData, Assembly-CSharp
@@ -53,22 +53,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 4|GameMain.AddProjectileForceActionData, Assembly-CSharp
-    - Name: State
-      Entry: 3
-      Data: 0
-    - Name: Duration
-      Entry: 4
-      Data: 0.2
-    - Name: Intensity
-      Entry: 4
-      Data: 5
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 5|GameMain.PlayFeedBackOnProjectileHitPointActData, Assembly-CSharp
+      Data: 4|GameMain.PlayFeedBackOnProjectileHitPointActData, Assembly-CSharp
     - Name: State
       Entry: 3
       Data: 0
@@ -99,7 +84,7 @@ MonoBehaviour:
   TweenData:
     rid: 1231441075811385351
   Tag: 2
-  Speed: 10
+  Speed: 25
   hitFoe: 1
   hitAlly: 0
   CanHitAfterCreated: 0

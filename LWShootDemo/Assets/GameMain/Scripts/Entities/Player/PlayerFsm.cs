@@ -23,7 +23,7 @@ namespace LWShootDemo.Entities.Player
         {
             stateMachine = new StateMachine<PlayerState>(false);
             stateMachine.AddState(PlayerState.Idle, new IdleSate(false, playerFsmContext));
-            stateMachine.AddState(PlayerState.Shoot, new ShootState(false, playerFsmContext));
+            // stateMachine.AddState(PlayerState.Shoot, new ShootState(false, playerFsmContext));
             stateMachine.AddState(PlayerState.Run, new RunState(false, playerFsmContext));
             
             stateMachine.SetStartState(PlayerState.Idle);

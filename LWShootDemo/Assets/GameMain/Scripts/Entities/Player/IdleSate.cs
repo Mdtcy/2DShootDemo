@@ -29,11 +29,11 @@ namespace LWShootDemo.Entities.Player
             {
                 fsm.RequestStateChange(PlayerFsm.PlayerState.Run);
             }
-            else if (elapsedTime >= Context.FireRate && 
-                     Context.EnemyDetector.GetNearestEnemy() != null)
-            {
-                fsm.RequestStateChange(PlayerFsm.PlayerState.Shoot);
-            }
+            // else if (elapsedTime >= Context.FireRate && 
+            //          Context.EnemyDetector.GetNearestEnemy() != null)
+            // {
+            //     fsm.RequestStateChange(PlayerFsm.PlayerState.Shoot);
+            // }
         }
 
         public override void OnExit()
