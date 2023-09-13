@@ -43,18 +43,42 @@ namespace GameMain.Scripts.Utility
             return null; // 如果没有找到合适的位置
         }
 
-        // public static bool IsInsideAnyCompositeCollider(Vector3 pos)
-        // {
-        //     var compositeCollider2Ds = Object.FindObjectsOfType<CompositeCollider2D>();
-        //     foreach (var compositeCollider in compositeCollider2Ds)
-        //     {
-        //         if (compositeCollider.OverlapPoint(pos))
-        //         {
-        //             return true;
-        //         }
-        //     }
-        //
-        //     return false;
-        // }
+        public static Vector3? FindPositionWithoutColliderNearPosition(Tilemap tilemap, 
+            Vector3 position,
+            float radius,
+            float checkRadius, 
+            LayerMask collisionLayer,
+            int maxAttempts = 1000)
+        {
+            int attempts = 0;
+            BoundsInt tileBounds = tilemap.cellBounds; // Tilemap边界
+            while (attempts < maxAttempts)
+            {
+                // 在圆内随机一个位置
+                Vector2 randomDirection = Random.insideUnitCircle;
+                Vector3 randomPositionWithinRadius = position + (Vector3)(randomDirection * radius);
+
+                // 转换为Tilemap的坐标
+                Vector3Int tilePosition = tilemap.WorldToCell(randomPositionWithinRadius);
+                Vector3 worldPos = tilemap.GetCellCenterWorld(tilePosition);
+
+                // 确保该位置在Tilemap的边界内
+                if (!tileBounds.Contains(tilePosition))
+                {
+                    attempts++;
+                    continue;
+                }
+                
+                if (!Physics2D.OverlapCircle(worldPos, checkRadius, collisionLayer))
+                {
+                    Debug.Log($"经过{attempts}次查找后找到了正确的位置{tilePosition}");
+                    return worldPos; // 返回找到的位置
+                }
+
+                attempts++;
+            }
+    
+            return null; // 如果没有找到合适的位置
+        }
     }
 }

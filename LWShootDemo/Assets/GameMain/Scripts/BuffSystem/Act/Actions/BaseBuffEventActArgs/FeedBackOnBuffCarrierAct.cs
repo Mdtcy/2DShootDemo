@@ -8,8 +8,8 @@ namespace GameMain
     {
         protected override void ExecuteInternal(BaseBuffEventActArgs args)
         {
-            var playAtPosData = PlayAtPosFeedBackData.Create();
-            playAtPosData.Pos = args.Buff.Carrier.transform.position + (Vector3)Data.Offset;
+            var playAtPosData = PlayAtPosFeedBackData.Create(args.Buff.Carrier.transform.position + (Vector3)Data.Offset,
+                1);
             GameEntry.FeedBack.PlayAtPos(Data.PfbFeedBack, playAtPosData);
             playAtPosData.ReleaseToPool();
         }

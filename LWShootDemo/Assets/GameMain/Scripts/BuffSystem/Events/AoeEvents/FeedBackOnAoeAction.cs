@@ -8,9 +8,10 @@ namespace GameMain
     {
         protected override void ExecuteInternal(BaseAoeEventActArgs args)
         {
-            var playAtPosData = PlayAtPosFeedBackData.Create();
-            playAtPosData.Pos = args.Aoe.transform.position + (Vector3)Data.Offset;
-            playAtPosData.Scale = Data.UseAoeRadiusAsScale ? args.Aoe.Radius * 2 : 1;
+            var pos = args.Aoe.transform.position + (Vector3)Data.Offset;
+            var scale = Data.UseAoeRadiusAsScale ? args.Aoe.Radius * 2 : 1;
+            
+            var playAtPosData = PlayAtPosFeedBackData.Create(pos, scale);
             GameEntry.FeedBack.PlayAtPos(Data.PfbFeedBack, playAtPosData);
             playAtPosData.ReleaseToPool();
         }

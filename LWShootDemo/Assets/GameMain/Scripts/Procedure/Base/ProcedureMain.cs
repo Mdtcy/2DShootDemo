@@ -16,6 +16,8 @@ namespace GameMain
     public class ProcedureMain : ProcedureBase
     {
         public Entity Player => GameEntry.Entity.GetEntity(_playerEntityId);
+        // todo 优化
+        public Tilemap GroundTileMap => GameObject.Find("Ground").GetComponent<Tilemap>();
         
         private int _playerEntityId;
 
@@ -35,8 +37,7 @@ namespace GameMain
             // GameEntry.Projectile.Init();
 
             // 获取TileMap上一个随机没有碰撞体的位置
-            var tilemap = GameObject.Find("Ground").GetComponent<Tilemap>();
-            var pos = TilemapUtility.FindPositionWithoutCollider(tilemap, 3, ~0, 1000);
+            var pos = TilemapUtility.FindPositionWithoutCollider(GroundTileMap, 3, ~0, 1000);
             Assert.IsTrue(pos!=null);
             
             _playerEntityId = GameEntry.Entity.GenerateSerialId();
@@ -75,12 +76,24 @@ namespace GameMain
         protected override void OnUpdate(IFsm<IProcedureManager> procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
-            var playerPos = Player.transform.position;
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                // todo 这里优化一下 忽视在敌人附近的情况 layerMask
+                var pos = TilemapUtility.FindPositionWithoutColliderNearPosition(GroundTileMap,
+                    Player.transform.position,
+                    15,3, 
+                    ~0,
+                    1000);
+
+                if (pos == null)
+                {
+                    Debug.Log("没有找到合适的位置,不生成敌人");
+                    return;
+                }
+                
                 GameEntry.Entity.ShowEnemy(new EnemyData(GameEntry.Entity.GenerateSerialId(), 10300001)
                 {
-                    Position = playerPos + new Vector3(Random.Range(-15f,15f), Random.Range(-15f,15f), 0),
+                    Position = pos.Value,
                     Rotation = Quaternion.identity,
                     Scale = Vector3.one,
                     PropID = 10200001,
@@ -99,26 +112,6 @@ namespace GameMain
                 Assert.IsTrue(pos!=null);
                 Player.transform.position = pos.Value;
             }
-
-            // if (Input.GetMouseButtonDown(0))
-            // {
-            //     // 获取鼠标的屏幕坐标
-            //     Vector3 screenPoint = Input.mousePosition;
-            //
-            //     // 转换屏幕坐标为世界坐标
-            //     Vector3 worldPoint = Camera.main.ScreenToWorldPoint(screenPoint);
-            //     worldPoint.z = 0; // 对于2D游戏，您可能希望设置z坐标为0
-            //
-            //     // 使用世界坐标进行检查
-            //     if (TilemapUtility.IsInsideAnyCompositeCollider(worldPoint))
-            //     {
-            //         Log.Debug("在里面");
-            //     }
-            //     else
-            //     {
-            //         Log.Debug("不在里面");
-            //     }
-            // }
         }
         
         private MapObjectPlacer _mapObjectPlacer;
@@ -146,10 +139,6 @@ namespace GameMain
                 }
             
             if (_mapObjectPlacer != null) _mapObjectPlacer.PlaceObjects();
-            //
-            // var tilemap = GameObject.Find("Ground").GetComponent<Tilemap>();
-            // var tileMapCollider = tilemap.GetComponent<CompositeCollider2D>();
-            // tileMapCollider.geometryType = CompositeCollider2D.GeometryType.Polygons;
         }
     }
 }

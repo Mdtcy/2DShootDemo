@@ -12,9 +12,11 @@ namespace GameMain
         {
         }
         
-        public static PlayAtPosFeedBackData Create()
+        public static PlayAtPosFeedBackData Create(Vector3 pos, float scale)
         {
             PlayAtPosFeedBackData data = ReferencePool.Acquire<PlayAtPosFeedBackData>();
+            data.Pos = pos;
+            data.Scale = scale;
             return data;
         }
         
