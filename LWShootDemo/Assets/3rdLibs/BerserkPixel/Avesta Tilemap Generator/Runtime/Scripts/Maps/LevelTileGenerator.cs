@@ -34,8 +34,9 @@ namespace BerserkPixel.Tilemap_Generator
             }
 
             var tilemapCollider = tilemap.gameObject.AddComponent<TilemapCollider2D>();
-            tilemap.gameObject.AddComponent<CompositeCollider2D>();
-
+            var compositeCollider = tilemap.gameObject.AddComponent<CompositeCollider2D>();
+            compositeCollider.geometryType = CompositeCollider2D.GeometryType.Polygons;
+            
             var rb = tilemap.gameObject.GetComponent<Rigidbody2D>();
             rb.bodyType = RigidbodyType2D.Static;
 
