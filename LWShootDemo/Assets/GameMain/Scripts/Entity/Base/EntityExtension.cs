@@ -56,9 +56,9 @@ namespace GameMain
 
         #region Show Entity Extension
         
-        public static void ShowEnemy(this EntityComponent entityComponent, EnemyData data)
+        public static void ShowEnemy(this EntityComponent entityComponent, EnemyGhoulData ghoulData)
         {
-            entityComponent.ShowEntity(typeof(Enemy), Constant.AssetPriority.EnemyAsset, data);
+            entityComponent.ShowEntity(typeof(EnemyGhoul), Constant.AssetPriority.EnemyAsset, ghoulData);
         }
         
         public static void ShowPlayer(this EntityComponent entityComponent, PlayerData data)

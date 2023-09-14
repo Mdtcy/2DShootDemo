@@ -24,8 +24,9 @@ namespace LWShootDemo.Entities.Player
         {
             base.OnLogic();
             elapsedTime += Time.fixedDeltaTime;
-            if (Input.GetButton("Horizontal") ||
-                Input.GetButton("Vertical") )
+            var movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+            if (movement != Vector2.zero)
             {
                 fsm.RequestStateChange(PlayerFsm.PlayerState.Run);
             }

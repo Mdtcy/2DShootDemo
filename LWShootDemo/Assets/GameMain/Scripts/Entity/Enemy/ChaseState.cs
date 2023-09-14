@@ -7,19 +7,19 @@ using UnityGameFramework.Runtime;
 
 namespace GameMain
 {
-    public class ChaseState : FsmState<Enemy>
+    public class ChaseState : FsmState<EnemyGhoul>
     {
         private Transform _player;
         private EnemyFsmContext _enemyFsmContext;
 
-        protected override void OnInit(IFsm<Enemy> fsm)
+        protected override void OnInit(IFsm<EnemyGhoul> fsm)
         {
             base.OnInit(fsm);
             _enemyFsmContext = fsm.Owner.EnemyFsmContext;
             _player = GameManager.Instance.Player;
         }
 
-        protected override void OnEnter(IFsm<Enemy> fsm)
+        protected override void OnEnter(IFsm<EnemyGhoul> fsm)
         {
             base.OnEnter(fsm);
             Log.Debug("Enter ChaseState");
@@ -32,14 +32,14 @@ namespace GameMain
             // _enemyFsmContext.Seeker.StartPath();
         }
 
-        protected override void OnLeave(IFsm<Enemy> fsm, bool isShutdown)
+        protected override void OnLeave(IFsm<EnemyGhoul> fsm, bool isShutdown)
         {
             base.OnLeave(fsm, isShutdown);
             _enemyFsmContext.AstarAI.CanMove = false;
             _enemyFsmContext.AstarAI.targetPosition = null;
         }
 
-        private Enemy _owner;
+        private EnemyGhoul _owner;
 
         // private void OnPathComplete(Path p)
         // {
@@ -57,7 +57,7 @@ namespace GameMain
         //     }
         // }
 
-        protected override void OnUpdate(IFsm<Enemy> fsm, float elapseSeconds, float realElapseSeconds)
+        protected override void OnUpdate(IFsm<EnemyGhoul> fsm, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
             // Vector2 direction = _player.position + _enemyFsmContext.Offset  - fsm.Owner.transform.position;

@@ -23,7 +23,7 @@ namespace LWShootDemo.Entities.Player
             base.OnLogic();
             
             // 获取输入
-            var movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            var movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             
             if (movement == Vector2.zero)
             {

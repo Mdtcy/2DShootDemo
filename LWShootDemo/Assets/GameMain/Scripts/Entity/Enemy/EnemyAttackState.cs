@@ -4,17 +4,17 @@ using UnityGameFramework.Runtime;
 
 namespace GameMain
 {
-    public class EnemyAttackState : FsmState<Enemy>
+    public class EnemyAttackState : FsmState<EnemyGhoul>
     {
         private EnemyFsmContext _enemyFsmContext;
         
-        protected override void OnInit(IFsm<Enemy> fsm)
+        protected override void OnInit(IFsm<EnemyGhoul> fsm)
         {
             base.OnInit(fsm);
             _enemyFsmContext = fsm.Owner.EnemyFsmContext;
         }
 
-        protected override void OnEnter(IFsm<Enemy> fsm)
+        protected override void OnEnter(IFsm<EnemyGhoul> fsm)
         {
             base.OnEnter(fsm);
             Log.Debug("Enter EnemyAttackState");
@@ -33,7 +33,7 @@ namespace GameMain
         private float totalElapseTime;
 
         
-        protected override void OnUpdate(IFsm<Enemy> fsm, float elapseSeconds, float realElapseSeconds)
+        protected override void OnUpdate(IFsm<EnemyGhoul> fsm, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
             totalElapseTime += elapseSeconds;

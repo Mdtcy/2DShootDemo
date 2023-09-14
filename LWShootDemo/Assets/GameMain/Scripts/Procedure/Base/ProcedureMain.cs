@@ -72,7 +72,7 @@ namespace GameMain
                     return;
                 }
                 
-                GameEntry.Entity.ShowEnemy(new EnemyData(GameEntry.Entity.GenerateSerialId(), 10300001)
+                GameEntry.Entity.ShowEnemy(new EnemyGhoulData(GameEntry.Entity.GenerateSerialId(), 10300001)
                 {
                     Position = pos.Value,
                     Rotation = Quaternion.identity,
@@ -122,7 +122,7 @@ namespace GameMain
             {
                 _mapObjectPlacer.PlaceObjects();
             }
-            
+
             await UniTask.Yield(); // 异步等待一帧
 
             // 获取TileMap上一个随机没有碰撞体的位置
@@ -137,6 +137,14 @@ namespace GameMain
                 Scale = Vector3.one,
                 PropID = 10200000,
             });
+            
+            // Recalculate all graphs
+            AstarPath.active.Scan();
+            
+            foreach (var progress in AstarPath.active.ScanAsync()) {
+                Debug.Log("Scanning... " + progress.description + " - " + (progress.progress*100).ToString("0") + "%");
+                await UniTask.Yield(); // 异步等待一帧
+            }
         }
     }
 }
