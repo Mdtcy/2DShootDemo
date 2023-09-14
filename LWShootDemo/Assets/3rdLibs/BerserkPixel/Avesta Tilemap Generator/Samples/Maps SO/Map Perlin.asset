@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 319c668f94dc483c912d5ff8ab909d82, type: 3}
   m_Name: Map Perlin
   m_EditorClassIdentifier: 
-  width: 100
-  height: 100
+  width: 80
+  height: 80
   fillPercent: 0.718
-  seed: 55.50183
+  seed: 169.0779
   invert: 0
-  isIsland: 0
+  isIsland: 1
   islandSizeFactor: 10.21
   scale: 4.13

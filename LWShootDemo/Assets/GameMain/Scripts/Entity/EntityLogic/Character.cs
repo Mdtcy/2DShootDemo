@@ -18,7 +18,8 @@ namespace GameMain
         private CharacterFeedBackComponent _characterFeedBackComponent;
         private NumericComponent _numericComponent;
         public UnitBindManager UnitBindManager;
-        
+        private FaceController _faceController;
+
         // private bool _canMove = true;
         public AnimancerComponent CachedAnimancer { get; private set; }
         
@@ -101,7 +102,7 @@ namespace GameMain
         // /// </summary>
         // public int HpRegen => _numericComponent[IntNumericType.HpRegen];
 
-        public Direction FaceDirection => _movementComponent.FaceDirection;
+        public Direction FaceDirection => _faceController.FaceDirection;
         
         // local
         // tick次数 每秒tick一次
@@ -121,6 +122,7 @@ namespace GameMain
             UnitBindManager = GetComponent<UnitBindManager>();
             _numericComponent = GetComponentInChildren<NumericComponent>();
             _numericComponent.Init(Entity);
+            _faceController = GetComponent<FaceController>();
         }
 
         protected override void OnShow(object userData)

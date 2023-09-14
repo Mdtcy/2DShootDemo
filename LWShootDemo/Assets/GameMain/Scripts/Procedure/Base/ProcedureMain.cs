@@ -32,29 +32,10 @@ namespace GameMain
             _levelTileGenerators = Object.FindObjectsOfType<LevelTileGenerator>();
             _levelObjectGenerators = Object.FindObjectsOfType<LevelObjectGenerator>();
             _mapObjectPlacer = Object.FindObjectOfType<MapObjectPlacer>();
-            GenerateLevel().Forget();
             GameEntry.FeedBack.Init();
-            // GameEntry.Projectile.Init();
 
-            // 获取TileMap上一个随机没有碰撞体的位置
-            var pos = TilemapUtility.FindPositionWithoutCollider(GroundTileMap, 3, ~0, 1000);
-            Assert.IsTrue(pos!=null);
             
-            _playerEntityId = GameEntry.Entity.GenerateSerialId();
-            GameEntry.Entity.ShowPlayer(new PlayerData(_playerEntityId, 10300000)
-            {
-                Position = pos.Value,
-                Rotation = Quaternion.identity,
-                Scale = Vector3.one,
-                PropID = 10200000,
-            });
-            // GameEntry.Entity.ShowEnemy(new EnemyData(GameEntry.Entity.GenerateSerialId(), 10300001)
-            // {
-            //     Position = new Vector3(0, 3, 0),
-            //     Rotation = Quaternion.identity,
-            //     Scale = Vector3.one,
-            //     PropID = 10200001,
-            // });
+            GenerateLevelThenGeneratePlayer().Forget();
         }
 
         protected override void OnLeave(IFsm<IProcedureManager> procedureOwner, bool isShutdown)
@@ -102,7 +83,7 @@ namespace GameMain
 
             if (Input.GetKeyDown(KeyCode.G))
             {
-                GenerateLevel().Forget();
+                GenerateLevelThenGeneratePlayer().Forget();
             }
             
             if (Input.GetKeyDown(KeyCode.R))
@@ -118,11 +99,10 @@ namespace GameMain
         private LevelTileGenerator[] _levelTileGenerators;
         private LevelObjectGenerator[] _levelObjectGenerators;
 
-        private async UniTask GenerateLevel()
+        private async UniTask GenerateLevelThenGeneratePlayer()
         {
             await UniTask.Yield(PlayerLoopTiming.PostLateUpdate);
-
-
+            
             if (_mapObjectPlacer != null) _mapObjectPlacer.ClearObjects();
 
             if (_levelTileGenerators != null && _levelTileGenerators.Length > 0)
@@ -137,8 +117,26 @@ namespace GameMain
                     foreach (var layer in levelObjectGenerator.GetActiveLayers()) layer.SetRandomSeed();
                     levelObjectGenerator.GenerateLayers();
                 }
+
+            if (_mapObjectPlacer != null)
+            {
+                _mapObjectPlacer.PlaceObjects();
+            }
             
-            if (_mapObjectPlacer != null) _mapObjectPlacer.PlaceObjects();
+            await UniTask.Yield(); // 异步等待一帧
+
+            // 获取TileMap上一个随机没有碰撞体的位置
+            var pos = TilemapUtility.FindPositionWithoutCollider(GroundTileMap, 3, ~0, 1000);
+            Assert.IsTrue(pos!=null);
+            
+            _playerEntityId = GameEntry.Entity.GenerateSerialId();
+            GameEntry.Entity.ShowPlayer(new PlayerData(_playerEntityId, 10300000)
+            {
+                Position = pos.Value,
+                Rotation = Quaternion.identity,
+                Scale = Vector3.one,
+                PropID = 10200000,
+            });
         }
     }
 }

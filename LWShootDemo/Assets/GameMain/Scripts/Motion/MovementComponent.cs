@@ -22,8 +22,6 @@ namespace GameMain
         
         // local
         private Vector2 _inputBuffer;
-        
-        public Direction FaceDirection => _faceController.FaceDirection;
 
         void Start()
         {
@@ -43,18 +41,6 @@ namespace GameMain
             
             // 应用速度
             _rb2D.velocity = _velocity;
-
-            if (_faceController != null)
-            {
-                if(_velocity.x > 0)
-                {
-                    _faceController.Face(Direction.Right);
-                }
-                else if(_velocity.x < 0)
-                {
-                    _faceController.Face(Direction.Left);
-                }
-            }
         }
         
         private void ApplyMotionToVelocity(float elapsedTime)
