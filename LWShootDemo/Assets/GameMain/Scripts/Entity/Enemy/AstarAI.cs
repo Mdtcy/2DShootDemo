@@ -6,8 +6,15 @@
     using Pathfinding;
     
     // todo 待优化
-    public class AstarAI : MonoBehaviour {
-        public Transform targetPosition;
+    public class AstarAI : MonoBehaviour
+    {
+        public bool UseFollowTrans = true;
+
+        public Vector3 FollowPosition { get; set; }
+        public Transform FollowTransform { get; set; }
+
+        public Vector3 TargetPos => UseFollowTrans ? FollowTransform.position : FollowPosition;
+        
         private Seeker seeker;
         private CharacterController controller;
         public Path path;
@@ -26,7 +33,11 @@
             controller = GetComponent<CharacterController>();
             // Start a new path to the targetPosition, call the the OnPathComplete function
             // when the path has been calculated (which may take a few frames depending on the complexity)
-            seeker.StartPath(transform.position, targetPosition.position, OnPathComplete);
+
+            if (CanMove)
+            {
+                seeker.StartPath(transform.position, TargetPos, OnPathComplete);
+            }
         }
         public void OnPathComplete (Path p) {
             Debug.Log("A path was calculated. Did it fail with an error? " + p.error);
@@ -42,7 +53,7 @@
                 return;
             }
             
-            seeker.StartPath(transform.position, targetPosition.position, OnPathComplete);
+            seeker.StartPath(transform.position, TargetPos, OnPathComplete);
             if (path == null) {
                 // We have no path to follow yet, so don't do anything
                 return;

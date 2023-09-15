@@ -680,6 +680,8 @@ GameObject:
   - component: {fileID: 1559839037614414851}
   - component: {fileID: 1651245371675147191}
   - component: {fileID: -5804720150387403791}
+  - component: {fileID: 1534125750}
+  - component: {fileID: 1534125749}
   m_Layer: 8
   m_Name: EnemyGhoul
   m_TagString: Untagged
@@ -800,7 +802,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Offset: {x: 0, y: 0, z: 0}
-  AttackDistance: 0.6
+  AttackDistance: 1
+  ChaseDistance: 6
   MeleeAttack: {fileID: 2050694997}
   AttackDuration: 0.583
   AttackBackSwing: 1
@@ -864,7 +867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea03171d1934889958e230d02975cac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPosition: {fileID: 0}
+  UseFollowPos: 0
   speed: 2
   nextWaypointDistance: 0.3
   reachedEndOfPath: 0
@@ -923,6 +926,69 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody2D: {fileID: 1547550358056355183}
   _faceController: {fileID: 1547550357387394058}
+--- !u!114 &1534125750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547550358056355218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad115aca74ce3c4891b3f6de0b4aae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedExposedParameters: []
+  _boundGraphSerialization: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"dynamic":true,"_position":{"x":871.0,"y":433.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"0"},{"_action":{"Target":{"_name":"_player","_targetVariableID":"99219205-6dfe-4acb-bd88-64b608b357ba"},"$type":"GameMain.Act_SetPlayerTransform"},"_position":{"x":198.0,"y":649.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"1"},{"_position":{"x":755.0,"y":667.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"2"},{"_condition":{"Target":{"_name":"\u81ea\u8eab\u4f4d\u7f6e","_targetVariableID":"bb84246f-6e20-45a3-bc02-14b4ff0576b9"},"CompareType":3,"Distance":{"_name":"\u4fa6\u67e5\u8303\u56f4","_targetVariableID":"1fab7d8b-bbd4-4588-bfa0-56b943ac7fd3"},"$type":"GameMain.Cond_PlayerDistance"},"_position":{"x":535.0,"y":808.0},"_comment":"\u4e0e\u89d2\u8272\u8ddd\u79bb\u5c0f\u4e8eXX","$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"3"},{"_action":{"Target":{"_name":"_player","_targetVariableID":"99219205-6dfe-4acb-bd88-64b608b357ba"},"Ai":{"_name":"AstarAI","_targetVariableID":"a6c8c6d4-ae26-4fa0-8dae-7ad2c910047e"},"$type":"GameMain.Act_MoveToTransform"},"_position":{"x":811.0,"y":809.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"4"},{"_action":{"log":{"_value":"Hello
+    World"},"$type":"NodeCanvas.Tasks.Actions.DebugLogText"},"_position":{"x":1276.0,"y":667.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"5"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"canvasGroups":[{"name":"\u5982\u679c\u4e0e\u89d2\u8272\u8ddd\u79bb\u5c0f\u4e8e\u4fa6\u67e5\u8303\u56f4\uff0c\u5219\u5f00\u59cb\u8ffd\u9010\u89d2\u8272","rect":{"xMin":453.0,"yMin":611.0,"xMax":1206.0,"yMax":1016.0}}],"localBlackboard":{"_variables":{"_player":{"_name":"_player","_id":"99219205-6dfe-4acb-bd88-64b608b357ba","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
+  _boundGraphObjectReferences: []
+  _boundGraphSource:
+    _version: 3.28
+    _category: 
+    _comments: 
+    _translation: {x: -27.32461, y: -62.65905}
+    _zoomFactor: 1
+  _firstActivation: 0
+  _enableAction: 0
+  _disableAction: 0
+  _lockBoundGraphPrefabOverrides: 1
+  _preInitializeSubGraphs: 0
+  _updateMode: 0
+  _graph: {fileID: 0}
+  _blackboard: {fileID: 1534125749}
+--- !u!114 &1534125749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547550358056355218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parentBlackboard: {fileID: 0}
+  _serializedBlackboard: "{\"_variables\":{\"\u81EA\u8EAB\u4F4D\u7F6E\":{\"_value\":1,\"_name\":\"\\u81ea\\u8eab\\u4f4d\\u7f6e\",\"_id\":\"bb84246f-6e20-45a3-bc02-14b4ff0576b9\",\"$type\":\"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]\"},\"\u4FA6\u67E5\u8303\u56F4\":{\"_value\":10.0,\"_name\":\"\\u4fa6\\u67e5\\u8303\\u56f4\",\"_id\":\"1fab7d8b-bbd4-4588-bfa0-56b943ac7fd3\",\"$type\":\"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]\"},\"AstarAI\":{\"_propertyPath\":\"GameMain.EnemyFsmContext.AstarAI\",\"_name\":\"AstarAI\",\"_id\":\"a6c8c6d4-ae26-4fa0-8dae-7ad2c910047e\",\"$type\":\"NodeCanvas.Framework.Variable`1[[AstarAI,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]\"}}}"
+  _objectReferences:
+  - {fileID: 0}
+  - {fileID: 1547550358056355219}
+  _serializedVariables:
+  - _json: '{"_value":1,"_name":"\u81ea\u8eab\u4f4d\u7f6e","_id":"bb84246f-6e20-45a3-bc02-14b4ff0576b9","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 1547550358056355219}
+  - _json: '{"_value":10.0,"_name":"\u4fa6\u67e5\u8303\u56f4","_id":"1fab7d8b-bbd4-4588-bfa0-56b943ac7fd3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+    _references: []
+  - _json: '{"_propertyPath":"GameMain.EnemyFsmContext.AstarAI","_name":"AstarAI","_id":"a6c8c6d4-ae26-4fa0-8dae-7ad2c910047e","$type":"NodeCanvas.Framework.Variable`1[[AstarAI,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references: []
 --- !u!1 &1981330841971739778
 GameObject:
   m_ObjectHideFlags: 0

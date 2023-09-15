@@ -17,6 +17,7 @@ namespace LWShootDemo.Entities.Player
 
         public void Face(Direction direction)
         {
+            Debug.Log($"Face {direction}");
             FaceDirection = direction;
             int x =  direction == Direction.Left ? -1 : 1;
             _model.localScale = new Vector3(x, 1, 1);

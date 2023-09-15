@@ -50,7 +50,7 @@ namespace GameMain
                 }
                 else
                 {
-                    ChangeState<ChaseState>(fsm);
+                    ChangeState<EnemyChaseState>(fsm);
                 }
             }
         }

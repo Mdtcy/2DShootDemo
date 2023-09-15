@@ -19,6 +19,7 @@ namespace GameMain
         private NumericComponent _numericComponent;
         public UnitBindManager UnitBindManager;
         private FaceController _faceController;
+        public UnitAnimation UnitAnimation;
 
         // private bool _canMove = true;
         public AnimancerComponent CachedAnimancer { get; private set; }
@@ -122,7 +123,13 @@ namespace GameMain
             UnitBindManager = GetComponent<UnitBindManager>();
             _numericComponent = GetComponentInChildren<NumericComponent>();
             _numericComponent.Init(Entity);
-            _faceController = GetComponent<FaceController>();
+            _faceController = GetComponentInChildren<FaceController>();
+            UnitAnimation = GetComponent<UnitAnimation>();
+        }
+
+        public void Face(Direction direction)
+        {
+            _faceController.Face(direction);
         }
 
         protected override void OnShow(object userData)

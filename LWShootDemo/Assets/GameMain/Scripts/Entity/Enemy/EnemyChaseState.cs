@@ -1,0 +1,79 @@
+using GameFramework.Fsm;
+using LWShootDemo;
+using LWShootDemo.Entities;
+using Pathfinding;
+using UnityEngine;
+using UnityGameFramework.Runtime;
+
+namespace GameMain
+{
+    public class EnemyChaseState : FsmState<EnemyGhoul>
+    {
+        private Transform _player;
+        private EnemyFsmContext _enemyFsmContext;
+
+        protected override void OnInit(IFsm<EnemyGhoul> fsm)
+        {
+            base.OnInit(fsm);
+            _enemyFsmContext = fsm.Owner.EnemyFsmContext;
+            _player = GameManager.Instance.Player;
+        }
+
+        protected override void OnEnter(IFsm<EnemyGhoul> fsm)
+        {
+            base.OnEnter(fsm);
+            Log.Debug("Enter ChaseState");
+            _owner = fsm.Owner;
+            fsm.Owner.UnitAnimation.Play(AnimationType.Walk);
+            
+            _enemyFsmContext.AstarAI.FollowPosition = _player.transform.position;
+            _enemyFsmContext.AstarAI.CanMove = true;
+            // _enemyFsmContext.Seeker.StartPath(_enemyFsmContext.transform.position, _player.transform.position, OnPathComplete)
+            // _enemyFsmContext.Seeker.StartPath();
+        }
+
+        protected override void OnLeave(IFsm<EnemyGhoul> fsm, bool isShutdown)
+        {
+            base.OnLeave(fsm, isShutdown);
+            _enemyFsmContext.AstarAI.CanMove = false;
+        }
+
+        private EnemyGhoul _owner;
+
+        // private void OnPathComplete(Path p)
+        // {
+        //     if (!p.error)
+        //     {
+        //         _path = p;
+        //         // 得到路径后可以如何使用由你决定
+        //         // 比如，你可以把第一个路径点给到你自己的运动逻辑
+        //         if (_path.vectorPath.Count > 0)
+        //         {
+        //             Vector3 nextPoint = _path.vectorPath[0];
+        //             Vector2 direction = nextPoint + _enemyFsmContext.Offset  - _owner.transform.position;
+        //             _owner.InputMove(direction.normalized);
+        //         }
+        //     }
+        // }
+
+        protected override void OnUpdate(IFsm<EnemyGhoul> fsm, float elapseSeconds, float realElapseSeconds)
+        {
+            base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
+            // Vector2 direction = _player.position + _enemyFsmContext.Offset  - fsm.Owner.transform.position;
+            // fsm.Owner.InputMove(direction.normalized);
+
+            // _enemyFsmContext.Seeker.StartPath(_enemyFsmContext.transform.position, _player.transform.position,
+            //     OnPathComplete);
+            
+            float distance = Vector3.Distance(_player.transform.position, fsm.Owner.transform.position);
+            if (distance < _enemyFsmContext.AttackDistance)
+            {
+                ChangeState<EnemyAttackState>(fsm);
+            }
+            else if (distance > _enemyFsmContext.ChaseDistance)
+            {
+                ChangeState<EnemyHangOutState>(fsm);
+            }
+        }
+    }
+}

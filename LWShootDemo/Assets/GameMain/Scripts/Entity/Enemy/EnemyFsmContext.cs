@@ -7,6 +7,7 @@ namespace GameMain
     {
         public Vector3 Offset;
         public float AttackDistance;
+        public float ChaseDistance;
         public MeleeAttack MeleeAttack;
         public float AttackDuration;
         public float AttackBackSwing;
