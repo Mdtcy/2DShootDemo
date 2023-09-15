@@ -1,25 +1,20 @@
-using System.Collections.Generic;
 using GameFramework.Fsm;
-using LWShootDemo.Entities;
+using NodeCanvas.BehaviourTrees;
 using UnityGameFramework.Runtime;
 
 namespace GameMain
 {
     public class EnemyGhoul : Character
     {
-        
-        public EnemyFsmContext EnemyFsmContext;
-        
         private MeleeAttack _meleeAttack;
+        public BehaviourTreeOwner _behaviourTreeOwner;
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
-            EnemyFsmContext = GetComponent<EnemyFsmContext>();
             _meleeAttack = GetComponentInChildren<MeleeAttack>();
+            _behaviourTreeOwner = GetComponent<BehaviourTreeOwner>();
             _meleeAttack.Init(this);
         }
-        
-        private IFsm<EnemyGhoul> _fsmOwner;
 
         public void Attack()
         {
@@ -31,33 +26,29 @@ namespace GameMain
             base.OnShow(userData);
             Log.Debug("Show EnemyGhoul");
 
-            List<FsmState<EnemyGhoul>> stateList = 
-                new List<FsmState<EnemyGhoul>>()
-                {
-                    new EnemyChaseState(), 
-                    new EnemyAttackState(),
-                    new EnemyHangOutState()
-                };
-            
-            // // todo ID需要唯一 未确认
-            // _fsmOwner = GameEntry.Fsm.CreateFsm(Id.ToString(), this, stateList);
-            // _fsmOwner.Start<EnemyChaseState>();
             ActOnDeath += OnDeath;
 
             _hpBar.Hide();
+            
+            _behaviourTreeOwner.StartBehaviour();
+            _behaviourTreeOwner.SetExposedParameterValue("_character", this);
         }
 
         protected override void OnHide(bool isShutdown, object userData)
         {
             base.OnHide(isShutdown, userData);
             ActOnDeath -= OnDeath;
-            
-            
+            _behaviourTreeOwner.StopBehaviour();
+        }
+
+        protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
+        {
+            base.OnUpdate(elapseSeconds, realElapseSeconds);
+            _behaviourTreeOwner.UpdateBehaviour();
         }
 
         private void OnDeath()
         {
-            GameEntry.Fsm.DestroyFsm(_fsmOwner);
             GameEntry.Entity.HideEntity(this);
         }
         
