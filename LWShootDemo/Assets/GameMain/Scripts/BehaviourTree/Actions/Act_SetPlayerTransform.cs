@@ -12,6 +12,7 @@ namespace GameMain
         {
             base.OnExecute();
             Target.value = GameManager.Instance.Player;
+            EndAction();
         }
     }
 }

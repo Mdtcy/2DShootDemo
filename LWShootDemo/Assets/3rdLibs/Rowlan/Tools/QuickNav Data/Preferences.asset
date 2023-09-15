@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: Preferences
   m_EditorClassIdentifier: 
   historyItemsMax: 20
-  history: []
+  history:
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-00000000000000000000000000000000-1547550358056355218-0
   favorites:
   - context: 1
     title: 
