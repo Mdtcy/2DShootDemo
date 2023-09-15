@@ -688,7 +688,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1547550358056355219
 Transform:
   m_ObjectHideFlags: 0
@@ -867,7 +867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea03171d1934889958e230d02975cac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UseFollowPos: 0
+  UseFollowTrans: 1
   speed: 2
   nextWaypointDistance: 0.3
   reachedEndOfPath: 0
@@ -939,8 +939,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
-  _boundGraphSerialization: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"dynamic":true,"_position":{"x":871.0,"y":433.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"0"},{"_action":{"Target":{"_name":"_player","_targetVariableID":"99219205-6dfe-4acb-bd88-64b608b357ba"},"$type":"GameMain.Act_SetPlayerTransform"},"_position":{"x":198.0,"y":649.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"1"},{"_position":{"x":755.0,"y":667.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"2"},{"_condition":{"Target":{"_name":"\u81ea\u8eab\u4f4d\u7f6e","_targetVariableID":"bb84246f-6e20-45a3-bc02-14b4ff0576b9"},"CompareType":3,"Distance":{"_name":"\u4fa6\u67e5\u8303\u56f4","_targetVariableID":"1fab7d8b-bbd4-4588-bfa0-56b943ac7fd3"},"$type":"GameMain.Cond_PlayerDistance"},"_position":{"x":535.0,"y":808.0},"_comment":"\u4e0e\u89d2\u8272\u8ddd\u79bb\u5c0f\u4e8eXX","$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"3"},{"_action":{"Target":{"_name":"_player","_targetVariableID":"99219205-6dfe-4acb-bd88-64b608b357ba"},"Ai":{"_name":"AstarAI","_targetVariableID":"a6c8c6d4-ae26-4fa0-8dae-7ad2c910047e"},"$type":"GameMain.Act_MoveToTransform"},"_position":{"x":811.0,"y":809.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"4"},{"_action":{"log":{"_value":"Hello
-    World"},"$type":"NodeCanvas.Tasks.Actions.DebugLogText"},"_position":{"x":1276.0,"y":667.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"5"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"canvasGroups":[{"name":"\u5982\u679c\u4e0e\u89d2\u8272\u8ddd\u79bb\u5c0f\u4e8e\u4fa6\u67e5\u8303\u56f4\uff0c\u5219\u5f00\u59cb\u8ffd\u9010\u89d2\u8272","rect":{"xMin":453.0,"yMin":611.0,"xMax":1206.0,"yMax":1016.0}}],"localBlackboard":{"_variables":{"_player":{"_name":"_player","_id":"99219205-6dfe-4acb-bd88-64b608b357ba","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+  _boundGraphSerialization: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"dynamic":true,"_position":{"x":871.0,"y":433.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"0"},{"_position":{"x":755.0,"y":667.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"1"},{"_condition":{"Target":{"_name":"\u81ea\u8eab\u4f4d\u7f6e","_targetVariableID":"bb84246f-6e20-45a3-bc02-14b4ff0576b9"},"CompareType":3,"Distance":{"_name":"\u4fa6\u67e5\u8303\u56f4","_targetVariableID":"1fab7d8b-bbd4-4588-bfa0-56b943ac7fd3"},"$type":"GameMain.Cond_PlayerDistance"},"_position":{"x":535.0,"y":808.0},"_comment":"\u4e0e\u89d2\u8272\u8ddd\u79bb\u5c0f\u4e8eXX","$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"2"},{"_action":{"Target":{"_name":"_player","_targetVariableID":"99219205-6dfe-4acb-bd88-64b608b357ba"},"Ai":{"_name":"AstarAI","_targetVariableID":"a6c8c6d4-ae26-4fa0-8dae-7ad2c910047e"},"$type":"GameMain.Act_MoveToTransform"},"_position":{"x":811.0,"y":809.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"3"},{"_action":{"log":{"_value":"Hello
+    World"},"$type":"NodeCanvas.Tasks.Actions.DebugLogText"},"_position":{"x":1276.0,"y":667.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"4"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"canvasGroups":[{"name":"\u5982\u679c\u4e0e\u89d2\u8272\u8ddd\u79bb\u5c0f\u4e8e\u4fa6\u67e5\u8303\u56f4\uff0c\u5219\u5f00\u59cb\u8ffd\u9010\u89d2\u8272","rect":{"xMin":453.0,"yMin":611.0,"xMax":1206.0,"yMax":1016.0}}],"localBlackboard":{"_variables":{"_player":{"_name":"_player","_id":"99219205-6dfe-4acb-bd88-64b608b357ba","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
   _boundGraphObjectReferences: []
   _boundGraphSource:
