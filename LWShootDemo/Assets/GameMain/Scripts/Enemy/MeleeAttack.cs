@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Damages;
 using LWShootDemo.Entities;
 using UnityEngine;
@@ -9,7 +11,7 @@ namespace GameMain
     // todo 一次只能检测十个
     public class MeleeAttack : MonoBehaviour
     {
-        public Character _caster;
+        private Character _caster;
 
         // public Collider2D AttackCollider;
         
@@ -29,7 +31,7 @@ namespace GameMain
             _caster = caster;
         }
 
-        public void Attack()
+        public async UniTask Attack(Action onCompleted)
         {
             // 如果正在攻击，就不再攻击
             if (_attacking)
@@ -39,22 +41,29 @@ namespace GameMain
 
             _attacking = true;
             _entitiesHasAttacked.Clear();
+            
+            // 等待几秒后，攻击结束
+            await UniTask.Delay(TimeSpan.FromSeconds(TimeToAttack)); // 这里是等待3秒，你可以根据需要更改
+
+            _attacking = false;
+            onCompleted?.Invoke();
         }
 
         private void Update()
         {
             if (_attacking)
             {
-                time += Time.deltaTime;
-                if (time >= TimeToAttack)
-                {
-                    _attacking = false;
-                    time = 0;
-                }
-                else
-                {
-                    TryDamage();
-                }
+                TryDamage();
+                // time += Time.deltaTime;
+                // if (time >= TimeToAttack)
+                // {
+                //     _attacking = false;
+                //     time = 0;
+                // }
+                // else
+                // {
+                //     TryDamage();
+                // }
             }
         }
 

@@ -22,5 +22,11 @@ namespace LWShootDemo.Entities.Player
             int x =  direction == Direction.Left ? -1 : 1;
             _model.localScale = new Vector3(x, 1, 1);
         }
+        
+        public void FaceOpposite()
+        {
+            Debug.Log($"FaceOpposite {FaceDirection}");
+            Face(FaceDirection == Direction.Left ? Direction.Right : Direction.Left);
+        }
     }
 }

@@ -16,11 +16,6 @@ namespace GameMain
             _meleeAttack.Init(this);
         }
 
-        public void Attack()
-        {
-            _meleeAttack.Attack();
-        }
-
         protected override void OnShow(object userData)
         {
             base.OnShow(userData);

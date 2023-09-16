@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using NodeCanvas.Framework;
 
 namespace GameMain
@@ -9,8 +10,7 @@ namespace GameMain
         protected override void OnExecute()
         {
             base.OnExecute();
-            MeleeAttack.value.Attack();
-            EndAction();
+            MeleeAttack.value.Attack(EndAction).Forget();
         }
     }
 }
