@@ -9,10 +9,7 @@ namespace GameMain
     {
         [SerializeField] 
         private Rigidbody2D _rb2D;
-
-        [SerializeField] 
-        private FaceController _faceController;
-
+        
         [ShowInInspector]
         [ReadOnly]
         private Vector3 _velocity;
@@ -42,7 +39,13 @@ namespace GameMain
             // 应用速度
             _rb2D.velocity = _velocity;
         }
-        
+
+        public void Stop()
+        {
+            _rb2D.velocity = _velocity;
+            InputMove(Vector2.zero);
+        }
+
         private void ApplyMotionToVelocity(float elapsedTime)
         {
             if (mCurrentMotionClip == null)

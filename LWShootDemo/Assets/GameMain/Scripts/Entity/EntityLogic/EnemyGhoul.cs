@@ -1,5 +1,5 @@
-using GameFramework.Fsm;
 using NodeCanvas.BehaviourTrees;
+using NodeCanvas.Framework;
 using UnityGameFramework.Runtime;
 
 namespace GameMain
@@ -21,18 +21,16 @@ namespace GameMain
             base.OnShow(userData);
             Log.Debug("Show EnemyGhoul");
 
-            ActOnDeath += OnDeath;
-
             _hpBar.Hide();
             
+            var blackboard = _behaviourTreeOwner.blackboard;
+            blackboard.SetVariableValue("_character", this);
             _behaviourTreeOwner.StartBehaviour();
-            _behaviourTreeOwner.SetExposedParameterValue("_character", this);
         }
 
         protected override void OnHide(bool isShutdown, object userData)
         {
             base.OnHide(isShutdown, userData);
-            ActOnDeath -= OnDeath;
             _behaviourTreeOwner.StopBehaviour();
         }
 
@@ -40,17 +38,6 @@ namespace GameMain
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
             _behaviourTreeOwner.UpdateBehaviour();
-        }
-
-        private void OnDeath()
-        {
-            GameEntry.Entity.HideEntity(this);
-        }
-        
-        public override void TakeDamage(int damage)
-        {
-            base.TakeDamage(damage);
-            _hpBar.Show();
         }
     }
 }

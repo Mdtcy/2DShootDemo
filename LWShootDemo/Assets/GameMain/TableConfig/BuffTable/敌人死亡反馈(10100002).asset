@@ -38,13 +38,13 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
       Data: 3|GameMain.FeedBackOnBuffCarrierActData, Assembly-CSharp
     - Name: State
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: PfbFeedBack
       Entry: 10
       Data: 0
@@ -60,6 +60,24 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 4|GameMain.AddDamageForceActionData, Assembly-CSharp
+    - Name: State
+      Entry: 3
+      Data: 0
+    - Name: TargetType
+      Entry: 3
+      Data: 1
+    - Name: DirectionType
+      Entry: 3
+      Data: 0
+    - Name: Intensity
+      Entry: 4
+      Data: 5
     - Name: 
       Entry: 8
       Data: 
@@ -82,5 +100,8 @@ MonoBehaviour:
   DefaultName: "\u654C\u4EBA\u6B7B\u4EA1\u53CD\u9988"
   Priority: 0
   ControlState: 0
+  AttrValues: []
   _buffBuffTag:
     _tagList: []
+  TickTime: -1
+  Remark: 

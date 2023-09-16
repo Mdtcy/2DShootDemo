@@ -32,7 +32,7 @@ MonoBehaviour:
   - Type: 10011
     Value: 100
   - Type: 10031
-    Value: 10
+    Value: 100
   - Type: 50011
     Value: 0
   InitBuffs: []

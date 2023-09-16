@@ -69,5 +69,8 @@ MonoBehaviour:
   DefaultName: "\u654C\u4EBA\u53D7\u51FB\u53CD\u9988"
   Priority: 0
   ControlState: 0
+  AttrValues: []
   _buffBuffTag:
     _tagList: []
+  TickTime: -1
+  Remark: 

@@ -238,18 +238,30 @@ namespace GameMain
         { 
             // ActOnHurt?.Invoke(damageInfo);
             CurHp -= damage;
-            
+
             if (CurHp <= 0)
             {
                 Death();
             }
+            else
+            {
+                _hpBar.Show();
+            }
         }
         
         // 死亡
-        private void Death()
+        protected virtual void Death()
         {
             isDead = true;
+            _hpBar.Hide();
+            var animancerState = UnitAnimation.Play(AnimationType.Dead);
+            animancerState.Events.OnEnd = OnDeathAnimationEnd;
             ActOnDeath?.Invoke();
+        }
+        
+        private void OnDeathAnimationEnd()
+        {
+            GameEntry.Entity.HideEntity(this);
         }
         
         public void PlayMotionClip(MotionClip clip)
@@ -264,6 +276,11 @@ namespace GameMain
 
         public void InputMove(Vector2 input)
         {
+            if (IsDead)
+            {
+                return;
+            }
+
             _movementComponent.InputMove(input);
         }
         
