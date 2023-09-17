@@ -10,16 +10,24 @@ namespace GameMain.Scripts.Utility
         /// 在一个Tilemap中随机找到一个没有碰撞的位置
         /// </summary>
         /// <param name="tilemap"></param>
+        /// <param name="xRange"></param>
+        /// <param name="yRange"></param>
         /// <param name="checkRadius"></param>
         /// <param name="maxAttempts">避免无限循环</param>
         /// <param name="collisionLayer">设置此项以检测特定的碰撞层</param>
         /// <returns></returns>
-        public static Vector3Int? FindPositionWithoutCollider(Tilemap tilemap, 
+        public static Vector3Int? FindPositionWithoutCollider(Tilemap tilemap,
+            Vector2Int xRange,
+            Vector2Int yRange,
             float checkRadius, 
             LayerMask collisionLayer,
             int maxAttempts = 1000)
         {
             BoundsInt bounds = tilemap.cellBounds;
+            bounds.xMin = xRange.x;
+            bounds.xMax = xRange.y;
+            bounds.yMin = yRange.x;
+            bounds.yMax = yRange.y;
             int attempts = 0;
 
             while (attempts < maxAttempts)
@@ -39,11 +47,11 @@ namespace GameMain.Scripts.Utility
 
                 attempts++;
             }
-            
+            Log.Warning($"没有找到合适的位置");
             return null; // 如果没有找到合适的位置
         }
 
-        public static Vector3? FindPositionWithoutColliderNearPosition(Tilemap tilemap, 
+        public static Vector3? FindPositionWithoutColliderNearPosition(Tilemap tilemap,
             Vector3 position,
             float radius,
             float checkRadius, 
@@ -71,7 +79,7 @@ namespace GameMain.Scripts.Utility
                 
                 if (!Physics2D.OverlapCircle(worldPos, checkRadius, collisionLayer))
                 {
-                    Debug.Log($"经过{attempts}次查找后找到了正确的位置{tilePosition}");
+                    // Debug.Log($"经过{attempts}次查找后找到了正确的位置{tilePosition}");
                     return worldPos; // 返回找到的位置
                 }
 

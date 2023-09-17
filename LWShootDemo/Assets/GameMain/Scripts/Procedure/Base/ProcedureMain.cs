@@ -89,7 +89,12 @@ namespace GameMain
             if (Input.GetKeyDown(KeyCode.R))
             {
                 var tilemap = GameObject.Find("Ground").GetComponent<Tilemap>();
-                var pos = TilemapUtility.FindPositionWithoutCollider(tilemap, 3, ~0, 1000);
+                var pos = TilemapUtility.FindPositionWithoutCollider(tilemap,
+                    new Vector2Int(-40,40),
+                    new Vector2Int(-40,40),
+                    3, 
+                    ~0,
+                    1000);
                 Assert.IsTrue(pos!=null);
                 Player.transform.position = pos.Value;
             }
@@ -126,7 +131,12 @@ namespace GameMain
             await UniTask.Yield(); // 异步等待一帧
 
             // 获取TileMap上一个随机没有碰撞体的位置
-            var pos = TilemapUtility.FindPositionWithoutCollider(GroundTileMap, 3, ~0, 1000);
+            var pos = TilemapUtility.FindPositionWithoutCollider(GroundTileMap,
+                new Vector2Int(-40,40),
+                new Vector2Int(-40,40),
+                3, 
+                ~0,
+                1000);
             Assert.IsTrue(pos!=null);
             
             _playerEntityId = GameEntry.Entity.GenerateSerialId();
