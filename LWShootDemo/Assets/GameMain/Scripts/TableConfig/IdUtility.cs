@@ -9,9 +9,16 @@ public static class IdUtility
     
     public const int AoePrefix = 301;
 
+    public const int ItemPrefix = 601;
+
     // id生成规则是三位数前缀*Capacity 范围是 xxx00000 ~ xxx99999
     public const int Capacity = 100000;
-    
+
+    public static int ItemId()
+    {
+        return ItemPrefix * Capacity;
+    }
+
     public static int AoeStartId()
     {
         return AoePrefix * Capacity;

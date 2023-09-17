@@ -6,7 +6,6 @@ using UnityEngine;
 
 namespace GameMain
 {
-    [CreateAssetMenu]
     [HideMonoScript]
     public class BuffData : IDProp
     {
