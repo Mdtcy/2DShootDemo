@@ -41,7 +41,7 @@ namespace GameMain.Scripts.Utility
 
                 if (!Physics2D.OverlapCircle(worldPos, checkRadius, collisionLayer))
                 {
-                    Log.Debug($"经过{attempts}次查找后找到了正确的位置{randomPosition}");
+                    // Log.Debug($"经过{attempts}次查找后找到了正确的位置{randomPosition}");
                     return randomPosition; // 返回找到的位置
                 }
 
