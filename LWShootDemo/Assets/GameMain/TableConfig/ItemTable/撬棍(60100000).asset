@@ -23,6 +23,6 @@ MonoBehaviour:
     SerializationNodes: []
   id: 60100000
   DefaultName: "\u64AC\u68CD"
-  Model: {fileID: 0}
+  Model: {fileID: 21300000, guid: c4da30193039f484b835c307b808151f, type: 3}
   Description: 
   Buff: {fileID: 11400000, guid: 8115bb133e3b6c741aa799a77219b53d, type: 2}
