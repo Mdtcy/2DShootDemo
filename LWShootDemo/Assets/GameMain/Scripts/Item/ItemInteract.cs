@@ -15,8 +15,7 @@ namespace GameMain.Item
 
         public float popHeight = 1.0f; // 弹出高度
         public float popDuration = 0.5f; // 弹出动画的持续时间
-        public float floatAmount = 0.1f; // 浮动的高度
-        public float floatDuration = 1.0f; // 浮动动画的持续时间
+        private bool _canPick = false;
 
         private Sequence sequence;
         [Button]
@@ -36,14 +35,25 @@ namespace GameMain.Item
             // 使用DOTween创建弹出动画
             sequence = DOTween.Sequence();
             sequence.Append(transform.DOMove(targetPosition, popDuration));
+            sequence.onComplete += OnAnimationComplete;
             sequence.Play();
             // sequence.Append(transform.DOLocalMoveY(transform.localPosition.y + floatAmount, floatDuration).SetEase(Ease.OutQuad));
             // sequence.Append(transform.DOLocalMoveY(transform.localPosition.y - floatAmount, floatDuration).SetEase(Ease.OutQuad));
             // sequence.SetLoops(-1, DG.Tweening.LoopType.Yoyo); // 上下浮动循环
         }
-        
+
+        private void OnAnimationComplete()
+        {
+            _canPick = true;
+        }
+
         private void OnTriggerStay2D(Collider2D other)
         {
+            if (!_canPick)
+            {
+                return;
+            }
+
             var player = other.GetComponent<Player>();
             if (player != null && Input.GetKeyDown(KeyCode.F))
             {

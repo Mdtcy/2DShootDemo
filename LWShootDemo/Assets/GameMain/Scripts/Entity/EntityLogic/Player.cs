@@ -5,6 +5,7 @@ using LWShootDemo.Entities.Player;
 using LWShootDemo.Weapons;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityGameFramework.Runtime;
 
 namespace GameMain
 {
@@ -55,6 +56,7 @@ namespace GameMain
 
         public void PickItem(ItemProp itemProp)
         {
+            Log.Debug($"【Item】拾取{itemProp.Name}");
             AddBuff(new AddBuffInfo(itemProp.Buff, 
                 null, 
                 gameObject,

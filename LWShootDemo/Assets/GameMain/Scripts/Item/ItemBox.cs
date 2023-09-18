@@ -17,6 +17,8 @@ namespace GameMain.Item
         [SerializeField] 
         private ItemInteract _itemInteract;
 
+        [SerializeField] private Sprite _model;
+        
         private bool _hasOpen = false;
         
         [Button]
