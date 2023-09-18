@@ -16,6 +16,8 @@ namespace GameMain.Item
 
         [SerializeField] 
         private ItemInteract _itemInteract;
+
+        private bool _hasOpen = false;
         
         [Button]
         public async UniTask Generate()
@@ -42,10 +44,16 @@ namespace GameMain.Item
         
         private void OnTriggerStay2D(Collider2D other)
         {
+            if(_hasOpen == true)
+            {
+                return;
+            }
+            
             var player = other.GetComponent<Player>();
             
             if (player != null && Input.GetKeyDown(KeyCode.F))
             {
+                _hasOpen = true;
                 Generate().Forget();
             }
         }
