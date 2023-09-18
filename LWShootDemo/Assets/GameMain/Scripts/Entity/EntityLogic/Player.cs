@@ -1,4 +1,5 @@
 
+using GameMain.Item;
 using LWShootDemo.Entities;
 using LWShootDemo.Entities.Player;
 using LWShootDemo.Weapons;
@@ -45,17 +46,22 @@ namespace GameMain
             if (canShoot && Input.GetMouseButton(0))
             {
                 direction.z = 0;
-                // var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-
-                // // 朝向敌人
-                // var faceDirection = direction.x > 0 ? Direction.Right : Direction.Left;
-                // Move
-                // FaceController.Face(faceDirection);
 
                 // 使用武器
                 _weapon.Use();
                 lastShotTime = Time.time;
             }
+        }
+
+        public void PickItem(ItemProp itemProp)
+        {
+            AddBuff(new AddBuffInfo(itemProp.Buff, 
+                null, 
+                gameObject,
+                stack: 1, 
+                duration: 10, 
+                durationSetTo:true,
+                permanent: true));
         }
     }
 }

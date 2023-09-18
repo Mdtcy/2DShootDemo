@@ -18,6 +18,7 @@ namespace GameMain
             "EntityTable",
             "CharacterTable",
             "ProjectileTable",
+            "ItemTable",
             "AoeTable",
         };
 

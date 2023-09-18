@@ -98,6 +98,24 @@ namespace GameMain
                 Assert.IsTrue(pos!=null);
                 Player.transform.position = pos.Value;
             }
+
+            // if (Input.GetKeyDown(KeyCode.I))
+            // {
+            //     int count = Random.Range(6, 10);
+            //
+            //     for (int i = 0; i < count; i++)
+            //     {
+            //         var tilemap = GameObject.Find("Ground").GetComponent<Tilemap>();
+            //         var pos = TilemapUtility.FindPositionWithoutCollider(tilemap,
+            //             new Vector2Int(-40,40),
+            //             new Vector2Int(-40,40),
+            //             5, 
+            //             ~0,
+            //             1000);
+            //         Assert.IsTrue(pos != null);
+            //     }
+            // }
+
         }
         
         private MapObjectPlacer _mapObjectPlacer;

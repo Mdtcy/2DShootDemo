@@ -14,6 +14,12 @@ namespace GameMain.Item
 
         [LabelText("描述")]
         public string Description;
+        
+        [LabelText("稀有度")]
+        public ItemRarity Rarity;
+
+        [LabelText("最大可获得数量（-1为无限制）")]
+        public int MaxCount = -1;
 
         public BuffData Buff;
     }
