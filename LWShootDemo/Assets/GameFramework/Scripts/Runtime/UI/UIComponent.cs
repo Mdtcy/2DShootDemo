@@ -21,6 +21,10 @@ namespace UnityGameFramework.Runtime
     [AddComponentMenu("Game Framework/UI")]
     public sealed partial class UIComponent : GameFrameworkComponent
     {
+        [SerializeField]
+        private Camera m_UICamera;
+        public Camera UICamera => m_UICamera;
+        
         private const int DefaultPriority = 0;
 
         private IUIManager m_UIManager = null;

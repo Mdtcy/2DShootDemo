@@ -12,6 +12,21 @@ namespace GameMain.Item
         private SpriteRenderer _model;
 
         private ItemProp _itemProp;
+        public ItemProp ItemProp => _itemProp;
+        private Collider2D _collider2D;
+
+        public Collider2D Collider2D
+        {
+            get
+            {
+                if (_collider2D == null)
+                {
+                    _collider2D = GetComponent<Collider2D>();
+                }
+
+                return _collider2D;
+            }
+        }
 
         public float popHeight = 1.0f; // 弹出高度
         public float popDuration = 0.5f; // 弹出动画的持续时间
@@ -45,6 +60,31 @@ namespace GameMain.Item
         private void OnAnimationComplete()
         {
             _canPick = true;
+        }
+
+        int? tipFormId = null;
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (!_canPick)
+            {
+                return;
+            }
+
+            tipFormId = GameEntry.UI.OpenUIForm(UIFormId.ItemTip, this);
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (!_canPick)
+            {
+                return;
+            }
+
+            if (tipFormId != null)
+            {   
+                GameEntry.UI.CloseUIForm(tipFormId.Value);
+                tipFormId = null;
+            }
         }
 
         private void OnTriggerStay2D(Collider2D other)

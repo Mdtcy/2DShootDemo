@@ -2,6 +2,7 @@ namespace GameMain
 {
     public enum UIFormId
     {
-        DialogPopup,
+        DialogPopup = 0,
+        ItemTip = 1,
     }
 }

@@ -24,6 +24,7 @@ namespace UnityGameFramework.Editor
         private SerializedProperty m_InstancePriority = null;
         private SerializedProperty m_InstanceRoot = null;
         private SerializedProperty m_UIGroups = null;
+        private SerializedProperty m_UICamera = null;
 
         private HelperInfo<UIFormHelperBase> m_UIFormHelperInfo = new HelperInfo<UIFormHelperBase>("UIForm");
         private HelperInfo<UIGroupHelperBase> m_UIGroupHelperInfo = new HelperInfo<UIGroupHelperBase>("UIGroup");
@@ -106,6 +107,7 @@ namespace UnityGameFramework.Editor
                 EditorGUILayout.PropertyField(m_UIGroups, true);
             }
             EditorGUI.EndDisabledGroup();
+            EditorGUILayout.PropertyField(m_UICamera);
 
             if (EditorApplication.isPlaying && IsPrefabInHierarchy(t.gameObject))
             {
@@ -137,7 +139,8 @@ namespace UnityGameFramework.Editor
             m_InstancePriority = serializedObject.FindProperty("m_InstancePriority");
             m_InstanceRoot = serializedObject.FindProperty("m_InstanceRoot");
             m_UIGroups = serializedObject.FindProperty("m_UIGroups");
-
+            m_UICamera = serializedObject.FindProperty("m_UICamera");
+            
             m_UIFormHelperInfo.Init(serializedObject);
             m_UIGroupHelperInfo.Init(serializedObject);
 
