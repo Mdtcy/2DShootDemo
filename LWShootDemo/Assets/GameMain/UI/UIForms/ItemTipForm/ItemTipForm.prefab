@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4708541087377078644}
   - component: {fileID: 4708541087377078649}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ItemTipForm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _view: {fileID: 4708541088058611814}
-  _offset: {x: 0, y: 0}
+  _offset: {x: 0, y: 5}
   _txtName: {fileID: 4708541088378651115}
   _txtDesc: {fileID: 4708541087925048974}
   _imgIcon: {fileID: 4708541089054916621}
@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 4708541087925048975}
   - component: {fileID: 4708541087925049073}
   - component: {fileID: 4708541087925048974}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TxtDesc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u5916\u661F\u679C\u5B9E\u5916\u661F\u679C\u5B9E\u5916\u661F\u679C\u5B9E\u5916\u661F\u679C\u5B9E\u5916\u661F\u679C\u5B9E\u5916\u661F\u679C\u5B9E"
+  m_text: "\u5916\u661F\u679C\u5B9E\u5916\u661F\u679C\u5B9E\u5916\u661F\u679C\u5B9E\u5916\u661F\u679C\u5B9E\u5916\u661F\u679C\u5B9E\u5916\u661F\u679C\u5B9E\u5916\u661F\u679C\u5B9E\u5916\u661F\u679C\u5B9E\u5916\u661F\u679C\u5B9E\u5916\u661F"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -13.03
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 4708541088058611814}
   - component: {fileID: 4708541088058611816}
   - component: {fileID: 4708541088058611817}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 4708541088378651112}
   - component: {fileID: 4708541088378651114}
   - component: {fileID: 4708541088378651115}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TxtName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 4708541089054916618}
   - component: {fileID: 4708541089054916620}
   - component: {fileID: 4708541089054916621}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
