@@ -63,15 +63,7 @@ namespace GameMain.Item
         }
 
         int? tipFormId = null;
-        private void OnTriggerEnter2D(Collider2D col)
-        {
-            if (!_canPick)
-            {
-                return;
-            }
 
-            tipFormId = GameEntry.UI.OpenUIForm(UIFormId.ItemTip, this);
-        }
 
         private void OnTriggerExit2D(Collider2D other)
         {
@@ -92,6 +84,11 @@ namespace GameMain.Item
             if (!_canPick)
             {
                 return;
+            }
+
+            if (tipFormId == null)
+            {
+                tipFormId = GameEntry.UI.OpenUIForm(UIFormId.ItemTip, this);
             }
 
             var player = other.GetComponent<Player>();

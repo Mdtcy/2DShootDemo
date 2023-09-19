@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Gamelogic.Extensions.Algorithms;
@@ -20,6 +21,9 @@ namespace GameMain.Item
         [SerializeField] private Sprite _model;
         
         private bool _hasOpen = false;
+        
+        int? tipFormId = null;
+
         
         [Button]
         public async UniTask Generate()
@@ -51,12 +55,39 @@ namespace GameMain.Item
                 return;
             }
             
+            if (tipFormId == null)
+            {
+                tipFormId = GameEntry.UI.OpenUIForm(UIFormId.CommonTip, (transform, "按F开启"));
+            }
             var player = other.GetComponent<Player>();
             
             if (player != null && Input.GetKeyDown(KeyCode.F))
             {
                 _hasOpen = true;
                 Generate().Forget();
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if(_hasOpen == true)
+            {
+                return;
+            }
+            
+            if (tipFormId != null)
+            {   
+                GameEntry.UI.CloseUIForm(tipFormId.Value);
+                tipFormId = null;
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (tipFormId != null)
+            {   
+                GameEntry.UI.CloseUIForm(tipFormId.Value);
+                tipFormId = null;
             }
         }
     }
