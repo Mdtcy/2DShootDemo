@@ -202,6 +202,12 @@ namespace GameMain
                 return false;
             }
 
+            var character = target.GetComponent<Character>();
+            if (character != null && character.IsDead)
+            {
+                return false;
+            }
+
             for (int i = 0; i < _hitRecords.Count; i++)
             {
                 if (_hitRecords[i].target == target)
