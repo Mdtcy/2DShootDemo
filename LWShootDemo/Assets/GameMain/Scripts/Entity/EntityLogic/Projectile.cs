@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using GameFramework;
+using GameMain.Item;
 using LWShootDemo.Entities;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -204,6 +205,16 @@ namespace GameMain
 
             var character = target.GetComponent<Character>();
             if (character != null && character.IsDead)
+            {
+                return false;
+            }
+
+            if (target.GetComponent<ItemBox>() != null)
+            {
+                return false;
+            }
+            
+            if (target.GetComponent<ItemInteract>() != null)
             {
                 return false;
             }

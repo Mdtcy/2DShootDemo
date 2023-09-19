@@ -1,10 +1,12 @@
 using System.Collections;
+using System.Collections.Generic;
 using BerserkPixel.Tilemap_Generator;
 using Com.LuisPedroFonseca.ProCamera2D;
 using Cysharp.Threading.Tasks;
 using GameFramework.Event;
 using GameFramework.Fsm;
 using GameFramework.Procedure;
+using GameMain.Item;
 using GameMain.Scripts.Utility;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -148,6 +150,16 @@ namespace GameMain
 
             await UniTask.Yield(); // 异步等待一帧
 
+            // 生成ItemBox
+            var rarities = new List<ItemRarity>();
+            rarities.Add(ItemRarity.Common);
+            for (int i = 0; i < 15; i++)
+            {
+                GenerateRandomItemBox(rarities);
+            }
+
+            await UniTask.Yield(); // 异步等待一帧
+            
             // 获取TileMap上一个随机没有碰撞体的位置
             var pos = TilemapUtility.FindPositionWithoutCollider(GroundTileMap,
                 new Vector2Int(-40,40),
@@ -173,6 +185,27 @@ namespace GameMain
                 Debug.Log("Scanning... " + progress.description + " - " + (progress.progress*100).ToString("0") + "%");
                 await UniTask.Yield(); // 异步等待一帧
             }
+        }
+
+        private void GenerateRandomItemBox(List<ItemRarity> rarities)
+        {
+            // 获取TileMap上一个随机没有碰撞体的位置
+            var pos = TilemapUtility.FindPositionWithoutCollider(GroundTileMap,
+                new Vector2Int(-40,40),
+                new Vector2Int(-40,40),
+                5, 
+                ~0,
+                1000);
+            Assert.IsTrue(pos!=null);
+            
+            GameEntry.Entity.ShowItemBox(new ItemBoxData(GameEntry.Entity.GenerateSerialId(), 
+                10300010,
+                rarities)
+            {
+                Position = pos.Value,
+                Rotation = Quaternion.identity,
+                Scale = Vector3.one,
+            });
         }
     }
 }

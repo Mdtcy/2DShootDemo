@@ -13,9 +13,9 @@ namespace GameMain
             Assert.IsTrue(aoes.Length <= 1);
             if (aoes.Length == 0)
             {
-                var caster= args.Buff.Caster.GetComponent<Character>();
-                var casterPos = caster.transform.position;
-                GameEntry.Aoe.CreateAoe(Data.AoeProp, casterPos, Quaternion.identity, caster, Data.InitRange);
+                var carrier= args.Buff.Carrier.GetComponent<Character>();
+                var carrierPos = carrier.transform.position;
+                GameEntry.Aoe.CreateAoe(Data.AoeProp, carrierPos, Quaternion.identity, carrier, Data.InitRange);
             }
             // == 1
             else

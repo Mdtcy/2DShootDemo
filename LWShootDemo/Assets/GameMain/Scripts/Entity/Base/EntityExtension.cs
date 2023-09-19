@@ -1,5 +1,6 @@
 ﻿using GameFramework.DataTable;
 using System;
+using GameMain.Item;
 using UnityGameFramework.Runtime;
 
 namespace GameMain
@@ -80,7 +81,17 @@ namespace GameMain
         {
             entityComponent.ShowEntity(typeof(Fruit), Constant.AssetPriority.FruitAsset, data);
         }
-
+        
+        public static void ShowItemInteract(this EntityComponent entityComponent, ItemInteractData data)
+        {
+            entityComponent.ShowEntity(typeof(ItemInteract), Constant.AssetPriority.ItemInteractAsset, data);
+        }
+        
+        public static void ShowItemBox(this EntityComponent entityComponent, ItemBoxData data)
+        {
+            entityComponent.ShowEntity(typeof(ItemBox), Constant.AssetPriority.ItemBoxAsset, data);
+        }
+        
         #endregion
 
         public static int GenerateSerialId(this EntityComponent entityComponent)

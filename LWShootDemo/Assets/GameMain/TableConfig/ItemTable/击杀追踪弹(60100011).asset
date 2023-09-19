@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63de623b8ea4b9397033a475b215f1f, type: 3}
+  m_Name: "\u51FB\u6740\u8FFD\u8E2A\u5F39(60100011)"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  id: 60100011
+  DefaultName: "\u51FB\u6740\u8FFD\u8E2A\u5F39"
+  Model: {fileID: 21300000, guid: 50d1020ed3ebf44b8a1b6cc27975bce6, type: 3}
+  Description: "\u51FB\u6740\u65F6\uFF1A\u53D1\u5C041\u9897\u70ED\u8FFD\u8E2A\u7BAD\uFF0C100%
+    \u4F24\u5BB3 \u989D\u5916\u53D1\u5C04\u4E24\u9897\u87BA\u6813"
+  Rarity: 0
+  MaxCount: -1
+  Buff: {fileID: 11400000, guid: 3557eda824e663e41a6409671d044758, type: 2}

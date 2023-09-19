@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63de623b8ea4b9397033a475b215f1f, type: 3}
+  m_Name: "\u547D\u4E2D\u56DE\u8840(60100005)"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  id: 60100005
+  DefaultName: "\u547D\u4E2D\u56DE\u8840"
+  Model: {fileID: 21300000, guid: af79522ba22ed4d5fa85501bccc0b894, type: 3}
+  Description: "\u547D\u4E2D\u65F6\uFF1A\u6062\u590D 2 \u70B9\u751F\u547D\u503C\uFF1B\u540C\u65F6\u51FB\u4E2D\u591A\u4E2A\u654C\u4EBA\u4F1A\u589E\u52A0\u6062\u590D\u91CF
+    \u547D\u4E2D\u65F6+1 \u751F\u547D\u503C"
+  Rarity: 0
+  MaxCount: -1
+  Buff: {fileID: 11400000, guid: b7e42ea43b3999a47897e29a941ddd59, type: 2}

@@ -7,8 +7,8 @@ namespace GameMain
         protected override void ExecuteInternal(BuffOnProjectileHitArgs args)
         {
             var hitPos = args.HitPoint;
-            var caster= args.Buff.Caster.GetComponent<Character>();
-            GameEntry.Aoe.CreateAoe(Data.AoeProp, hitPos, Quaternion.identity, caster, Data.Radius);
+            var carrier= args.Buff.Carrier.GetComponent<Character>();
+            GameEntry.Aoe.CreateAoe(Data.AoeProp, hitPos, Quaternion.identity, carrier, Data.Radius);
         }
     }
 }
