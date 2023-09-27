@@ -91,7 +91,12 @@ namespace GameMain
         {
             entityComponent.ShowEntity(typeof(ItemBox), Constant.AssetPriority.ItemBoxAsset, data);
         }
-        
+
+        public static void ShowCoinPickUp(this EntityComponent entityComponent, CoinPickUpData data)
+        {
+            entityComponent.ShowEntity(typeof(CoinPickUp), Constant.AssetPriority.CoinPickUpAsset, data);
+        }
+
         #endregion
 
         public static int GenerateSerialId(this EntityComponent entityComponent)

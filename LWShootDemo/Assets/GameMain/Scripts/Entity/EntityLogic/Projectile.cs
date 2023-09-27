@@ -219,6 +219,11 @@ namespace GameMain
                 return false;
             }
 
+            if (target.GetComponent<CoinPickUp>() != null)
+            {
+                return false;
+            }
+
             for (int i = 0; i < _hitRecords.Count; i++)
             {
                 if (_hitRecords[i].target == target)

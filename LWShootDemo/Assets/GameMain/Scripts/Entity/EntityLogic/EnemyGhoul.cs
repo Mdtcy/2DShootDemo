@@ -1,6 +1,12 @@
+using System.Numerics;
+using GameMain.Scripts.Utility;
 using NodeCanvas.BehaviourTrees;
 using NodeCanvas.Framework;
+using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityGameFramework.Runtime;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 namespace GameMain
 {
@@ -38,6 +44,27 @@ namespace GameMain
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
             _behaviourTreeOwner.UpdateBehaviour();
+        }
+
+        protected override void Death()
+        {
+            base.Death();
+            
+            // todo 不放这里
+            var  groundTileMap = GameObject.Find("Ground").GetComponent<Tilemap>();
+            var pos = TilemapUtility.FindPositionWithoutColliderNearPosition(groundTileMap,
+                CachedTransform.position,
+                2,1, 
+                ~0,
+                1000);
+            
+            GameEntry.Entity.ShowCoinPickUp(new CoinPickUpData(GameEntry.Entity.GenerateSerialId(), 
+                10300011, 10f)
+            {
+                Position = CachedTransform.position,
+                Rotation = Quaternion.identity,
+                Scale = Vector3.one
+            });
         }
     }
 }

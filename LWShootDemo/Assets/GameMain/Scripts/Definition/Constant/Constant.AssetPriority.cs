@@ -26,7 +26,8 @@ namespace GameMain
             public static int FruitAsset = 80;
             public static int ItemInteractAsset = 80;
             public static int ItemBoxAsset = 80;
-            
+            public static int CoinPickUpAsset = 80;
+
             public const int TableConfigAsset = 100;
         }
     }

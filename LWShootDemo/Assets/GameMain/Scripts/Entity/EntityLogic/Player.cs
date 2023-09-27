@@ -1,4 +1,5 @@
 
+using Cysharp.Threading.Tasks;
 using GameMain.Item;
 using LWShootDemo.Entities;
 using LWShootDemo.Entities.Player;
@@ -52,6 +53,23 @@ namespace GameMain
                 _weapon.Use();
                 lastShotTime = Time.time;
             }
+
+            // // todo 临时测试用
+            // var results = Physics2D.OverlapCircleAll(transform.position, 5);
+            // for (int i = 0; i < results.Length; i++)
+            // {
+            //     var col = results[i];
+            //     if (col == null)
+            //     {
+            //         break;
+            //     }
+            //
+            //     var coinPickUp = col.GetComponent<CoinPickUp>();
+            //     if (coinPickUp != null && !coinPickUp.Moving)
+            //     {
+            //         coinPickUp.Collect(CachedTransform).Forget();
+            //     }
+            // }
         }
 
         public void PickItem(ItemProp itemProp)

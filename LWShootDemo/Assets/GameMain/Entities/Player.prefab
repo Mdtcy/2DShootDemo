@@ -5963,7 +5963,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb2D: {fileID: 7650056835086411200}
-  _faceController: {fileID: 3910028940616721295}
   DebugMode: 1
 --- !u!114 &1753173868119666043
 MonoBehaviour:
