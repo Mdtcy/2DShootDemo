@@ -58,13 +58,13 @@ namespace GameMain
                 ~0,
                 1000);
             
-            GameEntry.Entity.ShowCoinPickUp(new CoinPickUpData(GameEntry.Entity.GenerateSerialId(), 
-                10300011, 10f)
-            {
-                Position = CachedTransform.position,
-                Rotation = Quaternion.identity,
-                Scale = Vector3.one
-            });
+            // GameEntry.Entity.ShowCoinPickUp(new CoinPickUpData(GameEntry.Entity.GenerateSerialId(), 
+            //     10300011, 10f)
+            // {
+            //     Position = CachedTransform.position,
+            //     Rotation = Quaternion.identity,
+            //     Scale = Vector3.one
+            // });
         }
     }
 }

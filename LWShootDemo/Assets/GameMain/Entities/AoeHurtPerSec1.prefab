@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb2D: {fileID: 7728678370984060941}
-  _faceController: {fileID: 0}
   DebugMode: 0
 --- !u!50 &7728678370984060941
 Rigidbody2D:
@@ -132,6 +131,6 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8223783365018247652}
   m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1595645785
+  m_SortingLayer: 4
+  m_SortingOrder: -1
