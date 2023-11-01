@@ -40,16 +40,17 @@ namespace GameMain.Item
             var randomItem = tmpList.RandomItem();
 
             int id = GameEntry.Entity.GenerateSerialId();
-            GameEntry.Entity.ShowItemInteract(new ItemInteractData(1,
+            var entityTable = GameEntry.TableConfig.Get<EntityTable>();
+            var prop = entityTable.Get(10300009);
+            var itemInteractData = new ItemInteractData(prop, 1,
                 0.5f,
-                randomItem,
-                id,
-                10300009)
+                randomItem)
             {
                 Position = transform.position,
                 Rotation = Quaternion.identity,
                 Scale = Vector3.one,
-            });
+            };
+            GameEntry.Entity.ShowEntity<ItemInteract>(id, itemInteractData);
 
             await UniTask.Yield(); // 异步等待一帧
 
@@ -62,14 +63,17 @@ namespace GameMain.Item
             {
                 return;
             }
-
-            OpenTip();
+            
             var player = other.GetComponent<Player>();
 
-            if (player != null && Input.GetKeyDown(KeyCode.F))
+            if (player != null)
             {
-                _hasOpen = true;
-                Generate().Forget();
+                // TryOpenTip();
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    _hasOpen = true;
+                    Generate().Forget();   
+                }
             }
         }
 
@@ -80,30 +84,30 @@ namespace GameMain.Item
                 return;
             }
 
-            TryCloseTip();
+            // TryCloseTip();
         }
 
         protected override void OnHide(bool isShutdown, object userData)
         {
             base.OnHide(isShutdown, userData);
-            TryCloseTip();
+            // TryCloseTip();
         }
 
-        private void OpenTip()
-        {
-            if (tipFormId == null)
-            {
-                tipFormId = GameEntry.UI.OpenUIForm(UIFormId.CommonTip, (transform, "按F开启"));
-            }
-        }
-
-        private void TryCloseTip()
-        {
-            if (tipFormId != null)
-            {
-                GameEntry.UI.CloseUIForm(tipFormId.Value);
-                tipFormId = null;
-            }
-        }
+        // private void TryOpenTip()
+        // {
+        //     if (tipFormId == null)
+        //     {
+        //         tipFormId = GameEntry.UI.OpenUIForm(UIFormId.CommonTip, (transform, "按F开启"));
+        //     }
+        // }
+        //
+        // private void TryCloseTip()
+        // {
+        //     if (tipFormId != null)
+        //     {
+        //         GameEntry.UI.CloseUIForm(tipFormId.Value);
+        //         tipFormId = null;
+        //     }
+        // }
     }
 }

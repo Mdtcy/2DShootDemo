@@ -2,7 +2,7 @@ namespace GameMain
 {
     public class EnemyGhoulData : CharacterData
     {
-        public EnemyGhoulData(int entityId, int typeId) : base(entityId, typeId)
+        public EnemyGhoulData(EntityProp entityProp) : base(entityProp)
         {
         }
     }

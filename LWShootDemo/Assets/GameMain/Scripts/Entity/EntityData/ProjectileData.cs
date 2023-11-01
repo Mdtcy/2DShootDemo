@@ -7,10 +7,9 @@ namespace GameMain
         public ProjectileProp Prop;
         public Character Caster;
         
-        public ProjectileData(int entityId, 
-            int typeId, 
+        public ProjectileData(EntityProp entityProp, 
             ProjectileProp projectileProp,
-            Character caster) : base(entityId, typeId)
+            Character caster) : base(entityProp)
         {
             Prop = projectileProp;
             Caster = caster;

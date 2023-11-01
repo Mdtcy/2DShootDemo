@@ -9,12 +9,11 @@ namespace GameMain
         public float Radius;
         public Dictionary<string, object> Params;
 
-        public AoeData(int entityId,
-            int typeId, 
+        public AoeData(EntityProp entityProp, 
             AoeProp prop, 
             Character caster, 
             float radius,
-            Dictionary<string, object> pParams = null) : base(entityId, typeId)
+            Dictionary<string, object> pParams = null) : base(entityProp)
         {
             Prop = prop;
             Caster = caster;

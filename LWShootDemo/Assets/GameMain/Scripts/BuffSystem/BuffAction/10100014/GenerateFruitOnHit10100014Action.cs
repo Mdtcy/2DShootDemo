@@ -16,12 +16,13 @@ namespace GameMain
                     int id = GameEntry.Entity.GenerateSerialId();
                     var pos = args.DamageInfo.defender.transform.position;
                     pos += Random.insideUnitSphere * Data.RandomPosRange;
-                    GameEntry.Entity.ShowFruit(new FruitData(id, Data.FruitProp.ID, recoverHp)
+                    var fruitData = new FruitData(Data.FruitProp, recoverHp)
                     {
                         Position = pos,
                         Rotation = Quaternion.identity,
                         Scale = Vector3.one,
-                    });
+                    };
+                    GameEntry.Entity.ShowEntity<Fruit>(id, fruitData);
                 }   
             }
         }

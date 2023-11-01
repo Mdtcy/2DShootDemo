@@ -7,7 +7,7 @@ namespace GameMain
     {
         public List<ItemRarity> Raritys;
 
-        public ItemBoxData(int entityId, int typeId, List<ItemRarity> raritys) : base(entityId, typeId)
+        public ItemBoxData(EntityProp entityProp, List<ItemRarity> raritys) : base(entityProp)
         {
             Raritys = raritys;
         }

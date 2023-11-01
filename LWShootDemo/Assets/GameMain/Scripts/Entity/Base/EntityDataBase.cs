@@ -1,4 +1,11 @@
-﻿using System;
+﻿//------------------------------------------------------------
+// Game Framework
+// Copyright © 2013-2021 Jiang Yin. All rights reserved.
+// Homepage: https://gameframework.cn/
+// Feedback: mailto:ellan@gameframework.cn
+//------------------------------------------------------------
+
+using System;
 using UnityEngine;
 
 namespace GameMain
@@ -6,62 +13,72 @@ namespace GameMain
     [Serializable]
     public abstract class EntityDataBase
     {
-        [SerializeField] 
-        private int _id = 0;
+        [SerializeField]
+        private EntityProp m_EntityProp;
+
+        [SerializeField]
+        private Vector3 m_Position = Vector3.zero;
 
         [SerializeField] 
-        private int _typeId = 0;
-
-        [SerializeField] 
-        private Vector3 _position = Vector3.zero;
-
-        [SerializeField] 
-        private Quaternion _rotation = Quaternion.identity;
+        private Vector3 m_Scale = Vector3.one;
         
-        [SerializeField] 
-        private Vector3 _scale = Vector3.one;
 
-        public EntityDataBase(int entityId, int typeId)
+        [SerializeField]
+        private Quaternion m_Rotation = Quaternion.identity;
+
+        public EntityDataBase(EntityProp entityProp)
         {
-            _id = entityId;
-            _typeId = typeId;
+            m_EntityProp = entityProp;
+        }
+
+        public EntityProp EntityProp
+        {
+            get
+            {
+                return m_EntityProp;
+            }
         }
 
         /// <summary>
-        /// 实体编号
-        /// </summary>
-        public int Id => _id;
-
-        /// <summary>
-        /// 实体类型编号
-        /// </summary>
-        public int TypeId => _typeId;
-
-        /// <summary>
-        /// 实体位置
+        /// 实体位置。
         /// </summary>
         public Vector3 Position
         {
-            get => _position;
-            set => _position = value;
+            get
+            {
+                return m_Position;
+            }
+            set
+            {
+                m_Position = value;
+            }
         }
 
         /// <summary>
-        /// 实体朝向
+        /// 实体朝向。
         /// </summary>
         public Quaternion Rotation
         {
-            get => _rotation;
-            set => _rotation = value;
+            get
+            {
+                return m_Rotation;
+            }
+            set
+            {
+                m_Rotation = value;
+            }
         }
 
-        /// <summary>
-        /// 实体缩放
-        /// </summary>
         public Vector3 Scale
         {
-            get => _scale;
-            set => _scale = value;
+            get
+            {
+                return m_Scale;
+            }
+            set
+            {
+                m_Scale = value;
+            }
         }
     }
 }

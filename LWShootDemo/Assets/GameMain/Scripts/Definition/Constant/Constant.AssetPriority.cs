@@ -29,6 +29,7 @@ namespace GameMain
             public static int CoinPickUpAsset = 80;
 
             public const int TableConfigAsset = 100;
+            public const int DefaultAsset = 100;
         }
     }
 }

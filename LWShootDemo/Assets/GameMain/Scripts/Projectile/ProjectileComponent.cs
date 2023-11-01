@@ -37,15 +37,15 @@ namespace GameMain
         {
             // 生成子弹实体
             int id = GameEntry.Entity.GenerateSerialId();
-            GameEntry.Entity.ShowProjectile(new ProjectileData(id,
-                projectileProp.EntityProp.ID,
+            var projectileData = new ProjectileData(projectileProp.EntityProp,
                 projectileProp,
                 caster)
             {
                 Position = position,
                 Rotation = rotation,
                 Scale = Vector3.one,
-            });
+            };
+            GameEntry.Entity.ShowEntity<Projectile>(id, projectileData);
         }
         
         // private void Update()

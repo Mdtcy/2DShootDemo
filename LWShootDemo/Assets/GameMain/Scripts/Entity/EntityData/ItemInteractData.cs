@@ -8,7 +8,11 @@ namespace GameMain
         public float PopUpDuration;
         public ItemProp ItemProp;
         
-        public ItemInteractData(float popUpHeight, float popUpDuration, ItemProp itemProp, int entityId, int typeId) : base(entityId, typeId)
+        public ItemInteractData(EntityProp entityProp,
+            float popUpHeight, 
+            float popUpDuration, 
+            ItemProp itemProp) :
+            base(entityProp)
         {
             PopUpDuration = popUpDuration;
             PopUpHeight = popUpHeight;

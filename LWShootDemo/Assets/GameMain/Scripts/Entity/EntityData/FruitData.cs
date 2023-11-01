@@ -4,7 +4,7 @@ namespace GameMain
     {
         public int RecoverHp { get; }
 
-        public FruitData(int entityId, int typeId, int recoverHp) : base(entityId, typeId)
+        public FruitData(EntityProp entityProp, int recoverHp) : base(entityProp)
         {
             RecoverHp = recoverHp;
         }

@@ -6,6 +6,7 @@ using Cysharp.Threading.Tasks;
 using GameFramework.Event;
 using GameFramework.Fsm;
 using GameFramework.Procedure;
+using GameMain.Extensions;
 using GameMain.Item;
 using GameMain.Scripts.Utility;
 using UnityEngine;
@@ -20,14 +21,17 @@ namespace GameMain
         public Entity Player => GameEntry.Entity.GetEntity(_playerEntityId);
         // todo 优化
         public Tilemap GroundTileMap => GameObject.Find("Ground").GetComponent<Tilemap>();
-        
+        private EntityLoader _entityLoader;
+        private EntityTable _entityTable;
         private int _playerEntityId;
 
         private ProCamera2D _proCamera2D;
         protected override void OnEnter(IFsm<IProcedureManager> procedureOwner)
         {
             base.OnEnter(procedureOwner);
-            
+
+            _entityLoader = EntityLoader.Create(this);
+            _entityTable = GameEntry.TableConfig.Get<EntityTable>();
             GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId, OnShowEntitySuccess);
             Log.Debug("Enter ProcedureMain.");
             
@@ -42,8 +46,9 @@ namespace GameMain
 
         protected override void OnLeave(IFsm<IProcedureManager> procedureOwner, bool isShutdown)
         {
-            base.OnLeave(procedureOwner, isShutdown);
+            _entityLoader.ReleaseToPool();
             GameEntry.Event.Unsubscribe(ShowEntitySuccessEventArgs.EventId, OnShowEntitySuccess);
+            base.OnLeave(procedureOwner, isShutdown);
         }
 
         private void OnShowEntitySuccess(object sender, GameEventArgs e)
@@ -73,14 +78,17 @@ namespace GameMain
                     Debug.Log("没有找到合适的位置,不生成敌人");
                     return;
                 }
-                
-                GameEntry.Entity.ShowEnemy(new EnemyGhoulData(GameEntry.Entity.GenerateSerialId(), 10300001)
-                {
-                    Position = pos.Value,
-                    Rotation = Quaternion.identity,
-                    Scale = Vector3.one,
-                    PropID = 10200001,
-                });
+
+                var enemyGhoulProp = _entityTable.Get(10300001);
+                var enemyGhoulData =
+                    new EnemyGhoulData(enemyGhoulProp)
+                    {
+                        Position = pos.Value,
+                        Rotation = Quaternion.identity,
+                        Scale = Vector3.one,
+                        PropID = 10200001,
+                    };
+                _entityLoader.ShowEntity<EnemyGhoul>(enemyGhoulData);
             }
 
             if (Input.GetKeyDown(KeyCode.G))
@@ -169,14 +177,16 @@ namespace GameMain
                 1000);
             Assert.IsTrue(pos!=null);
             
-            _playerEntityId = GameEntry.Entity.GenerateSerialId();
-            GameEntry.Entity.ShowPlayer(new PlayerData(_playerEntityId, 10300000)
+            var playerProp = _entityTable.Get(10300000);
+
+            var playerData = new PlayerData(playerProp)
             {
                 Position = pos.Value,
                 Rotation = Quaternion.identity,
                 Scale = Vector3.one,
                 PropID = 10200000,
-            });
+            };
+            _playerEntityId = _entityLoader.ShowEntity<Player>(playerData);
             
             // Recalculate all graphs
             AstarPath.active.Scan();
@@ -197,15 +207,16 @@ namespace GameMain
                 ~0,
                 1000);
             Assert.IsTrue(pos!=null);
-            
-            GameEntry.Entity.ShowItemBox(new ItemBoxData(GameEntry.Entity.GenerateSerialId(), 
-                10300010,
+
+            var itemBoxProp = _entityTable.Get(10300010);
+            var itemBoxData = new ItemBoxData(itemBoxProp,
                 rarities)
             {
                 Position = pos.Value,
                 Rotation = Quaternion.identity,
                 Scale = Vector3.one,
-            });
+            };
+            _entityLoader.ShowEntity<ItemBox>(itemBoxData);
         }
     }
 }

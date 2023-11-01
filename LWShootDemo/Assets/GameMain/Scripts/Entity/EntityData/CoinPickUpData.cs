@@ -4,7 +4,7 @@ namespace GameMain
     {
         public float Speed;
 
-        public CoinPickUpData(int entityId, int typeId, float speed) : base(entityId, typeId)
+        public CoinPickUpData(EntityProp entityProp, float speed) : base(entityProp)
         {
             Speed = speed;
         } 

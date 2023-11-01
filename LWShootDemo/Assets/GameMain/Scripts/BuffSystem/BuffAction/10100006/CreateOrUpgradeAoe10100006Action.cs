@@ -8,7 +8,7 @@ namespace GameMain
     {
         protected override void ExecuteInternal(BuffOccurArgs args)
         {
-            string assetName = AssetUtility.GetEntityAsset(Data.AoeProp.EntityProp.AssetName);
+            string assetName = Data.AoeProp.EntityProp.AssetPath;
             var aoes = GameEntry.Entity.GetEntityGroup("Aoe").GetEntities(assetName);
             Assert.IsTrue(aoes.Length <= 1);
             if (aoes.Length == 0)

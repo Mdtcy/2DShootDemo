@@ -12,8 +12,7 @@ namespace GameMain
             Character caster, float range = 1, Dictionary<string, object> pParam = null)
         {
             int id = GameEntry.Entity.GenerateSerialId();
-            GameEntry.Entity.ShowAoe(new AoeData(id,
-                aoeProp.EntityProp.ID,
+            var aoeDate = new AoeData(aoeProp.EntityProp,
                 aoeProp,
                 caster,
                 range,
@@ -21,7 +20,8 @@ namespace GameMain
             {
                 Position = position,
                 Rotation = rotation,
-            });
+            };
+            GameEntry.Entity.ShowEntity<AoeState>(id, aoeDate);
 
             return id;
         }
