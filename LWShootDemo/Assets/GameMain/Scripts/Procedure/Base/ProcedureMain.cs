@@ -39,7 +39,6 @@ namespace GameMain
             _levelObjectGenerators = Object.FindObjectsOfType<LevelObjectGenerator>();
             _mapObjectPlacer = Object.FindObjectOfType<MapObjectPlacer>();
             GameEntry.FeedBack.Init();
-
             
             GenerateLevelThenGeneratePlayer().Forget();
         }
@@ -56,11 +55,18 @@ namespace GameMain
             var ne = (ShowEntitySuccessEventArgs) e;
             if (ne.EntityLogicType == typeof(Player))
             {
-                _proCamera2D = Camera.main.GetComponent<ProCamera2D>();
-                _proCamera2D.AddCameraTarget(ne.Entity.Logic.gameObject.transform);
+                var player = ne.Entity.Logic as Player;
+                OnShowPlayer(player);
             }
         }
 
+        private void OnShowPlayer(Player player)
+        {
+            GameEntry.UI.OpenUIForm(UIFormId.Inventory);
+            _proCamera2D = Camera.main.GetComponent<ProCamera2D>();
+            _proCamera2D.AddCameraTarget(player.Entity.Logic.gameObject.transform);
+        }
+        
         protected override void OnUpdate(IFsm<IProcedureManager> procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);

@@ -88,6 +88,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 843de00f1aa54a7db458f73092a7e18e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &84493335655886045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6468159537324147842}
+  - component: {fileID: 3754204520102324029}
+  m_Layer: 0
+  m_Name: SceneBlackBoardComponent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6468159537324147842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84493335655886045}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6082148912931509377}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3754204520102324029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84493335655886045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 135d57b791ee43349a1ee6dc238c9798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &871592056119821729
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +518,7 @@ Transform:
   - {fileID: 501899536}
   - {fileID: 751793970}
   - {fileID: 8037988069620914732}
+  - {fileID: 6468159537324147842}
   m_Father: {fileID: 6082148912792585416}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6082148913056032981

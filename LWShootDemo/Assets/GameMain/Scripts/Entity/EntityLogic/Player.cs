@@ -12,6 +12,8 @@ namespace GameMain
 {
     public class Player : Character
     {
+        public Inventory Inventory { get; private set; }
+
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
@@ -27,7 +29,8 @@ namespace GameMain
             base.OnShow(userData);
 
             _hpBar.Show();
-            
+            GameEntry.SceneBlackBoard.Player = this;
+            Inventory = new Inventory();
         }
 
         private float lastShotTime;
@@ -75,6 +78,7 @@ namespace GameMain
         public void PickItem(ItemProp itemProp)
         {
             Log.Debug($"【Item】拾取{itemProp.Name}");
+            Inventory.AddItem(itemProp.ID, 1);
             AddBuff(new AddBuffInfo(itemProp.Buff, 
                 null, 
                 gameObject,
