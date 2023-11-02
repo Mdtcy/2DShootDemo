@@ -97,7 +97,7 @@ namespace GameMain.Item
         // {
         //     if (tipFormId == null)
         //     {
-        //         tipFormId = GameEntry.UI.OpenUIForm(UIFormId.CommonTip, (transform, "按F开启"));
+        // tipFormId = GameEntry.UI.OpenUIForm(UIFormId.CommonTip, (transform, "按F开启"));
         //     }
         // }
         //

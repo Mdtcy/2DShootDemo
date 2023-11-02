@@ -9,7 +9,7 @@ namespace GameMain
         
         [LabelText("跟随UI")]
         [SerializeField]
-        private RectTransform _view;
+        protected RectTransform _view;
         
         [LabelText("偏移")]
         [SerializeField]
@@ -35,11 +35,11 @@ namespace GameMain
 
         protected virtual void LateUpdate()
         {
-            if (FollowTarget == null)
-            {
-                return;
-            }
+            UpdatePos();
+        }
 
+        protected void UpdatePos()
+        {
             var camera = Camera.main;
             var uicamera = GameEntry.UI.UICamera;
             var worldPos = ActualFollowPos + new Vector3(_offset.x, _offset.y, 0);

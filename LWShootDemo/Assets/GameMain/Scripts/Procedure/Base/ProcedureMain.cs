@@ -161,7 +161,7 @@ namespace GameMain
             // 生成ItemBox
             var rarities = new List<ItemRarity>();
             rarities.Add(ItemRarity.Common);
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 40; i++)
             {
                 GenerateRandomItemBox(rarities);
             }

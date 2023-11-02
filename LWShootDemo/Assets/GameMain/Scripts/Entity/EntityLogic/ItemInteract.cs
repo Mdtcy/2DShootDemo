@@ -17,6 +17,8 @@ namespace GameMain.Item
         public float _popDuration = 0.5f; // 弹出动画的持续时间
         private bool _canPick = false;
         private bool _hasPick = false;
+        private const float CanNotPickTime = 0.5f;
+        private float _canNotPickTimer = 0;
 
         private Player _player;
 
@@ -37,63 +39,54 @@ namespace GameMain.Item
             _canPick = false;
             _player = null;
             _hasPick = false;
+            _canNotPickTimer = CanNotPickTime;
             
             _model.sprite = _itemProp.Model;
             // 随机方向
-            Vector3 randomDirection = new Vector3(Random.Range(-1f, 1f), 1f, Random.Range(-1f, 1f)).normalized;
+            // Vector3 randomDirection = new Vector3(Random.Range(-1f, 1f), 1f, Random.Range(-1f, 1f)).normalized;
 
             // 计算目标位置
-            Vector3 targetPosition = CachedTransform.position + randomDirection * _popHeight;
+            // Vector3 targetPosition = CachedTransform.position + randomDirection * _popHeight;
             
-            // 使用DOTween创建弹出动画
-            var sequence = DOTween.Sequence();
-            sequence.Append(transform.DOMove(targetPosition, _popDuration));
-            sequence.onComplete += OnAnimationComplete;
-            sequence.Play();
+            // // 使用DOTween创建弹出动画
+            // var sequence = DOTween.Sequence();
+            // sequence.Append(transform.DOMove(targetPosition, _popDuration));
+            // sequence.onComplete += OnAnimationComplete;
+            // sequence.Play();
         }
 
-        private void OnAnimationComplete()
+        // private void OnAnimationComplete()
+        // {
+        //     _canPick = true;
+        // }
+
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            _canPick = true;
+            // 已经有了player，不需要再检测
+            if (_player != null)
+            {
+                return;
+            }
+
+            var player = other.GetComponent<Player>();
+            if(player!=null)
+            {
+                _player = player;
+            }
         }
 
-        int? tipFormId = null;
-        private bool Interacting => tipFormId != null;
         private void OnTriggerExit2D(Collider2D other)
         {
             var player = other.GetComponent<Player>();
-            if (player == null || player != _player)
+            if (player != null)
             {
-                return;
-            }
-
-            if (tipFormId != null)
-            {   
-                GameEntry.UI.CloseUIForm(tipFormId.Value);
-                tipFormId = null;
-            }
-        }
-
-        private void OnTriggerStay2D(Collider2D other)
-        {
-            if (!_canPick)
-            {
-                return;
-            }
-            _player = other.GetComponent<Player>();
-            if (_player == null)
-            {
-                return;
-            }
-
-            if (tipFormId == null)
-            {
-                tipFormId = GameEntry.UI.OpenUIForm(UIFormId.ItemTip, this);
+                _player = null;
             }
         }
 
         private void Update()
         {
+            _canNotPickTimer -= Time.deltaTime;
             if (_hasPick)
             {
                 return;
@@ -101,14 +94,17 @@ namespace GameMain.Item
 
             if (_player == null)
             {
+                Debug.Log("canNotPickTimer:" + _canNotPickTimer);
+
                 return;
             }
-
-            if (Input.GetKeyDown(KeyCode.F))
+            
+            if (_canNotPickTimer <= 0)
             {
-                _player.PickItem(_itemProp);
-                GameEntry.Entity.HideEntity(this);
                 _hasPick = true;
+                _player.PickItem(_itemProp);
+                GameEntry.UI.OpenUIForm(UIFormId.ItemTip, this);
+                GameEntry.Entity.HideEntity(this);
             }
         }
     }
