@@ -23,5 +23,5 @@ MonoBehaviour:
     SerializationNodes: []
   id: 10300008
   DefaultName: "\u7A7F\u900F\u5F3910100017"
-  AssetName: "\u7A7F\u900F\u5F3910100017"
+  AssetPath: "Assets/GameMain/Entities/\u7A7F\u900F\u5F3910100017.prefab"
   GroupName: Projectile

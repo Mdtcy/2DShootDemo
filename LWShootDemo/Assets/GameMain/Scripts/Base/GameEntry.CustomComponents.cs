@@ -18,6 +18,8 @@ namespace GameMain
         
         public static AoeComponent Aoe { get; private set; }
         
+        public static DifficultyComponent Difficulty { get; private set; }
+        
         private void InitCustomComponents()
         {
             StaticResource = UnityGameFramework.Runtime.GameEntry.GetComponent<StaticResourceComponent>();
@@ -32,6 +34,7 @@ namespace GameMain
             TableConfig = UnityGameFramework.Runtime.GameEntry.GetComponent<TableConfigComponent>();
             FeedBack = UnityGameFramework.Runtime.GameEntry.GetComponent<FeedBackComponent>();
             Aoe = UnityGameFramework.Runtime.GameEntry.GetComponent<AoeComponent>();
+            Difficulty = UnityGameFramework.Runtime.GameEntry.GetComponent<DifficultyComponent>();
         }
     }
 }

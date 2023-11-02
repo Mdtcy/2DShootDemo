@@ -23,5 +23,5 @@ MonoBehaviour:
     SerializationNodes: []
   id: 10300004
   DefaultName: HomingProjectileUpgrade
-  AssetName: HomingProjectileUpgrade
+  AssetPath: Assets/GameMain/Entities/HomingProjectileUpgrade.prefab
   GroupName: Projectile

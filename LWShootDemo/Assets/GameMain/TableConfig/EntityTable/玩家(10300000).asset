@@ -23,5 +23,5 @@ MonoBehaviour:
     SerializationNodes: []
   id: 10300000
   DefaultName: "\u73A9\u5BB6"
-  AssetName: Player
+  AssetPath: Assets/GameMain/Entities/Player.prefab
   GroupName: Player

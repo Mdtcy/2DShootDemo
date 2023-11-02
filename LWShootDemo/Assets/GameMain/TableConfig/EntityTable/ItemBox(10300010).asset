@@ -23,5 +23,5 @@ MonoBehaviour:
     SerializationNodes: []
   id: 10300010
   DefaultName: ItemBox
-  AssetName: ItemBox
+  AssetPath: Assets/GameMain/Entities/ItemBox.prefab
   GroupName: Item

@@ -23,5 +23,5 @@ MonoBehaviour:
     SerializationNodes: []
   id: 10300007
   DefaultName: Fruit
-  AssetName: Fruit
+  AssetPath: Assets/GameMain/Entities/Fruit.prefab
   GroupName: Fruit

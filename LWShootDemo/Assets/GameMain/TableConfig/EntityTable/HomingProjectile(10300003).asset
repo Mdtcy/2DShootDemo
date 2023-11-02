@@ -23,5 +23,5 @@ MonoBehaviour:
     SerializationNodes: []
   id: 10300003
   DefaultName: HomingProjectile
-  AssetName: HomingProjectile
+  AssetPath: Assets/GameMain/Entities/HomingProjectile.prefab
   GroupName: Projectile

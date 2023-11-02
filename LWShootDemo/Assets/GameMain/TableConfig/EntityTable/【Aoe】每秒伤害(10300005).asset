@@ -23,5 +23,5 @@ MonoBehaviour:
     SerializationNodes: []
   id: 10300005
   DefaultName: "\u3010Aoe\u3011\u6BCF\u79D2\u4F24\u5BB3"
-  AssetName: AoeHurtPerSec1
+  AssetPath: Assets/GameMain/Entities/AoeHurtPerSec1.prefab
   GroupName: Aoe

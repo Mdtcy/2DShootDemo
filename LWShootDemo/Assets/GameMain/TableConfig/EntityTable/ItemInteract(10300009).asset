@@ -23,5 +23,5 @@ MonoBehaviour:
     SerializationNodes: []
   id: 10300009
   DefaultName: ItemInteract
-  AssetName: ItemInteract
+  AssetPath: Assets/GameMain/Entities/ItemInteract.prefab
   GroupName: Item

@@ -23,5 +23,5 @@ MonoBehaviour:
     SerializationNodes: []
   id: 10300001
   DefaultName: Ghoul
-  AssetName: EnemyGhoul
+  AssetPath: Assets/GameMain/Entities/EnemyGhoul.prefab
   GroupName: Enemy

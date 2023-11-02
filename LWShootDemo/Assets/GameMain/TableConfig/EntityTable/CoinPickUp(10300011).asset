@@ -23,5 +23,5 @@ MonoBehaviour:
     SerializationNodes: []
   id: 10300011
   DefaultName: CoinPickUp
-  AssetName: CoinPickUp
+  AssetPath: Assets/GameMain/Entities/CoinPickUp.prefab
   GroupName: Coin

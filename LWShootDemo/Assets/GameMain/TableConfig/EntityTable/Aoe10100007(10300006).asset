@@ -23,5 +23,5 @@ MonoBehaviour:
     SerializationNodes: []
   id: 10300006
   DefaultName: Aoe10100007
-  AssetName: Aoe10100007
+  AssetPath: Assets/GameMain/Entities/Aoe10100007.prefab
   GroupName: Aoe
