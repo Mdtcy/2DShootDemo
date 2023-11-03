@@ -1,7 +1,4 @@
-using System;
-using DG.Tweening;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace GameMain.Item
 {
@@ -86,16 +83,15 @@ namespace GameMain.Item
 
         private void Update()
         {
-            _canNotPickTimer -= Time.deltaTime;
             if (_hasPick)
             {
                 return;
             }
 
+            _canNotPickTimer -= Time.deltaTime;
+            
             if (_player == null)
             {
-                Debug.Log("canNotPickTimer:" + _canNotPickTimer);
-
                 return;
             }
             
@@ -104,7 +100,11 @@ namespace GameMain.Item
                 _hasPick = true;
                 _player.PickItem(_itemProp);
                 GameEntry.UI.OpenUIForm(UIFormId.ItemTip, this);
-                GameEntry.Entity.HideEntity(this);
+                
+                GameEntry.Timer.AddOnceTimer(100, () =>
+                {
+                    GameEntry.Entity.HideEntity(this);
+                });
             }
         }
     }
