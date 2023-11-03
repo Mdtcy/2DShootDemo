@@ -16,8 +16,16 @@ namespace GameMain
         [SerializeField] 
         private TextMeshProUGUI _txtCount;
 
+        public Action<UIItem> ActOnPointerEnterItem;
+        public Action<UIItem> ActOnPointerExitItem;
+        
+        // local
+        private ItemProp _itemProp;
+        public ItemProp ItemProp => _itemProp;
+
         public void Setup(ItemProp itemProp, int count)
         {
+            _itemProp = itemProp;
             _imgIcon.sprite = itemProp.Model;
             // _imgIcon.SetNativeSize();
 
@@ -32,10 +40,12 @@ namespace GameMain
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            ActOnPointerEnterItem?.Invoke(this);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
+            ActOnPointerExitItem?.Invoke(this);
         }
     }
 }

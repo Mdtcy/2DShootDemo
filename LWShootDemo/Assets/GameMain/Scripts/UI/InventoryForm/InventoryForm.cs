@@ -24,6 +24,7 @@ namespace GameMain
             GameEntry.Event.Subscribe(OnInventoryAddItemEventArgs.EventId, OnAddItem);
             _inventory = GameEntry.SceneBlackBoard.Inventory;
             _itemTable = GameEntry.TableConfig.Get<ItemTable>();
+            _uiItemInfo.Hide();
         }
 
         private void OnAddItem(object sender, GameEventArgs e)
@@ -42,7 +43,37 @@ namespace GameMain
                 uiItem.transform.parent = _root;
                 uiItem.transform.SetAsLastSibling();
                 uiItem.Setup(_itemTable.Get(itemId), _inventory.GetItemCount(itemId));
+                uiItem.ActOnPointerEnterItem += OnPointerEnterItem;
+                uiItem.ActOnPointerExitItem += OnPointerExitItem;
             }
+        }
+
+        public void DestroyAll()
+        {
+            foreach (var uiItem in _itemMaps.Values)
+            {
+                uiItem.ActOnPointerEnterItem -= OnPointerEnterItem;
+                uiItem.ActOnPointerExitItem -= OnPointerExitItem;
+                Destroy(uiItem.gameObject);
+            }
+            _itemMaps.Clear();
+        }
+
+        private UIItem _selectedUIItem;
+
+        [SerializeField]
+        private UIItemInfo _uiItemInfo;
+        
+        private void OnPointerEnterItem(UIItem uiItem)
+        {
+            _selectedUIItem = uiItem;
+            _uiItemInfo.Show(_selectedUIItem);
+        }
+        
+        private void OnPointerExitItem(UIItem uiItem)
+        {
+            _selectedUIItem = null;
+            _uiItemInfo.Hide();
         }
     }
 }
