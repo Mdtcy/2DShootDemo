@@ -1,18 +1,19 @@
 using System;
-using Animancer.Editor;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using LWShootDemo;
 using UnityEngine;
-using UnityGameFramework.Runtime;
 using Random = UnityEngine.Random;
 
 namespace GameMain
 {
     public class CoinPickUp : EntityLogicBase
     {
-        private float _speed;
+        public float _speed; // 金币飞行速度
+        public Transform _playerTransform; // 玩家的 Transform
+        private Player _player;
         private TrailRenderer _trailRenderer;
+        private Tween _moveTween;
+        private Sequence _sequence;
 
         protected override void OnInit(object userData)
         {
@@ -20,50 +21,60 @@ namespace GameMain
             _trailRenderer = GetComponentInChildren<TrailRenderer>();
         }
 
+        // private float currentSpeed;
         protected override void OnShow(object userData)
         {
             base.OnShow(userData);
             var data = userData as CoinPickUpData;
             _speed = data.Speed;
-            Showing().Forget();
+            _player = GameEntry.SceneBlackBoard.Player;
+            _playerTransform = _player.transform;
+            FlyToPlayer().Forget();
         }
 
-        private async UniTask Showing()
+        private async UniTask FlyToPlayer()
         {
             _trailRenderer.enabled = false;
-            float randomx = Random.Range(1.5f, 2f);
-            float randomy = Random.Range(1.5f, 2f);
-            randomy = Random.Range(0, 100) > 50 ? -randomy : randomy;
-            randomx = Random.Range(0, 100) > 50 ? -randomx : randomx;
+            float _popHeight = 1;
+            float _popDuration = 0.3f;
+            // 随机方向
+            Vector3 randomDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0).normalized;
 
-            var pos = CachedTransform.position + new Vector3(randomx, randomy, 0);
-            float duration = Random.Range(0.3f, 0.4f);
-            var tween = transform.DOMove(pos, duration).SetEase(Ease.OutSine);
+            // 计算目标位置
+            Vector3 targetPosition = CachedTransform.position + randomDirection * _popHeight;
+            
+            // 使用DOTween创建弹出动画
+            _sequence = DOTween.Sequence();
+            _sequence.Append(transform.DOMove(targetPosition, _popDuration));
+            _sequence.Play();
 
-            while (tween.IsPlaying())
-            {
-                await UniTask.Yield(); // 异步等待一帧
-            }
+            await _sequence.AsyncWaitForCompletion();
+            await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(1f, 2f)));
+            // _trailRenderer.enabled = true;
+            GameEntry.Entity.AttachEntity(Entity.Id, _player.Entity.Id);
 
-            await UniTask.Delay(TimeSpan.FromSeconds(1f));
-            _trailRenderer.enabled = true;
+            float duration = Vector3.Distance(CachedTransform.position, _playerTransform.position) / _speed;
+            _moveTween = CachedTransform
+                .DOLocalMove(Vector3.zero, duration)
+                .SetEase(Ease.InOutSine)
+                .OnComplete(OnCoinFlyComplete);
+        }
+        
 
-            _speed = _initSpeed;
-            DOTween.To(() => _speed, (x) => _speed = x, _finalSpeed, 3f).SetEase(Ease.InSine);
-            var player = GameManager.Instance.Player;
-
-            while (Vector3.Distance(player.transform.position, CachedTransform.position) >= 0.1f)
-            {
-                var dir = (player.transform.position - CachedTransform.position).normalized;
-                CachedTransform.position += dir * _speed;
-                await UniTask.Yield(); // 异步等待一帧
-            }
-
-            GameEntry.Entity.HideEntity(Entity);
+        protected override void OnHide(bool isShutdown, object userData)
+        {
+            base.OnHide(isShutdown, userData);
+            _trailRenderer.enabled = false;
+            _moveTween?.Kill();
         }
 
-        private float _initSpeed = 0;
+        private float _minModifier = 11;
+        private float _maxModifier = 13;
 
-        private float _finalSpeed = 5;
+        private void OnCoinFlyComplete()
+        {
+            GameEntry.Entity.HideEntity(this);
+        }
     }
+    
 }

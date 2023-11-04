@@ -50,21 +50,15 @@ namespace GameMain
         {
             base.Death();
             
-            // todo 不放这里
-            var  groundTileMap = GameObject.Find("Ground").GetComponent<Tilemap>();
-            var pos = TilemapUtility.FindPositionWithoutColliderNearPosition(groundTileMap,
-                CachedTransform.position,
-                2,1, 
-                ~0,
-                1000);
-            
-            // GameEntry.Entity.ShowCoinPickUp(new CoinPickUpData(GameEntry.Entity.GenerateSerialId(), 
-            //     10300011, 10f)
-            // {
-            //     Position = CachedTransform.position,
-            //     Rotation = Quaternion.identity,
-            //     Scale = Vector3.one
-            // });
+            // // todo 不放这里
+            // var  groundTileMap = GameObject.Find("Ground").GetComponent<Tilemap>();
+            // var pos = TilemapUtility.FindPositionWithoutColliderNearPosition(groundTileMap,
+            //     CachedTransform.position,
+            //     2,1, 
+            //     ~0,
+            //     1000);
+
+            GameEntry.Entity.ShowCoinPickUp(10f,CachedTransform.position,Quaternion.identity,Vector3.one);
         }
     }
 }

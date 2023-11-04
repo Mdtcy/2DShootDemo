@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 using UnityGameFramework.Runtime;
 
 namespace GameMain
@@ -64,5 +65,23 @@ namespace GameMain
         {
             return --s_SerialId;
         }
+
+        #region Create Entity
+
+        public static int ShowCoinPickUp(this EntityComponent entityComponent, float speed, Vector3 pos, Quaternion rot, Vector3 scale)
+        {
+            var prop = GameEntry.SceneBlackBoard.EntityTable.Get(10300011);
+            var coinPickUpData = new CoinPickUpData(prop, speed)
+            {
+                Position = pos,
+                Rotation = rot,
+                Scale = scale
+            };
+            int id = GameEntry.Entity.GenerateSerialId();
+            GameEntry.Entity.ShowEntity<CoinPickUp>(id, coinPickUpData);
+            return id;
+        }
+
+        #endregion
     }
 }
