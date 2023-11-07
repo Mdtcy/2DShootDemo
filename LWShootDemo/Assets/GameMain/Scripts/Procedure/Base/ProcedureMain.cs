@@ -96,6 +96,33 @@ namespace GameMain
                     };
                 _entityLoader.ShowEntity<EnemyGhoul>(enemyGhoulData);
             }
+            
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                // todo 这里优化一下 忽视在敌人附近的情况 layerMask
+                var pos = TilemapUtility.FindPositionWithoutColliderNearPosition(GroundTileMap,
+                    Player.transform.position,
+                    15,3, 
+                    ~0,
+                    1000);
+
+                if (pos == null)
+                {
+                    Debug.Log("没有找到合适的位置,不生成敌人");
+                    return;
+                }
+
+                var botProp = _entityTable.Get(10300012);
+                var enemyGhoulData =
+                    new EnemyGhoulData(botProp)
+                    {
+                        Position = pos.Value,
+                        Rotation = Quaternion.identity,
+                        Scale = Vector3.one,
+                        PropID = 10200002,
+                    };
+                _entityLoader.ShowEntity<EnemyGhoul>(enemyGhoulData);
+            }
 
             if (Input.GetKeyDown(KeyCode.G))
             {
